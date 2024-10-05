@@ -5,7 +5,7 @@ const Watchlist = () => {
   const species = [
     { img: '/assam_roofed_turtle.jpg', },
     { img: '/Muskdeer.jpg', },
-    { img: '/Shark.png' },
+    { img: '/Clouded_leopard.jpg' },
     { img: '/Elephant.jpg'},
     { img: '/Great-Indian-one-horned-rhinoceros-India.jpg'},
     { img: '/Humpback_Whale.jpg' }
