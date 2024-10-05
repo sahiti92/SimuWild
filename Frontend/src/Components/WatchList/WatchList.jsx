@@ -3,15 +3,12 @@ import "./Watchlist.css"; // Import the CSS file
 
 const Watchlist = () => {
   const species = [
-    { img: "/assam_roofed_turtle.jpg", name: "Assam Roofed Turtle" },
-    { img: "/Muskdeer.jpg", name: "Musk Deer" },
-    { img: "/bear.JPG", name: "Bear" },
-    { img: "/Elephant.jpg", name: "Elephant" },
-    {
-      img: "/Great-Indian-one-horned-rhinoceros-India.jpg",
-      name: "Rhinoceros",
-    },
-    { img: "/Humpback_Whale.jpg", name: "Humpback Whale" },
+    { img: "/assam_roofed_turtle.jpg", name: "Assam roofed turtle" },
+    { img: "/Muskdeer.jpg" },
+    { img: "/Clouded_leopard.jpg" },
+    { img: "/Elephant.jpg" },
+    { img: "/Great-Indian-one-horned-rhinoceros-India.jpg" },
+    { img: "/Humpback_Whale.jpg" },
   ];
 
   return (
