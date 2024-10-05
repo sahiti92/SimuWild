@@ -1,0 +1,97 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden; /* Prevent any scrollbars */
+}
+
+.app {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+}
+
+.background {
+  background-size: cover; /* Ensure the image covers the entire screen */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  transition: background-image 0.5s ease-in-out; /* Smooth transition effect */
+  height: 100vh; /* Full viewport height */
+  width: 100vw; /* Full viewport width */
+}
+
+.image-gallery {
+  position: absolute;
+  bottom: 20px; /* Adjust as needed */
+  right: 50px; /* Adjust as needed */
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  padding: 10px;
+  width: 800px;
+  max-width: 90vw; /* Allow more space for gallery to expand */
+  flex-direction: row-reverse;
+  direction: rtl;
+}
+
+.thumbnail {
+  width: 200px; /* Increased Thumbnail size */
+  height: auto; /* Maintain aspect ratio */
+  margin-left: 15px; /* Increase space between thumbnails */
+  cursor: pointer; /* Show pointer on hover */
+  transition: transform 0.3s ease-in-out; /* Smooth transition on hover */
+  direction: rtl;
+}
+
+.thumbnail:hover {
+  opacity: 0.8; /* Slightly fade thumbnail on hover */
+  transform: scale(1.05); /* Enlarge thumbnail on hover */
+}
+
+/* Responsive layout for smaller screens */
+@media (max-width: 768px) {
+  .thumbnail {
+    width: 100px; /* Adjust thumbnail size for smaller screens */
+  }
+
+  .image-gallery {
+    bottom: 10px; /* Adjust spacing for smaller screens */
+    right: 10px;
+    width: 500px;
+    max-width: 95vw; /* Allow the gallery more width on small screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .thumbnail {
+    width: 80px; /* Further adjust for very small screens */
+  }
+
+  .image-gallery {
+    bottom: 5px;
+    right: 5px;
+    width: 500px;
+    max-width: 100vw; /* Utilize full width for small screens */
+  }
+}
+
+/* Adjust background image height for landscape mobile screens */
+@media (orientation: landscape) and (max-height: 500px) {
+  .background {
+    height: 60vh;
+  }
+}
+
+/* Add padding or adjust sizes for very large screens (desktops) */
+@media (min-width: 1200px) {
+  .thumbnail {
+    width: 180px; /* Increase thumbnail size for larger screens */
+  }
+
+  .image-gallery {
+    bottom: 30px;
+    right: 30px;
+    max-width: 85vw; /* Reduce gallery width slightly for bigger screens */
+  }
+}
