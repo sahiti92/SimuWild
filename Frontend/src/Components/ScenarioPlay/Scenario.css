@@ -1,0 +1,54 @@
+/* Full screen container */
+.scenario-container {
+    margin: 0;
+    padding: 0;
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    overflow: hidden;
+  }
+  
+  /* Image container to ensure image covers the whole viewport */
+  .image-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .scenario-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire screen without distortion */
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  /* Overlay styling for the text */
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centers the text */
+    color: white;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6); /* Adds a semi-transparent background */
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 80%;
+  }
+  
+  /* Bold and centered title */
+  .scenario-title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Paragraph with justified alignment */
+  .scenario-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin: 0 auto;
+  }
+  
