@@ -1,15 +1,17 @@
-import React from 'react';
-import './Watchlist.css'; // Import the CSS file
+import React from "react";
+import "./Watchlist.css"; // Import the CSS file
 
 const Watchlist = () => {
   const species = [
-    { img: '/assam_roofed_turtle.jpg', },
-    { img: '/Muskdeer.jpg', },
-    { img: '/Shark.png' },
-    { img: '/Elephant.jpg'},
-    { img: '/Great-Indian-one-horned-rhinoceros-India.jpg'},
-    { img: '/Humpback_Whale.jpg' }
-   
+    { img: "/assam_roofed_turtle.jpg", name: "Assam Roofed Turtle" },
+    { img: "/Muskdeer.jpg", name: "Musk Deer" },
+    { img: "/bear.JPG", name: "Bear" },
+    { img: "/Elephant.jpg", name: "Elephant" },
+    {
+      img: "/Great-Indian-one-horned-rhinoceros-India.jpg",
+      name: "Rhinoceros",
+    },
+    { img: "/Humpback_Whale.jpg", name: "Humpback Whale" },
   ];
 
   return (
