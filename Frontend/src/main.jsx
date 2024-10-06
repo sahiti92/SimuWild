@@ -22,7 +22,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/scenario3" element={<Scenario3 />} />
         <Route path="/scenario4" element={<Scenario4 />} />
         <Route path="/scenario5" element={<Scenario5 />} />
-        <Route path="/scenario6" element={<Scenario6/>} />
+        <Route path="/scenario6" element={<Scenario6 />} />
         {/* Add more routes as needed */}
       </Routes>
     </Router>

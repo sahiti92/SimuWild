@@ -49,7 +49,7 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg",
               "Leopard in India",
-              "dfghjklfyguhijok",
+              "In the urban jungle, who is the real intruder—humans or leopards?",
               "/scenario3"
             )
           }
@@ -70,8 +70,8 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://hatibondhu.org/assets/img/hec.jpg",
               "Human-Elephant Conflict",
-              "sdfghjkl;lkjhgfdfghn",
-              "./scenario5"
+              "When giants lose their homes, can coexistence be the key to survival?",
+              "./scenario1"
             )
           }
           onClick={() =>
@@ -79,48 +79,50 @@ const ScenarioHomePage = () => {
               "https://hatibondhu.org/assets/img/hec.jpg",
               "Human-Elephant Conflict",
               "sdfghjkl;oiuytrfdcvbnmnbvcxdtfyguhijlnbmn",
-              "./scenario4"
+              "./scenario1"
             )
           }
         />
         <img
-          src="https://static2.tripoto.com/media/filter/tst/img/1942819/TripDocument/1588420605_capture.png"
+          src="https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ="
           alt="Image 2"
           className="thumbnail"
           onMouseEnter={() =>
             changeBackground(
-              "https://static2.tripoto.com/media/filter/tst/img/1942819/TripDocument/1588420605_capture.png",
-              "Scenic Landscape",
-              "ytr45wsdxcg niuytrsdfghjkmnbjvhfyguhiljknb",
+              "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
+              "Asiatic lions in Gir National Park",
+              "With one sanctuary left, is a new home the lions' last hope?",
+              "./scenario6"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
+              "Asiatic lions in Gir National Park",
+              "098765resxcvbnm",
+              "./scenario6"
+              
+            )
+          }
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg"
+          alt="Image 3"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
+              "The Great Indian Bustard in its natural habitat",
+              "Caught between power lines and extinction—can this bird survive progress?",
               "./scenario4"
             )
           }
           onClick={() =>
             changeBackground(
-              "https://static2.tripoto.com/media/filter/tst/img/1942819/TripDocument/1588420605_capture.png",
-              "Scenic Landscape",
-              "098765resxcvbnm,./'poiuytrdc m,kjhgvbnm,"
-            )
-          }
-        />
-        <img
-          src="https://bl-i.thgim.com/public/specials/india-interior/article23459566.ece/alternates/LANDSCAPE_1200/BL07IndiaIntlead1"
-          alt="Image 3"
-          className="thumbnail"
-          onMouseEnter={() =>
-            changeBackground(
-              "https://bl-i.thgim.com/public/specials/india-interior/article23459566.ece/alternates/LANDSCAPE_1200/BL07IndiaIntlead1",
-              "Interior India",
-              "-098765eszxcvbnm,liuytfdcvbnm,.",
-              "./scenario3"
-            )
-          }
-          onClick={() =>
-            changeBackground(
-              "https://bl-i.thgim.com/public/specials/india-interior/article23459566.ece/alternates/LANDSCAPE_1200/BL07IndiaIntlead1",
-              "Interior India",
+              "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
+              "The Great Indian Bustard in its natural habitat",
               "2345678op;lkjhgfdcvbnm,",
-              "./scenario3"
+              "./scenario4"
             )
           }
         />
@@ -132,7 +134,7 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg",
               "Rhino Conservation",
-              "34567890p;lkjhgfdertyuikjhgf",
+              "As poaching rises, can the rhino's ancient home still offer refuge?",
               "./scenario2"
             )
           }
@@ -146,23 +148,23 @@ const ScenarioHomePage = () => {
           }
         />
         <img
-          src="https://imgs.mongabay.com/wp-content/uploads/sites/20/2017/10/06125834/Sundarban-tiger.jpg"
+          src="https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg"
           alt="Image 5"
           className="thumbnail"
           onMouseEnter={() =>
             changeBackground(
-              "https://imgs.mongabay.com/wp-content/uploads/sites/20/2017/10/06125834/Sundarban-tiger.jpg",
+              "https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg",
               "Sundarban Tiger",
-              "yuiop;lkjhgfdvbnm",
-              "./scenario1"
+              "As the seas rise, will the Sundarbans’ last tigers sink or survive?",
+              "./scenario5"
             )
           }
           onClick={() =>
             changeBackground(
-              "https://imgs.mongabay.com/wp-content/uploads/sites/20/2017/10/06125834/Sundarban-tiger.jpg",
+              "https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg",
               "Sundarban Tiger",
               "345678op;lmnbvcxzsdfghjk",
-              "./Scenario1"
+              "./Scenario5"
             )
           }
         />

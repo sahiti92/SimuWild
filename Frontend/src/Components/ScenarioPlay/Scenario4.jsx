@@ -7,7 +7,7 @@ const Scenario4 = () => {
       <div className="image-container">
         <img
           className="scenario-image"
-          src="https://bl-i.thgim.com/public/specials/india-interior/article23459566.ece/alternates/LANDSCAPE_1200/BL07IndiaIntlead1"
+          src="https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg"
           alt="The Great Indian Bustard in its natural habitat"
         />
         <div className="overlay">
