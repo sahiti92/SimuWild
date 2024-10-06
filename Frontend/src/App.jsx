@@ -1,53 +1,39 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
-// import './App.css'
-
-// function App() {
-//   const [count, setCount] = useState(0)
-
-//   return (
-//     <>
-//       <div>
-//         <a href="https://vitejs.dev" target="_blank">
-//           <img src={viteLogo} className="logo" alt="Vite logo" />
-//         </a>
-//         <a href="https://react.dev" target="_blank">
-//           <img src={reactLogo} className="logo react" alt="React logo" />
-//         </a>
-//       </div>
-//       <h1>Vite + React</h1>
-//       <div className="card">
-//         <button onClick={() => setCount((count) => count + 1)}>
-//           count is {count}
-//         </button>
-//         <p>
-//           Edit <code>src/App.jsx</code> and save to test HMR
-//         </p>
-//       </div>
-//       <p className="read-the-docs">
-//         Click on the Vite and React logos to learn more
-//       </p>
-//     </>
-//   )
-// }
-
-// export default App
-import React from 'react';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import LoginForm from './Users/Login';
-import SignupForm from './Users/Signup';
-
+// App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScenarioHomePage from "./Components/ScenarioPlay/ScenarioHomePage.jsx";
+import Scenario2 from "./Components/ScenarioPlay/Scenario2.jsx";
+import Scenario1 from "./Components/ScenarioPlay/Scenario1.jsx";
+import Scenario3 from "./Components/ScenarioPlay/Scenario3.jsx";
+import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
+import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
+import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
+//import LandingPage from "./Components/LandingPage.jsx";
+import Login from "./Users/Login.jsx";
+import SignUp from "./Users/SignUp.jsx";
+import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 const App = () => {
-    return (
-      <BrowserRouter>
+  return (
+    <Router>
       <Routes>
-        <Route path="/login" element={<LoginForm />} />
-        <Route path="/signup" element={<SignupForm />} />
-        {/* Add more routes as needed */}
+        {/* Define route for Landing Page */}
+        {/* <Route path="/" element={<LandingPage />} /> */}
+
+        {/* Authentication-related routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        {/* Scenario Routes */}
+        <Route path="/scenarios" element={<ScenarioHomePage />} />
+        <Route path="/scenario1" element={<Scenario1 />} />
+        <Route path="/scenario2" element={<Scenario2 />} />
+        <Route path="/scenario3" element={<Scenario3 />} />
+        <Route path="/scenario4" element={<Scenario4 />} />
+        <Route path="/scenario5" element={<Scenario5 />} />
+        <Route path="/scenario6" element={<Scenario6 />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-    </BrowserRouter>
-    );
+    </Router>
+  );
 };
 
 export default App;
