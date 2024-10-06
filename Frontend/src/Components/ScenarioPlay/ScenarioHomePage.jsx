@@ -1,0 +1,176 @@
+import React, { useState } from "react";
+import "./ScenarioHomePage.css";
+import { useNavigate } from "react-router-dom";
+const ScenarioHomePage = () => {
+  const [backgroundImage, setBackgroundImage] = useState(
+    "https://hatibondhu.org/assets/img/hec.jpg" // Default background image
+  );
+  const [heading, setHeading] = useState("Human-Elephant Conflict"); // Default heading
+  const [description, setDescription] = useState(
+    "Human-elephant conflict in India often arises due to habitat loss." // Default description
+  );
+  const navigate = useNavigate();
+  const [pageLink, setPageLink] = useState("/scenario1");
+  const [headingKey, setHeadingKey] = useState(0); // Key to reset animation
+
+  const changeBackground = (image, newHeading, newDescription, newPageLink) => {
+    setBackgroundImage(image);
+    setHeading(newHeading);
+    setDescription(newDescription);
+    setHeadingKey((prevKey) => prevKey + 1); // Update the key to reset animation
+    setPageLink(newPageLink);
+  };
+  const goToPage = () => {
+    navigate(pageLink);
+  };
+  return (
+    <div className="app">
+      {/* Background with dynamically changing image */}
+      <div
+        className="background"
+        style={{ backgroundImage: `url(${backgroundImage})` }}
+      ></div>
+
+      {/* Heading container with unique key to reset typewriter effect */}
+      <div key={headingKey} className="heading-container">
+        {heading}
+        <p className="subscript">{description}</p>
+      </div>
+      <button className="play-button" onClick={goToPage}>
+        Play to Know More
+      </button>
+      {/* Image Gallery */}
+      <div className="image-gallery">
+        <img
+          src="https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg"
+          alt="Image 6"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg",
+              "Leopard in India",
+              "In the urban jungle, who is the real intruder—humans or leopards?",
+              "/scenario3"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg",
+              "Leopard in India",
+              "sdfghjkl;'poijhgfcvbn",
+              "/scenario3"
+            )
+          }
+        />
+        <img
+          src="https://hatibondhu.org/assets/img/hec.jpg"
+          alt="Image 1"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://hatibondhu.org/assets/img/hec.jpg",
+              "Human-Elephant Conflict",
+              "When giants lose their homes, can coexistence be the key to survival?",
+              "./scenario1"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://hatibondhu.org/assets/img/hec.jpg",
+              "Human-Elephant Conflict",
+              "sdfghjkl;oiuytrfdcvbnmnbvcxdtfyguhijlnbmn",
+              "./scenario1"
+            )
+          }
+        />
+        <img
+          src="https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ="
+          alt="Image 2"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
+              "Asiatic lions in Gir National Park",
+              "With one sanctuary left, is a new home the lions' last hope?",
+              "./scenario6"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
+              "Asiatic lions in Gir National Park",
+              "098765resxcvbnm",
+              "./scenario6"
+              
+            )
+          }
+        />
+        <img
+          src="https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg"
+          alt="Image 3"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
+              "The Great Indian Bustard in its natural habitat",
+              "Caught between power lines and extinction—can this bird survive progress?",
+              "./scenario4"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
+              "The Great Indian Bustard in its natural habitat",
+              "2345678op;lkjhgfdcvbnm,",
+              "./scenario4"
+            )
+          }
+        />
+        <img
+          src="https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg"
+          alt="Image 4"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg",
+              "Rhino Conservation",
+              "As poaching rises, can the rhino's ancient home still offer refuge?",
+              "./scenario2"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg",
+              "Rhino Conservation",
+              "45678oplkjhgfdertyuikjhgf",
+              "./Scenario2"
+            )
+          }
+        />
+        <img
+          src="https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg"
+          alt="Image 5"
+          className="thumbnail"
+          onMouseEnter={() =>
+            changeBackground(
+              "https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg",
+              "Sundarban Tiger",
+              "As the seas rise, will the Sundarbans’ last tigers sink or survive?",
+              "./scenario5"
+            )
+          }
+          onClick={() =>
+            changeBackground(
+              "https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg",
+              "Sundarban Tiger",
+              "345678op;lmnbvcxzsdfghjk",
+              "./Scenario5"
+            )
+          }
+        />
+      </div>
+    </div>
+  );
+};
+
+export default ScenarioHomePage;
