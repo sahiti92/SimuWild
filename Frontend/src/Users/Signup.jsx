@@ -57,7 +57,7 @@ const SignupForm = () => {
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
-        navigate("/login");
+        navigate("/dashboard"); // Redirect to dashboard after successful registration
       }, 3000);
     }
   }, [isSuccess, navigate]);
@@ -128,7 +128,9 @@ const SignupForm = () => {
             placeholder="Confirm Password"
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <span className="error-message">{formik.errors.confirmPassword}</span>
+            <span className="error-message">
+              {formik.errors.confirmPassword}
+            </span>
           )}
         </div>
 
@@ -137,11 +139,14 @@ const SignupForm = () => {
           Register
         </button>
         <p style={{ marginTop: "10px", textAlign: "center" }}>
-        Already have an account?{" "}
-        <Link to="/login" style={{ color: "#007BFF", textDecoration: "underline" }}>
-          Login
-        </Link>
-      </p>
+          Already have an account?{" "}
+          <Link
+            to="/login"
+            style={{ color: "#007BFF", textDecoration: "underline" }}
+          >
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

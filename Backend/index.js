@@ -1,17 +1,17 @@
 const express = require("express");
-require('dotenv').config();
+require("dotenv").config();
 const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const errorHandler = require("./middlewares/errorHandler");
-const url = process.env.MONGODB_URL;
+//const url = process.env.MONGODB_URL;
 //! user:cs22b027
 //! pass: Mt4K37HNfQYF50W5
 mongoose
   .connect(
-    // "mongodb+srv://cs22b027:Mt4K37HNfQYF50W5@simuwild.azzap.mongodb.net/?retryWrites=true&w=majority&appName=SimuWild"
-    url
+    "mongodb+srv://cs22b027:Mt4K37HNfQYF50W5@simuwild.azzap.mongodb.net/?retryWrites=true&w=majority&appName=SimuWild"
+    //url
   )
   .then(() => console.log("DB Connected"))
   .catch((e) => console.log(e));

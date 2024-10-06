@@ -8,7 +8,7 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import { loginAPI } from "../services/users/userService";
 import AlertMessage from "../Alert/AlertMessage";
 import { loginAction } from "../redux/slice/authSlice";
-import "./styles.css";  // Import the new CSS file
+import "./styles.css"; // Import the new CSS file
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid").required("Email is required"),
@@ -46,7 +46,7 @@ const LoginForm = () => {
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
-        navigate("/profile");
+        navigate("/dashboard"); // Navigate to /dashboard on successful login
       }, 3000);
     }
   }, [isSuccess, navigate]);
@@ -55,7 +55,9 @@ const LoginForm = () => {
     <form onSubmit={formik.handleSubmit} className="form-container">
       <h2>Login</h2>
 
-      {isPending && <div className="alert alert-loading">Logging you in...</div>}
+      {isPending && (
+        <div className="alert alert-loading">Logging you in...</div>
+      )}
       {isError && (
         <div className="alert alert-error">{error.response.data.message}</div>
       )}

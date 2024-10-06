@@ -24,12 +24,12 @@ const App = () => {
         <Route path="/signup" element={<SignUp />} />
         {/* Scenario Routes */}
         <Route path="/scenarios" element={<ScenarioHomePage />} />
-        <Route path="/scenario1" element={<Scenario1 />} />
-        <Route path="/scenario2" element={<Scenario2 />} />
+        <Route path="/scenarios/scenario1" element={<Scenario1 />} />
+        <Route path="/scenarios/scenario2" element={<Scenario2 />} />
         <Route path="/scenario3" element={<Scenario3 />} />
-        <Route path="/scenario4" element={<Scenario4 />} />
-        <Route path="/scenario5" element={<Scenario5 />} />
-        <Route path="/scenario6" element={<Scenario6 />} />
+        <Route path="/scenarios/scenario4" element={<Scenario4 />} />
+        <Route path="/scenarios/scenario5" element={<Scenario5 />} />
+        <Route path="/scenarios/scenario6" element={<Scenario6 />} />
         <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
