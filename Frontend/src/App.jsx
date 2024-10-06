@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+// App.jsx
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ScenarioHomePage from "./Components/ScenarioPlay/ScenarioHomePage.jsx";
+import Scenario2 from "./Components/ScenarioPlay/Scenario2.jsx";
+import Scenario1 from "./Components/ScenarioPlay/Scenario1.jsx";
+import Scenario3 from "./Components/ScenarioPlay/Scenario3.jsx";
+import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
+import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
+import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
+//import LandingPage from "./Components/LandingPage.jsx";
+import Login from "./Users/Login.jsx";
+import SignUp from "./Users/SignUp.jsx";
+import Dashboard from "./Components/Dashboard/Dashboard.jsx";
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        {/* Define route for Landing Page */}
+        {/* <Route path="/" element={<LandingPage />} /> */}
 
-export default App
+        {/* Authentication-related routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
+        {/* Scenario Routes */}
+        <Route path="/scenarios" element={<ScenarioHomePage />} />
+        <Route path="/scenarios/scenario1" element={<Scenario1 />} />
+        <Route path="/scenarios/scenario2" element={<Scenario2 />} />
+        <Route path="/scenario3" element={<Scenario3 />} />
+        <Route path="/scenarios/scenario4" element={<Scenario4 />} />
+        <Route path="/scenarios/scenario5" element={<Scenario5 />} />
+        <Route path="/scenarios/scenario6" element={<Scenario6 />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+      </Routes>
+    </Router>
+  );
+};
+
+export default App;
