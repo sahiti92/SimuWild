@@ -52,28 +52,4 @@
     margin: 0 auto;
   }
 
-  .play-button {
-    position: fixed;
-    right: 20px;  /* Position 20px from the right */
-    bottom: 30px; /* Position 30px from the bottom */
-    background-color: #f05454;
-    color: white;
-    font-size: 1.2rem;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
   
-  /* Play button hover effect */
-  .play-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Remove button focus outline */
-  .play-button:focus {
-    outline: none;
-  }
