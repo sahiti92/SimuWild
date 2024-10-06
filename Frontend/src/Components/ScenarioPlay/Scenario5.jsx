@@ -8,13 +8,13 @@ const Scenario5 = () => {
         <img
           className="scenario-image"
           src="https://imgs.mongabay.com/wp-content/uploads/sites/20/2017/10/06125834/Sundarban-tiger.jpg"
-          alt="Elephants foraging in a human settlement in Assam, damaging crops and homes"
+          alt="Bengal tiger in the Sundarbans"
         />
         <div className="overlay">
-          <h1 className="scenario-title">Human-Elephant Conflict in Assam</h1>
+          <h1 className="scenario-title">The Threat to Bengal Tigers in the Sundarbans</h1>
           <p className="scenario-description">
-            In Assam's Sonitpur district, the destruction of natural habitats due to deforestation has led elephants to forage in human settlements, resulting in significant damage to crops and homes. In 2020, elephants in this region trampled through villages and farms, seeking food, leading to the destruction of over 200 hectares of crops and the death of both humans and elephants. The expansion of tea plantations and infrastructure projects has fragmented the elephant corridors, cutting off traditional migration paths, forcing elephants into villages and farmlands. In retaliation, locals resort to violent measures, including electric fences, which lead to more elephant deaths.
-          </p>
+          The Bengal tiger population in the Sundarbans, the largest mangrove forest in the world, is under threat from rising sea levels due to climate change and habitat destruction. In 2019, several tigers were reported to have moved into villages, attacking livestock and people as their habitat shrank. The Sundarbans faces both ecological and human-induced pressures. The rise in sea levels has submerged parts of the forest, reducing the tigers' habitat. At the same time, illegal timber logging and deforestation further fragment their territory. In 2019, tiger-related attacks on humans peaked, leading to a public outcry.
+           </p>
         </div>
       </div>
     </div>
