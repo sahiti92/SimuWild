@@ -1,0 +1,70 @@
+/* Base styles for the alert container */
+.alert-container {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 16px;
+    gap: 12px;
+  }
+  
+  /* Error Styles */
+  .alert-error-bg {
+    background-color: #ffe5e5;
+  }
+  .alert-error-text {
+    color: #9b2c2c;
+  }
+  .alert-error-border {
+    border-left: 4px solid #e53e3e;
+  }
+  .error-icon {
+    color: #e53e3e;
+    font-size: 24px;
+  }
+  
+  /* Success Styles */
+  .alert-success-bg {
+    background-color: #e6ffed;
+  }
+  .alert-success-text {
+    color: #276749;
+  }
+  .alert-success-border {
+    border-left: 4px solid #38a169;
+  }
+  .success-icon {
+    color: #38a169;
+    font-size: 24px;
+  }
+  
+  /* Loading Styles */
+  .alert-loading-bg {
+    background-color: #ebf8ff;
+  }
+  .alert-loading-text {
+    color: #3182ce;
+  }
+  .alert-loading-border {
+    border-left: 4px solid #4299e1;
+  }
+  .loading-icon {
+    color: #4299e1;
+    font-size: 24px;
+    animation: spin 1s linear infinite;
+  }
+  
+  /* General alert message text */
+  .alert-message {
+    font-size: 14px;
+    font-weight: 500;
+  }
+  
+  /* Spin animation for loading */
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
