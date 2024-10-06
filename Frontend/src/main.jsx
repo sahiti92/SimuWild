@@ -15,7 +15,6 @@ createRoot(document.getElementById("root")).render(
       <Routes>
         {/* Define the route for the home page */}
         <Route path="/" element={<ScenarioHomePage />} />
-
         {/* Define the route for Scenario2 page */}
         <Route path="/scenario2" element={<Scenario2 />} />
         <Route path="/scenario1" element={<Scenario1 />} />
@@ -23,7 +22,6 @@ createRoot(document.getElementById("root")).render(
         <Route path="/scenario4" element={<Scenario4 />} />
         <Route path="/scenario5" element={<Scenario5 />} />
         <Route path="/scenario6" element={<Scenario6 />} />
-        {/* Add more routes as needed */}
       </Routes>
     </Router>
   </StrictMode>
