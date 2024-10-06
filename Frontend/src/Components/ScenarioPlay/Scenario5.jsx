@@ -7,7 +7,7 @@ const Scenario5 = () => {
       <div className="image-container">
         <img
           className="scenario-image"
-          src="https://imgs.mongabay.com/wp-content/uploads/sites/20/2017/10/06125834/Sundarban-tiger.jpg"
+          src="https://c4.wallpaperflare.com/wallpaper/861/749/290/wildlife-tiger-bengal-tiger-wilderness-wallpaper-preview.jpg"
           alt="Bengal tiger in the Sundarbans"
         />
         <div className="overlay">
