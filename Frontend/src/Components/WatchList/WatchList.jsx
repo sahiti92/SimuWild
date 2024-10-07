@@ -106,7 +106,7 @@ const Watchlist = () => {
   const images = [
     { src: '/assam_roofed_turtle.jpg', alt: 'Assam Roofed Turtle', title: 'ENDANGERED' },
     { src: '/Clouded_leopard.jpg', alt: 'Clouded Leopard', title: 'CRITICALLY ENDANGERED' },
-    { src: '/Elephant.jpg', alt: 'Indian Elephant', title: 'THREATENED' },
+    { src: '/Elephant.jpg', alt: 'Indian Elephant', title: 'NEAR THREATENED' },
     { src: '/Great-Indian-one-horned-rhinoceros-India.jpg', alt: 'Indian Rhinoceros', title: 'VULNERABLE' },
   ];
 
@@ -131,7 +131,7 @@ const Watchlist = () => {
           <div className="card">
             <img src={image.src} alt={image.alt} />
             <div className="text">{image.title}</div>
-            <button className="explore-button">Explore</button> {/* Explore button added here */}
+            <button className="explore-button" onclick="">Explore</button> {/* Explore button added here */}
           </div>
         </SwiperSlide>
       ))}
