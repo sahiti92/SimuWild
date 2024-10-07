@@ -15,6 +15,7 @@ const Scenario2 = () => {
           <p className="scenario-description">
           Kaziranga National Park in Assam, home to over two-thirds of the world’s population of one-horned rhinoceros, has long battled the threat of poaching. In 2016, there was an alarming rise in poaching incidents, where more than 17 rhinos were killed for their horns, despite anti-poaching measures in place. The illegal wildlife trade, particularly the demand for rhino horns in East Asia for traditional medicine, drives poaching. Poachers often cross the Brahmaputra River during floods to target rhinos, taking advantage of the challenging terrain and the park’s proximity to international borders.
           </p>
+          <button className="small-play-button">Play</button>
         </div>
       </div>
     </div>

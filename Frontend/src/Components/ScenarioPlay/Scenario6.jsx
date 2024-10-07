@@ -27,6 +27,7 @@ const Scenario6 = () => {
             balance between translocation and protecting the lion population in
             its existing habitat.
           </p>
+          <button className="small-play-button">Play</button>
         </div>
       </div>
     </div>
