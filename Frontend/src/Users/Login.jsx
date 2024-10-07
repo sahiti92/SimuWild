@@ -52,11 +52,12 @@ const LoginForm = () => {
   }, [isSuccess, navigate]);
 
   return (
+    <div className ="auth-page" style={{ width: '100vw', height: '100vh' }}>
     <form onSubmit={formik.handleSubmit} className="form-container">
       <h2>Login</h2>
 
       {isPending && (
-        <div className="alert alert-loading">Logging you in...</div>
+        <div className="alert alert-loading">Hang in there...</div>
       )}
       {isError && (
         <div className="alert alert-error">{error.response.data.message}</div>
@@ -98,6 +99,7 @@ const LoginForm = () => {
         Login
       </button>
     </form>
+    </div>
   );
 };
 

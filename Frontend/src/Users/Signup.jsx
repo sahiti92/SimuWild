@@ -63,9 +63,10 @@ const SignupForm = () => {
   }, [isSuccess, navigate]);
 
   return (
+    <div className ="auth-page" style={{ width: '100vw', height: '100vh' }}>
     <div className="form-container">
       <form onSubmit={formik.handleSubmit}>
-        <h2>Sign Up</h2>
+        <p>Want to hop right in?sign up to get started</p>
         {/* Display messages */}
         {isPending && <AlertMessage type="loading" message="Loading..." />}
         {isError && (
@@ -74,7 +75,7 @@ const SignupForm = () => {
         {isSuccess && (
           <AlertMessage type="success" message="Registration successful" />
         )}
-        <p>Join our community now!</p>
+
 
         {/* Input Field - Username */}
         <div className="input-group">
@@ -148,6 +149,7 @@ const SignupForm = () => {
           </Link>
         </p>
       </form>
+    </div>
     </div>
   );
 };
