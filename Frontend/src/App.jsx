@@ -11,7 +11,7 @@ import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/SignUp.jsx";
-import Dashboard from "./Components/Dashboard/Dashboard.jsx";
+// import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 const App = () => {
   return (
     <Router>
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        {/* <Route path="/dashboard" element={<Dashboard />} /> */}
       </Routes>
     </Router>
   );

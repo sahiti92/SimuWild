@@ -57,7 +57,7 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg",
               "Leopard in India",
-              "sdfghjkl;'poijhgfcvbn",
+              "In the urban jungle, who is the real intruder—humans or leopards?",
               "/scenario3"
             )
           }
@@ -78,7 +78,7 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://hatibondhu.org/assets/img/hec.jpg",
               "Human-Elephant Conflict",
-              "sdfghjkl;oiuytrfdcvbnmnbvcxdtfyguhijlnbmn",
+              "When giants lose their homes, can coexistence be the key to survival?",
               "./scenario1"
             )
           }
@@ -99,9 +99,8 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
               "Asiatic lions in Gir National Park",
-              "098765resxcvbnm",
+              "With one sanctuary left, is a new home the lions' last hope?",
               "./scenario6"
-              
             )
           }
         />
@@ -121,7 +120,7 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
               "The Great Indian Bustard in its natural habitat",
-              "2345678op;lkjhgfdcvbnm,",
+              "Caught between power lines and extinction—can this bird survive progress?",
               "./scenario4"
             )
           }
@@ -142,7 +141,7 @@ const ScenarioHomePage = () => {
             changeBackground(
               "https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg",
               "Rhino Conservation",
-              "45678oplkjhgfdertyuikjhgf",
+              "As poaching rises, can the rhino's ancient home still offer refuge?",
               "./Scenario2"
             )
           }
