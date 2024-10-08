@@ -14,6 +14,7 @@ import Login from "./Users/Login.jsx";
 import SignUp from "./Users/SignUp.jsx";
 import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
+import About from "./Components/DashBoard2/About.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -35,7 +36,8 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>} />
+        <Route path="/about" element={<AuthRoute><About /></AuthRoute>} />
       </Routes>
     </Router>
   );

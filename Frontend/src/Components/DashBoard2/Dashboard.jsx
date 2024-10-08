@@ -1,33 +1,44 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const Dashboard = () => {
   const features = [
     {
-      title: "Story-Based Learning",
+      title: "Scenario-Based Learning",
       description: "Navigate human impact on wildlife.",
       image: "/learning.jpg",
+      path: "/scenarios",
     },
     {
       title: "Endangered Species Watchlist",
       description: "Track at-risk species.",
       image: "/species.jpg",
+      path: "/watchlist",
     },
     {
       title: "Virtual Map and Quiz",
       description: "Interactive learning through maps and quizzes.",
       image: "/map.jpg",
+      path: "#",
     },
     {
       title: "Indigenous Knowledge",
       description: "Share and document indigenous practices.",
       image: "/photogallery.jpg",
+      path: "#",
     },
   ];
+  const navigate = useNavigate(); 
   const [clickedIndex, setClickedIndex] = useState(null);
 
   const handleTitleClick = (index) => {
-    setClickedIndex(clickedIndex === index ? null : index);
+    if (clickedIndex === index) {
+      setClickedIndex(null);
+    } else {
+      setClickedIndex(index);
+      navigate(features[index].path);
+    }
   };
 
   return (
@@ -37,16 +48,16 @@ const Dashboard = () => {
           <nav>
             <ul>
               <li>
-                <a href="#">Home</a>
+                <Link to="/about">Home</Link>
               </li>
               <li>
-                <a href="#">About</a>
+                <Link to="/about">About</Link>
               </li>
               <li>
-                <a href="#">Services</a>
+                <Link to="/about">Contact</Link>
               </li>
               <li>
-                <a href="#">Contact</a>
+                <Link to="/about">Services</Link>
               </li>
             </ul>
           </nav>
@@ -93,10 +104,11 @@ const Dashboard = () => {
           <section className="features-section">
             {features.map((feature, index) => (
               <div key={index} className="feature-block">
-                <img
+                <img 
+                 onClick={() => handleTitleClick(index)}
                   src={feature.image}
                   alt={feature.title}
-                  className="feature-image"
+                  className="feature-image" 
                 />
                 <h3
                   onClick={() => handleTitleClick(index)}
@@ -173,7 +185,7 @@ const Dashboard = () => {
                   >
                     <path d="M6.62,10.79a15.07,15.07,0,0,0,6.59,6.59l2.2-2.2a1,1,0,0,1,1.05-.24,11.36,11.36,0,0,0,3.56.57,1,1,0,0,1,1,1v3.62a1,1,0,0,1-1,1A18,18,0,0,1,2,5a1,1,0,0,1,1-1H6.66a1,1,0,0,1,1,1,11.36,11.36,0,0,0,.57,3.56,1,1,0,0,1-.24,1.05Z" />
                   </svg>
-                  +263 776 844 485
+                  +263 776 8407 489
                 </li>
                 <li>
                   <svg
