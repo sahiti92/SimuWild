@@ -26,6 +26,7 @@ const Scenario5 = () => {
             territory. In 2019, tiger-related attacks on humans peaked, leading
             to a public outcry.
           </p>
+          <button className="small-play-button">Play</button>
         </div>
       </div>
     </div>

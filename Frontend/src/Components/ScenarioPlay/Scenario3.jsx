@@ -15,6 +15,7 @@ const Scenario3 = () => {
           <p className="scenario-description">
           Maharashtra has witnessed frequent encounters between humans and leopards due to urban encroachment into forests. In 2020, several incidents were reported where leopards strayed into the city of Mumbai, particularly in the Aarey Milk Colony and Sanjay Gandhi National Park areas, resulting in attacks on humans and pets. Rapid urbanization has diminished the leopards’ habitat, forcing them into closer contact with humans. In one specific case, a leopard killed a toddler in the Aarey Colony, triggering panic among the locals. Despite being natural predators, leopards have adapted to urban environments, complicating human-wildlife coexistence.
           </p>
+          <button className="small-play-button">Play</button>
         </div>
       </div>
     </div>

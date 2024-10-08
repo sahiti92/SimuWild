@@ -85,6 +85,7 @@ const SignupForm = () => {
             type="text"
             {...formik.getFieldProps("username")}
             placeholder="Username"
+            style={{width:"170%"}}
           />
           {formik.touched.username && formik.errors.username && (
             <span className="error-message">{formik.errors.username}</span>
@@ -99,6 +100,7 @@ const SignupForm = () => {
             type="email"
             {...formik.getFieldProps("email")}
             placeholder="Email"
+            style={{width:"170%"}}
           />
           {formik.touched.email && formik.errors.email && (
             <span className="error-message">{formik.errors.email}</span>
@@ -113,6 +115,7 @@ const SignupForm = () => {
             type="password"
             {...formik.getFieldProps("password")}
             placeholder="Password"
+            style={{width:"170%"}}
           />
           {formik.touched.password && formik.errors.password && (
             <span className="error-message">{formik.errors.password}</span>
@@ -127,6 +130,7 @@ const SignupForm = () => {
             type="password"
             {...formik.getFieldProps("confirmPassword")}
             placeholder="Confirm Password"
+            style={{width:"170%"}}
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword && (
             <span className="error-message">

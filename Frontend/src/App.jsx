@@ -1,4 +1,3 @@
-// App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScenarioHomePage from "./Components/ScenarioPlay/ScenarioHomePage.jsx";
@@ -11,27 +10,29 @@ import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/SignUp.jsx";
-import Dashboard from "./Components/Dashboard/Dashboard.jsx";
-import AuthRoute from "./Components/AuthRoute.jsx"
+import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
+import AuthRoute from "./Components/AuthRoute.jsx";
+//import UpdatePassword from "./Users/UpdatePassword.jsx";
+//import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
   return (
     <Router>
       <Routes>
         {/* Define route for Landing Page */}
-        {/* <Route path="/" element={<LandingPage />} /> */}
+        {/* <Route path="/" element={<landingPage />} /> */}
 
         {/* Authentication-related routes */}
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         {/* Scenario Routes */}
         <Route path="/scenarios" element={<AuthRoute><ScenarioHomePage /></AuthRoute>} />
-        <Route path="/scenarios/scenario1" element={<Scenario1 />} />
-        <Route path="/scenarios/scenario2" element={<Scenario2 />} />
-        <Route path="/scenario3" element={<Scenario3 />} />
-        <Route path="/scenarios/scenario4" element={<Scenario4 />} />
-        <Route path="/scenarios/scenario5" element={<Scenario5 />} />
-        <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>} />
+        <Route path="/scenarios/scenario1" element={<AuthRoute><Scenario1 /></AuthRoute>} />
+        <Route path="/scenarios/scenario2" element={<AuthRoute><Scenario1 /></AuthRoute>} />
+        <Route path="/scenario3" element={<AuthRoute><Scenario1 /></AuthRoute>} />
+        <Route path="/scenarios/scenario4" element={<AuthRoute><Scenario4/></AuthRoute>} />
+        <Route path="/scenarios/scenario5" element={<AuthRoute><Scenario1 /></AuthRoute>} />
+        <Route path="/scenarios/scenario6" element={<AuthRoute><Scenario1 /></AuthRoute>} />
+        <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>}/>
       </Routes>
     </Router>
   );
