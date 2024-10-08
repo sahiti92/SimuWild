@@ -55,43 +55,38 @@ const Vulnerable = () => {
   return (
     <div className="species-info">
       <h1>Species Information</h1>
-      <button onClick={handleExploreClick}>
-        {showAll ? "Hide All" : "Explore All Species"}
-      </button>
 
-      {showAll && (
-        <div>
-          {Object.entries(speciesData).map(([category, speciesList]) => (
-            <div key={category}>
-              <h2>{category.replace(/([A-Z])/g, " $1").toUpperCase()}</h2>
-              {speciesList.length > 0 ? (
-                <ul>
-                  {speciesList.map((species, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handleSpeciesClick(species)} // Navigate to details page
-                      style={{
-                        cursor: "pointer",
-                        color: "white",
-                        fontSize: "16px",
-                        fontWeight: "bold",
-                        fontfamily: "Lato",
-                      }}
-                    >
-                      {species.scientificName}
-                    </li>
-                  ))}
-                </ul>
-              ) : (
-                <p>
-                  Loading {category.replace(/([A-Z])/g, " $1").toLowerCase()}{" "}
-                  data...
-                </p>
-              )}
-            </div>
-          ))}
-        </div>
-      )}
+      <div>
+        {Object.entries(speciesData).map(([category, speciesList]) => (
+          <div key={category}>
+            <h2>{category.replace(/([A-Z])/g, " $1").toUpperCase()}</h2>
+            {speciesList.length > 0 ? (
+              <ul>
+                {speciesList.map((species, index) => (
+                  <li
+                    key={index}
+                    onClick={() => handleSpeciesClick(species)} // Navigate to details page
+                    style={{
+                      cursor: "pointer",
+                      color: "white",
+                      fontSize: "16px",
+                      fontWeight: "bold",
+                      fontfamily: "Lato",
+                    }}
+                  >
+                    {species.scientificName}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p>
+                Loading {category.replace(/([A-Z])/g, " $1").toLowerCase()}{" "}
+                data...
+              </p>
+            )}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
