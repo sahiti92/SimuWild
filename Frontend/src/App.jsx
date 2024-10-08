@@ -15,6 +15,12 @@ import SignUp from "./Users/SignUp.jsx";
 import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
 import About from "./Components/DashBoard2/About.jsx";
+import Watchlist from "./Components/WatchList/WatchList.jsx";
+import Critically_Endangered from "./Components/WatchList/Critically_Endangered.jsx";
+import Endangered from "./Components/WatchList/Endangered.jsx";
+import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
+import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
+import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -22,7 +28,7 @@ const App = () => {
     <Router>
       <Routes>
         {/* Define route for Landing Page */}
-        <Route path="/" element={<Slideshow />} /> 
+        <Route path="/" element={<Slideshow />} />
 
         {/* Authentication-related routes */}
         <Route path="/login" element={<Login />} />
@@ -36,8 +42,38 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>} />
-        <Route path="/about" element={<AuthRoute><About /></AuthRoute>} />
+        <Route
+          path="/dashboard"
+          element={
+            <AuthRoute>
+              <Dashboard />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/about"
+          element={
+            <AuthRoute>
+              <About />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/watchlist"
+          element={
+            <AuthRoute>
+              <Watchlist />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/criticallyEndangered"
+          element={<Critically_Endangered />}
+        />
+        <Route path="/endangered" element={<Endangered />} />
+        <Route path="/vulnerable" element={<Vulnerable />} />
+        <Route path="/nearThreatened" element={<NearThreatened />} />
+        <Route path="/species/:scientificName" element={<SpeciesDetails />} />
       </Routes>
     </Router>
   );
