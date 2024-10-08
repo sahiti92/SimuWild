@@ -86,7 +86,7 @@ const usersController = {
   updateProfile: asyncHandler(async (req, res) => {
     const { email, username } = req.body;
     const updatedUser = await User.findOneAndUpdate(
-      req.user,
+      {username: req.user.username},
       { username, email },
       {
         new: true,
