@@ -11,8 +11,6 @@
 - Snehitha
 - Roopa
 
-## GitHub Link
-[SimuWild Repository](https://github.com/sahiti92/SimuWild)
 
 ## Brief Problem Statement
 
@@ -34,7 +32,8 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 
 
 ## For Scenario Subsystem
-![Uploading image.png…]()
+![image](https://github.com/user-attachments/assets/2fc37dc6-e4d8-4305-8b8b-faf3cc75211c)
+
 
 
 
