@@ -50,7 +50,7 @@ const ScenarioHomePage = () => {
               "https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg",
               "Leopard in India",
               "In the urban jungle, who is the real intruder—humans or leopards?",
-              "/scenario3"
+              "./scenario3"
             )
           }
           onClick={() =>
@@ -58,7 +58,7 @@ const ScenarioHomePage = () => {
               "https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg",
               "Leopard in India",
               "In the urban jungle, who is the real intruder—humans or leopards?",
-              "/scenario3"
+              "./scenario3"
             )
           }
         />
