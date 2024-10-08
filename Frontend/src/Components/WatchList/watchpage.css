@@ -1,0 +1,22 @@
+.species-info {
+  background-color: grey;
+  color: yellow;
+  padding: 20px;
+  border-radius: 8px;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  margin: auto;
+  position: absolute;
+  overflow: auto;
+}
+button {
+  background-color: black;
+  color: yellow;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+  width: 100px;
+}

@@ -4,7 +4,9 @@
   height: 100%;
   margin: 0 auto; /* Center the carousel */
 }
-
+body {
+  background-color: gray;
+}
 /* Style for the card */
 .card {
   position: relative;

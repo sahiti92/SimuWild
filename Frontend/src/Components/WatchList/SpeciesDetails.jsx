@@ -7,9 +7,9 @@ const SpeciesDetails = () => {
   const [species, setSpecies] = useState(null);
   const csvPaths = {
     endangered: "../../../Endangered.csv",
-    criticallyEndangered: "../../../CriticallyEndangered.csv",
+    criticallyEndangered: "../../../public/Critically_Endangered.csv",
     vulnerable: "../../../Vulnerable.csv",
-    nearThreatened: "../../../NearThreatened.csv",
+    nearThreatened: "../../../Near Threatened.csv",
   };
 
   // Fetch species data to find the matching species

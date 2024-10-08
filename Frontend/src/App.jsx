@@ -1,27 +1,24 @@
-// import React from 'react';
-// import './App.css'; // Add global styles if needed
-// //import Watchlist from './Components/Watchlist.jsx'; // Import the Watchlist component
-// import Watchlist from './Components/WatchList/WatchList.jsx';
-// import SpeciesInfo from './Components/WatchList/SpeciesInfo.jsx';
-// function App() {
-//   return (
-//     <div className="App">
-//     <SpeciesInfo/>
-//     </div>
-//   );
-// }
-
-// export default App;
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import SpeciesInfo from "./Components/WatchList/SpeciesInfo";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails"; // New species detail component
-
+import Endangered from "./Components/WatchList/Endangered";
+import Critically_Endangered from "./Components/WatchList/Critically_Endangered";
+import Vulnerable from "./Components/WatchList/Vulnerable";
+import NearThreatened from "./Components/WatchList/NearThreatened";
+import Watchlist from "./Components/WatchList/Watchlist";
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<SpeciesInfo />} />
+        <Route path="/" element={<Watchlist />} />
+        <Route path="/endangered" element={<Endangered />} />
+        <Route
+          path="/criticallyEndangered"
+          element={<Critically_Endangered />}
+        />
+        <Route path="/vulnerable" element={<Vulnerable />} />
+        <Route path="/nearThreatened" element={<NearThreatened />} />
         <Route path="/species/:scientificName" element={<SpeciesDetails />} />
       </Routes>
     </Router>
