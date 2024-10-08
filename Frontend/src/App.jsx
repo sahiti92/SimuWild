@@ -8,11 +8,11 @@ import Scenario3 from "./Components/ScenarioPlay/Scenario3.jsx";
 import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
-import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx"
+import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/Signup.jsx";
- import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
+
 const App = () => {
   return (
     <Router>
@@ -26,13 +26,13 @@ const App = () => {
         {/* Scenario Routes */}
         <Route path="/scenarios" element={<ScenarioHomePage />} />
         <Route path="/scenarios/scenario1" element={<Scenario1 />} />
-        <Route path="/anim" element={<ElephantAnim/>}/>
+        <Route path="/anim" element={<ElephantAnim />} />
         <Route path="/scenarios/scenario2" element={<Scenario2 />} />
         <Route path="/scenarios/scenario3" element={<Scenario3 />} />
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );

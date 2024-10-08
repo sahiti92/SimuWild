@@ -3,21 +3,21 @@ import "./ScenarioHomePage.css";
 import { useNavigate } from "react-router-dom";
 const ScenarioHomePage = () => {
   const [backgroundImage, setBackgroundImage] = useState(
-    "https://hatibondhu.org/assets/img/hec.jpg" 
+    "https://hatibondhu.org/assets/img/hec.jpg"
   );
-  const [heading, setHeading] = useState("Human-Elephant Conflict"); 
+  const [heading, setHeading] = useState("Human-Elephant Conflict");
   const [description, setDescription] = useState(
-    "Human-elephant conflict in India often arises due to habitat loss." 
+    "Human-elephant conflict in India often arises due to habitat loss."
   );
   const navigate = useNavigate();
   const [pageLink, setPageLink] = useState("/scenario1");
-  const [headingKey, setHeadingKey] = useState(0); 
+  const [headingKey, setHeadingKey] = useState(0);
 
   const changeBackground = (image, newHeading, newDescription, newPageLink) => {
     setBackgroundImage(image);
     setHeading(newHeading);
     setDescription(newDescription);
-    setHeadingKey((prevKey) => prevKey + 1); 
+    setHeadingKey((prevKey) => prevKey + 1);
     setPageLink(newPageLink);
   };
   const goToPage = () => {
@@ -25,13 +25,11 @@ const ScenarioHomePage = () => {
   };
   return (
     <div className="app">
-      {/* Background with dynamically changing image */}
       <div
         className="background"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       ></div>
 
-      {/* Heading container with unique key to reset typewriter effect */}
       <div key={headingKey} className="heading-container">
         {heading}
         {/* <p className="subscript">{description}</p> */}
@@ -39,7 +37,7 @@ const ScenarioHomePage = () => {
       <button className="play-button" onClick={goToPage}>
         Play to Know More
       </button>
-      {/* Image Gallery */}
+
       <div className="image-gallery">
         <img
           src="https://wildlifesos.org/wp-content/uploads/2020/03/home-leopard-july.jpg"
