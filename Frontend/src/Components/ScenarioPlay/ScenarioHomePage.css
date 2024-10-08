@@ -4,7 +4,7 @@ body {
   padding: 0;
   height: 100%;
   width: 100%;
-  overflow: hidden; /* Prevent any scrollbars */
+  overflow: hidden; 
 }
 
 .app {
@@ -14,22 +14,22 @@ body {
 }
 
 .background {
-  background-size: cover; /* Ensure the image covers the entire screen */
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  transition: background-image 0.5s ease-in-out; /* Smooth transition effect */
-  height: 100vh; /* Full viewport height */
-  width: 100vw; /* Full viewport width */
+  background-size: cover; 
+  background-position: center; 
+  background-repeat: no-repeat; 
+  transition: background-image 0.5s ease-in-out; 
+  height: 100vh; 
+  width: 100vw; 
 }
 
 .image-gallery {
   position: absolute;
-  bottom: 5%; /* Position relative to viewport height */
-  right: 5%; /* Position relative to viewport width */
+  bottom: 5%; 
+  right: 5%; 
   display: flex;
-  overflow-x: auto; /* Enable horizontal scrolling */
+  overflow-x: auto; 
   padding: 10px;
-  max-width: 80vw; /* Allow more space for gallery to expand */
+  max-width: 80vw; 
   flex-direction: row-reverse;
   direction: rtl;
   background-color: rgba(0, 0, 0, 0.6);
@@ -37,38 +37,38 @@ body {
 }
 
 .thumbnail {
-  width: 15vw; /* Use relative width */
-  max-width: 200px; /* Max width for larger screens */
-  height: auto; /* Maintain aspect ratio */
-  margin-left: 15px; /* Increase space between thumbnails */
-  cursor: pointer; /* Show pointer on hover */
-  transition: transform 0.3s ease-in-out; /* Smooth transition on hover */
+  width: 15vw; 
+  max-width: 200px; 
+  height: auto; 
+  margin-left: 15px; 
+  cursor: pointer; 
+  transition: transform 0.3s ease-in-out; 
   border-radius: 10px;
 }
 
 .thumbnail:hover {
-  opacity: 0.8; /* Slightly fade thumbnail on hover */
-  transform: scale(1.1); /* Enlarge thumbnail on hover */
+  opacity: 0.8; 
+  transform: scale(1.1); 
 }
 
 .heading-container {
   position: absolute;
-  top: 5%; /* Use relative positioning */
-  left: 5%; /* Use relative positioning */
-  color: white; /* White text color */
+  top: 5%; 
+  left: 5%; 
+  color: white; 
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 2vw; /* Use viewport width for responsiveness */
-  transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
+  font-size: 2vw; 
+  transition: opacity 0.3s ease-in-out; 
   font-family: "Playfair Display", serif;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   overflow: hidden;
-  /* animation: typing 3.5s steps(20, end); */
+  
   white-space: nowrap;
 }
 .subscript {
-  font-size: 18px; /* Adjust to your needs */
+  font-size: 18px; 
   color: white;
   margin-top: 10px;
   opacity: 0.8;
@@ -78,9 +78,9 @@ body {
 }
 .play-button {
   position: absolute;
-  top: 45%; /* Position relative to viewport height */
-  left: 10%; /* Position relative to viewport width */
-  transform: translate(-50%, -50%); /* Center the button */
+  top: 45%; 
+  left: 10%; 
+  transform: translate(-50%, -50%); 
   padding: 10px 20px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.6);
@@ -89,7 +89,7 @@ body {
   font-weight: bold;
   cursor: pointer;
   opacity: 0.8;
-  transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
+  transition: opacity 0.3s ease-in-out; 
 }
 
 @keyframes typing {
@@ -101,7 +101,7 @@ body {
   }
 }
 
-/* Blinking cursor effect */
+
 @keyframes blink-caret {
   from,
   to {
@@ -112,69 +112,66 @@ body {
   }
 }
 
-/* Responsive layout for smaller screens */
 @media (max-width: 768px) {
   .thumbnail {
-    width: 25vw; /* Adjust thumbnail size for smaller screens */
-    max-width: 120px; /* Maximum width */
+    width: 25vw; 
+    max-width: 120px; 
   }
 
   .image-gallery {
-    bottom: 5%; /* Adjust spacing for smaller screens */
+    bottom: 5%; 
     right: 5%;
-    width: 80vw; /* Utilize more width on small screens */
-    max-width: none; /* Allow full expansion */
+    width: 80vw; 
+    max-width: none; 
   }
 
   .heading-container {
-    font-size: 8vw; /* Scale text size for smaller screens */
-    top: 3%; /* Adjust positioning */
-    left: 3%; /* Adjust positioning */
+    font-size: 8vw; 
+    top: 3%; 
+    left: 3%; 
   }
 }
 
 @media (max-width: 480px) {
   .thumbnail {
-    width: 30vw; /* Further adjust for very small screens */
-    max-width: 100px; /* Maximum width */
+    width: 30vw; 
+    max-width: 100px; 
   }
 
   .image-gallery {
-    bottom: 2%; /* Adjust spacing for very small screens */
+    bottom: 2%; 
     right: 2%;
-    width: 90vw; /* Full width on small screens */
+    width: 90vw; 
   }
 
   .heading-container {
-    font-size: 7vw; /* Further scale text size */
-    top: 2%; /* Adjust positioning */
-    left: 2%; /* Adjust positioning */
+    font-size: 7vw; 
+    top: 2%; 
+    left: 2%; 
   }
 }
 
-/* Adjust background image height for landscape mobile screens */
 @media (orientation: landscape) and (max-height: 500px) {
   .background {
     height: 60vh;
   }
 }
 
-/* Add padding or adjust sizes for very large screens (desktops) */
 @media (min-width: 1200px) {
   .thumbnail {
-    width: 12vw; /* Adjust for larger screens */
-    max-width: 180px; /* Set max size */
+    width: 12vw; 
+    max-width: 180px; 
   }
 
   .image-gallery {
-    bottom: 30px; /* Positioning */
-    right: 30px; /* Positioning */
-    max-width: 60vw; /* Slightly reduce width */
+    bottom: 30px; 
+    right: 30px;
+    max-width: 60vw;
   }
 
   .heading-container {
-    font-size: 6vw; /* Scale down for larger screens */
-    top: 2%; /* Positioning */
-    left: 2%; /* Positioning */
+    font-size: 6vw; 
+    top: 2%; 
+    left: 2%; 
   }
 }

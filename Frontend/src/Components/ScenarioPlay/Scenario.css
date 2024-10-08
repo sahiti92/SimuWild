@@ -46,16 +46,14 @@
   }
   .small-play-button {
 
-    /* Centers the button horizontally and vertically relative to its position */
-       padding: 10px 20px; /* Adds padding inside the button */
-       border-radius: 5px; /* Rounds the corners of the button */
-       background-color: rgba(51, 183, 239, 0.6); /* Sets a semi-transparent black background */
-       color: white; /* Sets the text color to white */
-       font-size: 18px; /* Sets the font size of the button text */
-       font-weight: bold; /* Makes the button text bold */
-       cursor: pointer; /* Changes the cursor to a pointer when hovering over the button */
-       opacity: 0.8; /* Sets the initial opacity of the button to 80% */
-    /* Smoothly changes the opacity over 0.3 seconds when hovered */
+       padding: 10px 20px; 
+       border-radius: 5px; 
+       background-color: rgba(51, 183, 239, 0.6); 
+       color: white; 
+       font-size: 18px;
+       font-weight: bold; 
+       cursor: pointer; 
+       opacity: 0.8; 
   }
 
   
