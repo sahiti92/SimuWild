@@ -1,4 +1,3 @@
-// App.jsx
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScenarioHomePage from "./Components/ScenarioPlay/ScenarioHomePage.jsx";
@@ -10,15 +9,20 @@ import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
+import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
-import SignUp from "./Users/Signup.jsx";
-
+import SignUp from "./Users/SignUp.jsx";
+import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
+import AuthRoute from "./Components/AuthRoute.jsx";
+import About from "./Components/DashBoard2/About.jsx";
+//import UpdatePassword from "./Users/UpdatePassword.jsx";
+//import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
   return (
     <Router>
       <Routes>
         {/* Define route for Landing Page */}
-        {/* <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<Slideshow />} /> 
 
         {/* Authentication-related routes */}
         <Route path="/login" element={<Login />} />
@@ -32,7 +36,8 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<AuthRoute><Dashboard /></AuthRoute>} />
+        <Route path="/about" element={<AuthRoute><About /></AuthRoute>} />
       </Routes>
     </Router>
   );

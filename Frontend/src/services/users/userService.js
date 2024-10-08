@@ -5,14 +5,22 @@ import { getUserFromStorage } from "../../utils/getUser";
 //! Get the token
 const token = getUserFromStorage();
 export const loginAPI = async ({ email, password }) => {
-  const response = await axios.post(`${BASE_URL}/users/login`, {
+  const response = await axios.post(`${BASE_URL}/login`, {
     email,
     password,
   });
   return response.data;
 };
 export const registerAPI = async ({ email, password, username }) => {
-  const response = await axios.post(`${BASE_URL}/users/signup`, {
+  const response = await axios.post(`${BASE_URL}/signup`, {
+    email,
+    password,
+    username,
+  });
+  return response.data;
+};
+export const dashboardAPI = async ({ email, password, username }) => {
+  const response = await axios.post(`${BASE_URL}/dashboard`, {
     email,
     password,
     username,

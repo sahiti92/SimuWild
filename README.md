@@ -1,4 +1,42 @@
 # SimuWild
+                              
+
+## Team Name: UG3-9
+
+### Team Members:
+- Sahiti
+- Ikshitha
+- Greeshma
+- Preethika
+- Snehitha
+- Roopa
+
+## GitHub Link
+[SimuWild Repository](https://github.com/sahiti92/SimuWild)
+
+## Brief Problem Statement
+
 The current biodiversity crisis is alarming, with over 1 million species threatened with extinction, as highlighted in the IPBES Global Assessment Report. Despite increased awareness, 60% of individuals cannot identify local endangered species, resulting in a disconnect that diminishes motivation for conservation efforts. Current resources lack interactivity, leading to low retention rates and limited understanding of the specific threats faced by wildlife.
 
-Our platform offers a unique, interactive experience that immerses users in real-world conservation challenges. Through scenario-based learning, users explore the intricate dynamics of human-wildlife interactions and are guided toward actionable conservation efforts. The website provides an engaging journey where users navigate diverse situations, witness the impact of their decisions, and play an active role in preserving biodiversity.Another feature is the interactive map of India, allowing users to explore various regions and learn about local endangered species. By navigating these scenarios and making informed choices, users gain a deeper understanding of wildlife conservation and are empowered to take meaningful action to safeguard our planet's biodiversity.
+Our platform offers a unique, interactive experience that immerses users in real-world conservation challenges. Through scenario-based learning, users explore the intricate dynamics of human-wildlife interactions and are guided toward actionable conservation efforts. The website provides an engaging journey where users navigate diverse situations, witness the impact of their decisions, and play an active role in preserving biodiversity. Another feature is the interactive map of India, allowing users to explore various regions and learn about local endangered species. By navigating these scenarios and making informed choices, users gain a deeper understanding of wildlife conservation and are empowered to take meaningful action to safeguard our planet's biodiversity.
+
+## Uniqueness and Importance of Problem Statement
+
+The biodiversity crisis is urgent, with over 1 million species at risk of extinction. Despite increased global awareness, 60% of people cannot identify local endangered species, leading to a disconnect and reduced motivation for conservation. Current resources are often non-interactive, resulting in poor engagement and low retention of knowledge about the specific threats wildlife faces.
+
+Our platform stands out by offering an immersive, scenario-based learning experience that allows users to explore real-world conservation challenges. The interactive map of India lets users learn about local endangered species, making the experience personal and actionable. This approach deepens understanding and empowers users to actively participate in biodiversity conservation efforts.
+
+## Use Case Diagram
+![image](https://github.com/user-attachments/assets/bc437177-006e-40e8-b847-9a9fc81be14f)
+
+## For Authentication Subsystem
+![image](https://github.com/user-attachments/assets/1ecb24ed-86f1-4706-bb61-171cf75adaef)
+
+
+## For Scenario Subsystem
+![Uploading image.png…]()
+
+
+
+
+

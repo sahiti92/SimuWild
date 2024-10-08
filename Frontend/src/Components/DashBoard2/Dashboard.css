@@ -1,4 +1,3 @@
-/* General Styles */
 * {
   margin: 0;
   padding: 0;
@@ -9,21 +8,20 @@
 html,
 body {
   height: 100%;
-  overflow-x: hidden; /* Prevent horizontal overflow */
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden;
+  overflow-y: auto;
   background-image: none;
 }
 
-/* Header */
 header {
-  background-color: black; /* Temporary debug line */
+  background-color: black;
   padding: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  position: relative; /* Ensure it can layer correctly */
-  z-index: 10; /* Ensure it's above other elements */
+  position: relative;
+  z-index: 10;
 }
 
 header nav ul {
@@ -34,7 +32,7 @@ header nav ul {
 
 header nav ul li {
   margin: 0 15px;
-  position: relative; /* Enable absolute positioning of the box */
+  position: relative;
 }
 
 header nav ul li a {
@@ -42,35 +40,31 @@ header nav ul li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
-  position: relative; /* Required for the pseudo-element */
-  padding: 10px 0; /* Add vertical padding for better hover area */
+  position: relative;
+  padding: 10px 0;
 }
 
-/* Rectangular box effect starting from the bottom */
 header nav ul li a::before {
   content: "";
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  height: 0; /* Initial height */
-  background-color: #ffd700; /* Color of the box */
-  z-index: -1; /* Place the box behind the text */
-  transition: height 0.4s ease; /* Smooth transition for height */
-  transform-origin: bottom; /* Animation starts from the bottom */
+  height: 0;
+  background-color: #ffd700;
+  z-index: -1;
+  transition: height 0.4s ease;
+  transform-origin: bottom;
 }
 
-/* On hover - the box builds up from the bottom to the top */
 header nav ul li a:hover::before {
-  height: 100%; /* Box covers the full height */
+  height: 100%;
 }
 
-/* Text color changes as well when hovered */
 header nav ul li a:hover {
-  color: black; /* Change text color on hover */
+  color: black;
 }
 
-/* Description Section */
 .description {
   font-family: "Playfair Display", serif;
   background-color: #ffffff;
@@ -79,7 +73,6 @@ header nav ul li a:hover {
   width: 100%;
 }
 
-/* Start Section */
 .start {
   font-family: "Great Vibes", cursive;
   text-align: center;
@@ -89,7 +82,6 @@ header nav ul li a:hover {
   background-color: #ffd700;
 }
 
-/* User Profile */
 .user-profile {
   display: flex;
   align-items: center;
@@ -99,12 +91,11 @@ header nav ul li a:hover {
   fill: white;
 }
 
-/* Main Content */
 .animated-image {
   width: 100%;
   height: 600px;
   object-fit: cover;
-  display: block; /* Ensure image is visible */
+  display: block;
 }
 
 .overlay-text {
@@ -117,7 +108,7 @@ header nav ul li a:hover {
   font-family: "Arial", sans-serif;
   text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.6);
   font-weight: bold;
-  z-index: 10; /* Ensure text is on top of the image */
+  z-index: 10;
 }
 
 .overlay-text span {
@@ -127,7 +118,7 @@ header nav ul li a:hover {
 }
 
 .overlay-text span:nth-child(1) {
-  animation-delay: 0.2s; /* Add delay for staggered effect */
+  animation-delay: 0.2s;
 }
 .overlay-text span:nth-child(2) {
   animation-delay: 0.4s;
@@ -145,7 +136,6 @@ header nav ul li a:hover {
   }
 }
 
-/* Features Section */
 .features-section {
   background-color: black;
   color: white;
@@ -167,15 +157,19 @@ header nav ul li a:hover {
 
 .feature-block:hover {
   transform: translateY(-10px);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Added hover shadow effect */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .feature-image {
-  width: 35%;
-  height: 175px;
+  width: 90%;
+  height: 270px;
   object-fit: cover;
   border-radius: 8px;
   margin-bottom: 15px;
+}
+.feature-image :hover{
+  cursor: pointer;
 }
 
 .feature-block h3 {
@@ -189,9 +183,8 @@ header nav ul li a:hover {
   color: white;
 }
 
-/* Footer */
 .footer {
-  background-color: grey;
+  background-color: #1a1a1a;
   padding: 50px 20px;
   width: 100%;
 }
@@ -209,18 +202,41 @@ header nav ul li a:hover {
 
 .footer-section h4 {
   margin-bottom: 15px;
-  color: black;
+  color: white;
 }
 
 .footer-section ul {
   list-style: circle;
-  color: #333;
+  margin-top: 40px;
+  color: white;
 }
 
 .footer-section ul li {
   margin-bottom: 10px;
 }
-
+.footer-section h1 {
+  color: #ffd700;
+  font-family: cursive;
+  font-size: 4rem;
+  margin: 0;
+  margin-right: 50px;
+  margin-bottom: 60px;
+}
+.footer-section h2 {
+  color: white;
+  font-family: cursive;
+  font-size: 2rem;
+  margin-left: 100px;
+  margin-right: 150px;
+  margin-bottom: 60px;
+}
+.footer-section h3 {
+  color: white;
+  font-family: cursive;
+  font-size: 2rem;
+  margin-left: 0px;
+  margin-right: 140px;
+}
 .footer-logo {
   color: black;
   width: 150px;
@@ -229,11 +245,11 @@ header nav ul li a:hover {
 }
 
 .social-icons svg {
-  fill: black;
-  margin-right: 10px;
+  fill: white;
+  margin-right: 0px;
+  margin-left: 70px;
 }
 
-/* Media Queries */
 @media (max-width: 600px) {
   header {
     flex-direction: column;

@@ -8,7 +8,7 @@ import { FaEnvelope, FaLock } from "react-icons/fa";
 import { loginAPI } from "../services/users/userService";
 import AlertMessage from "../Alert/AlertMessage";
 import { loginAction } from "../redux/slice/authSlice";
-import "./styles.css"; // Import the new CSS file
+import "./auth.css"; // Import the new CSS file
 
 const validationSchema = Yup.object({
   email: Yup.string().email("Invalid").required("Email is required"),
@@ -52,11 +52,12 @@ const LoginForm = () => {
   }, [isSuccess, navigate]);
 
   return (
+    <div className ="auth-page" style={{ width: '100vw', height: '100vh' }}>
     <form onSubmit={formik.handleSubmit} className="form-container">
       <h2>Login</h2>
 
       {isPending && (
-        <div className="alert alert-loading">Logging you in...</div>
+        <div className="alert alert-loading">Hang in there...</div>
       )}
       {isError && (
         <div className="alert alert-error">{error.response.data.message}</div>
@@ -73,6 +74,7 @@ const LoginForm = () => {
           type="email"
           {...formik.getFieldProps("email")}
           placeholder="Email"
+          style={{width:"170%"}}
         />
         {formik.touched.email && formik.errors.email && (
           <span className="error-message">{formik.errors.email}</span>
@@ -87,6 +89,7 @@ const LoginForm = () => {
           type="password"
           {...formik.getFieldProps("password")}
           placeholder="Password"
+          style={{width:"170%"}}
         />
         {formik.touched.password && formik.errors.password && (
           <span className="error-message">{formik.errors.password}</span>
@@ -98,6 +101,7 @@ const LoginForm = () => {
         Login
       </button>
     </form>
+    </div>
   );
 };
 

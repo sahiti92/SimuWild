@@ -54,6 +54,21 @@ const usersController = {
     }
     res.json({ username: user.username, email: user.email });
   }),
+  dashboard: asyncHandler(async (req, res) => {
+    // Assuming `req.user._id` is set by the authentication middleware
+    console.log(req.body);
+    const user = await User.findById(req.user._id);
+    if (!user) {
+      res.status(404);
+      throw new Error("User not found");
+    }
+  
+    // Customize the data you want to return for the dashboard
+    res.json({
+      username: user.username,
+      email: user.email,
+    });
+  }),
   changeUserPassword: asyncHandler(async (req, res) => {
     const { newPassword } = req.body;
     const user = await User.findById(req.user);
@@ -71,7 +86,7 @@ const usersController = {
   updateProfile: asyncHandler(async (req, res) => {
     const { email, username } = req.body;
     const updatedUser = await User.findOneAndUpdate(
-      req.user,
+      {username: req.user.username},
       { username, email },
       {
         new: true,
