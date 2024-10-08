@@ -1,6 +1,5 @@
 import React from "react";
-import "./Scenario.css"; // Make sure this CSS file is correctly linked
-
+import "./Scenario.css"; 
 const Scenario5 = () => {
   return (
     <div className="scenario-container">
