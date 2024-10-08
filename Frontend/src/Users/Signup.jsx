@@ -35,11 +35,11 @@ const SignupForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      username: "", // Added username to initial values
+      username: "", 
       email: "",
       password: "",
       confirmPassword: "",
-      agreeToTerms: false, // Added agreeToTerms to initial values
+      agreeToTerms: false, 
     },
     validationSchema,
     onSubmit: (values) => {
@@ -57,7 +57,7 @@ const SignupForm = () => {
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
-        navigate("/dashboard"); // Redirect to dashboard after successful registration
+        navigate("/dashboard"); 
       }, 3000);
     }
   }, [isSuccess, navigate]);
@@ -67,7 +67,6 @@ const SignupForm = () => {
     <div className="form-container">
       <form onSubmit={formik.handleSubmit}>
         <p>Want to hop right in?sign up to get started</p>
-        {/* Display messages */}
         {isPending && <AlertMessage type="loading" message="Loading..." />}
         {isError && (
           <AlertMessage type="error" message={error.response.data.message} />
