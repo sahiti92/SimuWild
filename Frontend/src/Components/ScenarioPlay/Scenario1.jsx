@@ -19,7 +19,7 @@ const Scenario1 = () => {
           <button className="small-play-button">Play</button>
         </div>
       </div>
-      <button className="small-play-button">Play</button>
+     
     </div>
   );
 };
