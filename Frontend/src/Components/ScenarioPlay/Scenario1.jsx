@@ -3,10 +3,10 @@ import './Scenario.css';
 import { useNavigate } from 'react-router-dom';
 
 const Scenario1 = () => {
-  const navigate = useNavigate(); // Initialize the navigate function inside the functional component
+  const navigate = useNavigate(); 
 
   const handlePlayButtonClick = () => {
-    navigate("/anim"); // Navigate to the desired route
+    navigate("/anim");
   };
 
   return (

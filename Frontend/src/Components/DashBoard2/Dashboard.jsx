@@ -12,7 +12,7 @@ const Dashboard = () => {
     },
     {
       title: "Endangered Species Watchlist",
-      description: "Track at-risk species.",
+      description: "Track at-risk species",
       image: "/species.jpg",
       path: "/watchlist",
     },
@@ -24,7 +24,7 @@ const Dashboard = () => {
     },
     {
       title: "Indigenous Knowledge",
-      description: "Share and document indigenous practices.",
+      description: "Share and document indigenous practices and knowledge",
       image: "/photogallery.jpg",
       path: "#",
     },
@@ -84,16 +84,16 @@ const Dashboard = () => {
           Immerse yourself in the world of wildlife conservation through
           interactive storytelling and real-life scenarios. Our platform
           empowers you to step into the shoes of conservationists, navigate
-          challenging situations, and make choices that shape the future of
+          challenging situations and make choices that shape the future of
           ecosystems. Discover the delicate balance between human activity and
-          wildlife survival, and learn how your actions can make a lasting
+          wildlife survival and learn how your actions can make a lasting
           impact. By participating in engaging conservation challenges, you’ll
-          gain insights into the complex relationships between people, wildlife,
+          gain insights into the complex relationships between people, wildlife
           and the environment. Every decision you make on this platform mirrors
           real-world consequences, encouraging actionable efforts to preserve
-          biodiversity. Join a community of passionate individuals, take part in
-          interactive learning, and help protect our planet’s incredible
-          wildlife. Together, we can make informed decisions and build a future
+          biodiversity. Join a community of passionate individuals to take part in
+          interactive learning and help protect our planet’s incredible
+          wildlife. Together we can make informed decisions and build a future
           where people and nature thrive side by side.
         </p>
 
@@ -196,7 +196,7 @@ const Dashboard = () => {
                   >
                     <path d="M22 4H2c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 11 2 6.01V6l10 5 10-5zm0 14H2v-12l10 5 10-5v12z" />
                   </svg>
-                  info@example.com
+                  info@simuwild.com
                 </li>
               </ul>
             </div>
