@@ -9,6 +9,7 @@ import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
+import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/SignUp.jsx";
 import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
@@ -20,7 +21,7 @@ const App = () => {
     <Router>
       <Routes>
         {/* Define route for Landing Page */}
-        {/* <Route path="/" element={<landingPage />} /> */}
+        <Route path="/" element={<Slideshow />} /> 
 
         {/* Authentication-related routes */}
         <Route path="/login" element={<Login />} />
