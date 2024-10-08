@@ -196,7 +196,7 @@ const Dashboard = () => {
                   >
                     <path d="M22 4H2c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 2v.01L12 11 2 6.01V6l10 5 10-5zm0 14H2v-12l10 5 10-5v12z" />
                   </svg>
-                  info@example.com
+                  info@simuwild.com
                 </li>
               </ul>
             </div>
