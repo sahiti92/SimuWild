@@ -8,7 +8,7 @@ import Scenario3 from "./Components/ScenarioPlay/Scenario3.jsx";
 import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
-//import LandingPage from "./Components/LandingPage.jsx";
+import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/Signup.jsx";
 // import Dashboard from "./Components/Dashboard/Dashboard.jsx";
@@ -17,7 +17,7 @@ const App = () => {
     <Router>
       <Routes>
         {/* Define route for Landing Page */}
-        {/* <Route path="/" element={<LandingPage />} /> */}
+        <Route path="/" element={<Slideshow />} /> 
 
         {/* Authentication-related routes */}
         <Route path="/login" element={<Login />} />
