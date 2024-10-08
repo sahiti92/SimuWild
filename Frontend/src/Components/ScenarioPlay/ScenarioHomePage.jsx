@@ -34,7 +34,7 @@ const ScenarioHomePage = () => {
       {/* Heading container with unique key to reset typewriter effect */}
       <div key={headingKey} className="heading-container">
         {heading}
-        <p className="subscript">{description}</p>
+        {/* <p className="subscript">{description}</p> */}
       </div>
       <button className="play-button" onClick={goToPage}>
         Play to Know More
