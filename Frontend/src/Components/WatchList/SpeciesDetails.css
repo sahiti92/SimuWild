@@ -15,7 +15,7 @@
 .species-details h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #ddd; /* Lighter color for the heading */
+  color: rgb(245, 238, 45); /* Lighter color for the heading */
   font-family: "Playfair Display", serif;
 }
 
@@ -32,9 +32,29 @@
   border-radius: 8px;
   color: #ccc; /* Grey color for the grid items */
   font-family: "Lato", sans-serif;
+
+  /* Set a fixed height for uniformity */
+  height: 280px; /* Adjust height as needed */
+
+  /* Enable scrolling for overflow content */
+  overflow-y: auto;
 }
 
-.species-grid strong {
-  color: #fff; /* White color for labels */
-  font-family: "Playfair Display", serif;
+/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
+.species-grid div::-webkit-scrollbar {
+  display: none; /* Hide scrollbar */
+}
+
+/* Hide scrollbar for Firefox */
+.species-grid div {
+  scrollbar-width: none; /* Hide scrollbar */
+}
+
+/* Uniform font size for all text in grid items */
+.species-grid div span {
+  font-size: 18px; /* Adjust font size as needed */
+}
+.species-grid div strong {
+  font-size: 20px;
+  color: rgb(245, 238, 45);
 }
