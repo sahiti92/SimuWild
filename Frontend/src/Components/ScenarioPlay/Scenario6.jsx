@@ -1,5 +1,5 @@
 import React from "react";
-import "./Scenario.css"; // Make sure this CSS file is correctly linked
+import "./Scenario.css"; 
 
 const Scenario6 = () => {
   return (
