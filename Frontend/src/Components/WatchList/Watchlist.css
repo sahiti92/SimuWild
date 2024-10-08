@@ -1,0 +1,90 @@
+/* Swiper container and basic styles */
+.swiper-container {
+  width: 80%; /* Reduced width for the carousel */
+  height: 100%;
+  margin: 0 auto; /* Center the carousel */
+}
+body {
+  background-color: gray;
+}
+/* Style for the card */
+.card {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: transform 0.3s ease, z-index 0.3s ease; /* Smooth transition for scaling and z-index */
+}
+
+/* Image within the card */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio */
+  border-radius: 10px;
+}
+
+/* Style for the blurred images */
+.swiper-slide:not(.swiper-slide-active) img {
+  filter: blur(4px); /* Apply blur effect to side images */
+}
+
+/* Text styling */
+.text {
+  color: white;
+  font-size: 24px;
+  text-align: center;
+  position: absolute;
+  top: 20%; /* Position at the top of the card */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2; /* Ensure text is above the overlay */
+}
+
+/* Explore button styles */
+.explore-button {
+  position: absolute;
+  bottom: 10%; /* Position button at the bottom */
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  padding: 10px 20px; /* Padding around button */
+  cursor: pointer; /* Pointer cursor on hover */
+  transition: background-color 0.3s ease; /* Smooth background change */
+}
+
+.explore-button:hover {
+  background-color: rgba(0, 0, 0, 0.9); /* Darker on hover */
+}
+
+/* Always make the center slide on top */
+.swiper-slide-custom {
+  position: relative;
+  z-index: 1; /* Default z-index for all slides */
+  transition: transform 0.3s ease, z-index 0.3s ease;
+}
+
+.swiper-slide-active {
+  z-index: 10; /* The center slide is on top of all others */
+  transform: scale(1.1) translateY(-10px); /* Slightly enlarge and lift the center slide */
+}
+
+/* Slightly smaller side slides */
+.swiper-slide-prev,
+.swiper-slide-next {
+  z-index: 5; /* Ensure previous and next slides are below the center */
+  transform: scale(0.9) translateY(0); /* Scale down the side slides slightly */
+  opacity: 0.5; /* Dim side slides slightly */
+}
+
+/* Animation for sliding */
+.swiper-slide-prev {
+  transform: translateX(-20%) scale(0.9); /* Move to the left and scale down */
+}
+
+.swiper-slide-next {
+  transform: translateX(20%) scale(0.9); /* Move to the right and scale down */
+}

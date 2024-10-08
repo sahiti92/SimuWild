@@ -7,8 +7,9 @@ const Critically_Endangered = () => {
     criticallyEndangered: [],
   });
   const [showAll, setShowAll] = useState(false); // Manage visibility of all species info
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // Initialize navigation
 
+  // Path to your CSV files (replace with actual paths)
   const csvPaths = {
     criticallyEndangered: "../../../Critically_Endangered.csv",
   };
