@@ -1,6 +1,6 @@
 .species-details {
   background-color: black;
-  color: white;
+  color: #FED47E;
   padding: 20px;
   border-radius: 8px;
   left: 0%;
@@ -15,8 +15,9 @@
 .species-details h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: rgb(245, 238, 45); /* Lighter color for the heading */
+  color: #FA7C20; /* Lighter color for the heading */
   font-family: "Playfair Display", serif;
+  font-size: 40px;
 }
 
 .species-grid {
@@ -27,11 +28,12 @@
 }
 
 .species-grid div {
-  background-color: #333;
+  background-color: #8AC187;
   padding: 15px;
   border-radius: 8px;
-  color: #ccc; /* Grey color for the grid items */
+  color: white; /* Grey color for the grid items */
   font-family: "Lato", sans-serif;
+  font-weight: bold;
 
   /* Set a fixed height for uniformity */
   height: 280px; /* Adjust height as needed */
@@ -56,5 +58,5 @@
 }
 .species-grid div strong {
   font-size: 20px;
-  color: rgb(245, 238, 45);
+  color: black;
 }
