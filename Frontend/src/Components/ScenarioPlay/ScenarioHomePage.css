@@ -58,13 +58,13 @@ body {
   color: white; /* White text color */
   padding: 10px 20px;
   border-radius: 5px;
-  font-size: 3vw; /* Use viewport width for responsiveness */
+  font-size: 2.5vw; /* Use viewport width for responsiveness */
   transition: opacity 0.3s ease-in-out; /* Smooth fade-in */
   font-family: "Playfair Display", serif;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
   overflow: hidden;
-  /* animation: typing 3.5s steps(20, end); */
+  animation: typing 3.5s steps(20, end);
   white-space: nowrap;
 }
 .subscript {

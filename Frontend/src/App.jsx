@@ -10,7 +10,7 @@ import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Login from "./Users/Login.jsx";
-import SignUp from "./Users/SignUp.jsx";
+import SignUp from "./Users/Signup.jsx";
 // import Dashboard from "./Components/Dashboard/Dashboard.jsx";
 const App = () => {
   return (
