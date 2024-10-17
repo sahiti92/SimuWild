@@ -46,7 +46,7 @@ const LoginForm = () => {
   useEffect(() => {
     if (isSuccess) {
       setTimeout(() => {
-        navigate("/dashboard"); // Navigate to /dashboard on successful login
+        navigate("/dashboard"); 
       }, 3000);
     }
   }, [isSuccess, navigate]);

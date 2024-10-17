@@ -1,6 +1,6 @@
 import { BASE_URL } from "../../utils/url";
 import axios from "axios";
-//import second from "axios";
+import second from "axios";
 import { getUserFromStorage } from "../../utils/getUser";
 //! Get the token
 const token = getUserFromStorage();
@@ -11,14 +11,13 @@ export const loginAPI = async ({ email, password }) => {
   });
   return response.data;
 };
-export const registerAPI = async ({ email, password, username }) => {
-  const response = await axios.post(`${BASE_URL}/signup`, {
-    email,
-    password,
-    username,
-  });
+export const registerAPI = async (userData) => {
+  console.log('Sending data to API:', userData); // Log the user data
+  const response = await axios.post(`${BASE_URL}/signup`, userData);
+  console.log('API response:', response.data); // Log the response
   return response.data;
 };
+
 export const dashboardAPI = async ({ email, password, username }) => {
   const response = await axios.post(`${BASE_URL}/dashboard`, {
     email,
