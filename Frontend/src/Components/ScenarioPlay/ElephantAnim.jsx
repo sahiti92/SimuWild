@@ -4,10 +4,10 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
 const ElephantAnim = () => {
-  const mountRef = useRef(null); // Reference to the div container
+  const mountRef = useRef(null); 
 
   useEffect(() => {
-    // Set up the scene, camera, and renderer
+    
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
     const renderer = new THREE.WebGLRenderer();
@@ -16,7 +16,7 @@ const ElephantAnim = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    // Set background and lights
+    
     scene.background = new THREE.Color(0x87CEEB);
     
     const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -34,7 +34,7 @@ const ElephantAnim = () => {
     pointLight2.position.set(100, 50, -100);
     scene.add(pointLight2);
 
-    // Create the ground plane
+    
     const planeGeometry = new THREE.PlaneGeometry(1000, 1000);
     const grassPlaneMaterial = new THREE.MeshStandardMaterial({ color: 0x51A302 });
     const plane = new THREE.Mesh(planeGeometry, grassPlaneMaterial);
@@ -42,17 +42,17 @@ const ElephantAnim = () => {
     plane.position.y = -10;
     scene.add(plane);
 
-    // Set up controls
+  
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.1;
     controls.screenSpacePanning = false;
     controls.maxPolarAngle = Math.PI / 2;
-    controls.minDistance = 50; // Minimum distance you can zoom in
-    controls.maxDistance = 300; // Maximum distance you can zoom out
+    controls.minDistance = 50; 
+    controls.maxDistance = 300; 
     camera.position.set(0, 50, 250);
 
-    // Load Elephant Model
+    
     const loader = new GLTFLoader();
     loader.load('./elephant.glb', (gltf) => {
       const model = gltf.scene;
@@ -138,7 +138,7 @@ const ElephantAnim = () => {
     };
     window.addEventListener('resize', handleResize);
 
-    // Clean up on unmount
+  
     return () => {
       window.removeEventListener('resize', handleResize);
       mountRef.current.removeChild(renderer.domElement);
