@@ -32,7 +32,7 @@ const ScenarioHomePage = () => {
 
       <div key={headingKey} className="heading-container">
         {heading}
-        {/* <p className="subscript">{description}</p> */}
+        <p className="subscript">{description}</p>
       </div>
       <button className="play-button" onClick={goToPage}>
         Play to Know More
@@ -109,7 +109,7 @@ const ScenarioHomePage = () => {
           onMouseEnter={() =>
             changeBackground(
               "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
-              "The Great Indian Bustard in its natural habitat",
+              "The Great Indian Bustard in its habitat",
               "Caught between power lines and extinction—can this bird survive progress?",
               "./scenario4"
             )
@@ -117,7 +117,7 @@ const ScenarioHomePage = () => {
           onClick={() =>
             changeBackground(
               "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
-              "The Great Indian Bustard in its natural habitat",
+              "The Great Indian Bustard in its habitat",
               "Caught between power lines and extinction—can this bird survive progress?",
               "./scenario4"
             )
