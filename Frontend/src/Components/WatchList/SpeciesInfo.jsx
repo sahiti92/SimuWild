@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Papa from "papaparse";
-import { useNavigate } from "react-router-dom"; // Import navigation hook
+import { useNavigate } from "react-router-dom";
 
 const SpeciesInfo = () => {
   const [speciesData, setSpeciesData] = useState({
@@ -9,10 +9,9 @@ const SpeciesInfo = () => {
     vulnerable: [],
     nearThreatened: [],
   });
-  const [showAll, setShowAll] = useState(false); // Manage visibility of all species info
-  const navigate = useNavigate(); // Initialize navigation
-
-  // Path to your CSV files (replace with actual paths)
+  const [showAll, setShowAll] = useState(false); 
+  const navigate = useNavigate(); 
+  
   const csvPaths = {
     endangered: "../../../Endangered.csv",
     criticallyEndangered: "../../../CriticallyEndangered.csv",
@@ -48,12 +47,12 @@ const SpeciesInfo = () => {
     });
   }, []);
 
-  // Handle click to navigate to the species detail page
+
   const handleSpeciesClick = (species) => {
     navigate(`/species/${encodeURIComponent(species.scientificName)}`);
   };
 
-  // Toggle visibility of all species information
+
   const handleExploreClick = () => {
     setShowAll((prev) => !prev);
   };
@@ -71,7 +70,7 @@ const SpeciesInfo = () => {
                 {speciesList.map((species, index) => (
                   <li
                     key={index}
-                    onClick={() => handleSpeciesClick(species)} // Navigate to details page
+                    onClick={() => handleSpeciesClick(species)} 
                     style={{ cursor: "pointer", color: "blue" }}
                   >
                     {species.scientificName}

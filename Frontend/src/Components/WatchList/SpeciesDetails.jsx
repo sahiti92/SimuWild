@@ -7,12 +7,12 @@ const SpeciesDetails = () => {
   const [species, setSpecies] = useState(null);
   const csvPaths = {
     endangered: "../../../Endangered.csv",
-    criticallyEndangered: "../../../public/Critically_Endangered.csv",
+    criticallyEndangered: "../../../Critically_Endangered.csv",
     vulnerable: "../../../Vulnerable.csv",
     nearThreatened: "../../../Near Threatened.csv",
   };
 
-  // Fetch species data to find the matching species
+
   const fetchSpeciesData = async () => {
     for (const [category, path] of Object.entries(csvPaths)) {
       try {
