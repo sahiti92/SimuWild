@@ -10,10 +10,10 @@
   --brandColor: hsl(var(--h), 71%, var(--l));
   font-family: Montserrat, sans-serif;
   margin: 0;
-  background: linear-gradient(to bottom, black, black), url('path/to/your/image.jpg'); /* Update the path */
-  background-size: cover; /* Cover the entire screen */
-  background-repeat: no-repeat; /* Prevent the image from repeating */
-  background-position: center; /* Center the image */
+  background: linear-gradient(to bottom, black, black), url('path/to/your/image.jpg'); 
+  background-size: cover; 
+  background-repeat: no-repeat; 
+  background-position: center; 
 }
 
 
@@ -49,11 +49,11 @@
 
   border: 6px solid orange; 
 
-  transition: background-color 0.3s ease; /* Add this line */
+  transition: background-color 0.3s ease;
 }
 
 .species-info li.active {
-  background-color: lightblue; /* Change to your desired color */
+  background-color: lightblue; 
 }
 
 

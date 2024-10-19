@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
 import Papa from "papaparse";
-import { useNavigate } from "react-router-dom"; // Import navigation hook
+import { useNavigate } from "react-router-dom"; 
 import "./watchpage.css";
 
 const Critically_Endangered = () => {
   const [speciesData, setSpeciesData] = useState({
     criticallyEndangered: [],
   });
-  const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null); // Track the active species
-  const navigate = useNavigate(); // Initialize navigation
+  const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null); 
+  const navigate = useNavigate(); 
 
-  // Path to your CSV files (replace with actual paths)
+  
   const csvPaths = {
     criticallyEndangered: "../../../Critically_Endangered.csv",
   };
 
-  // Fetch and parse CSV
+  
   const fetchSpeciesData = async (category) => {
     try {
       const response = await fetch(csvPaths[category]);
@@ -43,9 +43,9 @@ const Critically_Endangered = () => {
     });
   }, []);
 
-  // Handle click to navigate to the species detail page
+  
   const handleSpeciesClick = (species, index) => {
-    setActiveSpeciesIndex(index); // Set the active index
+    setActiveSpeciesIndex(index); 
     navigate(`/species/${encodeURIComponent(species.scientificName)}`);
   };
 
@@ -66,7 +66,7 @@ const Critically_Endangered = () => {
                 {speciesList.map((species, index) => (
                   <li
                     key={index}
-                    onClick={() => handleSpeciesClick(species, index)} // Pass index to handleSpeciesClick
+                    onClick={() => handleSpeciesClick(species, index)} 
                     style={{
                       cursor: "pointer",
                       fontSize: "16px",
@@ -74,11 +74,11 @@ const Critically_Endangered = () => {
                       fontFamily: "Lato",
                       margin: "5px",
                       padding: "10px",
-                      backgroundColor: activeSpeciesIndex === index ? "lightblue" : "#f0f0f0", // Change color if active
+                      backgroundColor: activeSpeciesIndex === index ? "lightblue" : "#f0f0f0", 
                       borderRadius: "5px",
-                      flexBasis: "calc(20% - 10px)", // 20% width per item, subtracting margin
+                      flexBasis: "calc(20% - 10px)", 
                       textAlign: "center",
-                      transition: "background-color 0.3s ease", // Smooth transition for background color
+                      transition: "background-color 0.3s ease", 
                     }}
                   >
                     {species.scientificName}
