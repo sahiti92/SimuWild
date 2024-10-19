@@ -1,22 +1,98 @@
-.species-info {
-  background-color: grey;
-  color: yellow;
-  padding: 20px;
-  border-radius: 8px;
-  left: 0%;
-  right: 0%;
-  top: 0%;
-  bottom: 0%;
-  margin: auto;
-  position: absolute;
-  overflow: auto;
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+
+* {
+  box-sizing: border-box;
 }
-button {
-  background-color: black;
-  color: yellow;
-  border-radius: 8px;
-  padding: 10px;
-  margin: 10px;
+
+.species-info body {
+  --h: 212deg;
+  --l: 43%;
+  --brandColor: hsl(var(--h), 71%, var(--l));
+  font-family: Montserrat, sans-serif;
+  margin: 0;
+  background: linear-gradient(to bottom, black, black), url('path/to/your/image.jpg'); /* Update the path */
+  background-size: cover; /* Cover the entire screen */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  background-position: center; /* Center the image */
+}
+
+
+
+.species-info ol {
+  list-style: none;
+  counter-reset: list;
+  padding: 0 1rem;
+}
+
+.species-info li {
+  --stop: calc(100% / var(--length) * var(--i));
+  --l: 62%;
+  --l2: 88%;
+  --h: calc((var(--i) - 1) * (180 / var(--length)));
+  --c1: hsl(var(--h), 71%, var(--l));
+  --c2: hsl(var(--h), 71%, var(--l2));
+
+  position: relative;
+  counter-increment: list;
+  max-width: 45rem;
+  margin: 2rem auto;
+  padding: 2rem 1rem 1rem;
+  box-shadow: 0.1rem 0.1rem 1.5rem rgba(0, 0, 0, 0.3);
+  border-radius: 0.25rem;
+  overflow: hidden;
+  background-color: white;
   cursor: pointer;
-  width: 100px;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+  font-family: Lato, sans-serif;
+
+  border: 6px solid orange; 
+
+  transition: background-color 0.3s ease; /* Add this line */
+}
+
+.species-info li.active {
+  background-color: lightblue; /* Change to your desired color */
+}
+
+
+.species-info li::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 1rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: linear-gradient(to right, var(--c1) var(--stop), var(--c2) var(--stop));
+}
+
+.species-info h3 {
+  display: flex;
+  align-items: baseline;
+  margin: 0 0 1rem;
+  color: rgb(70, 70, 70);
+}
+
+.species-info h3::before {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 0 0 auto;
+  margin-right: 1rem;
+  width: 3rem;
+  height: 3rem;
+  content: counter(list);
+  padding: 1rem;
+  border-radius: 50%;
+  background-color: var(--c1);
+  color: white;
+}
+
+@media (min-width: 40em) {
+  li {
+    margin: 3rem auto;
+    padding: 3rem 2rem 2rem;
+  }
 }

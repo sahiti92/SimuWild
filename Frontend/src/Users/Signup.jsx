@@ -318,6 +318,7 @@ import { registerAPI } from "../services/users/userService";
 import { useNavigate } from "react-router-dom";
 import AlertMessage from "../Alert/AlertMessage";
 import "./auth.css"; // Import the CSS file
+ import { Link } from "react-router-dom";
 
 // Validation schema
 const validationSchema = Yup.object({
@@ -442,16 +443,25 @@ const SignupForm = () => {
             type="checkbox"
             {...formik.getFieldProps("agreeToTerms")}
           />
-          <label htmlFor="agreeToTerms">I agree to the terms and conditions</label>
+          {/* <label htmlFor="agreeToTerms">I agree to the terms and conditions</label>
           {formik.touched.agreeToTerms && formik.errors.agreeToTerms && (
             <span className="error-message">{formik.errors.agreeToTerms}</span>
-          )}
+          )} */}
         </div>
 
         {/* Submit Button */}
         <button type="submit" className="submit-btn">
           Register
         </button>
+        <p style={{ marginTop: "10px", textAlign: "center" }}>
+          Already have an account?{" "}
+           <Link
+             to="/login"
+             style={{ color: "#007BFF", textDecoration: "underline" }}
+           >
+             Login
+           </Link>
+         </p>
       </form>
     </div>
   );

@@ -151,6 +151,7 @@ const Watchlist = () => {
       }}
     >
       {images.map((image, index) => (
+       
         <SwiperSlide key={index} className="swiper-slide-custom">
           <div className="card">
             <img src={image.src} alt={image.alt} />
@@ -163,6 +164,7 @@ const Watchlist = () => {
             </button>
           </div>
         </SwiperSlide>
+      
       ))}
     </Swiper>
   );

@@ -42,7 +42,7 @@ body {
 }
 
 /* Explore button styles */
-.explore-button {
+.card .explore-button {
   position: absolute;
   bottom: 10%; /* Position button at the bottom */
   left: 50%;
