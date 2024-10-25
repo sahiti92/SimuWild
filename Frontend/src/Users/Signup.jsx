@@ -328,7 +328,7 @@ const validationSchema = Yup.object({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirming your password is required"),
-  agreeToTerms: Yup.boolean().oneOf([true], "You must agree to the terms and conditions"),
+  
 });
 
 const SignupForm = () => {
@@ -438,11 +438,11 @@ const SignupForm = () => {
 
         {/* Terms and Conditions */}
         <div className="input-group">
-          <input
+          {/* <input
             id="agreeToTerms"
             type="checkbox"
             {...formik.getFieldProps("agreeToTerms")}
-          />
+          /> */}
           {/* <label htmlFor="agreeToTerms">I agree to the terms and conditions</label>
           {formik.touched.agreeToTerms && formik.errors.agreeToTerms && (
             <span className="error-message">{formik.errors.agreeToTerms}</span>

@@ -10,7 +10,7 @@ const ScenarioHomePage = () => {
     "Human-elephant conflict in India often arises due to habitat loss."
   );
   const navigate = useNavigate();
-  const [pageLink, setPageLink] = useState("/scenario1");
+  const [pageLink, setPageLink] = useState("./scenario1");
   const [headingKey, setHeadingKey] = useState(0);
 
   const changeBackground = (image, newHeading, newDescription, newPageLink) => {
