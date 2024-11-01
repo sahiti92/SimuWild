@@ -21,6 +21,8 @@ import Endangered from "./Components/WatchList/Endangered.jsx";
 import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
+import ThreeScene from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
+import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -74,6 +76,9 @@ const App = () => {
         <Route path="/vulnerable" element={<Vulnerable />} />
         <Route path="/nearThreatened" element={<NearThreatened />} />
         <Route path="/species/:scientificName" element={<SpeciesDetails />} />
+
+        <Route path="/threeScene" element={<ThreeScene />} />
+        <Route path="/toChoose" element={<ToChoose />} />
       </Routes>
     </Router>
   );
