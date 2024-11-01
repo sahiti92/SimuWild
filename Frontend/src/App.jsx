@@ -22,6 +22,7 @@ import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
 import ThreeScene from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
+import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
@@ -48,8 +49,10 @@ const App = () => {
           path="/dashboard"
           element={
             <AuthRoute>
+      
               <Dashboard />
-            </AuthRoute>
+              </AuthRoute>
+        
           }
         />
         <Route
@@ -76,7 +79,7 @@ const App = () => {
         <Route path="/vulnerable" element={<Vulnerable />} />
         <Route path="/nearThreatened" element={<NearThreatened />} />
         <Route path="/species/:scientificName" element={<SpeciesDetails />} />
-
+        <Route path="/eleph" element={<ElephantAnim1 />} />
         <Route path="/threeScene" element={<ThreeScene />} />
         <Route path="/toChoose" element={<ToChoose />} />
       </Routes>
