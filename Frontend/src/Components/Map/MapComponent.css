@@ -1,0 +1,67 @@
+/* MapComponent.css */
+
+.animal-image {
+  position: absolute;
+  width: 100px; /* Adjust size as needed */
+  height: auto;
+  transform-origin: bottom center;
+  animation: riseAndZoom 3s ease-out forwards;
+  pointer-events: none; /* Prevent interaction with the image */
+  transition: opacity 0.3s ease; /* Smooth transition for fading in/out */
+}
+
+/* @keyframes riseAndZoom {
+  0% {
+    opacity: 0;
+    transform: scale(
+      1
+    ); 
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1); 
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px) scale(1); 
+  }
+} */
+.animal-name {
+  position: absolute;
+  font-size: 16px;
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  width: 120px;
+  transform: translateX(-50%);
+  opacity: 0;
+  animation: fadeInRise 6s ease-out forwards;
+}
+@keyframes riseAndZoom {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -120px) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -20px) scale(2); /* Rise up and zoom in */
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50px) scale(1); /* Continue rising and fade out */
+  }
+}
+@keyframes fadeInRise {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+}
