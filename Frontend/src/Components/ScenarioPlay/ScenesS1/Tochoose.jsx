@@ -1,4 +1,6 @@
+
 import React, { useState } from "react";
+import axios from "axios";
 
 const ToChoose1 = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
@@ -11,6 +13,18 @@ const ToChoose1 = () => {
 
   const handleShowOutcomeClick = () => {
     setShowOutcomeScene(true);
+  };
+
+  const handleRestartClick = async () => {
+    try {
+      await axios.delete("/api/v1/progress/reset"); // Adjust the path if necessary
+      setSelectedChoice("");
+      setShowOutcomeScene(false);
+      alert("Progress has been reset.");
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert("Failed to reset progress.");
+    }
   };
 
   const styles = {
@@ -41,14 +55,14 @@ const ToChoose1 = () => {
       gap: "20px",
     },
     choice: {
-      padding: "20px 20px 20px 20px",
+      padding: "20px",
       backgroundColor: "rgba(255, 255, 255, 0.8)",
       borderRadius: "7px",
       cursor: "pointer",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       transition: "transform 0.2s",
       color: "black",
-      fontfamily: "Arial, sans-serif",
+      fontFamily: "Arial, sans-serif",
       height: "50px",
       textAlign: "center",
     },
@@ -62,7 +76,7 @@ const ToChoose1 = () => {
       color: "black",
       position: "relative",
     },
-    appoutcomeScene: {
+    outcomeScene: {
       marginTop: "20px",
       backgroundColor: "rgba(255, 255, 255, 0.9)",
       padding: "15px",
@@ -72,10 +86,22 @@ const ToChoose1 = () => {
       color: "black",
       position: "relative",
     },
-  };
+    restartButton: {
+      position: "absolute",
+      top: "20px",
+      left: "20px",
+      padding: "10px 15px",
+      backgroundColor: "#ff6666",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+      fontSize: "16px",
+    },
+    };
 
-  // Outcome messages based on selected choice
-  const outcomeText =
+    const outcomeText =
     selectedChoice === "Choice 1"
       ? " The elephants lose their natural habitat and start wandering into nearby villages in search of food, damaging crops, homes."
       : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy experiences a slowdown due to limited expansion of agriculture and industry";
@@ -94,7 +120,7 @@ const ToChoose1 = () => {
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2.Stop deforestation
+                        2.Stop deforestation
 
           </div>
         </div>
@@ -111,6 +137,10 @@ const ToChoose1 = () => {
             <p>{outcomeText}</p>
           </div>
         )}
+
+        <button style={styles.restartButton} onClick={handleRestartClick}>
+          Restart
+        </button>
       </div>
     </div>
   );
