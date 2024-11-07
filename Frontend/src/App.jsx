@@ -24,6 +24,8 @@ import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
 import ThreeScene from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
 import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
+import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
+import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -82,6 +84,8 @@ const App = () => {
         <Route path="/eleph" element={<ElephantAnim1 />} />
         <Route path="/threeScene" element={<ThreeScene />} />
         <Route path="/toChoose" element={<ToChoose />} />
+        <Route path="/toChoose1" element={<ToChoose1 />} />
+        <Route path="/model" element={<GLBModel url="./elipent.glb" />} />
       </Routes>
     </Router>
   );
