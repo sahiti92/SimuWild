@@ -91,7 +91,7 @@ const ThreeScene = () => {
 
     // Cleanup function
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
+      //mountRef.current.removeChild(renderer.domElement);
       window.removeEventListener("resize", handleResize);
     };
   }, []);
