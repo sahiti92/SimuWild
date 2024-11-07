@@ -23,7 +23,9 @@ import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
 import ThreeScene from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
 import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
+import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome1.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
+import GLBModel from "./Components/ScenarioPlay/ScenesS1/outcome2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -80,8 +82,10 @@ const App = () => {
         <Route path="/nearThreatened" element={<NearThreatened />} />
         <Route path="/species/:scientificName" element={<SpeciesDetails />} />
         <Route path="/eleph" element={<ElephantAnim1 />} />
+        <Route path="/eleph1" element={<ElephantAnim2 />} />
         <Route path="/threeScene" element={<ThreeScene />} />
         <Route path="/toChoose" element={<ToChoose />} />
+        <Route path="/model" element={<GLBModel url="./forest ppl.glb" />} />
       </Routes>
     </Router>
   );
