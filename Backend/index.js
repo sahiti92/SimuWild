@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const app = express();
 const cors = require("cors");
 const userRouter = require("./routes/userRouter");
+const router = require("./routes/progress");
 const errorHandler = require("./middlewares/errorHandler");
 //const url = process.env.MONGODB_URL;
 //! user:cs22b027
@@ -22,6 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/", userRouter);
+app.use("/progress", router);
 app.use(errorHandler);
 const PORT = process.env.PORT || 8001;
 app.listen(PORT, () => console.log(`Server running on port..${PORT}`));
