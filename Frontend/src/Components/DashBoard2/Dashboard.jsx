@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../redux/slice/authSlice";
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -30,6 +32,7 @@ const Dashboard = () => {
     },
   ];
   const navigate = useNavigate(); 
+  const dispatch = useDispatch();
   const [clickedIndex, setClickedIndex] = useState(null);
 
   const handleTitleClick = (index) => {
@@ -39,6 +42,15 @@ const Dashboard = () => {
       setClickedIndex(index);
       navigate(features[index].path);
     }
+  };
+ 
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate("/login"); // Adjust this to your login route
+  };
+
+  const handleUpdatePassword = () => {
+    navigate("/updatePass");
   };
 
   return (
@@ -59,6 +71,14 @@ const Dashboard = () => {
               <li>
                 <Link to="/about">Services</Link>
               </li>
+              <li>
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
+              <button onClick={handleUpdatePassword} className="update-password-button">
+        Update Password
+      </button>
+            </li>
             </ul>
           </nav>
           {/* <div className="user-profile">
