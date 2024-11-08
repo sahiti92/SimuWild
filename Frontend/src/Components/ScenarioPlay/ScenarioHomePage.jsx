@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./ScenarioHomePage.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getUserFromStorage } from "../../utils/getUser";
 const ScenarioHomePage = () => {
   const [backgroundImage, setBackgroundImage] = useState(
     "https://hatibondhu.org/assets/img/hec.jpg"
@@ -20,8 +22,56 @@ const ScenarioHomePage = () => {
     setHeadingKey((prevKey) => prevKey + 1);
     setPageLink(newPageLink);
   };
+  async function getCounterByScenario(scenarioId) {
+    try {
+      const token = getUserFromStorage();
+      const response = await axios.get(
+        "http://localhost:8001/api/v1/progress",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const progressData = response.data;
+      const scenarioProgress = progressData.find(
+        (progress) => progress.scenarioId === scenarioId
+      );
+      if (scenarioProgress) {
+        console.log("Counter value:", scenarioProgress.counter);
+        return scenarioProgress.counter;
+      } else {
+        console.log("No progress found for the specified scenarioId");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching progress data:", error);
+      return null;
+    }
+  }
   const goToPage = () => {
-    navigate(pageLink);
+    console.log(pageLink);
+    if (pageLink === "./scenario1") {
+      getCounterByScenario(1);
+      if (getCounterByScenario(1) === 0) {
+        navigate("./scenario1");
+      } else if (getCounterByScenario(1) === 1) {
+        navigate("./threeScene");
+      }
+    } else if (pageLink === "./scenario2") {
+    } else if (pageLink === "./scenario3") {
+    } else if (pageLink === "./scenario4") {
+    } else if (pageLink === "./scenario5") {
+      getCounterByScenario(1);
+      if (getCounterByScenario(1) === 0) {
+        navigate("./scenario1");
+      } else {
+        navigate("./threeScene");
+      }
+    } else if (pageLink === "./scenario6") {
+    }
+    //navigate(pageLink);
   };
   return (
     <div className="app">

@@ -5,7 +5,7 @@ const progressController = {
   createOrUpdateProgress: asyncHandler(async (req, res) => {
     const { scenarioId, choices } = req.body;
     const userId = req.user;
-    console.log(userId);
+
     if (typeof scenarioId !== "number" || typeof choices !== "number") {
       return res
         .status(400)
@@ -37,12 +37,42 @@ const progressController = {
 
   resetProgress: asyncHandler(async (req, res) => {
     const userId = req.user;
-    console.log(userId);
+
     if (!userId) {
       return res.status(400).json({ error: "User ID is missing" });
     }
     await Progress.deleteMany({ userId });
     res.json({ message: "All progress reset successfully" });
+  }),
+
+  incrementCounter: asyncHandler(async (req, res) => {
+    const { scenarioId } = req.body;
+    const userId = req.user;
+
+    // Check if scenarioId is valid
+    if (typeof scenarioId !== "number") {
+      return res.status(400).json({ error: "Scenario ID must be a number" });
+    }
+
+    // Find the progress document
+    const progress = await Progress.findOne({ userId, scenarioId });
+
+    if (!progress) {
+      return res
+        .status(404)
+        .json({ message: "No progress found for this scenario" });
+    }
+
+    // Check if counter is 0, then increment it
+    //if (progress.counter === 0) {
+      progress.counter += 1;
+      await progress.save();
+      return res.json({
+        message: "Counter incremented",
+        counter: progress.counter,
+      });   //}
+
+    res.json({ message: "Counter is not 0, no increment performed" });
   }),
 };
 

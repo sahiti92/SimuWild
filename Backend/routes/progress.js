@@ -16,4 +16,9 @@ router.post(
 // Reset progress
 router.delete("/reset", isAuthenticated, progressControllers.resetProgress);
 
+router.post(
+  "/increment-counter",
+  isAuthenticated,
+  progressControllers.incrementCounter
+);
 module.exports = router;
