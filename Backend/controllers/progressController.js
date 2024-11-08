@@ -4,8 +4,8 @@ const Progress = require("../models/Progress");
 const progressController = {
   createOrUpdateProgress: asyncHandler(async (req, res) => {
     const { scenarioId, choices } = req.body;
-    const userId = req.user._id;
-
+    const userId = req.user;
+    console.log(userId);
     if (typeof scenarioId !== "number" || typeof choices !== "number") {
       return res
         .status(400)
@@ -22,7 +22,7 @@ const progressController = {
   }),
 
   getProgress: asyncHandler(async (req, res) => {
-    const userId = req.user._id;
+    const userId = req.user;
     const progress = await Progress.find({ userId }).populate(
       "userId",
       "username email"
@@ -36,7 +36,8 @@ const progressController = {
   }),
 
   resetProgress: asyncHandler(async (req, res) => {
-    const userId = req.user._id;
+    const userId = req.user;
+    console.log(userId);
     if (!userId) {
       return res.status(400).json({ error: "User ID is missing" });
     }

@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { getUserFromStorage } from "../../../utils/getUser";
+//! Get the token
 
 const ToChoose = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
 
   // Assuming a valid token is available in localStorage (you may get it from a global state or props)
-  const token = localStorage.getItem("token"); // Replace with your actual method of fetching the token
-
+  const token = getUserFromStorage(); // Replace with your actual method of fetching the token
+  console.log(token);
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
@@ -19,20 +21,24 @@ const ToChoose = () => {
 
   const handleRestartClick = async () => {
     try {
-      // If authentication is needed, include the Authorization header with the Bearer token
+      console.log(" To");
+      console.log(token);
       await axios.delete("http://localhost:8001/api/v1/progress/reset", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
-      // Reset local state after successful reset
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert("Failed to reset progress.");
+      console.log("Server Response:", error.response?.data);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
     }
   };
 
