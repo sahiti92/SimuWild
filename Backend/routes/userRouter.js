@@ -10,7 +10,7 @@ userRouter.get(
   usersController.dashboard
 );
 userRouter.put(
-  "/api/v1/users/sceneraios",
+  "/api/v1/changePass",
   isAuthenticated,
   usersController.changeUserPassword
 );
