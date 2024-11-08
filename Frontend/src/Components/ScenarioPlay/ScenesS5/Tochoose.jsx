@@ -5,6 +5,9 @@ const ToChoose = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
 
+  // Assuming a valid token is available in localStorage (you may get it from a global state or props)
+  const token = localStorage.getItem("token"); // Replace with your actual method of fetching the token
+
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
@@ -16,7 +19,14 @@ const ToChoose = () => {
 
   const handleRestartClick = async () => {
     try {
-      await axios.delete("/api/v1/progress/reset"); // Adjust the path if necessary
+      // If authentication is needed, include the Authorization header with the Bearer token
+      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      // Reset local state after successful reset
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
@@ -98,7 +108,7 @@ const ToChoose = () => {
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       fontSize: "16px",
     },
-    };
+  };
 
   const outcomeText =
     selectedChoice === "Choice 1"
