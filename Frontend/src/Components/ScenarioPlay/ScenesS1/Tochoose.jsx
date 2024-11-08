@@ -1,10 +1,15 @@
-
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import axios from "axios";
+import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose1 = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
+  const navigate = useNavigate(); // Initialize navigate for routing
+
+  // Assuming a valid token is available in localStorage
+  const token = getUserFromStorage();
 
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
@@ -17,14 +22,22 @@ const ToChoose1 = () => {
 
   const handleRestartClick = async () => {
     try {
-      await axios.delete("/api/v1/progress/reset"); // Adjust the path if necessary
+      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert("Failed to reset progress.");
+      alert("Failed to reset progress: " + (error.response?.data?.error || "Unknown error"));
     }
+  };
+
+  const handleExitClick = () => {
+    navigate("/scenarios/scenario1"); // Navigate to Scenario1 when Exit is clicked
   };
 
   const styles = {
@@ -60,10 +73,7 @@ const ToChoose1 = () => {
       borderRadius: "7px",
       cursor: "pointer",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-      transition: "transform 0.2s",
       color: "black",
-      fontFamily: "Arial, sans-serif",
-      height: "50px",
       textAlign: "center",
     },
     outcome: {
@@ -74,7 +84,6 @@ const ToChoose1 = () => {
       textAlign: "center",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       color: "black",
-      position: "relative",
     },
     outcomeScene: {
       marginTop: "20px",
@@ -84,7 +93,6 @@ const ToChoose1 = () => {
       textAlign: "center",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       color: "black",
-      position: "relative",
     },
     restartButton: {
       position: "absolute",
@@ -96,12 +104,23 @@ const ToChoose1 = () => {
       border: "none",
       borderRadius: "5px",
       cursor: "pointer",
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       fontSize: "16px",
     },
-    };
+    exitButton: {
+      position: "absolute",
+      top: "20px",
+      right: "20px", // Positioning to the top-right corner
+      padding: "10px 15px",
+      backgroundColor: "red", // Red color for the Exit button
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      fontSize: "16px",
+    },
+  };
 
-    const outcomeText =
+  const outcomeText =
     selectedChoice === "Choice 1"
       ? " The elephants lose their natural habitat and start wandering into nearby villages in search of food, damaging crops, homes."
       : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy experiences a slowdown due to limited expansion of agriculture and industry";
@@ -120,8 +139,7 @@ const ToChoose1 = () => {
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-                        2.Stop deforestation
-
+            2.Stop deforestation
           </div>
         </div>
 
@@ -140,6 +158,9 @@ const ToChoose1 = () => {
 
         <button style={styles.restartButton} onClick={handleRestartClick}>
           Restart
+        </button>
+        <button style={styles.exitButton} onClick={handleExitClick}>
+          Exit
         </button>
       </div>
     </div>
