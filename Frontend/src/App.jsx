@@ -10,9 +10,9 @@ import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
-import Login from "./Users/Login.jsx";
-import SignUp from "./Users/SignUp.jsx";
-import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
+import LoginForm from "./Users/Login.jsx";
+import SignupForm from "./Users/Signup.jsx";
+import Dashboard from "./Components/DashBoard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
 import About from "./Components/DashBoard2/About.jsx";
 import Watchlist from "./Components/WatchList/WatchList.jsx";
@@ -31,8 +31,8 @@ const App = () => {
         <Route path="/" element={<Slideshow />} />
 
         {/* Authentication-related routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/signup" element={<SignupForm />} />
         {/* Scenario Routes */}
         <Route path="/scenarios" element={<ScenarioHomePage />} />
         <Route path="/scenarios/scenario1" element={<Scenario1 />} />
