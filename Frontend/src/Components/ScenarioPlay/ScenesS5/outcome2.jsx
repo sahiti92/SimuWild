@@ -26,7 +26,7 @@ const Outcome2 = () => {
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
     controls.autoRotate = false;
-    controls.enableRotate = true;
+    controls.enableRotate = false;
     controls.addEventListener("change", () => {
       console.log(
         `Camera position: x: ${camera.position.x}, y: ${camera.position.y}, z: ${camera.position.z}`
@@ -204,6 +204,38 @@ const Outcome2 = () => {
 
   return (
     <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
+      <button
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          padding: "10px 15px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        ReStart
+      </button>
+      <button
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          padding: "10px 15px",
+          backgroundColor: "red",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Save & exit
+      </button>
       <footer
         style={{
           position: "absolute",
@@ -216,7 +248,12 @@ const Outcome2 = () => {
           fontSize: "18px",
         }}
       >
-        Enjoy the 3D experience of nature and wildlife
+        Continued construction and habitat destruction threaten tiger
+        populations, reducing their numbers and forcing them closer to human
+        communities. This increased proximity poses risks for both tigers and
+        people, leading to potential conflicts and endangering lives on both
+        sides. Protecting tiger habitats is essential for harmonious
+        coexistence.
       </footer>
     </div>
   );

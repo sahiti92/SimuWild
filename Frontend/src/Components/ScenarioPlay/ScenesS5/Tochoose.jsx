@@ -129,13 +129,13 @@ const ToChoose = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1. Help protect the tigers' habitat.
+            Help protect the tigers' habitat.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2. Ignore the problems and continue with development projects in the
+            Ignore the problems and continue with development projects in the
             area.
           </div>
         </div>
@@ -147,14 +147,37 @@ const ToChoose = () => {
           </div>
         )}
 
-        {showOutcomeScene && (
-          <div style={styles.outcomeScene}>
-            <p>{outcomeText}</p>
-          </div>
-        )}
-
-        <button style={styles.restartButton} onClick={handleRestartClick}>
-          Restart
+        <button
+          style={{
+            position: "absolute",
+            top: "10px",
+            left: "10px",
+            padding: "10px 15px",
+            backgroundColor: "#007bff",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            zIndex: 1,
+          }}
+        >
+          ReStart
+        </button>
+        <button
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            padding: "10px 15px",
+            backgroundColor: "red",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            zIndex: 1,
+          }}
+        >
+          Save & exit
         </button>
       </div>
     </div>

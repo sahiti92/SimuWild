@@ -335,6 +335,38 @@ const Choice2 = () => {
 
   return (
     <div ref={mountRef}>
+      <button
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          padding: "10px 15px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        ReStart
+      </button>
+      <button
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          padding: "10px 15px",
+          backgroundColor: "red",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Save & exit
+      </button>
       <footer
         style={{
           position: "absolute",
@@ -347,7 +379,11 @@ const Choice2 = () => {
           fontSize: "18px",
         }}
       >
-        Enjoy the 3D experience of nature and wildlife
+        Supporting tiger conservation brings hope for both tigers and their
+        habitats. Through habitat restoration and growth of green cover, we can
+        protect these majestic animals and enrich biodiversity. A thriving
+        environment for tigers also means healthier ecosystems and sustainable
+        natural resources for all.
       </footer>
     </div>
   );

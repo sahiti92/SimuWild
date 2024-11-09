@@ -241,7 +241,9 @@ const Choice = () => {
           fontSize: "18px",
         }}
       >
-        Enjoy the 3D experience of nature and wildlife
+        The Sundarbans is home to the Bengal tiger, but it is facing serious
+        problems. Rising sea levels and destruction of their habitat threaten
+        both the tigers and this unique environment.
       </footer>
     </div>
   );
