@@ -28,6 +28,7 @@ import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose.jsx";
 import Choice2 from "./Components/ScenarioPlay/ScenesS5/outcome1.jsx";
+import Outcome2 from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -87,6 +88,7 @@ const App = () => {
         <Route path="/outcome1s5" element={<Choice2 />} />
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/toChoose1" element={<ToChoose1 />} />
+        <Route path="/outcome2s5" element={<Outcome2 />} />
         <Route path="/model" element={<GLBModel url="./elipent.glb" />} />
       </Routes>
     </Router>

@@ -156,7 +156,7 @@ const Choice = () => {
     audioLoader.load("/background-music.mp3", (buffer) => {
       backgroundMusic.setBuffer(buffer);
       backgroundMusic.setLoop(true);
-      backgroundMusic.setVolume(0.5);
+      backgroundMusic.setVolume(1);
       backgroundMusic.play();
     });
     camera.position.set(
