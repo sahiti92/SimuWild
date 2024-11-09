@@ -34,8 +34,47 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 ## For Scenario Subsystem
 ![image](https://github.com/user-attachments/assets/2fc37dc6-e4d8-4305-8b8b-faf3cc75211c)
 
+## How to Run(Dev)
 
+1. **Clone the Repository**  
 
+2. **Set Up Backend and Frontend**
+
+- **Open two terminals**:
+  - **Terminal 1**: For the Backend
+    - Navigate to the backend folder:
+      ```
+      cd Backend
+      ```
+    - Install dependencies:
+      ```
+      npm install
+      ```
+    - Start the backend server:
+      ```
+      npm start
+      ```
+  - **Terminal 2**: For the Frontend
+    - Navigate to the frontend folder:
+      ```
+      cd Frontend
+      ```
+    - Install dependencies:
+      ```
+      npm install
+      ```
+    - Start the frontend in development mode:
+      ```
+      npm run dev
+      ```
+
+3. **Open the Application**
+
+- Once both the backend and frontend are running, open your browser and go to:
+  ```
+  http://localhost:<frontend-port>
+  ```
+- Replace `<frontend-port>` with the port number your frontend is running on (usually `3000` or `5173`).
 
 
 
