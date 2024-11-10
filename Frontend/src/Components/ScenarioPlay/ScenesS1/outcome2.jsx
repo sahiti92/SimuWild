@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Suspense } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { useGLTF, OrbitControls } from '@react-three/drei';
+import { useGLTF, OrbitControls, Html } from '@react-three/drei';
 import * as THREE from 'three';
 
 function Model({ url, onLoad }) {
@@ -11,7 +11,7 @@ function Model({ url, onLoad }) {
     useEffect(() => {
         if (animations && animations.length > 0) {
             onLoad(animations);
-            const action = mixer.clipAction(animations[0]);
+            const action = mixer.clipAction(animations[27]);
             action.setLoop(THREE.LoopRepeat, Infinity);
             action.play();
             setCurrentAction(action);
@@ -27,19 +27,6 @@ function Model({ url, onLoad }) {
     return <primitive object={scene} />;
 }
 
-// function AnimationControls({ animations, playAnimation }) {
-//     return (
-//         <div style={{ position: 'absolute', top: 20, left: 20, zIndex: 1 }}>
-//             <h3>Select Animation:</h3>
-//             {animations.map((_, index) => (
-//                 <button key={index} onClick={() => playAnimation(index)}>
-//                     Animation {index + 1}
-//                 </button>
-//             ))}
-//         </div>
-//     );
-// }
-
 function GLBModel({ url }) {
     const [animations, setAnimations] = useState([]);
     const [mixer] = useState(() => new THREE.AnimationMixer());
@@ -50,7 +37,7 @@ function GLBModel({ url }) {
 
     const playAnimation = (index) => {
         if (mixer && animations.length > index) {
-            const action = mixer.clipAction(animations[index]);
+            const action = mixer.clipAction(animations[5]);
             action.reset().setLoop(THREE.LoopRepeat, Infinity).fadeIn(0.5).play();
         } else {
             console.warn("Mixer is not initialized or animation index is invalid.");
@@ -62,14 +49,12 @@ function GLBModel({ url }) {
             <Canvas>
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[5, 5, 5]} intensity={1} />
-                <Suspense fallback={<div>Loading model...</div>}>
+                <Suspense fallback={<Html><div>Loading model...</div></Html>}>
                     <Model url={url} onLoad={handleAnimationLoad} />
                 </Suspense>
                 <OrbitControls />
             </Canvas>
-            {/* {animations.length > 0 && (
-                <AnimationControls animations={animations} playAnimation={playAnimation} />
-            )} */}
+           
         </div>
     );
 }

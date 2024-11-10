@@ -26,6 +26,11 @@ import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
 import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome1.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 import GLBModel from "./Components/ScenarioPlay/ScenesS1/outcome2.jsx";
+import WetlandScene from "./Components/ScenarioPlay/ScenesS3/StartScene.jsx";
+import Slider from "./Components/ScenarioPlay/start.jsx";
+import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
+import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
+import Choose from "./Components/ScenarioPlay/ScenesS3/Choice.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -47,6 +52,8 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
+        <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
+       
         <Route
           path="/dashboard"
           element={
@@ -85,7 +92,11 @@ const App = () => {
         <Route path="/eleph1" element={<ElephantAnim2 />} />
         <Route path="/threeScene" element={<ThreeScene />} />
         <Route path="/toChoose" element={<ToChoose />} />
-        <Route path="/model" element={<GLBModel url="./forest ppl.glb" />} />
+        <Route path="/outcome1S3" element={<WetlandScene />} />
+        <Route path="/model" element={<GLBModel url="./man.glb" />} />
+        <Route path="/outcome2S3" element={<Community/>}/>
+        <Route path="/sum3" element={<SummaryPage/>}/>
+        <Route path = "/choose" element={<Choose/>}/>
       </Routes>
     </Router>
   );
