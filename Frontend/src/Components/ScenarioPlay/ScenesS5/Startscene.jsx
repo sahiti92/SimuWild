@@ -12,6 +12,9 @@ const Choice = () => {
   const handleClick = async () => {
     navigate("/tochoose");
   };
+  const handleclick2 = async () => {
+    navigate("/scenarios/scenario5");
+  };
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -232,6 +235,23 @@ const Choice = () => {
         }}
       >
         Start
+      </button>
+      <button
+        onClick={handleclick2}
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          padding: "10px 15px",
+          backgroundColor: "red",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Exit
       </button>
       <footer
         style={{
