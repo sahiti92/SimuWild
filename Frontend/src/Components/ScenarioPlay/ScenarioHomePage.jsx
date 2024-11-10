@@ -51,27 +51,7 @@ const ScenarioHomePage = () => {
     }
   }
   const goToPage = () => {
-    console.log(pageLink);
-    if (pageLink === "./scenario1") {
-      getCounterByScenario(1);
-      if (getCounterByScenario(1) === 0) {
-        navigate("./scenario1");
-      } else if (getCounterByScenario(1) === 1) {
-        navigate("./threeScene");
-      }
-    } else if (pageLink === "./scenario2") {
-    } else if (pageLink === "./scenario3") {
-    } else if (pageLink === "./scenario4") {
-    } else if (pageLink === "./scenario5") {
-      getCounterByScenario(1);
-      if (getCounterByScenario(1) === 0) {
-        navigate("./scenario1");
-      } else {
-        navigate("./threeScene");
-      }
-    } else if (pageLink === "./scenario6") {
-    }
-    //navigate(pageLink);
+    navigate(pageLink);
   };
   return (
     <div className="app">
@@ -174,12 +154,12 @@ const ScenarioHomePage = () => {
           }
         />
         <img
-          src="https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg"
+          src="https://t3.ftcdn.net/jpg/06/61/07/06/360_F_661070665_QykUihBeWNCNuCmT0N0NI4wYvl68NzgC.jpg"
           alt="Image 4"
           className="thumbnail"
           onMouseEnter={() =>
             changeBackground(
-              "https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg",
+              "https://t3.ftcdn.net/jpg/06/61/07/06/360_F_661070665_QykUihBeWNCNuCmT0N0NI4wYvl68NzgC.jpg",
               "Rhino Conservation",
               "As poaching rises, can the rhino's ancient home still offer refuge?",
               "./scenario2"
