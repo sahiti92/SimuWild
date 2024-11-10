@@ -7,8 +7,7 @@ import Scenario3 from "./Components/ScenarioPlay/Scenario3.jsx";
 import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
-import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
-import ElephantAnim11 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx"
+import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx"
 //import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
@@ -23,10 +22,9 @@ import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
 import Choice from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
-import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
-import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome11.jsx";
+import ElephantAnim from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
+import ElephantAnim11 from "./Components/ScenarioPlay/ScenesS1/outcome11.jsx";
 import ElephantAnim21 from "./Components/ScenarioPlay/ScenesS1/outcome21.jsx";
-
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose1.jsx";
@@ -48,7 +46,6 @@ const App = () => {
         {/* Scenario Routes */}
         <Route path="/scenarios" element={<ScenarioHomePage />} />
         <Route path="/scenarios/scenario1" element={<Scenario1 />} />
-        <Route path="/anim" element={<ElephantAnim />} />
         <Route path="/scenarios/scenario2" element={<Scenario2 />} />
         <Route path="/scenarios/scenario3" element={<Scenario3 />} />
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
@@ -86,11 +83,11 @@ const App = () => {
         <Route path="/vulnerable" element={<Vulnerable />} />
         <Route path="/nearThreatened" element={<NearThreatened />} />
         <Route path="/species/:scientificName" element={<SpeciesDetails />} />
-        <Route path="/eleph" element={<ElephantAnim1 />} />
+        <Route path="/eleph" element={<ElephantAnim />} />
         <Route path="/eleph11" element={<ElephantAnim11 />} />
-        <Route path="/eleph1" element={<ElephantAnim2 />} />
+        <Route path="/eleph12" element={<ElephantAnim12 />} />
         <Route path="/eleph21" element={<ElephantAnim21 />} />
-        <Route path="/threeScene" element={<Choice />} />
+        <Route path="/threeScene" element={<Choice />} /> 
         <Route path="/outcome1s5" element={<Choice2 />} />
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/toChoose1" element={<ToChoose1 />} />

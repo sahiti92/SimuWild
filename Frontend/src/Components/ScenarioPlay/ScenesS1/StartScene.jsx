@@ -2,9 +2,16 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
-const ElephantAnim1 = () => {
+import { useNavigate } from "react-router-dom";
+const ElephantAnim = () => {
+  const navigate = useNavigate();
   const mountRef = useRef(null); 
+  const handleClick = async () => {
+    navigate("/tochoose1");
+  };
+  const handleclick2 = async () => {
+    navigate("/scenarios/scenario1");
+  };
 
   useEffect(() => {
     
@@ -172,8 +179,66 @@ const ElephantAnim1 = () => {
       renderer.dispose();
     };
   }, []);
+  return (
+    <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
+      <button
+        onClick={handleClick}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          padding: "10px 15px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Start
+      </button>
+      <button
+        onClick={handleclick2}
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          padding: "10px 15px",
+          backgroundColor: "red",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Exit
+      </button>
+      <footer
+        style={{
+          position: "absolute",
+          bottom: "20px",
+          width: "100%",
+          textAlign: "center",
+          color: "white",
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          padding: "10px",
+          fontSize: "18px",
+        }}
+      >
+        Sonitpur, a district in Assam, is home to vast stretches of tropical forests that shelter India’s magnificent Asian elephants. 
+      This rich, biodiverse landscape provides essential pathways for elephant herds, supporting their natural migration and feeding patterns.
+       Here, lush greenery and traditional elephant corridors coexist, forming an ancient sanctuary that balances both wildlife and human settlements.
+      </footer>
+      
+    </div>
+  );
 
-  return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
 };
 
-export default ElephantAnim1;
+export default ElephantAnim;
+
+
+
+

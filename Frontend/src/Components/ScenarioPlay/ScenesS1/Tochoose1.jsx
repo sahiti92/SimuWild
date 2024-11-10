@@ -14,25 +14,44 @@ const ToChoose1 = () => {
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
+    // Navigate to the respective page based on choice
+    if (choice === "Choice 1") {
+      navigate("/eleph11");
+    } else if (choice === "Choice 2") {
+      navigate("/eleph12");
+    }
   };
 
   const handleShowOutcomeClick = () => {
     setShowOutcomeScene(true);
   };
 
+  
+
   const handleRestartClick = async () => {
     try {
-      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      console.log("Resetting progress");
+      const scenarioId = 1;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
+      navigate("/eleph")
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert("Failed to reset progress: " + (error.response?.data?.error || "Unknown error"));
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
     }
   };
 
@@ -160,7 +179,7 @@ const ToChoose1 = () => {
           Restart
         </button>
         <button style={styles.exitButton} onClick={handleExitClick}>
-          Exit
+          Save and Exit
         </button>
       </div>
     </div>

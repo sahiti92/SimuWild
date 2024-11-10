@@ -213,6 +213,34 @@ const ElephantAnim21 = () => {
       renderer.render(scene, camera);
     };
 
+    const handleRestartClick = async () => {
+      try {
+        console.log("Resetting progress");
+        const scenarioId = 5;
+        await axios.post(
+          "http://localhost:8001/api/v1/progress/reset",
+          { scenarioId },
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+  
+        setSelectedChoice("");
+        setShowOutcomeScene(false);
+        alert("Progress has been reset.");
+      } catch (error) {
+        console.error("Error resetting progress:", error);
+        alert(
+          "Failed to reset progress: " +
+            (error.response?.data?.error || "Unknown error")
+        );
+      }
+    };
+      const handleExitClick = () => {
+      navigate('/scenarios/scenario1'); // Redirect to Scenario1
+    };
     // Handle window resize
     const handleResize = () => {
       camera.aspect = window.innerWidth / window.innerHeight;

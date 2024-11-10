@@ -4,29 +4,29 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 const Scenario1 = () => {
-  const [progressExists, setProgressExists] = useState(false);
+  // const [progressExists, setProgressExists] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // Fetch user's progress to check if the scenario has been started
-    axios
-      .get("/api/progress", { withCredentials: true })
-      .then((response) => {
-        // Check if there’s any progress for ScenarioId 1
-        const scenarioProgress = response.data.find((p) => p.ScenarioId === 1);
-        setProgressExists(!!scenarioProgress);
-      })
-      .catch((error) => {
-        console.error("Error fetching scenario progress:", error);
-      });
-  }, []);
+  // useEffect(() => {
+  //   // Fetch user's progress to check if the scenario has been started
+  //   axios
+  //     .get("http://localhost:8001/api/v1/progress", { withCredentials: true })
+  //     .then((response) => {
+  //       // Check if there’s any progress for ScenarioId 1
+  //       const scenarioProgress = response.data.find((p) => p.ScenarioId === 1);
+  //       setProgressExists(!!scenarioProgress);
+  //     })
+  //     .catch((error) => {
+  //       console.error("Error fetching scenario progress:", error);
+  //     });
+  // }, []);
 
   const handlePlayButtonClick = () => {
-    navigate("/anim");
+    navigate("/eleph");
   };
 
   const handleContinueButtonClick = () => {
-    navigate("/anim/continue");
+    navigate("/eleph/continue");
   };
 
   const handleRestartButtonClick = () => {
@@ -34,7 +34,7 @@ const Scenario1 = () => {
       .delete(`/api/progress/reset`, { withCredentials: true })
       .then(() => {
         setProgressExists(false); // Reset local state
-        navigate("/anim");
+        navigate("/eleph");
       })
       .catch((error) => {
         console.error("Error resetting progress:", error);
@@ -65,29 +65,14 @@ const Scenario1 = () => {
             to violent measures, including electric fences, which lead to more
             elephant deaths.
           </p>
-          {progressExists ? (
-            <>
-              <button
-                className="small-continue-button"
-                onClick={handleContinueButtonClick}
-              >
-                Continue
-              </button>
-              <button
-                className="small-restart-button"
-                onClick={handleRestartButtonClick}
-              >
-                Restart
-              </button>
-            </>
-          ) : (
+          
             <button
               className="small-play-button"
               onClick={handlePlayButtonClick}
             >
               Play
             </button>
-          )}
+        
         </div>
       </div>
     </div>
