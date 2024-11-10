@@ -11,7 +11,7 @@ import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
 
-import Loginfrom "./Users/Login.jsx";
+import LoginForm from "./Users/Login.jsx";
 import SignupForm from "./Users/Signup.jsx";
 import Dashboard from "./Components/DashBoard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
@@ -51,10 +51,10 @@ const App = () => {
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
         <Route
-            path="/updatePass"
+          path="/updatePass"
           element={
             <AuthRoute>
-              <UpdatePassword/>
+              <UpdatePassword />
             </AuthRoute>
           }
         />

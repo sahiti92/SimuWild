@@ -46,15 +46,6 @@ const Dashboard = () => {
       navigate(features[index].path);
     }
   };
- 
-  const handleLogout = () => {
-    dispatch(logoutAction());
-    navigate("/login"); // Adjust this to your login route
-  };
-
-  const handleUpdatePassword = () => {
-    navigate("/updatePass");
-  };
 
   const handleLogout = () => {
     dispatch(logoutAction());
@@ -83,13 +74,16 @@ const Dashboard = () => {
                 <Link to="/news">News</Link>
               </li>
               <li>
-              <button onClick={handleLogout} className="logout-button">
-                Logout
-              </button>
-              <button onClick={handleUpdatePassword} className="update-password-button">
-        Update Password
-      </button>
-            </li>
+                <button onClick={handleLogout} className="logout-button">
+                  Logout
+                </button>
+                <button
+                  onClick={handleUpdatePassword}
+                  className="update-password-button"
+                >
+                  Update Password
+                </button>
+              </li>
             </ul>
           </nav>
           <div className="user-profile" onClick={toggleProfileOptions}>
