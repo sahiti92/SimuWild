@@ -1,4 +1,4 @@
-# SimuWild
+![image](https://github.com/user-attachments/assets/75b76009-b38a-4b92-80b9-e2b1ed4e9d13)# SimuWild
                               
 
 ## Team Name: UG3-9
@@ -75,6 +75,19 @@ Our platform stands out by offering an immersive, scenario-based learning experi
   http://localhost:<frontend-port>
   ```
 - Replace `<frontend-port>` with the port number your frontend is running on (usually `3000` or `5173`).
+
+## Landing Page
+
+![image](https://github.com/user-attachments/assets/ffcde721-656f-43db-ac6d-81d4e8b3dfd8)
+
+## SignUP
+
+![image](https://github.com/user-attachments/assets/a97de8d7-e6d6-4d3c-aa71-8ab7be2c68d6)
+
+## Login
+
+![image](https://github.com/user-attachments/assets/86b74afc-feef-4240-b1ba-276d8cd9678e)
+
 
 
 
