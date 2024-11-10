@@ -14,6 +14,7 @@ const authSlice = createSlice({
     //Logout
     logoutAction: (state, action) => {
       state.user = null;
+      localStorage.removeItem("userInfo");
     },
   },
 });

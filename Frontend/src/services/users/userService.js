@@ -28,7 +28,7 @@ export const dashboardAPI = async ({ email, password, username }) => {
 };
 export const changePasswordAPI = async (newPassword) => {
   const response = await axios.put(
-    `${BASE_URL}/users/change-password`,
+    `${BASE_URL}/changePass`,
     {
       newPassword,
     },

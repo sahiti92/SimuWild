@@ -31,7 +31,9 @@ const Dashboard = () => {
       path: "#",
     },
   ];
+
   const navigate = useNavigate();
+
   const dispatch = useDispatch();
   const [clickedIndex, setClickedIndex] = useState(null);
   const [showProfileOptions, setShowProfileOptions] = useState(false);
@@ -43,6 +45,15 @@ const Dashboard = () => {
       setClickedIndex(index);
       navigate(features[index].path);
     }
+  };
+ 
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate("/login"); // Adjust this to your login route
+  };
+
+  const handleUpdatePassword = () => {
+    navigate("/updatePass");
   };
 
   const handleLogout = () => {
@@ -71,6 +82,14 @@ const Dashboard = () => {
               <li>
                 <Link to="/news">News</Link>
               </li>
+              <li>
+              <button onClick={handleLogout} className="logout-button">
+                Logout
+              </button>
+              <button onClick={handleUpdatePassword} className="update-password-button">
+        Update Password
+      </button>
+            </li>
             </ul>
           </nav>
           <div className="user-profile" onClick={toggleProfileOptions}>

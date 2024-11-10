@@ -5,7 +5,7 @@ import { getUserFromStorage } from "./../utils/getUser";
 const AuthRoute = ({ children }) => {
   //get the token
   const token = getUserFromStorage();
-
+  console.log(token);
   if (token) {
     return children;
   } else {

@@ -34,8 +34,87 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 ## For Scenario Subsystem
 ![image](https://github.com/user-attachments/assets/2fc37dc6-e4d8-4305-8b8b-faf3cc75211c)
 
+## How to Run(Dev)
+
+1. **Clone the Repository**  
+
+2. **Set Up Backend and Frontend**
+
+- **Open two terminals**:
+  - **Terminal 1**: For the Backend
+    - Navigate to the backend folder:
+      ```
+      cd Backend
+      ```
+    - Install dependencies:
+      ```
+      npm install
+      ```
+    - Start the backend server:
+      ```
+      npm start
+      ```
+  - **Terminal 2**: For the Frontend
+    - Navigate to the frontend folder:
+      ```
+      cd Frontend
+      ```
+    - Install dependencies:
+      ```
+      npm install
+      ```
+    - Start the frontend in development mode:
+      ```
+      npm run dev
+      ```
+
+3. **Open the Application**
+
+- Once both the backend and frontend are running, open your browser and go to:
+  ```
+  http://localhost:<frontend-port>
+  ```
+- Replace `<frontend-port>` with the port number your frontend is running on (usually `3000` or `5173`).
+
+## Landing Page
+
+![image](https://github.com/user-attachments/assets/ffcde721-656f-43db-ac6d-81d4e8b3dfd8)
+
+## SignUP
+
+![image](https://github.com/user-attachments/assets/a97de8d7-e6d6-4d3c-aa71-8ab7be2c68d6)
+
+## Login
+
+![image](https://github.com/user-attachments/assets/86b74afc-feef-4240-b1ba-276d8cd9678e)
+
+## Dashboard
+
+![image](https://github.com/user-attachments/assets/9b7d129e-8c16-44be-85bd-556131211f8b)
+
+![image](https://github.com/user-attachments/assets/a1959d11-392e-4652-b35b-bb4ae5ae43c0)
+
+![image](https://github.com/user-attachments/assets/62fd8086-df3c-4a85-858e-1ddbc42edec3)
+
+![image](https://github.com/user-attachments/assets/ef61b145-d553-4085-a325-58bf5a6efdd1)
 
 
+## Watch-List
+
+![image](https://github.com/user-attachments/assets/22e06599-3e81-4b9b-87cd-54a560cec8ce)
+
+![image](https://github.com/user-attachments/assets/ad3d1371-e30d-4051-b547-68ad4c713aee)
+
+![image](https://github.com/user-attachments/assets/eb43735a-c052-4fba-90a0-dec70d729b91)
 
 
+## Scenarios
 
+![image](https://github.com/user-attachments/assets/d1d0eaf5-1fc6-44b1-9981-a392e4074dd1)
+
+![image](https://github.com/user-attachments/assets/70d6099d-4e0e-4243-bc1a-dc8e79a400c4)
+
+![image](https://github.com/user-attachments/assets/1f5d8ba7-97e2-47ca-a70b-ead91ed9d2d3)
+
+
+## Map
