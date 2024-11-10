@@ -1,19 +1,21 @@
 const express = require("express");
 const router = express.Router();
 const progressControllers = require("../controllers/progressController");
-const isAuthenticated = require("../middlewares/isAuth"); // Middleware for authentication
+const isAuthenticated = require("../middlewares/isAuth");
 
-// Get progress
-router.get("/", isAuthenticated, progressControllers.getProgress); // Ensure user is authenticated
+router.get("/", isAuthenticated, progressControllers.getProgress);
 
-// Update progress
 router.post(
   "/update",
-
+  isAuthenticated,
   progressControllers.createOrUpdateProgress
-); // Updated to match the controller method
+);
 
-// Reset progress
-router.delete("/reset", isAuthenticated, progressControllers.resetProgress);
+router.post("/reset", isAuthenticated, progressControllers.resetProgress);
 
+router.post(
+  "/increment-counter",
+  isAuthenticated,
+  progressControllers.incrementCounter
+);
 module.exports = router;

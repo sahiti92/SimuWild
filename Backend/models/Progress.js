@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
 const progressSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-  ScenarioId: { type: Number, default: 0 },
-  choices: { type: Number, default: 0 },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  scenarioId: { type: Number, required: true },
+  choices: { type: Number, required: true },
+  counter: { type: Number, default: 0, required: false },
 });
 
-module.exports = mongoose.model("Progress", progressSchema);
+const Progress = mongoose.model("Progress", progressSchema);
+module.exports = Progress;

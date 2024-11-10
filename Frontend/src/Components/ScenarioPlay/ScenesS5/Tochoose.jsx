@@ -1,16 +1,57 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
+  const navigate = useNavigate();
+
+  // Get the token from storage
+  const token = getUserFromStorage();
+  console.log(token);
 
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
+
+    // Navigate to the respective page based on choice
+    if (choice === "Choice 1") {
+      navigate("/outcome1s5");
+    } else if (choice === "Choice 2") {
+      navigate("/outcome2s5");
+    }
   };
 
   const handleShowOutcomeClick = () => {
     setShowOutcomeScene(true);
+  };
+
+  const handleRestartClick = async () => {
+    try {
+      console.log("Resetting progress");
+      const scenarioId = 5;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setSelectedChoice("");
+      setShowOutcomeScene(false);
+      alert("Progress has been reset.");
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
+    }
   };
 
   const styles = {
@@ -41,14 +82,14 @@ const ToChoose = () => {
       gap: "20px",
     },
     choice: {
-      padding: "20px 20px 20px 20px",
+      padding: "20px",
       backgroundColor: "rgba(255, 255, 255, 0.8)",
       borderRadius: "7px",
       cursor: "pointer",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       transition: "transform 0.2s",
       color: "black",
-      fontfamily: "Arial, sans-serif",
+      fontFamily: "Arial, sans-serif",
       height: "50px",
       textAlign: "center",
     },
@@ -62,7 +103,7 @@ const ToChoose = () => {
       color: "black",
       position: "relative",
     },
-    appoutcomeScene: {
+    outcomeScene: {
       marginTop: "20px",
       backgroundColor: "rgba(255, 255, 255, 0.9)",
       padding: "15px",
@@ -72,9 +113,21 @@ const ToChoose = () => {
       color: "black",
       position: "relative",
     },
+    restartButton: {
+      position: "absolute",
+      top: "20px",
+      left: "20px",
+      padding: "10px 15px",
+      backgroundColor: "#ff6666",
+      color: "white",
+      border: "none",
+      borderRadius: "5px",
+      cursor: "pointer",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+      fontSize: "16px",
+    },
   };
 
-  // Outcome messages based on selected choice
   const outcomeText =
     selectedChoice === "Choice 1"
       ? "By working together, there is hope for both the tigers and their home."
@@ -88,13 +141,13 @@ const ToChoose = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1. Help protect the tigers' habitat.
+            Help protect the tigers' habitat.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2. Ignore the problems and continue with development projects in the
+            Ignore the problems and continue with development projects in the
             area.
           </div>
         </div>
@@ -106,11 +159,26 @@ const ToChoose = () => {
           </div>
         )}
 
-        {showOutcomeScene && (
-          <div style={styles.outcomeScene}>
-            <p>{outcomeText}</p>
-          </div>
-        )}
+        <button onClick={handleRestartClick} style={styles.restartButton}>
+          Restart
+        </button>
+        <button
+          onClick={() => navigate("/save-exit")}
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            padding: "10px 15px",
+            backgroundColor: "red",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            zIndex: 1,
+          }}
+        >
+          Save & Exit
+        </button>
       </div>
     </div>
   );
