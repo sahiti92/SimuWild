@@ -10,17 +10,25 @@ import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
-import LoginForm from "./Users/Login.jsx";
+
+import Loginfrom "./Users/Login.jsx";
 import SignupForm from "./Users/Signup.jsx";
 import Dashboard from "./Components/DashBoard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
 import About from "./Components/DashBoard2/About.jsx";
+import Contact from "./Components/DashBoard2/Contact.jsx";
 import Watchlist from "./Components/WatchList/WatchList.jsx";
 import Critically_Endangered from "./Components/WatchList/Critically_Endangered.jsx";
 import Endangered from "./Components/WatchList/Endangered.jsx";
 import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
+
+import MapComponent from "./Components/Map/MapComponent.jsx";
+import Quiz from "./Components/Map/Quiz.jsx";
+import News from "./Components/DashBoard2/News.jsx";
+//import UpdatePassword from "./Users/UpdatePassword.jsx";
+
 import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -63,6 +71,38 @@ const App = () => {
           element={
             <AuthRoute>
               <About />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/contact"
+          element={
+            <AuthRoute>
+              <Contact />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/news"
+          element={
+            <AuthRoute>
+              <News />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/map"
+          element={
+            <AuthRoute>
+              <MapComponent />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <AuthRoute>
+              <Quiz />
             </AuthRoute>
           }
         />
