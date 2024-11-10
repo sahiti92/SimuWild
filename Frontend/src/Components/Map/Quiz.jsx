@@ -10,7 +10,9 @@ const Quiz = () => {
   const [showNextButton, setShowNextButton] = useState(false);
 
   const loadQuiz = () => {
-    const shuffledQuestions = [...quizQuestions].sort(() => 0.5 - Math.random());
+    const shuffledQuestions = [...quizQuestions].sort(
+      () => 0.5 - Math.random()
+    );
     setQuestions(shuffledQuestions.slice(0, 10));
     setCurrentQuestion(0);
     setScore(0);
@@ -67,11 +69,14 @@ const Quiz = () => {
               <p className={`quiz-answer-feedback ${showAnswer}`}>
                 {showAnswer === "quiz-correct"
                   ? "Correct!"
-                  :` Incorrect! The correct answer is ${questions[currentQuestion].answer}`}
+                  : ` Incorrect! The correct answer is ${questions[currentQuestion].answer}`}
               </p>
             )}
             {showNextButton && (
-              <button className="quiz-restart-button" onClick={handleNextQuestion}>
+              <button
+                className="quiz-restart-button"
+                onClick={handleNextQuestion}
+              >
                 Next
               </button>
             )}
