@@ -43,13 +43,26 @@ const progressController = {
 
   resetProgress: asyncHandler(async (req, res) => {
     const userId = req.user;
+    const { scenarioId } = req.body;  // Assume scenarioId is sent in the request body
 
-    if (!userId) {
-      return res.status(400).json({ error: "User ID is missing" });
+    if (!userId || typeof scenarioId !== "number") {
+      return res.status(400).json({ error: "User ID or scenario ID is missing or invalid" });
     }
-    await Progress.deleteMany({ userId });
-    res.json({ message: "All progress reset successfully" });
-  }),
+
+    // Find the specific progress document for the user and scenario
+    const progress = await Progress.findOne({ userId, scenarioId });
+
+    if (!progress) {
+      return res.status(404).json({ message: "No progress found for this scenario" });
+      //create/update progress
+    }
+
+    // Reset the counter to 0
+    progress.counter = 0;
+    await progress.save();
+
+    res.json({ message: "Counter reset successfully", progress });
+}),
 
   incrementCounter: asyncHandler(async (req, res) => {
     const { scenarioId } = req.body;
