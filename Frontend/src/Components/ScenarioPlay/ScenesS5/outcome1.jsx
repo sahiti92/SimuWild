@@ -68,7 +68,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -96,7 +96,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -124,7 +124,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -156,7 +156,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -188,7 +188,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -220,7 +220,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -247,7 +247,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -274,7 +274,7 @@ const Choice2 = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -329,7 +329,6 @@ const Choice2 = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("click", onPointerClick);
-      //mountRef.current.removeChild(renderer.domElement);
     };
   }, []);
 

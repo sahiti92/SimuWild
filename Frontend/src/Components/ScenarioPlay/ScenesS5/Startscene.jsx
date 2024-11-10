@@ -72,7 +72,7 @@ const Choice = () => {
 
     loader.load("/tree.glb", (gltf) => {
       positions.forEach((position) => {
-        const tree = gltf.scene.clone(); // Clone the tree model for each position
+        const tree = gltf.scene.clone();
         tree.scale.set(10, 10, 10);
         tree.position.set(position.x, position.y, position.z);
         scene.add(tree);
@@ -89,7 +89,7 @@ const Choice = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         if (animations.length > 0) {
           const action = mixer.clipAction(animations[5]);
@@ -114,7 +114,7 @@ const Choice = () => {
         scene.add(tiger);
 
         const mixer = new THREE.AnimationMixer(tiger);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
         if (animations.length > 0) {
@@ -153,18 +153,18 @@ const Choice = () => {
       (error) =>
         console.error("An error occurred while loading the tiger model:", error)
     );
-    // Load the audio
-    const listener = new THREE.AudioListener();
-    camera.add(listener);
+    // // Load the audio
+    // const listener = new THREE.AudioListener();
+    // camera.add(listener);
 
-    const backgroundMusic = new THREE.Audio(listener);
-    const audioLoader = new THREE.AudioLoader();
-    audioLoader.load("/background-music.mp3", (buffer) => {
-      backgroundMusic.setBuffer(buffer);
-      backgroundMusic.setLoop(true);
-      backgroundMusic.setVolume(1);
-      backgroundMusic.play();
-    });
+    // const backgroundMusic = new THREE.Audio(listener);
+    // const audioLoader = new THREE.AudioLoader();
+    // audioLoader.load("/background-music.mp3", (buffer) => {
+    //   backgroundMusic.setBuffer(buffer);
+    //   backgroundMusic.setLoop(true);
+    //   backgroundMusic.setVolume(1);
+    //   backgroundMusic.play();
+    // });
     camera.position.set(
       -33.51605451792094,
       17.428240950418587,
@@ -174,7 +174,7 @@ const Choice = () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      mixers.current.forEach((mixer) => mixer.update(0.01)); // Update each mixer
+      mixers.current.forEach((mixer) => mixer.update(0.01));
       controls.update();
       renderer.render(scene, camera);
     };
@@ -191,11 +191,9 @@ const Choice = () => {
     window.addEventListener("resize", handleResize);
 
     const onPointerClick = (event) => {
-      // Calculate pointer position in normalized device coordinates
       pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
       pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-      // Raycast to find intersected objects
       raycaster.setFromCamera(pointer, camera);
       const intersects = raycaster.intersectObjects(scene.children, true);
 

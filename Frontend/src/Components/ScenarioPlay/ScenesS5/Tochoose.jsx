@@ -55,7 +55,6 @@ const ToChoose = () => {
   };
 
   const styles = {
-    // Styles as defined previously
     container: {
       position: "relative",
       width: "100%",
