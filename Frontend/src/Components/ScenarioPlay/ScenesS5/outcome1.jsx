@@ -329,7 +329,7 @@ const Choice2 = () => {
     return () => {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("click", onPointerClick);
-      mountRef.current.removeChild(renderer.domElement);
+      //mountRef.current.removeChild(renderer.domElement);
     };
   }, []);
 

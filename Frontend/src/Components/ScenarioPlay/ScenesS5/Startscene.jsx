@@ -2,13 +2,16 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
+import { useNavigate } from "react-router-dom";
 const Choice = () => {
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
-
+  const navigate = useNavigate();
+  const handleClick = async () => {
+    navigate("/tochoose");
+  };
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -205,8 +208,8 @@ const Choice = () => {
     window.addEventListener("click", onPointerClick);
 
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
-      window.removeEventListener("resize", handleResize);
+      // mountRef.current.removeChild(renderer.domElement);
+      //   window.removeEventListener("resize", handleResize);
       window.removeEventListener("click", onPointerClick);
     };
   }, []);
@@ -214,6 +217,7 @@ const Choice = () => {
   return (
     <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
       <button
+        onClick={handleClick}
         style={{
           position: "absolute",
           top: "10px",

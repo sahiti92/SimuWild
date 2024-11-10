@@ -196,7 +196,7 @@ const Outcome2 = () => {
     window.addEventListener("click", onPointerClick);
 
     return () => {
-      mountRef.current.removeChild(renderer.domElement);
+      // mountRef.current.removeChild(renderer.domElement);
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("click", onPointerClick);
     };
