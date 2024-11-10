@@ -160,7 +160,7 @@ const Outcome2 = () => {
     const animate = () => {
       requestAnimationFrame(animate);
 
-      mixers.current.forEach((mixer) => mixer.update(0.01)); // Update each mixer
+      mixers.current.forEach((mixer) => mixer.update(0.01));
       controls.update();
       renderer.render(scene, camera);
     };
@@ -176,11 +176,9 @@ const Outcome2 = () => {
     window.addEventListener("resize", handleResize);
 
     const onPointerClick = (event) => {
-      // Calculate pointer position in normalized device coordinates
       pointer.x = (event.clientX / window.innerWidth) * 2 - 1;
       pointer.y = -(event.clientY / window.innerHeight) * 2 + 1;
 
-      // Raycast to find intersected objects
       raycaster.setFromCamera(pointer, camera);
       const intersects = raycaster.intersectObjects(scene.children, true);
 
