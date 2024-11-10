@@ -22,7 +22,7 @@ import Endangered from "./Components/WatchList/Endangered.jsx";
 import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
-import ThreeScene from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
+import Choice from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
 import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
 import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome11.jsx";
 import ElephantAnim21 from "./Components/ScenarioPlay/ScenesS1/outcome21.jsx";
@@ -31,6 +31,8 @@ import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose1.jsx";
 import ToChoose2 from "./Components/ScenarioPlay/ScenesS1/Tochoose2.jsx";
+import Choice2 from "./Components/ScenarioPlay/ScenesS5/outcome1.jsx";
+import Outcome2 from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -56,10 +58,8 @@ const App = () => {
           path="/dashboard"
           element={
             <AuthRoute>
-      
               <Dashboard />
-              </AuthRoute>
-        
+            </AuthRoute>
           }
         />
         <Route
@@ -90,10 +90,12 @@ const App = () => {
         <Route path="/eleph11" element={<ElephantAnim11 />} />
         <Route path="/eleph1" element={<ElephantAnim2 />} />
         <Route path="/eleph21" element={<ElephantAnim21 />} />
-        <Route path="/threeScene" element={<ThreeScene />} />
+        <Route path="/threeScene" element={<Choice />} />
+        <Route path="/outcome1s5" element={<Choice2 />} />
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/toChoose1" element={<ToChoose1 />} />
         <Route path="/toChoose2" element={<ToChoose2 />} />
+        <Route path="/outcome2s5" element={<Outcome2 />} />
         <Route path="/model" element={<GLBModel url="./elephant1.glb" />} />
       </Routes>
     </Router>
