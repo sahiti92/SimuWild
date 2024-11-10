@@ -1,23 +1,25 @@
-
 import React, { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import mapboxgl from "mapbox-gl";
-import { animalData } from "./animalData"; // Import your animal data
+import { animalData } from "./animalData";
 import "mapbox-gl/dist/mapbox-gl.css";
-import "./MapComponent.css"; // Import CSS for animations
+import "./MapComponent.css";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
+console.log("Mapbox Access Token:", mapboxgl.accessToken);
 
 const MapComponent = () => {
   const mapContainerRef = useRef(null);
   const [animalInfo, setAnimalInfo] = useState(null);
   const [showAnimalImage, setShowAnimalImage] = useState(false);
   const [imagePosition, setImagePosition] = useState({ x: 0, y: 0 });
+  const navigate = useNavigate();
 
   useEffect(() => {
     const map = new mapboxgl.Map({
       container: mapContainerRef.current,
-      style: "mapbox://styles/ikshi/cm2ylosvs00qr01qwbzj6ax6k", // Replace with your style ID
-      center: [78.9629, 20.5937], // Center on India
+      style: "mapbox://styles/mapbox/streets-v11",
+      center: [78.9629, 20.5937],
       zoom: 4,
     });
 
@@ -32,10 +34,9 @@ const MapComponent = () => {
           setAnimalInfo(animalData[state]);
           setShowAnimalImage(true);
 
-          // Hide image after a delay for effect
           setTimeout(() => {
             setShowAnimalImage(false);
-          }, 5000); // Image stays for 3 seconds
+          }, 20000);
         });
       });
     });
@@ -46,9 +47,14 @@ const MapComponent = () => {
   return (
     <div style={{ position: "relative", height: "100vh" }}>
       <div ref={mapContainerRef} style={{ width: "100vw", height: "100vh" }} />
+      <div className="quiz-button-container">
+        <button className="start-quiz-button" onClick={() => navigate("/quiz")}>
+          Start Quiz
+        </button>
+      </div>
       {showAnimalImage && animalInfo && (
         <div
-          className="animal-image"
+          className="map-animal-image"
           style={{
             top: imagePosition.y,
             left: imagePosition.x,

@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../redux/slice/authSlice";
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -20,7 +22,7 @@ const Dashboard = () => {
       title: "Virtual Map and Quiz",
       description: "Interactive learning through maps and quizzes.",
       image: "/map.jpg",
-      path: "#",
+      path: "/map",
     },
     {
       title: "Indigenous Knowledge",
@@ -29,8 +31,10 @@ const Dashboard = () => {
       path: "#",
     },
   ];
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [clickedIndex, setClickedIndex] = useState(null);
+  const [showProfileOptions, setShowProfileOptions] = useState(false);
 
   const handleTitleClick = (index) => {
     if (clickedIndex === index) {
@@ -41,6 +45,17 @@ const Dashboard = () => {
     }
   };
 
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate("/login"); // Adjust this to your login route
+  };
+
+  const handleUpdatePassword = () => {
+    navigate("/updatePass");
+  };
+  const toggleProfileOptions = () => {
+    setShowProfileOptions((prev) => !prev);
+  };
   return (
     <div className="dashboard" style={{ width: "100vw", height: "100vh" }}>
       <div>
@@ -48,20 +63,17 @@ const Dashboard = () => {
           <nav>
             <ul>
               <li>
-                <Link to="/about">Home</Link>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/contact">Contact Us</Link>
               </li>
               <li>
-                <Link to="/about">Contact</Link>
-              </li>
-              <li>
-                <Link to="/about">Services</Link>
+                <Link to="/news">News</Link>
               </li>
             </ul>
           </nav>
-          {/* <div className="user-profile">
+          <div className="user-profile" onClick={toggleProfileOptions}>
             <svg
               className="profile-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -71,7 +83,17 @@ const Dashboard = () => {
             >
               <path d="M12 12c2.67 0 8 1.34 8 4v1H4v-1c0-2.66 5.33-4 8-4zm0-2a4 4 0 110-8 4 4 0 010 8z" />
             </svg>
-          </div> */}
+            {showProfileOptions && (
+              <div className="profile-options">
+                <button onClick={handleUpdatePassword}>Update Password</button>
+                <hr />
+                <button onClick={handleLogout}>Logout</button>
+                <hr />
+                <button>Progress</button>
+                <hr />
+              </div>
+            )}
+          </div>
         </header>
         <div className="image-container">
           <img
@@ -91,8 +113,8 @@ const Dashboard = () => {
           gain insights into the complex relationships between people, wildlife
           and the environment. Every decision you make on this platform mirrors
           real-world consequences, encouraging actionable efforts to preserve
-          biodiversity. Join a community of passionate individuals to take part in
-          interactive learning and help protect our planet’s incredible
+          biodiversity. Join a community of passionate individuals to take part
+          in interactive learning and help protect our planet’s incredible
           wildlife. Together we can make informed decisions and build a future
           where people and nature thrive side by side.
         </p>
@@ -104,11 +126,11 @@ const Dashboard = () => {
           <section className="features-section">
             {features.map((feature, index) => (
               <div key={index} className="feature-block">
-                <img 
-                 onClick={() => handleTitleClick(index)}
+                <img
+                  onClick={() => handleTitleClick(index)}
                   src={feature.image}
                   alt={feature.title}
-                  className="feature-image" 
+                  className="feature-image"
                 />
                 <h3
                   onClick={() => handleTitleClick(index)}
