@@ -14,7 +14,7 @@ router.post(
 ); // Updated path
 
 // Reset progress
-router.delete("/reset", isAuthenticated, progressControllers.resetProgress);
+router.post("/reset", isAuthenticated, progressControllers.resetProgress);
 
 router.post(
   "/increment-counter",

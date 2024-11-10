@@ -31,11 +31,16 @@ const ToChoose = () => {
   const handleRestartClick = async () => {
     try {
       console.log("Resetting progress");
-      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const scenarioId = 5;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setSelectedChoice("");
       setShowOutcomeScene(false);
