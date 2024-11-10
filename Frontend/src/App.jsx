@@ -8,11 +8,12 @@ import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ElephantAnim.jsx";
+import ElephantAnim11 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx"
 //import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
-import SignUp from "./Users/SignUp.jsx";
-import Dashboard from "./Components/Dashboard2/Dashboard.jsx";
+import SignUp from "./Users/Signup.jsx";
+import Dashboard from "./Components/DashBoard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
 import About from "./Components/DashBoard2/About.jsx";
 import Watchlist from "./Components/WatchList/WatchList.jsx";
@@ -23,10 +24,13 @@ import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
 import ThreeScene from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
 import ElephantAnim1 from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
-import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome1.jsx";
+import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome11.jsx";
+import ElephantAnim21 from "./Components/ScenarioPlay/ScenesS1/outcome21.jsx";
+
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
-import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose.jsx";
+import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose1.jsx";
+import ToChoose2 from "./Components/ScenarioPlay/ScenesS1/Tochoose2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -83,11 +87,14 @@ const App = () => {
         <Route path="/nearThreatened" element={<NearThreatened />} />
         <Route path="/species/:scientificName" element={<SpeciesDetails />} />
         <Route path="/eleph" element={<ElephantAnim1 />} />
+        <Route path="/eleph11" element={<ElephantAnim11 />} />
         <Route path="/eleph1" element={<ElephantAnim2 />} />
+        <Route path="/eleph21" element={<ElephantAnim21 />} />
         <Route path="/threeScene" element={<ThreeScene />} />
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/toChoose1" element={<ToChoose1 />} />
-        <Route path="/model" element={<GLBModel url="./elipent.glb" />} />
+        <Route path="/toChoose2" element={<ToChoose2 />} />
+        <Route path="/model" element={<GLBModel url="./elephant1.glb" />} />
       </Routes>
     </Router>
   );

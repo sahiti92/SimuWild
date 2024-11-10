@@ -17,13 +17,13 @@ const ElephantAnim1 = () => {
     mountRef.current.appendChild(renderer.domElement);
 
     
-    scene.background = new THREE.Color(0x87CEEB);
+    //scene.background = new THREE.Color(0x87CEEB);
     
     const light = new THREE.DirectionalLight(0xffffff, 1);
-    light.position.set(5, 5, 5).normalize();
+    light.position.set(10, 10, 5).normalize();
     scene.add(light);
 
-    const ambientLight = new THREE.AmbientLight(0x404040, 2);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 2);
     scene.add(ambientLight);
 
     const pointLight1 = new THREE.PointLight(0xffffff, 1, 100);
@@ -36,7 +36,7 @@ const ElephantAnim1 = () => {
 
     
     const planeGeometry = new THREE.PlaneGeometry(1500, 1500);
-    const grassPlaneMaterial = new THREE.MeshStandardMaterial({ color: 0x51A302 });
+    const grassPlaneMaterial = new THREE.MeshStandardMaterial({ color: 0x302D26 });
     const plane = new THREE.Mesh(planeGeometry, grassPlaneMaterial);
     plane.rotation.x = -Math.PI / 2;
     plane.position.y = -10;
@@ -51,18 +51,20 @@ const ElephantAnim1 = () => {
     controls.minDistance = 50; 
     controls.maxDistance = 300; 
     camera.position.set(0, 50, 250);
-
     
+
+    renderer.shadowMap.enabled = false;
+
     const loader = new GLTFLoader();
     loader.load('./elephant.glb', (gltf) => {
       const model = gltf.scene;
       const elephants = [];
 
       const elephantPositions = [
-        { x: -100, z: 100 },
-        { x: -30, z: 30 },
-        { x: 10, z: 0 },
-        { x: 40, z: -20 },
+        { x: -400, z: -100 },
+        { x: -300, z: -30 },
+        { x: -430, z: 0 },
+        { x: -390, z: -20 },
         { x: -200, z: 180 },
         { x: -350, z: 180 },
         { x: -300, z: 180 },
@@ -81,6 +83,23 @@ const ElephantAnim1 = () => {
         elephants.push(clonedElephant);
         scene.add(clonedElephant);
       });
+      loader.load(
+        // './barbed_wire.glb', // Ensure this path is correct
+        '/village.glb',
+         (gltf) => {
+           const fence = gltf.scene;
+           fence.position.set(200, -10, 100);
+           fence.scale.set(4 ,4, 3 ); 
+           fence.rotation.y = 3* Math.PI /2; // 45 degrees rotation on the Y-axis
+           //fence.rotation.z = Math.PI;     // 180 degrees rotation on the Z-axis
+
+           scene.add(fence);
+         },
+         undefined,
+         (error) => {
+           console.error("An error occurred while loading thse model:", error);
+         }
+       );
 
       if (gltf.animations && gltf.animations.length) {
         const mixers = elephants.map(elephant => {
@@ -95,12 +114,15 @@ const ElephantAnim1 = () => {
         animate();
       }
     });
-
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load("/sky_scene1.jpg", (texture) => {
+      scene.background = texture;
+    });
     // Load the Forest and Green Field Models
     loader.load('./forest.glb', (gltf) => {
       const forest = gltf.scene;
       const forestPositions = [
-        { x: -50, z: 50 },
+        //{ x: -50, z: 50 },
         { x: -580, z: 280 },
         { x: -580, z: 580 },
         {x: -580, z: -10},
@@ -120,20 +142,10 @@ const ElephantAnim1 = () => {
         scene.add(clonedForest);
       });
     });
-    loader.load('./green_field.glb', (gltf) => {
-      const field = gltf.scene;
-      field.scale.set(10, 10, 10);
-      field.position.set(20, -10, 280);
-      scene.add(field);
-
-      const secondField = field.clone();
-      secondField.position.set(170, -10, 150);
-      scene.add(secondField);
-
-      const thirdField = field.clone();
-      thirdField.position.set(200, -10, -150);
-      scene.add(thirdField);
-    });
+   
+  
+    
+    
 
     // Animation loop
     const animate = (mixers = []) => {
@@ -165,90 +177,3 @@ const ElephantAnim1 = () => {
 };
 
 export default ElephantAnim1;
-// import React, { useEffect, useRef } from 'react';
-// import * as THREE from 'three';
-// import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-// import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
-
-
-// const ElephantAnim1 = () => {
-//   const mountRef = useRef(null);
-
-//   useEffect(() => {
-//     // Set up the scene, camera, and renderer
-//     const scene = new THREE.Scene();
-//     const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-//     const renderer = new THREE.WebGLRenderer({ antialias: true });
-//     renderer.setSize(window.innerWidth, window.innerHeight);
-//     mountRef.current.appendChild(renderer.domElement);
-
-//     // Add lighting
-//     const ambientLight = new THREE.AmbientLight(0x404040, 2); // Soft light
-//     scene.add(ambientLight);
-//     const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
-//     directionalLight.position.set(5, 10, 5);
-//     scene.add(directionalLight);
-
-//     // Set up camera controls
-//     const controls = new OrbitControls(camera, renderer.domElement);
-//     controls.enableDamping = true;
-//     camera.position.set(0, 50, 200);
-
-//     // Animation mixer and clock
-//     const clock = new THREE.Clock();
-//     let mixer;
-
-//     // Load the GLB model
-//     const loader = new GLTFLoader();
-//     loader.load(
-//       '/elephant1.glb',
-//       (gltf) => {
-//         const model = gltf.scene;
-//         model.position.set(0, -5, 0); // Adjust position if necessary
-//         scene.add(model);
-
-//         // Set up animation mixer and play all animations
-//         if (gltf.animations && gltf.animations.length) {
-//           mixer = new THREE.AnimationMixer(model);
-//           gltf.animations.forEach((clip) => {
-//             const action = mixer.clipAction(clip);
-//             action.play();
-//           });
-//         }
-
-//         // Render the scene
-//         const animate = () => {
-//           requestAnimationFrame(animate);
-
-//           const delta = clock.getDelta();
-//           if (mixer) mixer.update(delta);
-
-//           controls.update();
-//           renderer.render(scene, camera);
-//         };
-
-//         animate();
-//       },
-//       undefined,
-//       (error) => console.error('An error occurred while loading the model:', error)
-//     );
-
-//     // Handle window resizing
-//     const handleResize = () => {
-//       camera.aspect = window.innerWidth / window.innerHeight;
-//       camera.updateProjectionMatrix();
-//       renderer.setSize(window.innerWidth, window.innerHeight);
-//     };
-//     window.addEventListener('resize', handleResize);
-
-//     // Cleanup function
-//     return () => {
-//       window.removeEventListener('resize', handleResize);
-//       renderer.dispose();
-//     };
-//   }, []);
-
-//   return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
-// };
-
-// export default ElephantAnim1;

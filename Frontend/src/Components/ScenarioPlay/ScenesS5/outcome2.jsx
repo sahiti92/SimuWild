@@ -13,7 +13,7 @@ function Model({ url, onLoad }) {
             onLoad(animations);
 
             // Set and play the first animation with a loop
-            const action = mixer.clipAction(animations[0]);
+            const action = mixer.clipAction(animations[1]);
             action.setLoop(THREE.LoopRepeat, Infinity); // Loop the animation infinitely
             action.play();
             setCurrentAction(action);
@@ -52,7 +52,7 @@ function GLBModel({ url }) {
 
     const playAnimation = (index) => {
         if (mixer && animations.length > index) {
-            const action = mixer.clipAction(animations[index]);
+            const action = mixer.clipAction(animations[3]);
             action.reset().setLoop(THREE.LoopRepeat, Infinity).fadeIn(0.5).play();
         } else {
             console.warn("Mixer is not initialized or animation index is invalid.");
