@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/75b76009-b38a-4b92-80b9-e2b1ed4e9d13)# SimuWild
+# SimuWild
                               
 
 ## Team Name: UG3-9
@@ -92,6 +92,29 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 
 ![image](https://github.com/user-attachments/assets/9b7d129e-8c16-44be-85bd-556131211f8b)
 
+![image](https://github.com/user-attachments/assets/a1959d11-392e-4652-b35b-bb4ae5ae43c0)
+
 ![image](https://github.com/user-attachments/assets/62fd8086-df3c-4a85-858e-1ddbc42edec3)
 
+![image](https://github.com/user-attachments/assets/ef61b145-d553-4085-a325-58bf5a6efdd1)
 
+
+## Watch-List
+
+![image](https://github.com/user-attachments/assets/22e06599-3e81-4b9b-87cd-54a560cec8ce)
+
+![image](https://github.com/user-attachments/assets/ad3d1371-e30d-4051-b547-68ad4c713aee)
+
+![image](https://github.com/user-attachments/assets/eb43735a-c052-4fba-90a0-dec70d729b91)
+
+
+## Scenarios
+
+![image](https://github.com/user-attachments/assets/d1d0eaf5-1fc6-44b1-9981-a392e4074dd1)
+
+![image](https://github.com/user-attachments/assets/70d6099d-4e0e-4243-bc1a-dc8e79a400c4)
+
+![image](https://github.com/user-attachments/assets/1f5d8ba7-97e2-47ca-a70b-ead91ed9d2d3)
+
+
+## Map
