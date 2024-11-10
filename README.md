@@ -88,6 +88,10 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 
 ![image](https://github.com/user-attachments/assets/86b74afc-feef-4240-b1ba-276d8cd9678e)
 
+## Dashboard
 
+![image](https://github.com/user-attachments/assets/9b7d129e-8c16-44be-85bd-556131211f8b)
+
+![image](https://github.com/user-attachments/assets/62fd8086-df3c-4a85-858e-1ddbc42edec3)
 
 
