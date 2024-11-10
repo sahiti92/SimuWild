@@ -22,17 +22,23 @@ const progressController = {
   }),
 
   getProgress: asyncHandler(async (req, res) => {
-    const userId = req.user;
-    const progress = await Progress.find({ userId }).populate(
-      "userId",
-      "username email"
-    );
+    try {
+      const userId = req.user;
+      const progress = await Progress.find({ userId }).populate(
+        "userId",
+        "username email"
+      );
 
-    if (!progress.length) {
-      return res.status(404).json({ message: "No progress found" });
+      // If no progress is found, return an empty array
+      if (!progress.length) {
+        return res.json([]); // Return an empty array instead of a 404 status
+      }
+
+      res.json(progress);
+    } catch (error) {
+      console.error("Error fetching progress:", error);
+      res.status(500).json({ error: "Failed to retrieve progress" });
     }
-
-    res.json(progress);
   }),
 
   resetProgress: asyncHandler(async (req, res) => {
@@ -65,12 +71,12 @@ const progressController = {
 
     // Check if counter is 0, then increment it
     //if (progress.counter === 0) {
-      progress.counter += 1;
-      await progress.save();
-      return res.json({
-        message: "Counter incremented",
-        counter: progress.counter,
-      });   //}
+    progress.counter += 1;
+    await progress.save();
+    return res.json({
+      message: "Counter incremented",
+      counter: progress.counter,
+    }); //}
 
     res.json({ message: "Counter is not 0, no increment performed" });
   }),
