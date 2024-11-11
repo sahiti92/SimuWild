@@ -8,13 +8,13 @@ const SummaryPage = () => {
   // Dummy handler to navigate to a starting page or restart the flow
   const handleRestart = () => {
     console.log("Restart clicked");
-    navigate('/start'); // Assuming '/start' is the route to restart the game
+    navigate('/startS3'); // Assuming '/start' is the route to restart the game
   };
 
   // Dummy handler to navigate to an exit or home page
   const handleExit = () => {
     console.log("Exit clicked");
-    navigate('/home'); // Assuming '/home' is the exit or home route
+    navigate('/scenarios'); // Assuming '/home' is the exit or home route
   };
 
   return (
