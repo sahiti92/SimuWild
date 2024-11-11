@@ -62,7 +62,7 @@ body {
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 1.5);
   overflow: hidden;
   white-space: nowrap;
-  font-size: 82px;
+  font-size: 68px;
   animation: typing 3.5s steps(40, end);
 }
 .subscript {

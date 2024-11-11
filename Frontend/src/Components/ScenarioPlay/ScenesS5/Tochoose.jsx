@@ -1,18 +1,27 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
-//! Get the token
 
 const ToChoose = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
+  const navigate = useNavigate();
 
-  // Assuming a valid token is available in localStorage (you may get it from a global state or props)
-  const token = getUserFromStorage(); // Replace with your actual method of fetching the token
+  // Get the token from storage
+  const token = getUserFromStorage();
   console.log(token);
+
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
+
+    // Navigate to the respective page based on choice
+    if (choice === "Choice 1") {
+      navigate("/outcome1s5");
+    } else if (choice === "Choice 2") {
+      navigate("/outcome2s5");
+    }
   };
 
   const handleShowOutcomeClick = () => {
@@ -21,20 +30,23 @@ const ToChoose = () => {
 
   const handleRestartClick = async () => {
     try {
-      console.log(" To");
-      console.log(token);
-      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      console.log("Resetting progress");
+      const scenarioId = 5;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      console.log("Server Response:", error.response?.data);
       alert(
         "Failed to reset progress: " +
           (error.response?.data?.error || "Unknown error")
@@ -129,13 +141,13 @@ const ToChoose = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1. Help protect the tigers' habitat.
+            Help protect the tigers' habitat.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2. Ignore the problems and continue with development projects in the
+            Ignore the problems and continue with development projects in the
             area.
           </div>
         </div>
@@ -147,14 +159,25 @@ const ToChoose = () => {
           </div>
         )}
 
-        {showOutcomeScene && (
-          <div style={styles.outcomeScene}>
-            <p>{outcomeText}</p>
-          </div>
-        )}
-
-        <button style={styles.restartButton} onClick={handleRestartClick}>
+        <button onClick={handleRestartClick} style={styles.restartButton}>
           Restart
+        </button>
+        <button
+          onClick={() => navigate("/save-exit")}
+          style={{
+            position: "absolute",
+            top: "10px",
+            right: "10px",
+            padding: "10px 15px",
+            backgroundColor: "red",
+            color: "#fff",
+            border: "none",
+            borderRadius: "5px",
+            cursor: "pointer",
+            zIndex: 1,
+          }}
+        >
+          Save & Exit
         </button>
       </div>
     </div>

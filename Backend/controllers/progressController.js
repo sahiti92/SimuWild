@@ -5,7 +5,7 @@ const progressController = {
   createOrUpdateProgress: asyncHandler(async (req, res) => {
     const { scenarioId, choices } = req.body;
     const userId = req.user;
-    console.log(userId);
+
     if (typeof scenarioId !== "number" || typeof choices !== "number") {
       return res
         .status(400)
@@ -22,27 +22,72 @@ const progressController = {
   }),
 
   getProgress: asyncHandler(async (req, res) => {
-    const userId = req.user;
-    const progress = await Progress.find({ userId }).populate(
-      "userId",
-      "username email"
-    );
+    try {
+      const userId = req.user;
+      const progress = await Progress.find({ userId }).populate(
+        "userId",
+        "username email"
+      );
 
-    if (!progress.length) {
-      return res.status(404).json({ message: "No progress found" });
+      if (!progress.length) {
+        return res.json([]);
+      }
+
+      res.json(progress);
+    } catch (error) {
+      console.error("Error fetching progress:", error);
+      res.status(500).json({ error: "Failed to retrieve progress" });
     }
-
-    res.json(progress);
   }),
 
   resetProgress: asyncHandler(async (req, res) => {
     const userId = req.user;
-    console.log(userId);
-    if (!userId) {
-      return res.status(400).json({ error: "User ID is missing" });
+    const { scenarioId } = req.body;
+
+    if (!userId || typeof scenarioId !== "number") {
+      return res
+        .status(400)
+        .json({ error: "User ID or scenario ID is missing or invalid" });
     }
-    await Progress.deleteMany({ userId });
-    res.json({ message: "All progress reset successfully" });
+
+    const progress = await Progress.findOne({ userId, scenarioId });
+
+    if (!progress) {
+      return res
+        .status(404)
+        .json({ message: "No progress found for this scenario" });
+    }
+
+    progress.counter = 0;
+    await progress.save();
+
+    res.json({ message: "Counter reset successfully", progress });
+  }),
+
+  incrementCounter: asyncHandler(async (req, res) => {
+    const { scenarioId } = req.body;
+    const userId = req.user;
+
+    if (typeof scenarioId !== "number") {
+      return res.status(400).json({ error: "Scenario ID must be a number" });
+    }
+
+    const progress = await Progress.findOne({ userId, scenarioId });
+
+    if (!progress) {
+      return res
+        .status(404)
+        .json({ message: "No progress found for this scenario" });
+    }
+
+    progress.counter += 1;
+    await progress.save();
+    return res.json({
+      message: "Counter incremented",
+      counter: progress.counter,
+    });
+
+    res.json({ message: "Counter is not 0, no increment performed" });
   }),
 };
 

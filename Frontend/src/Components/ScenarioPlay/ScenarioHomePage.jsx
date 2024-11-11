@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import "./ScenarioHomePage.css";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getUserFromStorage } from "../../utils/getUser";
 const ScenarioHomePage = () => {
   const [backgroundImage, setBackgroundImage] = useState(
     "https://hatibondhu.org/assets/img/hec.jpg"
@@ -20,6 +22,34 @@ const ScenarioHomePage = () => {
     setHeadingKey((prevKey) => prevKey + 1);
     setPageLink(newPageLink);
   };
+  async function getCounterByScenario(scenarioId) {
+    try {
+      const token = getUserFromStorage();
+      const response = await axios.get(
+        "http://localhost:8001/api/v1/progress",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      const progressData = response.data;
+      const scenarioProgress = progressData.find(
+        (progress) => progress.scenarioId === scenarioId
+      );
+      if (scenarioProgress) {
+        console.log("Counter value:", scenarioProgress.counter);
+        return scenarioProgress.counter;
+      } else {
+        console.log("No progress found for the specified scenarioId");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error fetching progress data:", error);
+      return null;
+    }
+  }
   const goToPage = () => {
     navigate(pageLink);
   };
@@ -124,12 +154,12 @@ const ScenarioHomePage = () => {
           }
         />
         <img
-          src="https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg"
+          src="https://t3.ftcdn.net/jpg/06/61/07/06/360_F_661070665_QykUihBeWNCNuCmT0N0NI4wYvl68NzgC.jpg"
           alt="Image 4"
           className="thumbnail"
           onMouseEnter={() =>
             changeBackground(
-              "https://rhinos.org/wp-content/uploads/2024/07/1720542345016.jpeg",
+              "https://t3.ftcdn.net/jpg/06/61/07/06/360_F_661070665_QykUihBeWNCNuCmT0N0NI4wYvl68NzgC.jpg",
               "Rhino Conservation",
               "As poaching rises, can the rhino's ancient home still offer refuge?",
               "./scenario2"

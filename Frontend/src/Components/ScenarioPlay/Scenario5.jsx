@@ -1,6 +1,33 @@
 import React from "react";
-import "./Scenario.css"; 
+import "./Scenario.css";
+import axios from "axios";
+import { getUserFromStorage } from "../../utils/getUser";
+import { useNavigate } from "react-router-dom";
 const Scenario5 = () => {
+  const scenarioId = 1;
+  const navigate = useNavigate();
+  // Define the handleClick function
+  const handleClick = async () => {
+    try {
+      const token = getUserFromStorage();
+      const response = await axios.post(
+        "http://localhost:8001/api/v1/progress/increment-counter",
+        { scenarioId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`, // Use token from local storage
+          },
+        }
+      );
+
+      console.log(response.data.message); // Display response message
+    } catch (error) {
+      console.error("Error incrementing counter:", error);
+    }
+
+    navigate("/threeScene");
+  };
   return (
     <div className="scenario-container">
       <div className="image-container">
@@ -25,7 +52,9 @@ const Scenario5 = () => {
             territory. In 2019, tiger-related attacks on humans peaked, leading
             to a public outcry.
           </p>
-          <button className="small-play-button">Play</button>
+          <button className="small-play-button" onClick={handleClick}>
+            Play
+          </button>
         </div>
       </div>
     </div>

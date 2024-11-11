@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import axios from "axios";
+import { getUserFromStorage } from "../../utils/getUser";
 const Dashboard = () => {
   const features = [
     {
@@ -29,14 +30,58 @@ const Dashboard = () => {
       path: "#",
     },
   ];
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const [clickedIndex, setClickedIndex] = useState(null);
 
-  const handleTitleClick = (index) => {
+  const handleTitleClick = async (index) => {
     if (clickedIndex === index) {
       setClickedIndex(null);
     } else {
       setClickedIndex(index);
+      console.log("index");
+      console.log(index);
+      if (index == 0) {
+        //const API_BASE_URL = "http://localhost:8001/api/progress";
+        const token = getUserFromStorage();
+        try {
+          // Step 1: Get the current progress of the user
+          const progressResponse = await axios.get(
+            "http://localhost:8001/api/v1/progress",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`, // Include the token
+              },
+            }
+          );
+
+          const progressData = progressResponse.data;
+          console.log("progressData");
+          console.log(progressData);
+          // Step 2: Check if the progress array is empty
+          if (!progressData.length) {
+            // Array is empty, so update progress for scenarioIds 1, 3, and 5
+            const scenarioIds = [1, 3, 5];
+            await Promise.all(
+              scenarioIds.map(async (scenarioId) => {
+                await axios.post(
+                  "http://localhost:8001/api/v1/progress/update",
+                  { scenarioId, choices: 0 },
+                  {
+                    headers: {
+                      Authorization: `Bearer ${token}`,
+                    },
+                  }
+                );
+              })
+            );
+            console.log("Progress initialized for scenario IDs 1, 3, and 5.");
+          } else {
+            console.log("User already has progress data, no update needed.");
+          }
+        } catch (error) {
+          console.error("Error updating progress:", error);
+        }
+      }
       navigate(features[index].path);
     }
   };
@@ -91,8 +136,8 @@ const Dashboard = () => {
           gain insights into the complex relationships between people, wildlife
           and the environment. Every decision you make on this platform mirrors
           real-world consequences, encouraging actionable efforts to preserve
-          biodiversity. Join a community of passionate individuals to take part in
-          interactive learning and help protect our planet’s incredible
+          biodiversity. Join a community of passionate individuals to take part
+          in interactive learning and help protect our planet’s incredible
           wildlife. Together we can make informed decisions and build a future
           where people and nature thrive side by side.
         </p>
@@ -104,11 +149,11 @@ const Dashboard = () => {
           <section className="features-section">
             {features.map((feature, index) => (
               <div key={index} className="feature-block">
-                <img 
-                 onClick={() => handleTitleClick(index)}
+                <img
+                  onClick={() => handleTitleClick(index)}
                   src={feature.image}
                   alt={feature.title}
-                  className="feature-image" 
+                  className="feature-image"
                 />
                 <h3
                   onClick={() => handleTitleClick(index)}
