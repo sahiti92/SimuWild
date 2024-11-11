@@ -24,5 +24,5 @@ app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/", userRouter);
 app.use(errorHandler);
-const PORT = process.env.PORT || 8001;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => console.log(`Server running on port..${PORT}`));
