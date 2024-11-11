@@ -21,12 +21,16 @@ import Endangered from "./Components/WatchList/Endangered.jsx";
 import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
-import Choice2 from "./Components/ScenarioPlay/ScenesS5/outcome1.jsx";
 import Choice from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
 import ElephantAnim11 from "./Components/ScenarioPlay/ScenesS1/outcome11.jsx";
 import ElephantAnim21 from "./Components/ScenarioPlay/ScenesS1/outcome21.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
+import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
+import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose1.jsx";
+import ToChoose2 from "./Components/ScenarioPlay/ScenesS1/Tochoose2.jsx";
+import Choice2 from "./Components/ScenarioPlay/ScenesS5/outcome1.jsx";
+import Outcome2 from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 import WetlandScene from "./Components/ScenarioPlay/ScenesS3/StartScene.jsx";
 import Slider from "./Components/ScenarioPlay/start.jsx";
 import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
@@ -53,7 +57,7 @@ const App = () => {
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
         <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
-       
+
         <Route
           path="/dashboard"
           element={
@@ -93,6 +97,10 @@ const App = () => {
         <Route path="/threeScene" element={<Choice />} /> 
         <Route path="/outcome1s5" element={<Choice2 />} />
         <Route path="/toChoose" element={<ToChoose />} />
+        <Route path="/toChoose1" element={<ToChoose1 />} />
+        <Route path="/toChoose2" element={<ToChoose2 />} />
+        <Route path="/outcome2s5" element={<Outcome2 />} />
+        <Route path="/model" element={<GLBModel url="./elephant1.glb" />} />
         <Route path="/outcome1S3" element={<WetlandScene />} />
         <Route path="/outcome2S3" element={<Community/>}/>
         <Route path="/sum3" element={<SummaryPage/>}/>
