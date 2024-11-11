@@ -14,6 +14,12 @@ const ToChoose2 = () => {
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
+     // Navigate to the respective page based on choice
+     if (choice === "Choice 1") {
+      navigate("/eleph21");
+    } else if (choice === "Choice 2") {
+      navigate("/eleph12");
+    }
   };
 
   const handleShowOutcomeClick = () => {
