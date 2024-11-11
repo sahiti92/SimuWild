@@ -274,4 +274,3 @@ const textStyle = {
   boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.5)',
   letterSpacing: '0.5px',
 };
->>>>>>> 1727ca37750b98e38f1b342e7719a3c377d1ecdc
