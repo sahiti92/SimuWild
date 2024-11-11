@@ -6,6 +6,7 @@ const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const errorHandler = require("./middlewares/errorHandler");
 const url = process.env.MONGODB_URL;
+
 //! user:cs22b027
 //! pass: Mt4K37HNfQYF50W5
 mongoose
@@ -21,6 +22,7 @@ const corsOptions = {
    origin: [process.env.CLIENT_URL],
 };
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions));
 app.use(express.json());
 app.use("/", userRouter);
 app.use(errorHandler);
