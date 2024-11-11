@@ -157,39 +157,40 @@ function SkyBackground() {
   const skyTexture = useLoader(TextureLoader, './nightsky.jpg');
   return <primitive attach="background" object={skyTexture} />;
 }
-const handleRestartClick = async () => {
-  try {
-    console.log("Resetting progress");
-    const scenarioId = 1;
-    await axios.post(
-      "http://localhost:8001/api/v1/progress/reset",
-      { scenarioId },
-      {
-        headers: {
-          Authorization: Bearer`${token}`,
-        },
-      }
-    );
 
-    setSelectedChoice("");
-    setShowOutcomeScene(false);
-    alert("Progress has been reset.");
-    navigate("/startS3")
-  } catch (error) {
-    console.error("Error resetting progress:", error);
-    alert(
-      "Failed to reset progress: " +
-        (error.response?.data?.error || "Unknown error")
-    );
-  }
-};
-const handleExitClick = () => {
-     navigate("/scenarios");
- };
 
 export default function WetlandScene() {
   const navigate = useNavigate();
   const cameraRef = useRef();
+  const handleRestartClick = async () => {
+    try {
+      console.log("Resetting progress");
+      const scenarioId = 1;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: Bearer`${token}`,
+          },
+        }
+      );
+  
+      setSelectedChoice("");
+      setShowOutcomeScene(false);
+      alert("Progress has been reset.");
+      navigate("/startS3")
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
+    }
+  };
+  const handleExitClick = () => {
+       navigate("/scenarios");
+   };
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>

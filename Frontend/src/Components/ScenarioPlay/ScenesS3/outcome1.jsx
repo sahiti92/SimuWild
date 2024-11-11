@@ -5,6 +5,10 @@ import { AnimationMixer } from 'three';
 import { useNavigate } from 'react-router-dom';
 import { TextureLoader } from 'three';
 import axios from 'axios';
+
+
+
+
 // Component for static models (no animation)
 function StaticModel({ path, scale, position, rotation }) {
   const { scene } = useGLTF(path);
@@ -123,38 +127,37 @@ function SkyBackground() {
   const skyTexture = useLoader(TextureLoader, './sky2.jpg');
   return <primitive attach="background" object={skyTexture} />;
 }
-const handleRestartClick = async () => {
-  try {
-    console.log("Resetting progress");
-    const scenarioId = 1;
-    await axios.post(
-      "http://localhost:8001/api/v1/progress/reset",
-      { scenarioId },
-      {
-        headers: {
-          Authorization: Bearer`${token}`,
-        },
-      }
-    );
 
-    setSelectedChoice("");
-    setShowOutcomeScene(false);
-    alert("Progress has been reset.");
-    navigate("/startS3")
-  } catch (error) {
-    console.error("Error resetting progress:", error);
-    alert(
-      "Failed to reset progress: " +
-        (error.response?.data?.error || "Unknown error")
-    );
-  }
-};
-const handleExitClick = () => {
-     navigate("/scenarios");
- };
+
 
 export default function Community() {
-  const navigate = useNavigate();
+  const navigate=useNavigate();
+  const handleRestartClick = async () => {
+    try {
+      console.log("Resetting progress");
+      const scenarioId = 1;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: Bearer`${token}`,
+          },
+        }
+      );
+  
+      setSelectedChoice("");
+      setShowOutcomeScene(false);
+      alert("Progress has been reset.");
+      // navigate("/startS3")
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
+    }
+  };
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
@@ -174,7 +177,8 @@ export default function Community() {
       >
         ReStart 
       </button>
-      <button onClick={handleExitClick}
+      <button onClick={()=>
+        navigate("/sum3")}
         style={{
           position: "absolute",
           top: "10px",

@@ -21,12 +21,12 @@ import Endangered from "./Components/WatchList/Endangered.jsx";
 import Vulnerable from "./Components/WatchList/Vulnerable.jsx";
 import NearThreatened from "./Components/WatchList/NearThreatened.jsx";
 import SpeciesDetails from "./Components/WatchList/SpeciesDetails.jsx";
+import Choice2 from "./Components/ScenarioPlay/ScenesS5/outcome1.jsx";
 import Choice from "./Components/ScenarioPlay/ScenesS5/Startscene.jsx";
 import ElephantAnim from "./Components/ScenarioPlay/ScenesS1/StartScene.jsx";
 import ElephantAnim11 from "./Components/ScenarioPlay/ScenesS1/outcome11.jsx";
 import ElephantAnim21 from "./Components/ScenarioPlay/ScenesS1/outcome21.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
-import GLBModel from "./Components/ScenarioPlay/ScenesS1/outcome2.jsx";
 import WetlandScene from "./Components/ScenarioPlay/ScenesS3/StartScene.jsx";
 import Slider from "./Components/ScenarioPlay/start.jsx";
 import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
@@ -94,7 +94,6 @@ const App = () => {
         <Route path="/outcome1s5" element={<Choice2 />} />
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/outcome1S3" element={<WetlandScene />} />
-        <Route path="/model" element={<GLBModel url="./man.glb" />} />
         <Route path="/outcome2S3" element={<Community/>}/>
         <Route path="/sum3" element={<SummaryPage/>}/>
         <Route path = "/choose" element={<Choose/>}/>
