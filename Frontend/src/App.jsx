@@ -27,6 +27,7 @@ import ElephantAnim2 from "./Components/ScenarioPlay/ScenesS1/outcome1.jsx";
 import ToChoose from "./Components/ScenarioPlay/ScenesS5/Tochoose.jsx";
 import GLBModel from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 import ToChoose1 from "./Components/ScenarioPlay/ScenesS1/Tochoose.jsx";
+import LeopardScene from "./Components/ScenarioPlay/ScenesS3/StartScene.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -52,10 +53,8 @@ const App = () => {
           path="/dashboard"
           element={
             <AuthRoute>
-      
               <Dashboard />
-              </AuthRoute>
-        
+            </AuthRoute>
           }
         />
         <Route
@@ -88,6 +87,7 @@ const App = () => {
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/toChoose1" element={<ToChoose1 />} />
         <Route path="/model" element={<GLBModel url="./elipent.glb" />} />
+        <Route path="/leapordscene" element={<LeopardScene />} />
       </Routes>
     </Router>
   );
