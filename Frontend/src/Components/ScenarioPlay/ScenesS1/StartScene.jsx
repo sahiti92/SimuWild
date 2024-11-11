@@ -228,8 +228,9 @@ const ElephantAnim = () => {
         }}
       >
         Sonitpur, a district in Assam, is home to vast stretches of tropical forests that shelter India’s magnificent Asian elephants. 
-      This rich, biodiverse landscape provides essential pathways for elephant herds, supporting their natural migration and feeding patterns.
-       Here, lush greenery and traditional elephant corridors coexist, forming an ancient sanctuary that balances both wildlife and human settlements.
+      This provides essential pathways for elephant herds, supporting their natural migration and feeding patterns.
+       Here traditional elephant corridors coexist with human settlements,forming an ancient sanctuary that balances both wildlife and humans.
+       But now,people started cutting down the trees for their benefits.Press start to see what happens next.
       </footer>
       
     </div>

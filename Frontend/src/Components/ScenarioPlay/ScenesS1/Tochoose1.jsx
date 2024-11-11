@@ -142,7 +142,7 @@ const ToChoose1 = () => {
   const outcomeText =
     selectedChoice === "Choice 1"
       ? " The elephants lose their natural habitat and start wandering into nearby villages in search of food, damaging crops, homes."
-      : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy experiences a slowdown due to limited expansion of agriculture and industry";
+      : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy may experience a slowdown due to limited expansion of agriculture and industry";
 
   return (
     <div style={styles.container}>
@@ -152,13 +152,13 @@ const ToChoose1 = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1.Support continued deforestation for economic development
+            1.Support deforestation for economic development so that you can have  better opportunities.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2.Stop deforestation
+            2.Stop deforestation 
           </div>
         </div>
 
