@@ -15,6 +15,8 @@ import SignUp from "./Users/Signup.jsx";
 import Dashboard from "./Components/DashBoard2/Dashboard.jsx";
 import AuthRoute from "./Components/AuthRoute.jsx";
 import About from "./Components/DashBoard2/About.jsx";
+import Contact from "./Components/DashBoard2/Contact.jsx";
+import News from "./Components/DashBoard2/News.jsx";
 import Watchlist from "./Components/WatchList/WatchList.jsx";
 import Critically_Endangered from "./Components/WatchList/Critically_Endangered.jsx";
 import Endangered from "./Components/WatchList/Endangered.jsx";
@@ -36,6 +38,7 @@ import Slider from "./Components/ScenarioPlay/start.jsx";
 import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
 import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
 import Choose from "./Components/ScenarioPlay/ScenesS3/Choice.jsx";
+import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -57,7 +60,7 @@ const App = () => {
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
         <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
-
+         
         <Route
           path="/dashboard"
           element={
@@ -71,6 +74,22 @@ const App = () => {
           element={
             <AuthRoute>
               <About />
+            </AuthRoute>
+          }
+        />
+         <Route
+          path="/contact"
+          element={
+            <AuthRoute>
+              <Contact/>
+            </AuthRoute>
+          }
+        />
+         <Route
+          path="/news"
+          element={
+            <AuthRoute>
+              <News />
             </AuthRoute>
           }
         />
@@ -105,6 +124,7 @@ const App = () => {
         <Route path="/outcome2S3" element={<Community/>}/>
         <Route path="/sum3" element={<SummaryPage/>}/>
         <Route path = "/choose" element={<Choose/>}/>
+        <Route path="/leopard" element={<LeopardScene/>}/>
       </Routes>
     </Router>
   );
