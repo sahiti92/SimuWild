@@ -5,7 +5,7 @@ const app = express();
 const cors = require("cors");
 const userRouter = require("./routes/userRouter");
 const errorHandler = require("./middlewares/errorHandler");
-//const url = process.env.MONGODB_URL;
+const url = process.env.MONGODB_URL;
 //! user:cs22b027
 //! pass: Mt4K37HNfQYF50W5
 mongoose
