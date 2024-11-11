@@ -1,33 +1,71 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Scenario.css";
 import axios from "axios";
 import { getUserFromStorage } from "../../utils/getUser";
 import { useNavigate } from "react-router-dom";
+
 const Scenario5 = () => {
   const scenarioId = 1;
   const navigate = useNavigate();
-  // Define the handleClick function
+  const [shouldIncrement, setShouldIncrement] = useState(false);
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      try {
+        const token = getUserFromStorage();
+        const response = await axios.get(
+          "http://localhost:8001/api/v1/progress",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const progress = response.data;
+        const scenarioProgress = progress.find(
+          (item) => item.scenarioId === scenarioId
+        );
+        if (scenarioProgress && scenarioProgress.counter === 0) {
+          setShouldIncrement(true);
+        }
+        console.log("sp");
+        console.log(scenarioProgress.counter);
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    };
+
+    checkProgress();
+  }, [scenarioId]);
+
   const handleClick = async () => {
     try {
       const token = getUserFromStorage();
-      const response = await axios.post(
-        "http://localhost:8001/api/v1/progress/increment-counter",
-        { scenarioId },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`, // Use token from local storage
-          },
-        }
-      );
 
-      console.log(response.data.message); // Display response message
+      // Only call increment API if shouldIncrement is true
+      if (shouldIncrement) {
+        const response = await axios.post(
+          "http://localhost:8001/api/v1/progress/increment-counter",
+          { scenarioId },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        console.log(response.data.message); // Display response message
+      }
     } catch (error) {
       console.error("Error incrementing counter:", error);
     }
 
-    navigate("/threeScene");
+    // navigate("/threeScene");
   };
+
   return (
     <div className="scenario-container">
       <div className="image-container">
