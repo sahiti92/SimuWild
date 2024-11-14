@@ -1,8 +1,9 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
+import { logoutAction } from "../../redux/slice/authSlice";
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import { getUserFromStorage } from "../../utils/getUser";
+
 const Dashboard = () => {
   const features = [
     {
@@ -21,92 +22,52 @@ const Dashboard = () => {
       title: "Virtual Map and Quiz",
       description: "Interactive learning through maps and quizzes.",
       image: "/map.jpg",
-      path: "#",
-    },
-    {
-      title: "Indigenous Knowledge",
-      description: "Share and document indigenous practices and knowledge",
-      image: "/photogallery.jpg",
-      path: "#",
+      path: "/map",
     },
   ];
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [clickedIndex, setClickedIndex] = useState(null);
+  const [showProfileOptions, setShowProfileOptions] = useState(false);
 
-  const handleTitleClick = async (index) => {
+  const handleTitleClick = (index) => {
     if (clickedIndex === index) {
       setClickedIndex(null);
     } else {
       setClickedIndex(index);
-      console.log("index");
-      console.log(index);
-      if (index == 0) {
-        //const API_BASE_URL = "http://localhost:8001/api/progress";
-        const token = getUserFromStorage();
-        try {
-          // Step 1: Get the current progress of the user
-          const progressResponse = await axios.get(
-            "http://localhost:8001/api/v1/progress",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`, // Include the token
-              },
-            }
-          );
-
-          const progressData = progressResponse.data;
-          console.log("progressData");
-          console.log(progressData);
-          // Step 2: Check if the progress array is empty
-          if (!progressData.length) {
-            // Array is empty, so update progress for scenarioIds 1, 3, and 5
-            const scenarioIds = [1, 3, 5];
-            await Promise.all(
-              scenarioIds.map(async (scenarioId) => {
-                await axios.post(
-                  "http://localhost:8001/api/v1/progress/update",
-                  { scenarioId, choices: 0 },
-                  {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
-                  }
-                );
-              })
-            );
-            console.log("Progress initialized for scenario IDs 1, 3, and 5.");
-          } else {
-            console.log("User already has progress data, no update needed.");
-          }
-        } catch (error) {
-          console.error("Error updating progress:", error);
-        }
-      }
       navigate(features[index].path);
     }
   };
 
+  const handleLogout = () => {
+    dispatch(logoutAction());
+    navigate("/login"); // Adjust this to your login route
+  };
+
+  const handleUpdatePassword = () => {
+    navigate("/updatePass");
+  };
+  const toggleProfileOptions = () => {
+    setShowProfileOptions((prev) => !prev);
+  };
   return (
-    <div className="dashboard" style={{ width: "100vw", height: "100vh" }}>
+    <div className="dashboard" style={{ width: "100vw" }}>
       <div>
         <header>
           <nav>
             <ul>
               <li>
-                <Link to="/about">Home</Link>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <Link to="/about">About</Link>
+                <Link to="/contact">Contact Us</Link>
               </li>
               <li>
-                <Link to="/about">Contact</Link>
-              </li>
-              <li>
-                <Link to="/about">Services</Link>
+                <Link to="/news">News</Link>
               </li>
             </ul>
           </nav>
-          {/* <div className="user-profile">
+          <div className="user-profile" onClick={toggleProfileOptions}>
             <svg
               className="profile-icon"
               xmlns="http://www.w3.org/2000/svg"
@@ -116,14 +77,29 @@ const Dashboard = () => {
             >
               <path d="M12 12c2.67 0 8 1.34 8 4v1H4v-1c0-2.66 5.33-4 8-4zm0-2a4 4 0 110-8 4 4 0 010 8z" />
             </svg>
-          </div> */}
+            {showProfileOptions && (
+              <div className="profile-options">
+                <button onClick={handleUpdatePassword}>Update Password</button>
+                <hr />
+                <button onClick={handleLogout}>Logout</button>
+                <hr />
+                <button>Progress</button>
+                <hr />
+              </div>
+            )}
+          </div>
         </header>
         <div className="image-container">
           <img
-            src="/wildlife2.jpg"
+            src="/Db.jpg"
             alt="Wildlife Dashboard"
             className="animated-image"
           />
+          <div className="image-text">
+            {"WILDLIFE".split("").map((letter, index) => (
+              <span key={index}>{letter}</span>
+            ))}
+          </div>
         </div>
         <p className="description">
           Immerse yourself in the world of wildlife conservation through
@@ -215,6 +191,26 @@ const Dashboard = () => {
                   <path d="M8660.4 5347.79c188.48,0 340.19,-151.7 340.19,-337.89 0,-188.48 -151.7,-340.19 -340.19,-340.19 -186.18,0 -337.89,151.7 -337.89,340.19 0,186.18 151.7,337.89 337.89,337.89z"></path>
                   <rect width="13333.33" height="13333.33" fill="none"></rect>
                 </svg>
+                <img
+                  src="/panda.png"
+                  alt="Panda"
+                  style={{
+                    width: "1500px",
+                    marginTop: "10px",
+                    marginLeft: "-500px",
+                  }}
+                />
+                <p
+                  style={{
+                    marginTop: "450px",
+                    marginLeft: "-400px",
+                    fontSize: "20px",
+                  }}
+                >
+                  All Rights Reserved. SimuWild Community ©2024 2130 IIT
+                  Tirupati, Tirupati, AndhraPradesh Phone: (578) 641-4770 | Fax:
+                  (264) 864-8562
+                </p>
               </div>
             </div>
 
@@ -224,7 +220,7 @@ const Dashboard = () => {
                 <li>
                   <svg
                     width="20"
-                    height="20"
+                    height="-10"
                     fill="#f4e8c1"
                     viewBox="0 0 24 24"
                   >
@@ -255,7 +251,7 @@ const Dashboard = () => {
               flex: 1,
             }}
           >
-            <h1>SimuWild</h1>
+            <h1 className="Footer-Simu">SimuWild</h1>
           </div>
         </footer>
       </div>

@@ -1,11 +1,15 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef,useState } from 'react';
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
+import axios from "axios";
 
 const ElephantAnim21 = () => {
   const mountRef = useRef(null); 
-
+  const navigate = useNavigate();
+  const [showFooter, setShowFooter] = useState(false);
+  const forestModels = useRef([]);
   useEffect(() => {
     
     const scene = new THREE.Scene();
@@ -16,7 +20,6 @@ const ElephantAnim21 = () => {
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    
     //scene.background = new THREE.Color(0x87CEEB);
     
     const light = new THREE.DirectionalLight(0xffffff, 1);
@@ -50,7 +53,7 @@ const ElephantAnim21 = () => {
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 50; 
     controls.maxDistance = 300; 
-    camera.position.set(0, 50, 250);
+    camera.position.set(200, 150, 80);
     
 
     renderer.shadowMap.enabled = false;
@@ -95,10 +98,10 @@ const ElephantAnim21 = () => {
 
            scene.add(fence);
          },
-         undefined,
-         (error) => {
-           console.error("An error occurred while loading thse model:", error);
-         }
+        //  undefined,
+        //  (error) => {
+        //    console.error("An error occurred while loading thse model:", error);
+        //  }
        );
 
       if (gltf.animations && gltf.animations.length) {
@@ -213,31 +216,6 @@ const ElephantAnim21 = () => {
       renderer.render(scene, camera);
     };
 
-    const handleRestartClick = async () => {
-      try {
-        console.log("Resetting progress");
-        const scenarioId = 5;
-        await axios.post(
-          "http://localhost:8001/api/v1/progress/reset",
-          { scenarioId },
-          {
-            headers: {
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-  
-        setSelectedChoice("");
-        setShowOutcomeScene(false);
-        alert("Progress has been reset.");
-      } catch (error) {
-        console.error("Error resetting progress:", error);
-        alert(
-          "Failed to reset progress: " +
-            (error.response?.data?.error || "Unknown error")
-        );
-      }
-    };
       const handleExitClick = () => {
       navigate('/scenarios/scenario1'); // Redirect to Scenario1
     };
@@ -257,7 +235,91 @@ const ElephantAnim21 = () => {
     };
   }, []);
 
-  return <div ref={mountRef} style={{ width: '100vw', height: '100vh' }} />;
+  const handleSaveAndExit = () => {
+    navigate("/scenarios/scenario1");
+  };
+
+  const handleRestartClick = async () => {
+    try {
+      console.log("Resetting progress");
+      const scenarioId = 1;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
+      setSelectedChoice("");
+      setShowOutcomeScene(false);
+      alert("Progress has been reset.");
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
+    }
+  };
+  return (
+    <div ref={mountRef} style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+      <button
+        onClick={handleRestartClick}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          padding: "10px 15px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Restart
+      </button>
+      <button
+        onClick={handleSaveAndExit}
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          padding: "10px 15px",
+          backgroundColor: "red",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Save & Exit
+      </button>
+      { (
+        <footer
+          style={{
+            position: "absolute",
+            bottom: "20px",
+            width: "100%",
+            textAlign: "center",
+            color: "white",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            padding: "10px",
+            fontSize: "18px",
+          }}
+        >
+          U installed electrical fences to prevent elephants from damaging the houses and farm land,
+          because of installing electrical fences many elephants were killed.
+        </footer>
+      )}
+    </div>
+  );
 };
+
 
 export default ElephantAnim21;
