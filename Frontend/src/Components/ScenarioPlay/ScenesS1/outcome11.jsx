@@ -285,7 +285,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import axios from "axios";
-
+import { Canvas, useFrame } from '@react-three/fiber';
 const ElephantAnim11 = () => {
   const mountRef = useRef(null);
   const navigate = useNavigate();
@@ -375,6 +375,7 @@ const ElephantAnim11 = () => {
           const action = mixer.clipAction(gltf.animations[0]);
           action.play();
           return mixer;
+
         });
         animate(mixers);
       } else {
@@ -426,31 +427,6 @@ const ElephantAnim11 = () => {
         scene.add(clonedForest);
       });
     
-      // Now, create the models at x: -280 with specific positions:
-      const model1 = forest.clone();
-      model1.scale.set(20, 20, 20);
-      model1.position.set(-280, -10, 280);  // Position for model1
-      scene.add(model1);
-    
-      const model2 = forest.clone();
-      model2.scale.set(20, 20, 20);
-      model2.position.set(-280, -10, 580);  // Position for model2
-      scene.add(model2);
-    
-      const model3 = forest.clone();
-      model3.scale.set(20, 20, 20);
-      model3.position.set(-280, -10, -10);  // Position for model3
-      scene.add(model3);
-    
-      const model4 = forest.clone();
-      model4.scale.set(20, 20, 20);
-      model4.position.set(-280, -10, -280);  // Position for model4
-      scene.add(model4);
-    
-      const model5 = forest.clone();
-      model5.scale.set(20, 20, 20);
-      model5.position.set(-280, -10, -580);  // Position for model5
-      scene.add(model5);
     
     });
     
@@ -493,6 +469,9 @@ const ElephantAnim11 = () => {
         scene.add(ct);
       });
     });
+    const timer = setTimeout(() => {
+      navigate('/tochoose2');  // Replace '/next-page' with the path you want to navigate to
+    }, 20000); 
 
     const animate = (mixers = []) => {
       requestAnimationFrame(() => animate(mixers));
@@ -512,34 +491,12 @@ const ElephantAnim11 = () => {
     window.addEventListener('resize', handleResize);
 
     // Show footer text after 3 seconds
-    const footerTimeout = setTimeout(() => setShowFooter(true), 5000);
-
-    // Remove forest models after an additional 3 seconds (6 seconds in total)
-    const removeForestTimeout = setTimeout(() => {
-      // forestModels.current.forEach(model => {
-      //   scene.remove(model);
-      // });
-      if (model1) scene.remove(model1);
-      if (model2) scene.remove(model2);
-      if (model3) scene.remove(model3);
-      if (model4) scene.remove(model4);
-      if (model5) scene.remove(model5);
-    }, 10000);
-    
-    const removeModels = () => {
-      const scene = mountRef.current;
-      // Remove the models from the scene
-      if (model1) scene.remove(model1);
-      if (model2) scene.remove(model2);
-      if (model3) scene.remove(model3);
-      if (model4) scene.remove(model4);
-      if (model5) scene.remove(model5);
-    };  
+   
     return () => {
+      clearTimeout(timer);
       window.removeEventListener('resize', handleResize);
       renderer.dispose();
-      clearTimeout(footerTimeout);
-      clearTimeout(removeForestTimeout);
+    
     };
   }, []);
 
@@ -610,7 +567,7 @@ const ElephantAnim11 = () => {
       >
         Save & Exit
       </button>
-      {showFooter && (
+      { (
         <footer
           style={{
             position: "absolute",
@@ -623,12 +580,9 @@ const ElephantAnim11 = () => {
             fontSize: "18px",
           }}
         >
-          Continued construction and habitat destruction threaten tiger
-          populations, reducing their numbers and forcing them closer to human
-          communities. This increased proximity poses risks for both tigers and
-          people, leading to potential conflicts and endangering lives on both
-          sides. Protecting tiger habitats is essential for harmonious
-          coexistence.
+          Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.
+           What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation.
+      
         </footer>
       )}
     </div>
