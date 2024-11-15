@@ -8,8 +8,6 @@ import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx";
-import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx";
-//import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/Signup.jsx";
@@ -132,6 +130,7 @@ const App = () => {
         <Route path="/sum3" element={<SummaryPage />} />
         <Route path="/choose" element={<Choose />} />
         <Route path="/leopard" element={<LeopardScene />} />
+        <Route path="/outcome22s5" element={<Choice22 />} />
       </Routes>
     </Router>
   );

@@ -5,7 +5,6 @@ import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
-  const [showOutcomeScene, setShowOutcomeScene] = useState(false);
   const navigate = useNavigate();
 
   // Get the token from storage
@@ -13,19 +12,20 @@ const ToChoose = () => {
   console.log(token);
 
   const handleChoiceClick = (choice) => {
-    setSelectedChoice(choice);
-    setShowOutcomeScene(false);
-
-    // Navigate to the respective page based on choice
-    if (choice === "Choice 1") {
-      navigate("/outcome1s5");
-    } else if (choice === "Choice 2") {
-      navigate("/outcome2s5");
-    }
+    setSelectedChoice((prevChoice) => (prevChoice === choice ? "" : choice)); // Toggle choice
   };
 
-  const handleShowOutcomeClick = () => {
-    setShowOutcomeScene(true);
+  const handleSubChoiceClick = (subChoice) => {
+    // Navigate to the respective page based on sub-choice
+    if (subChoice === "SubChoice 1.1") {
+      navigate("/outcome1s5");
+    } else if (subChoice === "SubChoice 1.2") {
+      navigate("/outcome1s5");
+    } else if (subChoice === "SubChoice 2.1") {
+      navigate("/outcome2s5");
+    } else if (subChoice === "SubChoice 2.2") {
+      navigate("/outcome22s5");
+    }
   };
 
   const handleRestartClick = async () => {
@@ -43,7 +43,6 @@ const ToChoose = () => {
       );
 
       setSelectedChoice("");
-      setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
@@ -92,26 +91,27 @@ const ToChoose = () => {
       fontFamily: "Arial, sans-serif",
       height: "50px",
       textAlign: "center",
+      width: "400px",
     },
-    outcome: {
-      marginTop: "20px",
-      backgroundColor: "rgba(255, 255, 255, 0.8)",
-      padding: "10px",
-      borderRadius: "5px",
-      textAlign: "center",
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
-      color: "black",
-      position: "relative",
+    subChoicesContainer: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "10px",
+      marginTop: "10px",
+      paddingLeft: "20px", // Indentation for sub-choices
+      width: "300px",
+      left: "40%",
     },
-    outcomeScene: {
-      marginTop: "20px",
-      backgroundColor: "rgba(255, 255, 255, 0.9)",
+    subChoice: {
       padding: "15px",
+      backgroundColor: "rgba(240, 240, 240, 0.9)",
       borderRadius: "5px",
-      textAlign: "center",
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+      cursor: "pointer",
+      boxShadow: "0px 2px 6px rgba(0, 0, 0, 0.1)",
       color: "black",
-      position: "relative",
+      fontFamily: "Arial, sans-serif",
+      height: "40px",
+      textAlign: "center",
     },
     restartButton: {
       position: "absolute",
@@ -128,36 +128,60 @@ const ToChoose = () => {
     },
   };
 
-  const outcomeText =
-    selectedChoice === "Choice 1"
-      ? "By working together, there is hope for both the tigers and their home."
-      : "If we do nothing, both people and tigers will face serious consequences as their lives clash.";
-
   return (
     <div style={styles.container}>
       <div style={styles.backgroundImage}>
         <div style={styles.choices}>
-          <div
-            onClick={() => handleChoiceClick("Choice 1")}
-            style={styles.choice}
-          >
-            Help protect the tigers' habitat.
+          <div>
+            <div
+              onClick={() => handleChoiceClick("Choice 1")}
+              style={styles.choice}
+            >
+              Help protect the tigers' habitat.
+            </div>
+            {selectedChoice === "Choice 1" && (
+              <div style={styles.subChoicesContainer}>
+                <div
+                  onClick={() => handleSubChoiceClick("SubChoice 1.1")}
+                  style={styles.subChoice}
+                >
+                  1.1 Work with local communities to conserve resources.
+                </div>
+                <div
+                  onClick={() => handleSubChoiceClick("SubChoice 1.2")}
+                  style={styles.subChoice}
+                >
+                  1.2 Focus on stricter laws for habitat protection.
+                </div>
+              </div>
+            )}
           </div>
-          <div
-            onClick={() => handleChoiceClick("Choice 2")}
-            style={styles.choice}
-          >
-            Ignore the problems and continue with development projects in the
-            area.
+
+          <div>
+            <div
+              onClick={() => handleChoiceClick("Choice 2")}
+              style={styles.choice}
+            >
+              Deforestation
+            </div>
+            {selectedChoice === "Choice 2" && (
+              <div style={styles.subChoicesContainer}>
+                <div
+                  onClick={() => handleSubChoiceClick("SubChoice 2.1")}
+                  style={styles.subChoice}
+                >
+                  2.1 Support large-scale industrial projects.
+                </div>
+                <div
+                  onClick={() => handleSubChoiceClick("SubChoice 2.2")}
+                  style={styles.subChoice}
+                >
+                  2.2 Allow Timber logging to continue.
+                </div>
+              </div>
+            )}
           </div>
         </div>
-
-        {selectedChoice && (
-          <div style={styles.outcome}>
-            <p>{outcomeText}</p>
-            <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
-          </div>
-        )}
 
         <button onClick={handleRestartClick} style={styles.restartButton}>
           Restart
