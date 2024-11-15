@@ -5,7 +5,13 @@ import kaziranga from "../../assets/kaziranga.jpg";
 import valmiki from "../../assets/valmiki.jpg";
 import indravati from "../../assets/indravati.webp";
 import bhagwanMahavir from "../../assets/bhagwan_mahavir.webp";
-
+import sultanpur from "../../assets/sultanpur.jpg";
+import gir from "../../assets/gir.jpg";
+import himalayas from "../../assets/himalayas.jpg";
+import belta from "../../assets/belta.jpg";
+// import gir from "../../assets/gir.jpg";
+// import gir from "../../assets/gir.jpg";
+// import gir from "../../assets/gir.jpg";
 export const animalData = {
   "Andhra Pradesh": {
     name: "Sri Venkateswara National Park",
@@ -46,25 +52,25 @@ export const animalData = {
   Gujarat: {
     name: "Gir National Park",
     info: "The only natural habitat of the Asiatic lion in the world. The park is home to diverse wildlife, including leopards, deer, and a variety of birds. It also features unique dry deciduous forests and grasslands.",
-    image: bhagwanMahavir,
+    image: gir,
     coordinates: [70.7489, 21.1267],
   },
   Haryana: {
     name: "Sultanpur National Park",
     info: "Known for its bird population, it is a popular destination for birdwatching. The park hosts migratory birds during winter and has rich wetlands. It is an important stopover for many bird species on their migratory routes.",
-    image: bhagwanMahavir,
+    image: sultanpur,
     coordinates: [76.89, 28.4646],
   },
   "Himachal Pradesh": {
     name: "Great Himalayan National Park",
     info: "A UNESCO World Heritage Site, it hosts diverse flora and fauna within the Himalayan ranges. The park is known for its breathtaking landscapes, alpine meadows, and rare wildlife. It provides opportunities for trekking and eco-tourism.",
-    image: bhagwanMahavir,
+    image: himalayas,
     coordinates: [77.563, 31.7368],
   },
   Jharkhand: {
     name: "Betla National Park",
     info: "One of the first national parks in India to become a tiger reserve under Project Tiger. The park is home to elephants, tigers, and various other species. Its diverse landscapes include forests, hills, and grasslands.",
-    image: bhagwanMahavir,
+    image: belta,
     coordinates: [84.2184, 23.7181],
   },
   Karnataka: {

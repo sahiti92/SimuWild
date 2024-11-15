@@ -11,14 +11,23 @@ const Quiz = () => {
 
   const loadQuiz = () => {
     const shuffledQuestions = [...quizQuestions].sort(
-      () => 0.5 - Math.random()
-    );
-    setQuestions(shuffledQuestions.slice(0, 10));
-    setCurrentQuestion(0);
-    setScore(0);
-    setShowAnswer(null);
-    setShowNextButton(false);
-  };
+      () => 0.5 - Math.random()) .slice(0, 10);
+
+      // Shuffle the options for each question
+      const questionsWithShuffledOptions = shuffledQuestions.map((question) => {
+        return {
+          ...question,
+          options: [...question.options].sort(() => 0.5 - Math.random())
+        };
+      });
+    
+      setQuestions(questionsWithShuffledOptions);
+      setCurrentQuestion(0);
+      setScore(0);
+      setShowAnswer(null);
+      setShowNextButton(false);
+    };
+   
 
   useEffect(() => {
     loadQuiz();
