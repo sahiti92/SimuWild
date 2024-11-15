@@ -832,8 +832,8 @@ scene.add(clonedForest);
         }}
       >
         
+In Aarey Milk Colony, a leopard quietly comes out of the Sanjay Gandhi National Park, moving in the peaceful morning. Children play in a park nearby, unaware of the danger. Suddenly, the leopard attacks and kills a toddler. The community is left in shock.
       </footer>
-      TEXT HERE
       
     </div>
   );
