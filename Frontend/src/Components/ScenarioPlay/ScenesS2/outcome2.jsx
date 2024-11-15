@@ -552,7 +552,7 @@ const Leapord_o2 = () => {
           zIndex: 1,
         }}
       >
-        Start
+        ReStart
       </button>
       <button
         onClick={handleclick2}
@@ -569,7 +569,7 @@ const Leapord_o2 = () => {
           zIndex: 1,
         }}
       >
-        Exit
+        Save and Exit
       </button>
       <footer
         style={{
@@ -583,10 +583,11 @@ const Leapord_o2 = () => {
           fontSize: "18px",
         }}
       >
-        In Aarey Milk Colony, a leopard quietly comes out of the Sanjay Gandhi
-        National Park, moving in the peaceful morning. Children play in a park
-        nearby, unaware of the danger. Suddenly, the leopard attacks and kills a
-        toddler. The community is left in shock.
+        To prevent any potential danger, the community urgently calls on forest
+        officials to capture and relocate the leopards far away from residential
+        areas, prioritizing human safety. The demand is clear: take swift action
+        to trap and relocate these animals in large numbers to ensure the
+        well-being of the local population.
       </footer>
     </div>
   );
