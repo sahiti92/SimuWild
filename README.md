@@ -118,3 +118,8 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 
 
 ## Map
+
+![image](https://github.com/user-attachments/assets/1d11e922-0884-420d-a363-ec757a29a156)
+
+
+
