@@ -9,9 +9,24 @@ import sultanpur from "../../assets/sultanpur.jpg";
 import gir from "../../assets/gir.jpg";
 import himalayas from "../../assets/himalayas.jpg";
 import belta from "../../assets/belta.jpg";
-// import gir from "../../assets/gir.jpg";
-// import gir from "../../assets/gir.jpg";
-// import gir from "../../assets/gir.jpg";
+import bandipur from "../../assets/bandipur.jpg";
+import abohar from "../../assets/abohar.png";
+import corbett from "../../assets/corbett.jpg";
+import dampa from "../../assets/dampa.jpg";
+import dudhwa from "../../assets/Dudhwa.jpg";
+import intanki from "../../assets/intanki.jpg";
+import kanha from "../../assets/kanha.jpg";
+import kawal from "../../assets/kawal.jpg";
+import keibul from "../../assets/keibul.jpg";
+import khangchendzonga from "../../assets/Khangchendzonga.png";
+import mudumalai from "../../assets/mudumalai.png";
+import nokrek from "../../assets/nokrek.jpg";
+import periyar from "../../assets/periyar.jpg";
+import ranthambore from "../../assets/Ranthambore.jpg";
+import simlipal from "../../assets/Simlipal.png";
+import sunderban from "../../assets/sunderban.png";
+import tadoba from "../../assets/tadoba.jpg";
+import tripura from "../../assets/tripura.jpg";
 export const animalData = {
   "Andhra Pradesh": {
     name: "Sri Venkateswara National Park",
@@ -76,109 +91,109 @@ export const animalData = {
   Karnataka: {
     name: "Bandipur National Park",
     info: "Famous for its population of Bengal tigers and Indian elephants. The park is part of the Nilgiri Biosphere Reserve and features rich biodiversity. It offers excellent opportunities for wildlife safaris and nature walks.",
-    image: bhagwanMahavir,
+    image: bandipur,
     coordinates: [76.6186, 11.6546],
   },
   Kerala: {
     name: "Periyar National Park",
     info: "A notable elephant and tiger reserve, it is located around the Periyar River. The park is known for its scenic beauty and diverse wildlife, including several rare species. It offers boat rides and trekking opportunities.",
-    image: bhagwanMahavir,
+    image: periyar,
     coordinates: [77.168, 9.4669],
   },
   "Madhya Pradesh": {
     name: "Kanha National Park",
     info: "A famous tiger reserve and inspiration for Rudyard Kipling's 'The Jungle Book.' The park is known for its stunning landscapes and rich wildlife, including tigers and swamp deer. It offers excellent opportunities for safaris and wildlife viewing.",
-    image: bhagwanMahavir,
+    image: kanha,
     coordinates: [80.6115, 22.3345],
   },
   Maharashtra: {
     name: "Tadoba Andhari Tiger Reserve",
     info: "One of the oldest and largest national parks in Maharashtra, known for its large tiger population. The park features diverse landscapes, including forests, lakes, and grasslands. It is a popular destination for wildlife enthusiasts and photographers.",
-    image: bhagwanMahavir,
+    image: tadoba,
     coordinates: [79.3474, 20.2413],
   },
   Manipur: {
     name: "Keibul Lamjao National Park",
     info: "The only floating national park in the world, home to the endangered sangai deer. The park features unique wetland ecosystems and diverse flora and fauna. It is a critical habitat for various migratory birds.",
-    image: bhagwanMahavir,
+    image: keibul,
     coordinates: [93.8037, 24.5035],
   },
   Meghalaya: {
     name: "Nokrek National Park",
     info: "Known for its rich biodiversity and as a habitat for the red panda. The park features diverse landscapes and unique flora and fauna. It is a great spot for trekking and nature enthusiasts.",
-    image: bhagwanMahavir,
+    image: nokrek,
     coordinates: [90.3154, 25.4691],
   },
   Mizoram: {
     name: "Dampa Tiger Reserve",
     info: "Mizoram's largest protected area and home to a variety of wildlife, including tigers and elephants. The reserve features dense forests and hilly terrain, making it ideal for trekking and wildlife observation.",
-    image: bhagwanMahavir,
+    image: dampa,
     coordinates: [92.3654, 23.429],
   },
   Nagaland: {
     name: "Intanki National Park",
     info: "Home to a variety of wildlife, including elephants and several bird species. The park features hilly terrains and dense forests, making it an excellent destination for nature lovers.",
-    image: bhagwanMahavir,
+    image: intanki,
     coordinates: [94.5112, 26.1286],
   },
   Odisha: {
     name: "Simlipal National Park",
     info: "A beautiful national park known for its biodiversity, including tigers, elephants, and various bird species. The park features dense forests and stunning landscapes. It is also home to the Simlipal tiger reserve.",
-    image: bhagwanMahavir,
+    image: simlipal,
     coordinates: [86.3931, 21.4698],
   },
   Punjab: {
     name: "Abohar Wildlife Sanctuary",
     info: "Famous for its diverse flora and fauna, particularly its rich bird population. The sanctuary features various habitats, including grasslands and forests. It is a popular destination for birdwatching.",
-    image: bhagwanMahavir,
+    image: abohar,
     coordinates: [74.2157, 30.1402],
   },
   Rajasthan: {
     name: "Ranthambore National Park",
     info: "One of the largest national parks in northern India, known for its tiger population and stunning landscapes. The park features a mix of dry deciduous forests and open grasslands. It is a popular destination for wildlife safaris.",
-    image: bhagwanMahavir,
+    image: ranthambore,
     coordinates: [76.3662, 25.1077],
   },
   Sikkim: {
     name: "Khangchendzonga National Park",
     info: "A UNESCO World Heritage Site, it features diverse ecosystems and is home to the third-highest peak in the world, Khangchendzonga. The park is known for its stunning landscapes and rich biodiversity.",
-    image: bhagwanMahavir,
+    image: khangchendzonga,
     coordinates: [88.5753, 27.4423],
   },
   "Tamil Nadu": {
     name: "Mudumalai National Park",
     info: "A tiger reserve located in the Nilgiri Hills, known for its rich biodiversity, including tigers and elephants. The park features lush forests and is a popular destination for wildlife safaris.",
-    image: bhagwanMahavir,
+    image: mudumalai,
     coordinates: [76.634, 11.5602],
   },
   Telangana: {
     name: "Kawal Tiger Reserve",
     info: "Famous for its population of tigers and rich biodiversity, the reserve features mixed deciduous forests and various habitats for wildlife. It is an important area for conservation efforts.",
-    image: bhagwanMahavir,
+    image: kawal,
     coordinates: [79.4555, 18.2172],
   },
   Tripura: {
     name: "Trishna Wildlife Sanctuary",
     info: "Known for its rich biodiversity and as a habitat for various wildlife species. The sanctuary features diverse landscapes and is a great destination for nature enthusiasts.",
-    image: bhagwanMahavir,
+    image: tripura,
     coordinates: [91.643, 23.521],
   },
   "Uttar Pradesh": {
     name: "Dudhwa National Park",
     info: "A national park known for its swampy grasslands and diverse wildlife, including tigers and several bird species. The park features rich ecosystems and is an important area for conservation.",
-    image: bhagwanMahavir,
+    image: dudhwa,
     coordinates: [80.5637, 27.4174],
   },
   Uttarakhand: {
     name: "Jim Corbett National Park",
     info: "The oldest national park in India, known for its rich biodiversity and as a tiger reserve. The park features diverse landscapes, including hills, rivers, and forests, making it a popular destination for wildlife enthusiasts.",
-    image: bhagwanMahavir,
+    image: corbett,
     coordinates: [78.5107, 29.5553],
   },
   "West Bengal": {
     name: "Sundarbans National Park",
     info: "A UNESCO World Heritage Site, known for its mangrove forests and tiger population. The park features a unique ecosystem and is home to various species of wildlife, including the Bengal tiger.",
-    image: bhagwanMahavir,
+    image: sunderban,
     coordinates: [88.5, 22.2],
   },
 };
