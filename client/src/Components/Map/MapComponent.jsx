@@ -4,7 +4,8 @@ import mapboxgl from "mapbox-gl";
 import { animalData } from "./animalData";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./MapComponent.css";
-import tigerMark from "../../assets/tigermark.png"; // Import the tiger image
+
+//import tigerMark from "../../assets/tigermark.png"; // Import the tiger image
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
 console.log("Mapbox Access Token:", mapboxgl.accessToken);
@@ -26,21 +27,22 @@ const MapComponent = () => {
 
     map.on("load", () => {
       Object.keys(animalData).forEach((state) => {
-        const { coordinates } = animalData[state];
+        const { coordinates ,marker} = animalData[state];
 
         // Create a custom marker using the tiger image
-        const tigerMarker = document.createElement("img");
-        tigerMarker.src = tigerMark;
-        tigerMarker.alt = "Tiger Mark";
-        tigerMarker.style.width = "30px";
-        tigerMarker.style.height = "30px";
-        tigerMarker.style.cursor = "pointer";
+        const stateMarker = document.createElement("img");
+        stateMarker.src = marker;
+        stateMarker.alt = `${state} Marker`;
+        stateMarker.style.width = "50px";
+        stateMarker.style.height = "50px";
+        stateMarker.style.cursor = "pointer";
+      //  stateMarker.className = `marker-${state.toLowerCase().replace(/\s/g, "-")}`;
 
-        const marker = new mapboxgl.Marker({ element: tigerMarker })
+        const mapMarker = new mapboxgl.Marker({ element: stateMarker })
           .setLngLat(coordinates)
           .addTo(map);
 
-        tigerMarker.addEventListener("click", (e) => {
+        stateMarker.addEventListener("click", (e) => {
           const { top, left } = e.target.getBoundingClientRect();
           setImagePosition({ x: left, y: top });
           setAnimalInfo(animalData[state]);
