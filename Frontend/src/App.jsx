@@ -8,6 +8,7 @@ import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
 import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx";
+import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx";
 //import LandingPage from "./Components/LandingPage.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
@@ -39,6 +40,8 @@ import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
 import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
 import Choose from "./Components/ScenarioPlay/ScenesS3/Choice.jsx";
 import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
+import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
+import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
@@ -129,7 +132,6 @@ const App = () => {
         <Route path="/sum3" element={<SummaryPage />} />
         <Route path="/choose" element={<Choose />} />
         <Route path="/leopard" element={<LeopardScene />} />
-        <Route path="/outcome22s5" element={<Choice22 />} />
       </Routes>
     </Router>
   );
