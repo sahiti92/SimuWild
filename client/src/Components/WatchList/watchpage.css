@@ -47,7 +47,7 @@
   font-weight: bold;
   font-family: Lato, sans-serif;
 
-  border: 6px solid orange; 
+  border: 2px solid orange; 
 
   transition: background-color 0.3s ease;
 }
@@ -87,7 +87,7 @@
   padding: 1rem;
   border-radius: 50%;
   background-color: var(--c1);
-  color: white;
+  color: black;
 }
 
 @media (min-width: 40em) {
@@ -96,3 +96,40 @@
     padding: 3rem 2rem 2rem;
   }
 }
+/* watchpage.css */
+.species-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.species-card {
+  width: 200px;
+  text-align: center;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: black;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.species-card:hover {
+  transform: scale(1.05);
+}
+
+.species-image {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.species-name {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+

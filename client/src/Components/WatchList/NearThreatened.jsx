@@ -1,97 +1,110 @@
-import React, { useState, useEffect } from "react";
-import Papa from "papaparse";
-import { useNavigate } from "react-router-dom"; 
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./watchpage.css";
 
+// Importing images with updated names (nt1 to nt10)
+import NajaOxiana from "../../assets/nt1.jpg";
+import EryxJohnii from "../../assets/nt2.jpg";
+import HemidactylusAnamallensis from "../../assets/nt3.jpg";
+import CnemaspisSisparensis from "../../assets/nt4.jpg";
+import CnemaspisHeteropholis from "../../assets/nt5.jpg";
+import CnemaspisNairi from "../../assets/nt6.jpg";
+import TrimeresurusMacrolepis from "../../assets/nt7.jpg";
+import EryxWhitakeri from "../../assets/nt8.jpg";
+import CnemaspisOrnata from "../../assets/nt9.jpg";
+import EryxConicus from "../../assets/nt10.png";
+
 const SpeciesInfo = () => {
-  const [speciesData, setSpeciesData] = useState({
-    nearThreatened: [],
-  });
-  const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null); 
-  const navigate = useNavigate(); 
+  const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null);
+  const [pressedIndex, setPressedIndex] = useState(null);  // Track which item is being pressed
+  const navigate = useNavigate();
 
-  
-  const csvPaths = {
-    nearThreatened: "../../../Near Threatened.csv",
-  };
-
-  // Fetch and parse CSV
-  const fetchSpeciesData = async (category) => {
-    try {
-      const response = await fetch(csvPaths[category]);
-      const csvText = await response.text();
-      Papa.parse(csvText, {
-        header: true,
-        complete: (result) => {
-          setSpeciesData((prevData) => ({
-            ...prevData,
-            [category]: result.data,
-          }));
-        },
-        error: (error) => {
-          console.error(`Error parsing CSV for ${category}: `, error);
-        },
-      });
-    } catch (error) {
-      console.error(`Error fetching CSV file for ${category}: `, error);
-    }
-  };
-
-  useEffect(() => {
-    Object.keys(csvPaths).forEach((category) => {
-      fetchSpeciesData(category);
-    });
-  }, []);
-
+  // Hardcoded species data with local image paths and updated species names
+  const speciesData = [
+    { scientificName: "Naja oxiana", commonName: "Oxian Cobra", image: NajaOxiana },
+    { scientificName: "Eryx johnii", commonName: "John's Sand Boa", image: EryxJohnii },
+    { scientificName: "Hemidactylus anamallensis", commonName: "Anamalai Lizard", image: HemidactylusAnamallensis },
+    { scientificName: "Cnemaspis sisparensis", commonName: "Sispara Lizard", image: CnemaspisSisparensis },
+    { scientificName: "Cnemaspis heteropholis", commonName: "Mixed Scale Gecko", image: CnemaspisHeteropholis },
+    { scientificName: "Cnemaspis nairi", commonName: "Nair's Gecko", image: CnemaspisNairi },
+    { scientificName: "Trimeresurus macrolepis", commonName: "Big Scale Viper", image: TrimeresurusMacrolepis },
+    { scientificName: "Eryx whitakeri", commonName: "Whitaker Boa", image: EryxWhitakeri },
+    { scientificName: "Cnemaspis ornata", commonName: "Ornate Gecko", image: CnemaspisOrnata },
+    { scientificName: "Eryx conicus", commonName: "Cone Boa", image: EryxConicus },
+  ];
 
   const handleSpeciesClick = (species, index) => {
-    setActiveSpeciesIndex(index); 
+    setActiveSpeciesIndex(index);
     navigate(`/species/${encodeURIComponent(species.scientificName)}`);
   };
 
   return (
     <div className="species-info">
-      <h1 style={{ color: '#FFDF6C', fontSize: '3em', fontFamily: 'Montserrat, sans-serif' }}>
+      <h1
+        style={{
+          color: "#FFDF6C",
+          fontSize: "3em",
+          fontFamily: "Montserrat, sans-serif",
+        }}
+      >
         Species Information
       </h1>
 
       <div>
-        {Object.entries(speciesData).map(([category, speciesList]) => (
-          <div key={category}>
-            <h2 style={{ color: '#FFCF58', fontSize: '2em' }}>
-              {category.replace(/([A-Z])/g, " $1").toUpperCase()}
-            </h2>
-            {speciesList.length > 0 ? (
-              <ul style={{ display: "flex", flexWrap: "wrap", listStyleType: "none", padding: "0", margin: "0" }}>
-                {speciesList.map((species, index) => (
-                  <li
-                    key={index}
-                    onClick={() => handleSpeciesClick(species, index)} // Pass index to handleSpeciesClick
-                    style={{
-                      cursor: "pointer",
-                      fontSize: "16px",
-                      fontWeight: "bold",
-                      fontFamily: "Lato",
-                      margin: "5px",
-                      padding: "10px",
-                      backgroundColor: activeSpeciesIndex === index ? "lightblue" : "#f0f0f0", 
-                      borderRadius: "5px",
-                      flexBasis: "calc(20% - 10px)",
-                      textAlign: "center",
-                      transition: "background-color 0.3s ease", 
-                    }}
-                  >
-                    {species.scientificName}
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>
-                Loading {category.replace(/([A-Z])/g, " $1").toLowerCase()} data...
+        <ul
+          style={{
+            display: "flex",
+            flexWrap: "wrap",
+            listStyleType: "none",
+            padding: "0",
+            margin: "0",
+          }}
+        >
+          {speciesData.map((species, index) => (
+            <li
+              key={index}
+              onClick={() => handleSpeciesClick(species, index)}
+              onMouseDown={() => setPressedIndex(index)}  // Set pressed state when clicked
+              onMouseUp={() => setPressedIndex(null)}  // Reset pressed state after release
+              onMouseLeave={() => setPressedIndex(null)}  // Reset pressed state when mouse leaves
+              style={{
+                cursor: "pointer",
+                fontSize: "20px",
+                fontWeight: "bold",
+                fontFamily: "Lato",
+                margin: "10px",
+                padding: "15px",
+                backgroundColor: activeSpeciesIndex === index ? "lightblue" : "#f0f0f0",
+                borderRadius: "10px",
+                flexBasis: "calc(50% - 20px)",
+                textAlign: "center",
+                transition: "background-color 0.3s ease, transform 0.2s ease",
+                transform:
+                  activeSpeciesIndex === index
+                    ? "scale(1.05)"  // Slightly enlarge the active species
+                    : pressedIndex === index
+                    ? "scale(0.9)"   // Scale down when clicked
+                    : "scale(1)",    // Default size
+              }}
+            >
+              <img
+                src={species.image || "https://via.placeholder.com/100"}
+                alt={species.scientificName}
+                style={{
+                  width: "500px", // Set a fixed width for all images
+                  height: "300px", // Set a fixed height for all images
+                  objectFit: "cover", // Ensures the image covers the box without distortion
+                  borderRadius: "8px",
+                  marginBottom: "10px",
+                }}
+              />
+              <p>{species.scientificName}</p>
+              <p style={{ fontSize: "14px", color: "#888" }}>
+                {species.commonName}
               </p>
-            )}
-          </div>
-        ))}
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
