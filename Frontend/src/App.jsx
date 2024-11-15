@@ -39,6 +39,7 @@ import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
 import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
 import Choose from "./Components/ScenarioPlay/ScenesS3/Choice.jsx";
 import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
+import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -125,6 +126,7 @@ const App = () => {
         <Route path="/sum3" element={<SummaryPage/>}/>
         <Route path = "/choose" element={<Choose/>}/>
         <Route path="/leopard" element={<LeopardScene/>}/>
+        <Route path="/leapordtochoose" element={<ToCh3/>}/>
       </Routes>
     </Router>
   );
