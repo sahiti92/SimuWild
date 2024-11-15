@@ -39,6 +39,10 @@ import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
 import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
 import Choose from "./Components/ScenarioPlay/ScenesS3/Choice.jsx";
 import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
+import WetlandScene1 from "./Components/ScenarioPlay/ScenesS3/outcome2.jsx";
+import PoacherScene from "./Components/ScenarioPlay/ScenesS3/Poacher.jsx";
+import JailScene from "./Components/ScenarioPlay/ScenesS3/jail.jsx";
+import CityScene from "./Components/ScenarioPlay/ScenesS3/greed.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 const App = () => {
@@ -60,6 +64,10 @@ const App = () => {
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
         <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
+        <Route path="/test" element={<WetlandScene1 />} />
+        <Route path="/poacher" element={<PoacherScene/>} />
+        <Route path="/jail" element={<JailScene/>} />
+        <Route path="/city" element={<CityScene/>} />
          
         <Route
           path="/dashboard"
