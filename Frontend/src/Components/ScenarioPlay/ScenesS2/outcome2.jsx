@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
@@ -6,19 +5,18 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-const LeopardScene = () => {
+const Leapord_o2 = () => {
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const handleClick = async () => {
-    navigate("/leapordtochoose");
+    navigate("/leapordtochoose"); //change to greeshma scenario
   };
   const handleclick2 = async () => {
     navigate("/scenarios/scenario3");
   };
-
 
   useEffect(() => {
     const scene = new THREE.Scene();
@@ -85,7 +83,7 @@ const LeopardScene = () => {
     loader.load(
       "/leapord_2.glb",
       (gltf) => {
-        const model1 = gltf.scene; 
+        const model1 = gltf.scene;
         model1.scale.set(1, 1, 1);
         model1.position.set(-400, -10, -100);
         //tiger.rotation.set(0, Math.PI, 0);
@@ -104,7 +102,8 @@ const LeopardScene = () => {
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
         console.error("An error occurred while loading the tiger model:", error)
-    );  loader.load(
+    );
+    loader.load(
       "/leapord_2.glb",
       (gltf) => {
         const model1 = gltf.scene;
@@ -180,7 +179,7 @@ const LeopardScene = () => {
         model1.scale.set(1, 1, 1);
         model1.position.set(-450, -10, -300);
         scene.add(model1);
-    
+
         const mixer = new THREE.AnimationMixer(model1);
         mixers.current.push(mixer);
         const animations = gltf.animations;
@@ -189,7 +188,7 @@ const LeopardScene = () => {
           const action = mixer.clipAction(animations[0]);
           action.play();
         }
-    
+
         // Array of positions for the first 6 seconds
         const positions11 = [
           { x: -450, y: -10, z: -400 },
@@ -197,16 +196,16 @@ const LeopardScene = () => {
           { x: -350, y: -10, z: -400 },
           { x: -300, y: -10, z: -400 },
           { x: -250, y: -10, z: -400 },
-          { x: -200, y: -10, z: -400 }
+          { x: -200, y: -10, z: -400 },
         ];
-    
+
         // Move the model to the positions in sequence
         positions11.forEach((pos, index) => {
           setTimeout(() => {
             model1.position.set(pos.x, pos.y, pos.z);
           }, index * 1000);
         });
-    
+
         // Remove the model from the scene after 6 seconds
         // setTimeout(() => {
         //   scene.remove(model1);
@@ -214,7 +213,11 @@ const LeopardScene = () => {
         // }, 6000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
-      (error) => console.error("An error occurred while loading the leopard model:", error)
+      (error) =>
+        console.error(
+          "An error occurred while loading the leopard model:",
+          error
+        )
     );
     loader.load(
       "/leapord_2.glb",
@@ -223,7 +226,7 @@ const LeopardScene = () => {
         model1.scale.set(1, 1, 1);
         model1.position.set(-450, -10, -300);
         scene.add(model1);
-    
+
         const mixer = new THREE.AnimationMixer(model1);
         mixers.current.push(mixer);
         const animations = gltf.animations;
@@ -232,25 +235,24 @@ const LeopardScene = () => {
           const action = mixer.clipAction(animations[0]);
           action.play();
         }
-    
+
         // Array of positions for the first 6 seconds
         const positions11 = [
-          
-          { x: -350, y: -10, z: 50},
-          { x: -300, y: -10, z: 50},
+          { x: -350, y: -10, z: 50 },
+          { x: -300, y: -10, z: 50 },
           { x: -250, y: -10, z: 50 },
           { x: -200, y: -10, z: 50 },
           { x: -150, y: -10, z: 50 },
-          { x: -100, y: -10, z: 50 }
+          { x: -100, y: -10, z: 50 },
         ];
-    
+
         // Move the model to the positions in sequence
         positions11.forEach((pos, index) => {
           setTimeout(() => {
             model1.position.set(pos.x, pos.y, pos.z);
           }, index * 1000);
         });
-    
+
         // Remove the model from the scene after 6 seconds
         // setTimeout(() => {
         //   scene.remove(model1);
@@ -258,7 +260,11 @@ const LeopardScene = () => {
         // }, 6000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
-      (error) => console.error("An error occurred while loading the leopard model:", error)
+      (error) =>
+        console.error(
+          "An error occurred while loading the leopard model:",
+          error
+        )
     );
     const elephantPositions = [
       // { x: -390, z: -20 },
@@ -285,7 +291,7 @@ const LeopardScene = () => {
       (gltf) => {
         const model1 = gltf.scene;
         model1.scale.set(30, 20, 100);
-        model1.position.set(-65, 2, 55);
+        model1.position.set(-15, 2, 55);
         //tiger.rotation.set(0, Math.PI, 0);
 
         scene.add(model1);
@@ -299,7 +305,7 @@ const LeopardScene = () => {
           action.play();
         }
       },
-      (xhr) => console.log((xhr.loaded / xhr.total)  * 100 + "% loaded"),
+      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
         console.error("An error occurred while loading the tiger model:", error)
     );
@@ -322,7 +328,7 @@ const LeopardScene = () => {
           action.play();
         }
       },
-      (xhr) => console.log((xhr.loaded / xhr.total)  * 100 + "% loaded"),
+      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
         console.error("An error occurred while loading the tiger model:", error)
     );
@@ -345,7 +351,7 @@ const LeopardScene = () => {
           action.play();
         }
       },
-      (xhr) => console.log((xhr.loaded / xhr.total)  * 100 + "% loaded"),
+      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
         console.error("An error occurred while loading the tiger model:", error)
     );
@@ -368,8 +374,7 @@ const LeopardScene = () => {
       { x: 550, z: 370 },
       { x: 550, z: 440 },
       { x: 550, z: 510 },
-      { x: 550, z: 580 }
-         
+      { x: 550, z: 580 },
     ];
     loader.load("/stone.glb", (gltf) => {
       forestPositions.forEach((pos) => {
@@ -379,101 +384,113 @@ const LeopardScene = () => {
         scene.add(clonedForest);
       });
     });
-    
-    
-    
+
     const forPositions = [
       { x: -400, z: 0 },
-{ x: -400, z: 70 },
-{ x: -400, z: 140 },
-{ x: -400, z: 210 },
-{ x: -400, z: 280 },
-{ x: -400, z: 350 },
-{ x: -400, z: 420 },
-{ x: -400, z: 490 },
-{ x: -400, z: 560 },
-{ x: -400, z: -70 },
-{ x: -400, z: -140 },
-{ x: -400, z: -210 },
-{ x: -400, z: -280 },
-{ x: -400, z: -350 },
-{ x: -400, z: -420 },
-{ x: -400, z: -490 },
-{ x: -400, z: -560 },
-{ x: -550, z: 0 },
-{ x: -550, z: 70 },
-{ x: -550, z: 140 },
-{ x: -550, z: 210 },
-{ x: -550, z: 280 },
-{ x: -550, z: 350 },
-{ x: -550, z: 420 },
-{ x: -550, z: 490 },
-{ x: -550, z: 560 },
-{ x: -550, z: -70 },
-{ x: -550, z: -140 },
-{ x: -550, z: -210 },
-{ x: -550, z: -280 },
-{ x: -550, z: -350 },
-{ x: -550, z: -420 },
-{ x: -550, z: -490 },
-{ x: -550, z: -560 },
+      { x: -400, z: 70 },
+      { x: -400, z: 140 },
+      { x: -400, z: 210 },
+      { x: -400, z: 280 },
+      { x: -400, z: 350 },
+      { x: -400, z: 420 },
+      { x: -400, z: 490 },
+      { x: -400, z: 560 },
+      { x: -400, z: -70 },
+      { x: -400, z: -140 },
+      { x: -400, z: -210 },
+      { x: -400, z: -280 },
+      { x: -400, z: -350 },
+      { x: -400, z: -420 },
+      { x: -400, z: -490 },
+      { x: -400, z: -560 },
+      { x: -550, z: 0 },
+      { x: -550, z: 70 },
+      { x: -550, z: 140 },
+      { x: -550, z: 210 },
+      { x: -550, z: 280 },
+      { x: -550, z: 350 },
+      { x: -550, z: 420 },
+      { x: -550, z: 490 },
+      { x: -550, z: 560 },
+      { x: -550, z: -70 },
+      { x: -550, z: -140 },
+      { x: -550, z: -210 },
+      { x: -550, z: -280 },
+      { x: -550, z: -350 },
+      { x: -550, z: -420 },
+      { x: -550, z: -490 },
+      { x: -550, z: -560 },
+    ];
+    loader.load("/oak_10.glb", (gltf) => {
+      forPositions.forEach((pos) => {
+        const clonedForest = gltf.scene.clone();
+        clonedForest.scale.set(100, 50, 100);
+        clonedForest.position.set(pos.x, -10, pos.z);
+        scene.add(clonedForest);
+      });
+    });
 
-];
-loader.load("/oak_10.glb", (gltf) => {
-forPositions.forEach((pos) => {
-const clonedForest = gltf.scene.clone();
-clonedForest.scale.set(100, 50, 100);
-clonedForest.position.set(pos.x, -10, pos.z);
-scene.add(clonedForest);
-});
-});
-         
-const fPositions = [
-  { x: 550, z: -600 },
-  { x: 550, z: -540 },
-  { x: 550, z: -470 },
-  { x: 550, z: -400 },
-  { x: 550, z: -330 },
-  { x: 550, z: -260 },
-  { x: 550, z: -190 },
-  { x: 550, z: -120 },
-  { x: 550, z: -50 },
-  { x: 550, z: 20 },
-  { x: 550, z: 90 },
-  { x: 550, z: 160 },
-  { x: 550, z: 230 },
-  { x: 550, z: 300 },
-  { x: 550, z: 370 },
-  { x: 550, z: 440 },
-  { x: 550, z: 510 },
-  { x: 550, z: 580 }
+    const fPositions = [
+      { x: 550, z: -600 },
+      { x: 550, z: -540 },
+      { x: 550, z: -470 },
+      { x: 550, z: -400 },
+      { x: 550, z: -330 },
+      { x: 550, z: -260 },
+      { x: 550, z: -190 },
+      { x: 550, z: -120 },
+      { x: 550, z: -50 },
+      { x: 550, z: 20 },
+      { x: 550, z: 90 },
+      { x: 550, z: 160 },
+      { x: 550, z: 230 },
+      { x: 550, z: 300 },
+      { x: 550, z: 370 },
+      { x: 550, z: 440 },
+      { x: 550, z: 510 },
+      { x: 550, z: 580 },
+    ];
+    loader.load("/slab.glb", (gltf) => {
+      fPositions.forEach((pos) => {
+        const clonedForest = gltf.scene.clone();
+        clonedForest.scale.set(10, 5, 10);
+        clonedForest.position.set(pos.x, -5, pos.z);
+        scene.add(clonedForest);
+      });
+    });
+    const Position = [
+      { x: 450, z: -600 },
+      { x: 450, z: -300 },
+      { x: 450, z: 0 },
+      { x: 450, z: 300 },
+      { x: 450, z: 600 },
+    ];
+    loader.load("/playground.glb", (gltf) => {
+      Position.forEach((pos) => {
+        const clonedForest = gltf.scene.clone();
+        clonedForest.scale.set(20, 30, 20);
+        clonedForest.position.set(pos.x, -5, pos.z);
+        scene.add(clonedForest);
+      });
+    });
+    const cagePositions = [
+      { x: -150, y: -10, z: -100 },
+      { x: -200, y: -10, z: 50 },
+      { x: -250, y: -10, z: 100 },
+      { x: -50, y: -10, z: -150 },
+      { x: -300, y: -10, z: -200 },
+      { x: -65, y: -10, z: 50 },
+    ];
 
-];
-loader.load("/slab.glb", (gltf) => {
-fPositions.forEach((pos) => {
-const clonedForest = gltf.scene.clone();
-clonedForest.scale.set(10, 5, 10);
-clonedForest.position.set(pos.x, -5, pos.z);
-scene.add(clonedForest);
-});
-});
-const Position = [
-  { x: 450, z: -600 },
-  { x: 450, z: -300 },
-  { x: 450, z: 0 },
-  { x: 450, z: 300 },
-  { x: 450, z: 600 },
-
-];
-loader.load("/playground.glb", (gltf) => {
-Position.forEach((pos) => {
-const clonedForest = gltf.scene.clone();
-clonedForest.scale.set(20, 30, 20);
-clonedForest.position.set(pos.x, -5, pos.z);
-scene.add(clonedForest);
-});
-});
-
+    loader.load("/cage.glb", (gltf) => {
+      cagePositions.forEach((pos) => {
+        const cageModel = gltf.scene.clone();
+        cageModel.scale.set(0.1, 0.5, 0.5); // Adjust size as needed
+        cageModel.position.set(pos.x, pos.y, pos.z);
+        cageModel.rotation.y = Math.random() * Math.PI * 2; // Randomize rotation
+        scene.add(cageModel);
+      });
+    });
 
     const animate = () => {
       requestAnimationFrame(animate);
@@ -517,9 +534,7 @@ scene.add(clonedForest);
       window.removeEventListener("click", onPointerClick);
     };
   }, []);
-  
 
-  
   return (
     <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
       <button
@@ -568,15 +583,13 @@ scene.add(clonedForest);
           fontSize: "18px",
         }}
       >
-        
-In Aarey Milk Colony, a leopard quietly comes out of the Sanjay Gandhi National Park, moving in the peaceful morning. Children play in a park nearby, unaware of the danger. Suddenly, the leopard attacks and kills a toddler. The community is left in shock.
+        In Aarey Milk Colony, a leopard quietly comes out of the Sanjay Gandhi
+        National Park, moving in the peaceful morning. Children play in a park
+        nearby, unaware of the danger. Suddenly, the leopard attacks and kills a
+        toddler. The community is left in shock.
       </footer>
-      
     </div>
   );
-
 };
 
-export default LeopardScene;
-
-
+export default Leapord_o2;

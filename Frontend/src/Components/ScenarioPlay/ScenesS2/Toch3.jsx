@@ -20,7 +20,7 @@ const ToCh3 = () => {
     if (choice === "Choice 1") {
       navigate("/out32");//folder out32
     } else if (choice === "Choice 2") {
-      navigate("/out31");//floder out 32
+      navigate("/leapordo2");//floder out 32
     }
   };
 
