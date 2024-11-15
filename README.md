@@ -123,4 +123,9 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 
 ![image](https://github.com/user-attachments/assets/5f90241c-11ee-48ed-b9e7-e2946343908d)
 
+## Quiz
+
+![image](https://github.com/user-attachments/assets/aa2df790-7125-4373-b726-9609fee1ce37)
+
+
 
