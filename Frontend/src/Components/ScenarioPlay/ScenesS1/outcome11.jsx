@@ -11,6 +11,10 @@ const ElephantAnim11 = () => {
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
+  const [footerText, setFooterText] = useState(
+    "Due to greed for economic benefits,you cut down trees which led to decrease in forest cover,making it a barren landscape."
+  );
+  
 
   useEffect(() => {
     const scene = new THREE.Scene();
@@ -78,47 +82,111 @@ const ElephantAnim11 = () => {
       "/elephant1.glb",
       (gltf) => {
         const model1 = gltf.scene;
-        model1.scale.set(20, 1, 1);
-        model1.position.set(-400, -10, -100);
-        //tiger.rotation.set(0, Math.PI, 0);
-
+        model1.scale.set(20, 20, 20);
+        model1.position.set(-300, -10, 100);
+        model1.rotation.set(0, Math.PI / 2, 0);
+    
         scene.add(model1);
-
+    
         const mixer = new THREE.AnimationMixer(model1);
         mixers.current.push(mixer); // Add this mixer to mixers array
         const animations = gltf.animations;
+    
         console.log(animations);
+    
         if (animations.length > 0) {
-          const action = mixer.clipAction(animations[13]);
+          // Start with animation 13
+          const action = mixer.clipAction(animations[22]);
           action.play();
         }
+    
+        // Array of positions for the first 4 seconds
+        const positions11 = [
+          { x: -300, y: -10, z: 100 },
+          { x: -300, y: -10, z: 100 },
+          { x: -250, y: -10, z: 100 },
+          { x: -200, y: -10, z: 100 },
+          { x: -150, y: -10, z: 100 },
+          { x: -100, y: -10, z: 100 }, // Movement continues
+          { x: -50, y: -10, z: 100 },
+        ];
+    
+        // Update position every second for the first 4 seconds
+        positions11.forEach((pos, index) => {
+          setTimeout(() => {
+            model1.position.set(pos.x, pos.y, pos.z);
+          }, index * 1000);
+        });
+        
+    
+        // Switch animation to clip 28 after 4 seconds
+        setTimeout(() => {
+          // Stop the current action
+          const currentAction = mixer.clipAction(animations[22]);
+          currentAction.stop();
+    
+          // Start the new action
+          const newAction = mixer.clipAction(animations[23]);
+          newAction.play();
+        }, 4000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
-        console.error("An error occurred while loading the tiger model:", error)
+        console.error(
+          "An error occurred while loading the elephant model:",
+          error
+        )
     );
+   
+    
     loader.load(
       "/elephant1.glb",
       (gltf) => {
         const model2 = gltf.scene;
-        model2.scale.set(10, 10, 10);
-        model2.position.set(
-          323.8386440425428,
-          32.8275071099794,
-          -117.05521649984772
-        );
-        //tiger.rotation.set(0, Math.PI, 0);
-
+        model2.scale.set(20, 20, 20);
+        model2.position.set(-300, -10, 10);
+        model2.rotation.set(0, Math.PI / 2, 0);
+    
         scene.add(model2);
-
+    
         const mixer = new THREE.AnimationMixer(model2);
-        mixers.current.push(mixer); // Add this mixer to mixers array
+        mixers.current.push(mixer); 
         const animations = gltf.animations;
+    
         console.log(animations);
+    
         if (animations.length > 0) {
-          const action = mixer.clipAction(animations[3]);
+          const action = mixer.clipAction(animations[22]);
           action.play();
         }
+    
+        // Array of positions for the first 4 seconds
+        const positions1 = [
+          { x: -300, y: -10, z: 10 },
+          { x: -250, y: -10, z: 10 },
+          { x: -200, y: -10, z: 10 },
+          { x: -150, y: -10, z: 10 },
+          { x: -100, y: -10, z: 10 }, // Movement continues
+          { x: -50, y: -10, z: 10 },
+        ];
+    
+        // Update position every second for the first 4 seconds
+        positions1.forEach((pos, index) => {
+          setTimeout(() => {
+            model2.position.set(pos.x, pos.y, pos.z);
+          }, index * 1000);
+        });
+    
+        // Switch animation to clip 28 after 4 seconds
+        setTimeout(() => {
+          // Stop the current action
+          const currentAction = mixer.clipAction(animations[22]);
+          currentAction.stop();
+    
+          // Start the new action
+          const newAction = mixer.clipAction(animations[23]);
+          newAction.play();
+        }, 4000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
@@ -131,12 +199,11 @@ const ElephantAnim11 = () => {
       // { x: -390, z: -20 },
       // { x: -200, z: 180 },
       // { x: -350, z: 180 },
-      // { x: -300, z: 180 },
-      // { x: -475, z: 100 },
+       { x: -475, z: 100 },
       // { x: -450, z: -100 },
-      // { x: -500, z: 200 },
+       { x: -500, z: 200 },
       // { x: -450, z: 50 },
-      // { x: -500, z: -250 },
+       { x: -500, z: -250 },
     ];
     loader.load("/elephant.glb", (gltf) => {
       elephantPositions.forEach((pos) => {
@@ -147,14 +214,7 @@ const ElephantAnim11 = () => {
         scene.add(clonedElephant);
       });
 
-      loader.load('/village.glb', (gltf) => {
-        const fence = gltf.scene;
-        fence.position.set(200, -10, 100);
-        fence.scale.set(4, 4, 3);
-        fence.rotation.y = 3 * Math.PI / 2;
-        scene.add(fence);
-      });
-
+      
       if (gltf.animations && gltf.animations.length) {
         const mixers = elephants.map(elephant => {
           const mixer = new THREE.AnimationMixer(elephant);
@@ -170,26 +230,48 @@ const ElephantAnim11 = () => {
     });
 
   
+// Load forest GLBs
+loader.load('./forest.glb', (gltf) => {
+  const forest = gltf.scene;
+  const forestPositions = [
+    { x: -280, z: 280 },
+    { x: -280, z: 580 },
+    { x: -280, z: -10 },
+    { x: -280, z: -280 },
+    { x: -280, z: -580 },
+  ];
 
-    // Load forest GLBs
-    // loader.load('./forest.glb', (gltf) => {
-    //   const forest = gltf.scene;
-    //   const forestPositions = [
-    //     { x: -580, z: 280 },
-    //     { x: -580, z: 580 },
-    //     { x: -580, z: -10 },
-    //     { x: -580, z: -280 },
-    //     { x: -580, z: -580 },
-    //   ];
+  // Store all forest models in a ref array for later removal
+  const forestModels = [];
 
-    //   forestPositions.forEach(pos => {
-    //     const clonedForest = forest.clone();
-    //     clonedForest.scale.set(20, 20, 20);
-    //     clonedForest.position.set(pos.x, -10, pos.z);
-    //     forestModels.current.push(clonedForest); // Store forests in ref array
-    //     scene.add(clonedForest);
-    //   });
-    // });
+  forestPositions.forEach((pos) => {
+    const clonedForest = forest.clone();
+    clonedForest.scale.set(20, 20, 20);
+    clonedForest.position.set(pos.x, -10, pos.z);
+    forestModels.push(clonedForest); // Store forests in the array
+    scene.add(clonedForest);
+  });
+
+  // Remove forest models after 2 seconds
+  setTimeout(() => {
+    forestModels.forEach((forestModel) => {
+      scene.remove(forestModel); // Remove the forest model from the scene
+      forestModel.traverse((node) => {
+        if (node.isMesh) {
+          node.geometry.dispose(); 
+          node.material.dispose(); 
+        }
+      });
+    });
+    
+    setFooterText(
+      "Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation."
+    );
+        setTimeout(startElephantMotion, 2000);
+
+  }, 2000);
+});
+
     loader.load('./forest.glb', (gltf) => {
       const forest = gltf.scene;
     
@@ -238,20 +320,7 @@ const ElephantAnim11 = () => {
       });
     });
 
-    loader.load('/road_roller_truck.glb', (gltf) => {
-      const truck = gltf.scene;
-      const truckPositions = [
-        { x: 180, z: 280 },
-        { x: 180, z: 580 },
-      ];
-
-      truckPositions.forEach(pos => {
-        const ct = truck.clone();
-        ct.scale.set(20, 20, 20);
-        ct.position.set(pos.x, -10, pos.z);
-        scene.add(ct);
-      });
-    });
+    
     const timer = setTimeout(() => {
       navigate('/tochoose2');  // Replace '/next-page' with the path you want to navigate to
     }, 20000); 
@@ -386,8 +455,7 @@ const ElephantAnim11 = () => {
             fontSize: "18px",
           }}
         >
-          Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.
-           What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation.
+          {footerText}
       
         </footer>
       }
