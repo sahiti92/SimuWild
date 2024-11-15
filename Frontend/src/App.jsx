@@ -7,8 +7,7 @@ import Scenario3 from "./Components/ScenarioPlay/Scenario3.jsx";
 import Scenario4 from "./Components/ScenarioPlay/Scenario4.jsx";
 import Scenario5 from "./Components/ScenarioPlay/Scenario5.jsx";
 import Scenario6 from "./Components/ScenarioPlay/Scenario6.jsx";
-import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx"
-//import LandingPage from "./Components/LandingPage.jsx";
+import ElephantAnim12 from "./Components/ScenarioPlay/ScenesS1/outcome12.jsx";
 import Slideshow from "./Components/LandingPage/slideshow.jsx";
 import Login from "./Users/Login.jsx";
 import SignUp from "./Users/Signup.jsx";
@@ -43,8 +42,11 @@ import WetlandScene1 from "./Components/ScenarioPlay/ScenesS3/outcome2.jsx";
 import PoacherScene from "./Components/ScenarioPlay/ScenesS3/Poacher.jsx";
 import JailScene from "./Components/ScenarioPlay/ScenesS3/jail.jsx";
 import CityScene from "./Components/ScenarioPlay/ScenesS3/greed.jsx";
+import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
+import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
+import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
 const App = () => {
   return (
     <Router>
@@ -85,15 +87,15 @@ const App = () => {
             </AuthRoute>
           }
         />
-         <Route
+        <Route
           path="/contact"
           element={
             <AuthRoute>
-              <Contact/>
+              <Contact />
             </AuthRoute>
           }
         />
-         <Route
+        <Route
           path="/news"
           element={
             <AuthRoute>
@@ -121,7 +123,7 @@ const App = () => {
         <Route path="/eleph11" element={<ElephantAnim11 />} />
         <Route path="/eleph12" element={<ElephantAnim12 />} />
         <Route path="/eleph21" element={<ElephantAnim21 />} />
-        <Route path="/threeScene" element={<Choice />} /> 
+        <Route path="/threeScene" element={<Choice />} />
         <Route path="/outcome1s5" element={<Choice2 />} />
         <Route path="/toChoose" element={<ToChoose />} />
         <Route path="/toChoose1" element={<ToChoose1 />} />
@@ -129,10 +131,11 @@ const App = () => {
         <Route path="/outcome2s5" element={<Outcome2 />} />
         <Route path="/model" element={<GLBModel url="./elephant1.glb" />} />
         <Route path="/outcome1S3" element={<WetlandScene />} />
-        <Route path="/outcome2S3" element={<Community/>}/>
-        <Route path="/sum3" element={<SummaryPage/>}/>
-        <Route path = "/choose" element={<Choose/>}/>
-        <Route path="/leopard" element={<LeopardScene/>}/>
+        <Route path="/outcome2S3" element={<Community />} />
+        <Route path="/sum3" element={<SummaryPage />} />
+        <Route path="/choose" element={<Choose />} />
+        <Route path="/leopard" element={<LeopardScene />} />
+        <Route path="/outcome22s5" element={<Choice22 />} />
       </Routes>
     </Router>
   );

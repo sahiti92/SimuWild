@@ -70,7 +70,7 @@ const Choice = () => {
       { x: 19.708314131854088, y: -10.981319583042794, z: 23.62779900282069 },
     ];
 
-    loader.load("/tree.glb", (gltf) => {
+    loader.load("/tree_p.glb", (gltf) => {
       positions.forEach((position) => {
         const tree = gltf.scene.clone();
         tree.scale.set(10, 10, 10);
