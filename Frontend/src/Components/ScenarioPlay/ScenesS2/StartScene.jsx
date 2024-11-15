@@ -276,7 +276,7 @@ const LeopardScene = () => {
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const handleClick = async () => {
-    navigate("/tochoose1");//change to greeshma scenario
+    navigate("/leapordtochoose");//change to greeshma scenario
   };
   const handleclick2 = async () => {
     navigate("/scenarios/scenario3");
