@@ -22,6 +22,8 @@
   border-radius: 10px;
   box-sizing: border-box;
   border: transparent;
+  margin-left: 40rem;
+  
 }
 
 /* Other styles remain the same */
@@ -35,26 +37,34 @@
 
 .quiz-question-counter {
   font-size: 1.7rem;
-  color: #0a353d;
+  color: #000000;
   text-align: center;
   margin-bottom: 0.01rem;
-  margin-top: 0.1rem;
+  margin-top: -4rem;
 }
 
 .quiz-question-text {
   font-size: 1.3rem;
   color: #050908;
-  margin-bottom: 2rem;
-  text-align: center;
+  margin-bottom: 6rem;
+  text-align: left; /* Align text to the left */
   font-weight: bold;
+  
+  margin: 0; /* Remove any margin */
+  padding: 0; /* Remove any padding */
 }
 
 .quiz-options-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 400px;
+  max-width: 800px;
+  margin-top: 2rem;
   margin-bottom: 0.5rem;
+  margin-left: 20rem; /* Adjust this if necessary */
+  overflow-wrap: break-word; /* Ensure long words wrap */
+  word-wrap: break-word; /* For additional compatibility */
+  padding: 1rem; /* Add padding for spacing */
 }
 
 .quiz-option-button {
@@ -64,9 +74,9 @@
   background-color: #f0f0f0;
   border: 2px solid #ddd;
   color: #333;
-  padding: 1rem 1rem 1rem 2.5rem;
+  padding: 0.5rem 0.5rem 0.5rem 3rem;
   margin: 0.5rem 0;
-  font-size: 1rem;
+  font-size: 0.8rem;
   cursor: pointer;
   border-radius: 5px;
   transition: border-color 0.3s ease;
@@ -103,14 +113,17 @@
 }
 
 .quiz-answer-feedback.quiz-correct {
-  color: #4caf50;
+  color: #0d4e47;
+  margin-top: 4rem;
 }
 
 .quiz-answer-feedback.quiz-incorrect {
-  color: #f44336;
+  color:  #0d4e47;
+  margin-top: 4rem;
 }
 
 .quiz-results {
+  margin-top: 30rem;
   text-align: center;
 }
 
@@ -129,6 +142,7 @@
 .quiz-restart-button {
   margin-top: 5rem;
   padding: 0.8rem 1.5rem;
+  margin-top: 1rem;
   font-size: 1.2rem;
   color: #fff;
   background-color: #ff8a00;
@@ -142,37 +156,72 @@
   background-color: #e07a00;
 }
 
-@media (max-width: 768px) {
-  .quiz-question-counter {
-    font-size: 2rem;
+/* Media queries for responsiveness */
+@media (max-width: 1200px) {
+  .quiz-container {
+    margin-left: 10rem; /* Adjust for medium screens */
   }
 
-  .quiz-question-text {
-    font-size: 1.5rem;
-  }
-
-  .quiz-option-button {
-    font-size: 1rem;
-    padding: 0.8rem;
+  .quiz-options-container {
+    margin-left: 10rem; /* Adjust for medium screens */
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 900px) {
   .quiz-container {
-    width: 95%;
-    padding: 1.5rem;
+    width: 85%; /* Slightly reduce width for smaller screens */
+    margin-left: 5rem; /* Adjust for smaller screens */
   }
 
-  .quiz-question-counter {
-    font-size: 1.7rem;
-  }
-
-  .quiz-question-text {
-    font-size: 1.3rem;
+  .quiz-options-container {
+    margin-left: 5rem; /* Adjust for smaller screens */
   }
 
   .quiz-option-button {
-    font-size: 0.9rem;
-    padding: 0.7rem;
+    font-size: 1rem; /* Increase font size for readability */
+    padding: 1rem 1rem 1rem 2rem; /* Adjust padding */
+  }
+}
+
+@media (max-width: 600px) {
+  .quiz-wrapper {
+    flex-direction: column; /* Stack items vertically on smaller screens */
+    padding: 2rem;
+  }
+
+  .quiz-container {
+    width: 100%; /* Full width on very small screens */
+    margin-left: 0;
+  }
+
+  .quiz-options-container {
+    margin-left: 0;
+    padding: 1rem; /* Adjust padding for small screens */
+  }
+
+  .quiz-question-counter {
+    font-size: 1.5rem; /* Adjust font size for small screens */
+  }
+
+  .quiz-question-text {
+    font-size: 1.1rem; /* Adjust font size for small screens */
+  }
+
+  .quiz-option-button {
+    font-size: 1rem; /* Increase font size for better readability */
+    padding: 1rem 1rem 1rem 2rem; /* Adjust padding */
+  }
+
+  .quiz-results h2 {
+    font-size: 1.8rem; /* Adjust font size */
+  }
+
+  .quiz-results p {
+    font-size: 2rem; /* Adjust font size */
+  }
+
+  .quiz-restart-button {
+    font-size: 1rem; /* Adjust font size */
+    padding: 0.8rem 1rem; /* Adjust padding */
   }
 }
