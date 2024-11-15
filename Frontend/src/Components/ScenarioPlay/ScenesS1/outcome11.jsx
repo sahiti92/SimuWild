@@ -4,7 +4,7 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame } from "@react-three/fiber";
 const ElephantAnim11 = () => {
   const navigate = useNavigate();
   const mountRef = useRef(null);
@@ -14,7 +14,6 @@ const ElephantAnim11 = () => {
   const [footerText, setFooterText] = useState(
     "Due to greed for economic benefits,you cut down trees which led to decrease in forest cover,making it a barren landscape."
   );
-  
 
   useEffect(() => {
     const scene = new THREE.Scene();
@@ -82,24 +81,24 @@ const ElephantAnim11 = () => {
       "/elephant1.glb",
       (gltf) => {
         const model1 = gltf.scene;
-        model1.scale.set(20, 20, 20);
+        model1.scale.set(25, 25, 25);
         model1.position.set(-300, -10, 100);
         model1.rotation.set(0, Math.PI / 2, 0);
-    
+
         scene.add(model1);
-    
+
         const mixer = new THREE.AnimationMixer(model1);
         mixers.current.push(mixer); // Add this mixer to mixers array
         const animations = gltf.animations;
-    
+
         console.log(animations);
-    
+
         if (animations.length > 0) {
           // Start with animation 13
           const action = mixer.clipAction(animations[22]);
           action.play();
         }
-    
+
         // Array of positions for the first 4 seconds
         const positions11 = [
           { x: -300, y: -10, z: 100 },
@@ -110,21 +109,20 @@ const ElephantAnim11 = () => {
           { x: -100, y: -10, z: 100 }, // Movement continues
           { x: -50, y: -10, z: 100 },
         ];
-    
+
         // Update position every second for the first 4 seconds
         positions11.forEach((pos, index) => {
           setTimeout(() => {
             model1.position.set(pos.x, pos.y, pos.z);
           }, index * 1000);
         });
-        
-    
+
         // Switch animation to clip 28 after 4 seconds
         setTimeout(() => {
           // Stop the current action
           const currentAction = mixer.clipAction(animations[22]);
           currentAction.stop();
-    
+
           // Start the new action
           const newAction = mixer.clipAction(animations[23]);
           newAction.play();
@@ -137,8 +135,7 @@ const ElephantAnim11 = () => {
           error
         )
     );
-   
-    
+
     loader.load(
       "/elephant1.glb",
       (gltf) => {
@@ -146,20 +143,20 @@ const ElephantAnim11 = () => {
         model2.scale.set(20, 20, 20);
         model2.position.set(-300, -10, 10);
         model2.rotation.set(0, Math.PI / 2, 0);
-    
+
         scene.add(model2);
-    
+
         const mixer = new THREE.AnimationMixer(model2);
-        mixers.current.push(mixer); 
+        mixers.current.push(mixer);
         const animations = gltf.animations;
-    
+
         console.log(animations);
-    
+
         if (animations.length > 0) {
           const action = mixer.clipAction(animations[22]);
           action.play();
         }
-    
+
         // Array of positions for the first 4 seconds
         const positions1 = [
           { x: -300, y: -10, z: 10 },
@@ -169,20 +166,20 @@ const ElephantAnim11 = () => {
           { x: -100, y: -10, z: 10 }, // Movement continues
           { x: -50, y: -10, z: 10 },
         ];
-    
+
         // Update position every second for the first 4 seconds
         positions1.forEach((pos, index) => {
           setTimeout(() => {
             model2.position.set(pos.x, pos.y, pos.z);
           }, index * 1000);
         });
-    
+
         // Switch animation to clip 28 after 4 seconds
         setTimeout(() => {
           // Stop the current action
           const currentAction = mixer.clipAction(animations[22]);
           currentAction.stop();
-    
+
           // Start the new action
           const newAction = mixer.clipAction(animations[23]);
           newAction.play();
@@ -199,11 +196,11 @@ const ElephantAnim11 = () => {
       // { x: -390, z: -20 },
       // { x: -200, z: 180 },
       // { x: -350, z: 180 },
-       { x: -475, z: 100 },
+      { x: -475, z: 100 },
       // { x: -450, z: -100 },
-       { x: -500, z: 200 },
+      { x: -500, z: 200 },
       // { x: -450, z: 50 },
-       { x: -500, z: -250 },
+      { x: -500, z: -250 },
     ];
     loader.load("/elephant.glb", (gltf) => {
       elephantPositions.forEach((pos) => {
@@ -214,14 +211,12 @@ const ElephantAnim11 = () => {
         scene.add(clonedElephant);
       });
 
-      
       if (gltf.animations && gltf.animations.length) {
-        const mixers = elephants.map(elephant => {
+        const mixers = elephants.map((elephant) => {
           const mixer = new THREE.AnimationMixer(elephant);
           const action = mixer.clipAction(gltf.animations[0]);
           action.play();
           return mixer;
-
         });
         animate(mixers);
       } else {
@@ -229,61 +224,59 @@ const ElephantAnim11 = () => {
       }
     });
 
-  
-// Load forest GLBs
-loader.load('./forest.glb', (gltf) => {
-  const forest = gltf.scene;
-  const forestPositions = [
-    { x: -280, z: 280 },
-    { x: -280, z: 580 },
-    { x: -280, z: -10 },
-    { x: -280, z: -280 },
-    { x: -280, z: -580 },
-  ];
-
-  // Store all forest models in a ref array for later removal
-  const forestModels = [];
-
-  forestPositions.forEach((pos) => {
-    const clonedForest = forest.clone();
-    clonedForest.scale.set(20, 20, 20);
-    clonedForest.position.set(pos.x, -10, pos.z);
-    forestModels.push(clonedForest); // Store forests in the array
-    scene.add(clonedForest);
-  });
-
-  // Remove forest models after 2 seconds
-  setTimeout(() => {
-    forestModels.forEach((forestModel) => {
-      scene.remove(forestModel); // Remove the forest model from the scene
-      forestModel.traverse((node) => {
-        if (node.isMesh) {
-          node.geometry.dispose(); 
-          node.material.dispose(); 
-        }
-      });
-    });
-    
-    setFooterText(
-      "Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation."
-    );
-        setTimeout(startElephantMotion, 2000);
-
-  }, 2000);
-});
-
-    loader.load('./forest.glb', (gltf) => {
+    // Load forest GLBs
+    loader.load("./forest.glb", (gltf) => {
       const forest = gltf.scene;
-    
+      const forestPositions = [
+        { x: -280, z: 280 },
+        { x: -280, z: 580 },
+        { x: -280, z: -10 },
+        { x: -280, z: -280 },
+        { x: -280, z: -580 },
+      ];
+
+      // Store all forest models in a ref array for later removal
+      const forestModels = [];
+
+      forestPositions.forEach((pos) => {
+        const clonedForest = forest.clone();
+        clonedForest.scale.set(20, 20, 20);
+        clonedForest.position.set(pos.x, -10, pos.z);
+        forestModels.push(clonedForest); // Store forests in the array
+        scene.add(clonedForest);
+      });
+
+      // Remove forest models after 2 seconds
+      setTimeout(() => {
+        forestModels.forEach((forestModel) => {
+          scene.remove(forestModel); // Remove the forest model from the scene
+          forestModel.traverse((node) => {
+            if (node.isMesh) {
+              node.geometry.dispose();
+              node.material.dispose();
+            }
+          });
+        });
+
+        setFooterText(
+          "Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation."
+        );
+        setTimeout(startElephantMotion, 2000);
+      }, 2000);
+    });
+
+    loader.load("./forest.glb", (gltf) => {
+      const forest = gltf.scene;
+
       // First 5 forest models at different positions
       const forestPositions = [
         { x: -580, z: 280 },
         { x: -580, z: 580 },
         { x: -580, z: -10 },
         { x: -580, z: -280 },
-        { x: -580, z: -580 }
+        { x: -580, z: -580 },
       ];
-    
+
       // Clone and add the first 5 models
       forestPositions.forEach((pos) => {
         const clonedForest = gltf.scene.clone();
@@ -291,16 +284,14 @@ loader.load('./forest.glb', (gltf) => {
         clonedForest.position.set(pos.x, -10, pos.z);
         scene.add(clonedForest);
       });
-    
-    
     });
-    
+
     // Remaining models (houses, fields, etc.)
-    loader.load('/broken_house.glb', (gltf) => {
+    loader.load("/broken_house.glb", (gltf) => {
       const house = gltf.scene;
       const housePositions = [{ x: -280, z: 280 }];
 
-      housePositions.forEach(pos => {
+      housePositions.forEach((pos) => {
         const clonedHouse = house.clone();
         clonedHouse.scale.set(10, 1, 1);
         clonedHouse.position.set(pos.x, -10, pos.z);
@@ -308,11 +299,11 @@ loader.load('./forest.glb', (gltf) => {
       });
     });
 
-    loader.load('./green_field.glb', (gltf) => {
+    loader.load("./green_field.glb", (gltf) => {
       const field = gltf.scene;
       const fieldPositions = [];
 
-      fieldPositions.forEach(pos => {
+      fieldPositions.forEach((pos) => {
         const clonedField = field.clone();
         clonedField.scale.set(10, 10, 10);
         clonedField.position.set(pos.x, -10, pos.z);
@@ -320,12 +311,10 @@ loader.load('./forest.glb', (gltf) => {
       });
     });
 
-    
     const timer = setTimeout(() => {
-      navigate('/tochoose2');  // Replace '/next-page' with the path you want to navigate to
-    }, 20000); 
+      navigate("/tochoose2"); // Replace '/next-page' with the path you want to navigate to
+    }, 20000);
 
-    
     const animate = () => {
       requestAnimationFrame(animate);
 
@@ -362,10 +351,10 @@ loader.load('./forest.glb', (gltf) => {
 
     window.addEventListener("click", onPointerClick);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Show footer text after 3 seconds
-   
+
     return () => {
       // mountRef.current.removeChild(renderer.domElement);
       window.removeEventListener("resize", handleResize);
@@ -456,7 +445,6 @@ loader.load('./forest.glb', (gltf) => {
           }}
         >
           {footerText}
-      
         </footer>
       }
     </div>

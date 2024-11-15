@@ -1,12 +1,66 @@
-import React, { useEffect, useRef } from 'react';
-import * as THREE from 'three';
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
+import React, { useEffect, useRef, useState } from "react";
+import * as THREE from "three";
+import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useNavigate } from "react-router-dom";
+import { getUserFromStorage } from "../../../utils/getUser";
 const ElephantAnim = () => {
+  const scenarioId = 1;
   const navigate = useNavigate();
-  const mountRef = useRef(null); 
+  const mountRef = useRef(null);
+  const [shouldIncrement, setShouldIncrement] = useState(false);
+  useEffect(() => {
+    const checkProgress = async () => {
+      try {
+        const token = getUserFromStorage();
+        const response = await axios.get(
+          "http://localhost:8001/api/v1/progress",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const progress = response.data;
+        const scenarioProgress = progress.find(
+          (item) => item.scenarioId === scenarioId
+        );
+        if (scenarioProgress && scenarioProgress.counter === 1) {
+          setShouldIncrement(true);
+        }
+        console.log("sp");
+        console.log(scenarioProgress.counter);
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    };
+
+    checkProgress();
+  }, [scenarioId]);
   const handleClick = async () => {
+    try {
+      const token = getUserFromStorage();
+
+      // Only call increment API if shouldIncrement is true
+      if (shouldIncrement) {
+        const response = await axios.post(
+          "http://localhost:8001/api/v1/progress/increment-counter",
+          { scenarioId },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("counter incremented from 1 ");
+        console.log(response.data.message); // Display response message
+      }
+    } catch (error) {
+      console.error("Error incrementing counter:", error);
+    }
     navigate("/tochoose1");
   };
   const handleclick2 = async () => {
@@ -14,18 +68,21 @@ const ElephantAnim = () => {
   };
 
   useEffect(() => {
-    
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(100, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const camera = new THREE.PerspectiveCamera(
+      100,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
     const renderer = new THREE.WebGLRenderer();
     const clock = new THREE.Clock();
 
     renderer.setSize(window.innerWidth, window.innerHeight);
     mountRef.current.appendChild(renderer.domElement);
 
-    
     //scene.background = new THREE.Color(0x87CEEB);
-    
+
     const light = new THREE.DirectionalLight(0xffffff, 1);
     light.position.set(10, 10, 5).normalize();
     scene.add(light);
@@ -41,29 +98,28 @@ const ElephantAnim = () => {
     pointLight2.position.set(100, 50, -100);
     scene.add(pointLight2);
 
-    
     const planeGeometry = new THREE.PlaneGeometry(1500, 1500);
-    const grassPlaneMaterial = new THREE.MeshStandardMaterial({ color: 0x302D26 });
+    const grassPlaneMaterial = new THREE.MeshStandardMaterial({
+      color: 0x302d26,
+    });
     const plane = new THREE.Mesh(planeGeometry, grassPlaneMaterial);
     plane.rotation.x = -Math.PI / 2;
     plane.position.y = -10;
     scene.add(plane);
 
-  
     const controls = new OrbitControls(camera, renderer.domElement);
     controls.enableDamping = true;
     controls.dampingFactor = 0.1;
     controls.screenSpacePanning = false;
     controls.maxPolarAngle = Math.PI / 2;
-    controls.minDistance = 50; 
-    controls.maxDistance = 300; 
+    controls.minDistance = 50;
+    controls.maxDistance = 300;
     camera.position.set(0, 50, 250);
-    
 
     renderer.shadowMap.enabled = false;
 
     const loader = new GLTFLoader();
-    loader.load('./elephant.glb', (gltf) => {
+    loader.load("./elephant.glb", (gltf) => {
       const model = gltf.scene;
       const elephants = [];
 
@@ -80,10 +136,9 @@ const ElephantAnim = () => {
         { x: -500, z: 200 },
         { x: -450, z: 50 },
         { x: -500, z: -250 },
-        
       ];
 
-      elephantPositions.forEach(pos => {
+      elephantPositions.forEach((pos) => {
         const clonedElephant = model.clone();
         clonedElephant.position.set(pos.x, -5, pos.z);
         clonedElephant.rotation.y = Math.random() * Math.PI * 2;
@@ -92,24 +147,24 @@ const ElephantAnim = () => {
       });
       loader.load(
         // './barbed_wire.glb', // Ensure this path is correct
-        '/village.glb',
-         (gltf) => {
-           const fence = gltf.scene;
-           fence.position.set(200, -10, 100);
-           fence.scale.set(4 ,4, 3 ); 
-           fence.rotation.y = 3* Math.PI /2; // 45 degrees rotation on the Y-axis
-           //fence.rotation.z = Math.PI;     // 180 degrees rotation on the Z-axis
+        "/village.glb",
+        (gltf) => {
+          const fence = gltf.scene;
+          fence.position.set(200, -10, 100);
+          fence.scale.set(4, 4, 3);
+          fence.rotation.y = (3 * Math.PI) / 2; // 45 degrees rotation on the Y-axis
+          //fence.rotation.z = Math.PI;     // 180 degrees rotation on the Z-axis
 
-           scene.add(fence);
-         },
-         undefined,
-         (error) => {
-           console.error("An error occurred while loading thse model:", error);
-         }
-       );
+          scene.add(fence);
+        },
+        undefined,
+        (error) => {
+          console.error("An error occurred while loading thse model:", error);
+        }
+      );
 
       if (gltf.animations && gltf.animations.length) {
-        const mixers = elephants.map(elephant => {
+        const mixers = elephants.map((elephant) => {
           const mixer = new THREE.AnimationMixer(elephant);
           const action = mixer.clipAction(gltf.animations[0]);
           action.play();
@@ -124,42 +179,38 @@ const ElephantAnim = () => {
     const textureLoader = new THREE.TextureLoader();
     textureLoader.load("/sky_scene1.jpg", (texture) => {
       scene.background = texture;
-    });
+    });
     // Load the Forest and Green Field Models
-    loader.load('./forest.glb', (gltf) => {
+    loader.load("./forest.glb", (gltf) => {
       const forest = gltf.scene;
       const forestPositions = [
         //{ x: -50, z: 50 },
         { x: -580, z: 280 },
         { x: -580, z: 580 },
-        {x: -580, z: -10},
-        {x: -580, z: -280},
-        {x: -580, z: -580},
+        { x: -580, z: -10 },
+        { x: -580, z: -280 },
+        { x: -580, z: -580 },
         { x: -280, z: 280 },
         { x: -280, z: 580 },
-        {x: -280, z: -10},
-        {x: -280, z: -280},
-        {x: -280, z: -580}
+        { x: -280, z: -10 },
+        { x: -280, z: -280 },
+        { x: -280, z: -580 },
       ];
 
-      forestPositions.forEach(pos => {
+      forestPositions.forEach((pos) => {
         const clonedForest = forest.clone();
         clonedForest.scale.set(20, 20, 20);
         clonedForest.position.set(pos.x, -10, pos.z);
         scene.add(clonedForest);
       });
     });
-   
-  
-    
-    
 
     // Animation loop
     const animate = (mixers = []) => {
       requestAnimationFrame(() => animate(mixers));
       const delta = clock.getDelta();
 
-      mixers.forEach(mixer => mixer.update(delta));
+      mixers.forEach((mixer) => mixer.update(delta));
       controls.update();
       renderer.render(scene, camera);
     };
@@ -170,12 +221,11 @@ const ElephantAnim = () => {
       camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
     };
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
-  
     return () => {
-      window.removeEventListener('resize', handleResize);
-     // mountRef.current.removeChild(renderer.domElement);
+      window.removeEventListener("resize", handleResize);
+      // mountRef.current.removeChild(renderer.domElement);
       renderer.dispose();
     };
   }, []);
@@ -227,19 +277,16 @@ const ElephantAnim = () => {
           fontSize: "18px",
         }}
       >
-        Sonitpur, a district in Assam, is home to vast stretches of tropical forests that shelter India’s magnificent Asian elephants. 
-      This provides essential pathways for elephant herds, supporting their natural migration and feeding patterns.
-       Here traditional elephant corridors coexist with human settlements,forming an ancient sanctuary that balances both wildlife and humans.
-       But now,people started cutting down the trees for their benefits.Press start to see what happens next.
+        Sonitpur, a district in Assam, is home to vast stretches of tropical
+        forests that shelter India’s magnificent Asian elephants. This provides
+        essential pathways for elephant herds, supporting their natural
+        migration and feeding patterns. Here traditional elephant corridors
+        coexist with human settlements,forming an ancient sanctuary that
+        balances both wildlife and humans. But now,people started cutting down
+        the trees for their benefits.Press start to see what happens next.
       </footer>
-      
     </div>
   );
-
 };
 
 export default ElephantAnim;
-
-
-
-

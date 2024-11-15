@@ -5,7 +5,7 @@ import { getUserFromStorage } from "../../utils/getUser";
 import { useNavigate } from "react-router-dom";
 
 const Scenario5 = () => {
-  const scenarioId = 1;
+  const scenarioId = 5;
   const navigate = useNavigate();
   const [shouldIncrement, setShouldIncrement] = useState(false);
 
@@ -63,7 +63,7 @@ const Scenario5 = () => {
       console.error("Error incrementing counter:", error);
     }
 
-    // navigate("/threeScene");
+    navigate("/threeScene");
   };
 
   return (
