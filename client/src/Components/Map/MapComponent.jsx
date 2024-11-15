@@ -4,7 +4,6 @@ import mapboxgl from "mapbox-gl";
 import { animalData } from "./animalData";
 import "mapbox-gl/dist/mapbox-gl.css";
 import "./MapComponent.css";
-
 //import tigerMark from "../../assets/tigermark.png"; // Import the tiger image
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_TOKEN;
@@ -33,8 +32,8 @@ const MapComponent = () => {
         const stateMarker = document.createElement("img");
         stateMarker.src = marker;
         stateMarker.alt = `${state} Marker`;
-        stateMarker.style.width = "50px";
-        stateMarker.style.height = "50px";
+        stateMarker.style.width = "40px";
+        stateMarker.style.height = "40px";
         stateMarker.style.cursor = "pointer";
       //  stateMarker.className = `marker-${state.toLowerCase().replace(/\s/g, "-")}`;
 
