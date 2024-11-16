@@ -147,6 +147,8 @@ const Scenario1 = () => {
           if (scenarioProgress.counter === 0) {
             setShouldIncrement(true);
           }
+          console.log("pppp");
+          console.log(scenarioProgress.counter);
         }
       } catch (error) {
         console.error("Error fetching progress:", error);
@@ -196,20 +198,13 @@ const Scenario1 = () => {
           navigate("/eleph");
         } else if (counter === 2) {
           navigate("/tochoose1");
-        }
-        else if (counter === 3) {
-          if(choices==1)
-          {
+        } else if (counter === 3) {
+          if (choices == 1) {
             navigate("/eleph11");
-
-          }
-          else
-          {
+          } else {
             navigate("/summarys1");
-
           }
-
-        }  else {
+        } else {
           // Further checks for choices
           switch (choices) {
             case 1:
@@ -218,7 +213,7 @@ const Scenario1 = () => {
             case 2:
               navigate("/eleph12");
               break;
-          
+
             default:
               console.warn("Unexpected choice value:", choices);
           }
@@ -236,40 +231,38 @@ const Scenario1 = () => {
     }
   };
 
- 
   return (
-        <div className="scenario-container">
-          <div className="image-container">
-            <img
-              className="scenario-image"
-              src="https://hatibondhu.org/assets/img/hec.jpg"
-              alt="Elephants foraging in a human settlement in Assam, damaging crops and homes"
-            />
-            <div className="overlay">
-              <h1 className="scenario-title">Human-Elephant Conflict in Assam</h1>
-              <p className="scenario-description">
-                {" "}
-                In Assam's Sonitpur district, the destruction of natural habitats
-                due to deforestation has led elephants to forage in human
-                settlements, resulting in significant damage to crops and homes. In
-                2020, elephants in this region trampled through villages and farms,
-                seeking food, leading to the destruction of over 200 hectares of
-                crops and the death of both humans and elephants. The expansion of
-                tea plantations and infrastructure projects has fragmented the
-                elephant corridors, cutting off traditional migration paths, forcing
-                elephants into villages and farmlands. In retaliation, locals resort
-                to violent measures, including electric fences, which lead to more
-                elephant deaths.
-              </p>
-    
-              <button className="small-play-button" onClick={handlePlayButtonClick}>
-                Play
-              </button>
-            </div>
-          </div>
+    <div className="scenario-container">
+      <div className="image-container">
+        <img
+          className="scenario-image"
+          src="https://hatibondhu.org/assets/img/hec.jpg"
+          alt="Elephants foraging in a human settlement in Assam, damaging crops and homes"
+        />
+        <div className="overlay">
+          <h1 className="scenario-title">Human-Elephant Conflict in Assam</h1>
+          <p className="scenario-description">
+            {" "}
+            In Assam's Sonitpur district, the destruction of natural habitats
+            due to deforestation has led elephants to forage in human
+            settlements, resulting in significant damage to crops and homes. In
+            2020, elephants in this region trampled through villages and farms,
+            seeking food, leading to the destruction of over 200 hectares of
+            crops and the death of both humans and elephants. The expansion of
+            tea plantations and infrastructure projects has fragmented the
+            elephant corridors, cutting off traditional migration paths, forcing
+            elephants into villages and farmlands. In retaliation, locals resort
+            to violent measures, including electric fences, which lead to more
+            elephant deaths.
+          </p>
+
+          <button className="small-play-button" onClick={handlePlayButtonClick}>
+            Play
+          </button>
         </div>
-      );
-     
+      </div>
+    </div>
+  );
 };
 
 export default Scenario1;

@@ -33,7 +33,7 @@ const Choice22 = () => {
           (error.response?.data?.error || "Unknown error")
       );
     }
-    navigate("/tochoose");
+    navigate("/scenarios/scenario5");
   };
   const handleclick2 = async () => {
     navigate("/scenarios/scenario5");

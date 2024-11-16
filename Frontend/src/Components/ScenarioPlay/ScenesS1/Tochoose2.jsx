@@ -1,10 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose2 = () => {
-  const scenarioId=1;
+  const scenarioId = 1;
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
   const navigate = useNavigate(); // Initialize navigate for routing
@@ -62,8 +62,8 @@ const ToChoose2 = () => {
       console.log("Counter incremented:", incrementResponse.data.message);
     }
 
-     // Navigate to the respective page based on choice
-     if (choice === "Choice 1") {
+    // Navigate to the respective page based on choice
+    if (choice === "Choice 1") {
       const choices = 1;
       const response = await axios.post(
         "http://localhost:8001/api/v1/progress/update",
@@ -75,10 +75,12 @@ const ToChoose2 = () => {
           },
         }
       );
-  
+
       navigate("/eleph21");
     } else if (choice === "Choice 2") {
       const choices = 2;
+      console.log("token");
+      console.log(token);
       const response = await axios.post(
         "http://localhost:8001/api/v1/progress/update",
         { scenarioId, choices },
@@ -89,7 +91,7 @@ const ToChoose2 = () => {
           },
         }
       );
-      
+
       navigate("/eleph12");
     }
   };
@@ -100,18 +102,28 @@ const ToChoose2 = () => {
 
   const handleRestartClick = async () => {
     try {
-      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-     // setSelectedChoice("");
-     // setShowOutcomeScene(false);
+      console.log("Resetting progress");
+      console.log(token);
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // setSelectedChoice("");
+      // setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert("Failed to reset progress: " + (error.response?.data?.error || "Unknown error"));
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
     }
+    navigate("/scenarios/scenario1");
   };
 
   const handleExitClick = () => {
@@ -222,8 +234,6 @@ const ToChoose2 = () => {
         </div>
 
       
-
-        
 
         <button style={styles.restartButton} onClick={handleRestartClick}>
           Restart
