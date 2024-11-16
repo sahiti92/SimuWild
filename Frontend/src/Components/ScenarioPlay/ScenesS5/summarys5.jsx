@@ -22,6 +22,8 @@ const SundarbansInfo = () => {
       maxWidth: "800px",
       width: "100%",
       boxShadow: "0px 4px 10px rgba(0, 0, 0, 0.8)",
+      maxHeight: "90vh", // Prevent overflowing
+      overflowY: "auto", // Enable scrolling if content exceeds height
     },
     heading: {
       fontSize: "2rem",
@@ -36,6 +38,7 @@ const SundarbansInfo = () => {
       fontSize: "1rem",
       lineHeight: "1.6",
       marginBottom: "10px",
+      textAlign: "justify"
     },
   };
 
