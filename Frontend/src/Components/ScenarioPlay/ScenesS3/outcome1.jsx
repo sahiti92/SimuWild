@@ -70,7 +70,7 @@ function Man({ initialPosition = [0, 0, 13], stopAtX = 10 }) {
     <primitive
       object={scene}
       position={position}
-      scale={[1, 1, 1]}
+      scale={[0.8,0.8, 0.8]}
       rotation={[0, Math.PI / 3, 0]}
     />
   );
@@ -109,18 +109,19 @@ function Woman({ initialPosition = [-1, -0.9, 13], stopAtX = 10 }) {
     <primitive
       object={scene}
       position={position}
-      scale={[1, 1, 1]}
+      scale={[0.8, 0.8, 0.8]}
       rotation={[0, -Math.PI / 2, 0]}
     />
   );
 }
 
 function Hut({ position }) {
-  return <StaticModel path="./forest_hut.glb" scale={[1, 1, 1]} position={position} rotation={[0, -Math.PI / 2, 0]} />;
+  return <StaticModel path="./forest_hut.glb" scale={[0.7, 0.7, 0.7]} position={position} rotation={[0, -Math.PI / 2, 0]} />;
 }
 
+
 function Hut1({ position }) {
-  return <StaticModel path="./forest_hut1.glb" scale={[2, 2, 2]} position={position} rotation={[0, -Math.PI / 2, 0]} />;
+  return <StaticModel path="./forest_hut1.glb" scale={[1.4, 1.4, 1.4]} position={position} rotation={[0, -Math.PI / 2, 0]} />;
 }
 
 function SkyBackground() {
@@ -158,6 +159,7 @@ export default function Community() {
       );
     }
   };
+  
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>

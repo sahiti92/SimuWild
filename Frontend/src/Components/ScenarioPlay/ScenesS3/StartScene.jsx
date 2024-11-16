@@ -43,17 +43,44 @@ function Ranger({ position }) {
     />
   );
 }
-function Man({ position }) {
-    const { scene } = useGLTF('./man.glb'); // Replace with actual path
-    return (
-      <primitive
-        object={scene}
-        scale={[0.7, 0.7, 0.7]}
-        position={position}
-        rotation={[0, -Math.PI / 2, 0]}
-      />
-    );
+function Man({ initialPosition = [0, 0, 13], stopAtX = 10 }) {
+  const { scene, animations } = useGLTF('./falls.glb'); // Ensure the path is correct
+  const mixer = useRef(null);
+  const [position, setPosition] = useState(initialPosition);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    if (scene && animations && animations.length > 0) {
+      mixer.current = new AnimationMixer(scene);
+      animations.forEach((clip) => mixer.current.clipAction(clip).play());
+      setIsLoaded(true);
+    }
+    return () => mixer.current && mixer.current.stopAllAction();
+  }, [animations, scene]);
+
+  useEffect(() => {
+    if (isLoaded) {
+      const animate = () => {
+        if (mixer.current) mixer.current.update(0.01);
+        requestAnimationFrame(animate);
+      };
+      animate();
+    }
+  }, [isLoaded, stopAtX]);
+
+  if (!isLoaded) {
+    return <Html center>Loading Model...</Html>;
   }
+
+  return (
+    <primitive
+      object={scene}
+      position={position}
+      scale={[0.8, 0.8, 0.8]}
+      rotation={[0,0, 0]}
+    />
+  );
+}
 
   function RangerLabel({ position, label }) {
     return (
@@ -109,8 +136,8 @@ function RhinoModel({ initialPosition, stopAtX }) {
     />
   );
 }
-function RhinoModel1({ initialPosition, stopAtX }) {
-    const { scene, animations } = useGLTF('./rhino_walking1.glb'); // Replace with actual path
+function RhinoModel1({ initialPosition, stopAtX,model }) {
+    const { scene, animations } = useGLTF(model); // Replace with actual path
     const mixer = useRef();
     const [position, setPosition] = useState(initialPosition);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -240,11 +267,13 @@ export default function WetlandScene() {
         <Poacher position={[0, 0, 0]} />
         <RangerLabel position={[-5, 1.75, 12]} label={"Ranger"}/>
         <RangerLabel position={[0, 1.75, 0]} label={"Poacher"}/>
-        <Man position={[-2, -0.9, 13]}/>
+        <Man position={[-3, -0.9, 15]}/>
 
         {/* Rhino models */}
-        <RhinoModel initialPosition={[0, -1, 2]} stopAtX={20} />
-        <RhinoModel1 initialPosition={[0, -1, 4]} stopAtX={10} />
+        <RhinoModel initialPosition={[0, -1, 2]} stopAtX={10} />
+        <RhinoModel1 initialPosition={[0, -1, 4]} stopAtX={10} model={'./rhino_walking1.glb'}/>
+        <RhinoModel1 initialPosition={[0, -1, 6]} stopAtX ={14} model={'./rhino_walking2.glb'}/>
+
        
         <OrbitControls  onChange={() => {
             console.log(`Camera position: x: ${cameraRef.current.position.x}, y: ${cameraRef.current.position.y}, z: ${cameraRef.current.position.z}`);
