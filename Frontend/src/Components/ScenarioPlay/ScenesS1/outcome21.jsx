@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Canvas, useFrame } from '@react-three/fiber';
 const ElephantAnim21 = () => {
+  const scenarioId=1;
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const mixers = useRef([]);
@@ -117,7 +118,7 @@ const ElephantAnim21 = () => {
           const finalAction = mixer.clipAction(animations[25]); // Animation 3 (index 2)
           finalAction.play(); // Start the third animation
           setFooterText("In the attempt to protect your crops and homes, the installation of electrical fences has inadvertently harmed the elephants. By prioritizing your own interests, the lives of these creatures have been overlooked, leading to unintended consequences.");
-        }, 7000);
+        }, 9000);
         
     
       },
@@ -169,7 +170,7 @@ const ElephantAnim21 = () => {
           const finalAction = mixer.clipAction(animations[25]); // Animation 3 (index 2)
           finalAction.play(); // Start the third animation
           setFooterText("In the attempt to protect your crops and homes, the installation of electrical fences has inadvertently harmed the elephants. By prioritizing your own interests, the lives of these creatures have been overlooked, leading to unintended consequences.");
-        }, 7000);
+        }, 9000);
         
     
       },
@@ -270,12 +271,11 @@ const ElephantAnim21 = () => {
     });
    
 
+    const timer = setTimeout(() => {
+      navigate("/summarys1"); // Replace '/next-page' with the path you want to navigate to
+    }, 12000);
     
-    
-    // const timer = setTimeout(() => {
-    //   navigate('/tochoose2');  // Replace '/next-page' with the path you want to navigate to
-    // }, 20000); 
-//summary scene
+  
     
     const animate = () => {
       requestAnimationFrame(animate);
@@ -337,8 +337,8 @@ const ElephantAnim21 = () => {
         }
       );
 
-      setSelectedChoice("");
-      setShowOutcomeScene(false);
+      //setSelectedChoice("");
+     // setShowOutcomeScene(false);
       alert("Progress has been reset.");
       navigate("/eleph");
     } catch (error) {

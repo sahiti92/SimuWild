@@ -47,8 +47,9 @@ import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
-import SundarbansInfo from "./Components/ScenarioPlay/ScenesS5/summarys5.jsX";
-const App = () => {
+import SundarbansInfo from "./Components/ScenarioPlay/ScenesS5/summarys5.jsx";
+import SummarySceneS1 from "./Components/ScenarioPlay/ScenesS1/summarys1.jsx";
+const App = () => {1
   return (
     <Router>
       <Routes>
@@ -138,6 +139,7 @@ const App = () => {
         <Route path="/leopard" element={<LeopardScene />} />
         <Route path="/outcome22s5" element={<Choice22 />} />
         <Route path="/summarys5" element={<SundarbansInfo />} />
+        <Route path="/summarys1" element={<SummarySceneS1 />} />
       </Routes>
     </Router>
   );

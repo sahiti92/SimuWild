@@ -4,6 +4,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useNavigate } from "react-router-dom";
 import { getUserFromStorage } from "../../../utils/getUser";
+import axios from "axios";
+
 const ElephantAnim = () => {
   const scenarioId = 1;
   const navigate = useNavigate();
@@ -114,7 +116,7 @@ const ElephantAnim = () => {
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 50;
     controls.maxDistance = 300;
-    camera.position.set(0, 50, 250);
+    camera.position.set(10, 50, -50);
 
     renderer.shadowMap.enabled = false;
 

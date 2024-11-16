@@ -3,7 +3,9 @@ import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader';
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 const ElephantAnim12 = () => {
+ 
   const navigate = useNavigate();
   const mountRef = useRef(null); 
   const handleClick = async () => {
@@ -57,7 +59,7 @@ const ElephantAnim12 = () => {
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 50; 
     controls.maxDistance = 300; 
-    camera.position.set(0, 50, 250);
+    camera.position.set(0, 100, 250);
     
 
     renderer.shadowMap.enabled = false;
@@ -150,7 +152,11 @@ const ElephantAnim12 = () => {
       });
     });
    
-  
+
+    const timer = setTimeout(() => {
+      navigate("/summarys1"); // Replace '/next-page' with the path you want to navigate to
+    }, 8000);
+
     
     
 
@@ -163,6 +169,10 @@ const ElephantAnim12 = () => {
       controls.update();
       renderer.render(scene, camera);
     };
+    const handleSaveAndExit = () => {
+      navigate("/scenarios/scenario1");
+    };
+  
 
     // Handle window resize
     const handleResize = () => {
@@ -181,23 +191,7 @@ const ElephantAnim12 = () => {
   }, []);
   return (
     <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
-      <button
-        onClick={handleClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        ReStart
-      </button>
+  
       <button
         onClick={handleclick2}
         style={{
@@ -227,10 +221,7 @@ const ElephantAnim12 = () => {
           fontSize: "18px",
         }}
       >
-        Sonitpur, a district in Assam, is home to vast stretches of tropical forests that shelter India’s magnificent Asian elephants. 
-      This rich, biodiverse landscape provides essential pathways for elephant herds, supporting their natural migration and feeding patterns.
-       Here, lush greenery and traditional elephant corridors coexist, forming an ancient sanctuary that balances both wildlife and human settlements.
-      </footer>
+Through thoughtful conservation efforts, safe wildlife corridors have been established for elephants, ensuring their protection and preserving the harmony between human settlements and wildlife. Both can now coexist peacefully, thriving side by side      </footer>
       
     </div>
   );

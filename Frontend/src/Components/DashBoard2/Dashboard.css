@@ -185,7 +185,7 @@ header nav ul li a:hover {
   font-size: 35px;
   width: 70%;
   font-weight: bold;
-  color: black;
+  color: rgb(255, 255, 255);
 }
 .image-container {
   position: relative;
