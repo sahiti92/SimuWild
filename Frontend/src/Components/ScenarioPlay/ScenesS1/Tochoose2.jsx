@@ -233,12 +233,7 @@ const ToChoose2 = () => {
           </div>
         </div>
 
-        {selectedChoice && (
-          <div style={styles.outcome}>
-            <p>{outcomeText}</p>
-            <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
-          </div>
-        )}
+      
 
         <button style={styles.restartButton} onClick={handleRestartClick}>
           Restart
