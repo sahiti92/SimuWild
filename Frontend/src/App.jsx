@@ -44,6 +44,7 @@ import JailScene from "./Components/ScenarioPlay/ScenesS3/jail.jsx";
 import CityScene from "./Components/ScenarioPlay/ScenesS3/greed.jsx";
 import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
 import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
+import Leapord_o1 from "./Components/ScenarioPlay/ScenesS2/outcome1.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
@@ -67,12 +68,15 @@ const App = () => {1
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
+        <Route
+          path="/startS3"
+          element={<Slider backgroundImage={"./rhinobg.png"} />}
+        />
         <Route path="/test" element={<WetlandScene1 />} />
-        <Route path="/poacher" element={<PoacherScene/>} />
-        <Route path="/jail" element={<JailScene/>} />
-        <Route path="/city" element={<CityScene/>} />
-         
+        <Route path="/poacher" element={<PoacherScene />} />
+        <Route path="/jail" element={<JailScene />} />
+        <Route path="/city" element={<CityScene />} />
+
         <Route
           path="/dashboard"
           element={
@@ -140,6 +144,9 @@ const App = () => {1
         <Route path="/outcome22s5" element={<Choice22 />} />
         <Route path="/summarys5" element={<SundarbansInfo />} />
         <Route path="/summarys1" element={<SummarySceneS1 />} />
+        <Route path="/leapordo2" element={<Leapord_o2 />} />
+        <Route path="/leapordo1" element={<Leapord_o1 />} />
+        <Route path="/leapordtochoose" element={<ToCh3 />} />
       </Routes>
     </Router>
   );
