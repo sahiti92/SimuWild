@@ -10,7 +10,7 @@ const SummarySceneS1 = () => {
       console.log("Resetting progress");
       const scenarioId = 1;
       await axios.post(
-        "http://localhost:8001/api/v1/progress/reset",
+        "http://localhost:10000/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {

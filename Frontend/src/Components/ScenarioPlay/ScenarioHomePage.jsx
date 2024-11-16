@@ -26,7 +26,7 @@ const ScenarioHomePage = () => {
     try {
       const token = getUserFromStorage();
       const response = await axios.get(
-        "http://localhost:8001/api/v1/progress",
+        "http://localhost:10000/api/v1/progress",
         {
           headers: {
             "Content-Type": "application/json",

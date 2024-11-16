@@ -13,7 +13,7 @@ const ToChoose = () => {
       try {
         const token = getUserFromStorage();
         const response = await axios.get(
-          "http://localhost:8001/api/v1/progress",
+          "http://localhost:10000/api/v1/progress",
           {
             headers: {
               "Content-Type": "application/json",
@@ -76,7 +76,7 @@ const ToChoose = () => {
           return;
       }
       const response = await axios.post(
-        "http://localhost:8001/api/v1/progress/update",
+        "http://localhost:10000/api/v1/progress/update",
         { scenarioId, choices },
         {
           headers: {
@@ -89,7 +89,7 @@ const ToChoose = () => {
       // Only call increment API if shouldIncrement is true
       if (shouldIncrement) {
         const response = await axios.post(
-          "http://localhost:8001/api/v1/progress/increment-counter",
+          "http://localhost:10000/api/v1/progress/increment-counter",
           { scenarioId },
           {
             headers: {
@@ -122,7 +122,7 @@ const ToChoose = () => {
       console.log("Resetting progress");
       //const scenarioId = 5;
       await axios.post(
-        "http://localhost:8001/api/v1/progress/reset",
+        "http://localhost:10000/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {

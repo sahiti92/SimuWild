@@ -18,7 +18,7 @@ const ToChoose2 = () => {
       try {
         const token = getUserFromStorage();
         const response = await axios.get(
-          "http://localhost:8001/api/v1/progress",
+          "http://localhost:10000/api/v1/progress",
           {
             headers: {
               "Content-Type": "application/json",
@@ -50,7 +50,7 @@ const ToChoose2 = () => {
     setShowOutcomeScene(false);
     if (shouldIncrement) {
       const incrementResponse = await axios.post(
-        "http://localhost:8001/api/v1/progress/increment-counter",
+        "http://localhost:10000/api/v1/progress/increment-counter",
         { scenarioId },
         {
           headers: {
@@ -66,7 +66,7 @@ const ToChoose2 = () => {
     if (choice === "Choice 1") {
       const choices = 1;
       const response = await axios.post(
-        "http://localhost:8001/api/v1/progress/update",
+        "http://localhost:10000/api/v1/progress/update",
         { scenarioId, choices },
         {
           headers: {
@@ -82,7 +82,7 @@ const ToChoose2 = () => {
       console.log("token");
       console.log(token);
       const response = await axios.post(
-        "http://localhost:8001/api/v1/progress/update",
+        "http://localhost:10000/api/v1/progress/update",
         { scenarioId, choices },
         {
           headers: {
@@ -105,7 +105,7 @@ const ToChoose2 = () => {
       console.log("Resetting progress");
       console.log(token);
       await axios.post(
-        "http://localhost:8001/api/v1/progress/reset",
+        "http://localhost:10000/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {
@@ -232,8 +232,6 @@ const ToChoose2 = () => {
             2.Relocate Elephants to a Sanctuary
           </div>
         </div>
-
-      
 
         <button style={styles.restartButton} onClick={handleRestartClick}>
           Restart
