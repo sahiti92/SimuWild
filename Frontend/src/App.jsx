@@ -66,12 +66,15 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
+        <Route
+          path="/startS3"
+          element={<Slider backgroundImage={"./rhinobg.png"} />}
+        />
         <Route path="/test" element={<WetlandScene1 />} />
-        <Route path="/poacher" element={<PoacherScene/>} />
-        <Route path="/jail" element={<JailScene/>} />
-        <Route path="/city" element={<CityScene/>} />
-         
+        <Route path="/poacher" element={<PoacherScene />} />
+        <Route path="/jail" element={<JailScene />} />
+        <Route path="/city" element={<CityScene />} />
+
         <Route
           path="/dashboard"
           element={
@@ -138,6 +141,8 @@ const App = () => {
         <Route path="/leopard" element={<LeopardScene />} />
         <Route path="/outcome22s5" element={<Choice22 />} />
         <Route path="/summarys5" element={<SundarbansInfo />} />
+        <Route path="/leapordo2" element={<Leapord_o2 />} />
+        <Route path="/leapordtochoose" element={<ToCh3 />} />
       </Routes>
     </Router>
   );

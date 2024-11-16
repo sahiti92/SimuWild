@@ -18,9 +18,9 @@ const ToCh3 = () => {
 
     // Navigate to the respective page based on choice
     if (choice === "Choice 1") {
-      navigate("/out32");//folder out32
+      navigate("/leapordo1"); //folder out32
     } else if (choice === "Choice 2") {
-      navigate("/leapordo2");//floder out 32
+      navigate("/leapordo2"); //floder out 32
     }
   };
 
@@ -141,15 +141,15 @@ const ToCh3 = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-           Work with forest officials and NGOs to protect both people and leopards through non-violent methods.
-
+            Work with forest officials and NGOs to protect both people and
+            leopards through non-violent methods.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-           Capture or relocate the leopards far away, focusing only on human safety.
-
+            Capture or relocate the leopards far away, focusing only on human
+            safety.
           </div>
         </div>
 
