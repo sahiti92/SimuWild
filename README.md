@@ -121,15 +121,19 @@ Our platform stands out by offering an immersive, scenario-based learning experi
 
 ## Map
 
-![image](https://github.com/user-attachments/assets/1d11e922-0884-420d-a363-ec757a29a156)
+![Screenshot (34)](https://github.com/user-attachments/assets/74220e4b-64a5-4f0d-8f10-616dc0c36d63)
 
-![image](https://github.com/user-attachments/assets/5f90241c-11ee-48ed-b9e7-e2946343908d)
+
+![Screenshot (31)](https://github.com/user-attachments/assets/f394362e-438b-4e7b-ac89-54346bd813a4)
+
 
 ## Quiz
 
-![image](https://github.com/user-attachments/assets/aa2df790-7125-4373-b726-9609fee1ce37)
+![Screenshot (33)](https://github.com/user-attachments/assets/1165c21f-1578-447d-aaa1-4dde2fde15b8)
 
-![image](https://github.com/user-attachments/assets/f8ac7bbd-63c7-4772-8c95-0a87805d1de7)
+
+![Screenshot (32)](https://github.com/user-attachments/assets/8b5800fc-f874-4484-9a32-ebc0b65009ec)
+
 
 ![image](https://github.com/user-attachments/assets/5574e1ee-b256-4bbb-80b3-5efef61a51f0)
 
