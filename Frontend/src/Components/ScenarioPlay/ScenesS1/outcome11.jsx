@@ -13,6 +13,7 @@ const ElephantAnim11 = () => {
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
+  const token = getUserFromStorage();
   const [footerText, setFooterText] = useState(
     "Due to greed for economic benefits,you cut down trees which led to decrease in forest cover,making it a barren landscape."
   );
@@ -124,7 +125,7 @@ const ElephantAnim11 = () => {
         setTimeout(() => {
           const currentAction = mixer.clipAction(animations[1]); // Stop the first animation
           currentAction.stop();
-    
+
           const newAction = mixer.clipAction(animations[22]); // Animation 2 (index 1)
           newAction.play(); // Start the second animation
         }, 5000);
@@ -194,7 +195,7 @@ const ElephantAnim11 = () => {
         setTimeout(() => {
           const currentAction = mixer.clipAction(animations[1]); // Stop the first animation
           currentAction.stop();
-    
+
           const newAction = mixer.clipAction(animations[22]); // Animation 2 (index 1)
           newAction.play(); // Start the second animation
         }, 5000);
@@ -286,8 +287,7 @@ const ElephantAnim11 = () => {
         setFooterText(
           "Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation."
         );
-  
-      }, 4000);//forest disappear after 4s
+      }, 4000); //forest disappear after 4s
     });
 
     loader.load("./forest.glb", (gltf) => {
@@ -327,9 +327,9 @@ const ElephantAnim11 = () => {
     loader.load("./green_field.glb", (gltf) => {
       const field = gltf.scene;
       const fieldPositions = [
-        {x:-30,z:50},
-        {x:0,z:100},
-        {x:10,z:50},
+        { x: -30, z: 50 },
+        { x: 0, z: 100 },
+        { x: 10, z: 50 },
       ];
 
       fieldPositions.forEach((pos) => {
@@ -392,6 +392,8 @@ const ElephantAnim11 = () => {
   }, []);
   const handleRestartClick = async () => {
     try {
+      console.log("token__");
+      console.log(token);
       console.log("Resetting progress");
       const scenarioId = 1;
       await axios.post(
@@ -404,10 +406,8 @@ const ElephantAnim11 = () => {
         }
       );
 
-      setSelectedChoice("");
-      //setShowOutcomeScene(false);
       alert("Progress has been reset.");
-      navigate("/eleph");
+      navigate("/scenarios/scenario1");
     } catch (error) {
       console.error("Error resetting progress:", error);
       alert(
@@ -426,23 +426,6 @@ const ElephantAnim11 = () => {
       ref={mountRef}
       style={{ width: "100vw", height: "100vh", position: "relative" }}
     >
-      <button
-        onClick={handleRestartClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        Restart
-      </button>
       <button
         onClick={handleSaveAndExit}
         style={{

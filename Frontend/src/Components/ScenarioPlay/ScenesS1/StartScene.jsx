@@ -29,7 +29,10 @@ const ElephantAnim = () => {
         const scenarioProgress = progress.find(
           (item) => item.scenarioId === scenarioId
         );
-        if (scenarioProgress && scenarioProgress.counter === 1) {
+        if (
+          scenarioProgress &&
+          (scenarioProgress.counter === 1 || scenarioProgress.counter === 0)
+        ) {
           setShouldIncrement(true);
         }
         console.log("sp");

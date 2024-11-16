@@ -1,10 +1,10 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose1 = () => {
-  const scenarioId=1;
+  const scenarioId = 1;
 
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
@@ -46,8 +46,8 @@ const ToChoose1 = () => {
 
     checkProgress();
   }, [scenarioId]);
-  
-  const handleChoiceClick = async(choice) => {
+
+  const handleChoiceClick = async (choice) => {
     if (shouldIncrement) {
       const incrementResponse = await axios.post(
         "http://localhost:8001/api/v1/progress/increment-counter",
@@ -89,7 +89,6 @@ const ToChoose1 = () => {
           },
         }
       );
-  
 
       navigate("/eleph12");
     }
@@ -98,8 +97,6 @@ const ToChoose1 = () => {
   const handleShowOutcomeClick = () => {
     setShowOutcomeScene(true);
   };
-
-  
 
   const handleRestartClick = async () => {
     try {
@@ -118,7 +115,7 @@ const ToChoose1 = () => {
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
-      navigate("/eleph")
+      navigate("/scenarios/scenario1");
     } catch (error) {
       console.error("Error resetting progress:", error);
       alert(
@@ -225,17 +222,16 @@ const ToChoose1 = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1.Support deforestation for economic development so that you can have  better opportunities.
+            1.Support deforestation for economic development so that you can
+            have better opportunities.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2.Stop deforestation 
+            2.Stop deforestation
           </div>
         </div>
-
-        
 
         {showOutcomeScene && (
           <div style={styles.outcomeScene}>

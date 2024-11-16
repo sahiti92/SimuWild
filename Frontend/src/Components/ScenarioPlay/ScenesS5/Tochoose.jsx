@@ -140,6 +140,7 @@ const ToChoose = () => {
           (error.response?.data?.error || "Unknown error")
       );
     }
+    navigate("/scenarios/scenario5");
   };
 
   const styles = {
