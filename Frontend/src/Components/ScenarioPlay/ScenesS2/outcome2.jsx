@@ -538,23 +538,6 @@ const Leapord_o2 = () => {
   return (
     <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
       <button
-        onClick={handleClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        ReStart
-      </button>
-      <button
         onClick={handleclick2}
         style={{
           position: "absolute",
@@ -569,7 +552,7 @@ const Leapord_o2 = () => {
           zIndex: 1,
         }}
       >
-        Save and Exit
+        Exit
       </button>
       <footer
         style={{

@@ -549,24 +549,6 @@ const Leapord_o1 = () => {
           measures.
         </p>
       </div>
-
-      <button
-        onClick={handleClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        ReStart
-      </button>
       <button
         onClick={handleclick2}
         style={{
@@ -582,7 +564,7 @@ const Leapord_o1 = () => {
           zIndex: 1,
         }}
       >
-        Save and Exit
+        Exit
       </button>
       <footer
         style={{

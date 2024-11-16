@@ -159,10 +159,6 @@ const ToCh3 = () => {
             <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
           </div>
         )}
-
-        <button onClick={handleRestartClick} style={styles.restartButton}>
-          Restart
-        </button>
         <button
           onClick={() => navigate("/save-exit")}
           style={{
@@ -178,7 +174,7 @@ const ToCh3 = () => {
             zIndex: 1,
           }}
         >
-          Save & Exit
+          Exit
         </button>
       </div>
     </div>

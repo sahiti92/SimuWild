@@ -424,10 +424,13 @@ const Choice2 = () => {
         }}
       >
         Supporting tiger conservation brings hope for both tigers and their
-        habitats. Through habitat restoration and growth of green cover, we can
-        protect these majestic animals and enrich biodiversity. A thriving
-        environment for tigers also means healthier ecosystems and sustainable
-        natural resources for all.
+        habitats. Through habitat restoration and the growth of green cover, we
+        can protect these majestic animals and enrich biodiversity.
+        Additionally, safeguarding tiger habitats plays a crucial role in
+        protecting nearby villages, as it reduces the likelihood of tigers
+        straying into human settlements. This not only ensures the safety of
+        local communities but also fosters coexistence between humans and
+        wildlife.
       </footer>
     </div>
   );
