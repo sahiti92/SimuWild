@@ -27,11 +27,13 @@ const Scenario5 = () => {
         const scenarioProgress = progress.find(
           (item) => item.scenarioId === scenarioId
         );
-        if (scenarioProgress && scenarioProgress.counter === 0) {
-          setShouldIncrement(true);
+
+        if (scenarioProgress) {
+          // Check if counter is 0 to decide on increment
+          if (scenarioProgress.counter === 0) {
+            setShouldIncrement(true);
+          }
         }
-        console.log("sp");
-        console.log(scenarioProgress.counter);
       } catch (error) {
         console.error("Error fetching progress:", error);
       }
@@ -43,10 +45,8 @@ const Scenario5 = () => {
   const handleClick = async () => {
     try {
       const token = getUserFromStorage();
-
-      // Only call increment API if shouldIncrement is true
       if (shouldIncrement) {
-        const response = await axios.post(
+        const incrementResponse = await axios.post(
           "http://localhost:8001/api/v1/progress/increment-counter",
           { scenarioId },
           {
@@ -56,14 +56,62 @@ const Scenario5 = () => {
             },
           }
         );
-
-        console.log(response.data.message); // Display response message
+        console.log("Counter incremented:", incrementResponse.data.message);
       }
-    } catch (error) {
-      console.error("Error incrementing counter:", error);
-    }
+      // Fetch progress to check the current counter and choices
+      const response = await axios.get(
+        "http://localhost:8001/api/v1/progress",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-    navigate("/threeScene");
+      const progress = response.data;
+      const scenarioProgress = progress.find(
+        (item) => item.scenarioId === scenarioId
+      );
+
+      if (scenarioProgress) {
+        const { counter, choices } = scenarioProgress;
+
+        // Navigate based on counter value
+        if (counter === 1) {
+          navigate("/threeScene");
+        } else if (counter === 2) {
+          navigate("/tochoose");
+        } else {
+          // Further checks for choices
+          switch (choices) {
+            case 1:
+              navigate("/outcome1s5");
+              break;
+            case 2:
+              navigate("/outcome1s5");
+              break;
+            case 3:
+              navigate("/outcome2s5");
+              break;
+            case 4:
+              navigate("/outcome22s5");
+              break;
+            default:
+              console.warn("Unexpected choice value:", choices);
+          }
+        }
+      } else {
+        console.warn("No progress found for this scenario.");
+      }
+
+      // Increment the counter only if shouldIncrement is true
+    } catch (error) {
+      console.error(
+        "Error handling navigation or incrementing counter:",
+        error
+      );
+    }
   };
 
   return (

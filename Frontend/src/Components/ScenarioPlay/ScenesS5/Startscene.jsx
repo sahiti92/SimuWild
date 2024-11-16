@@ -1,15 +1,75 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
+import { getUserFromStorage } from "../../../utils/getUser";
+import axios from "axios";
 const Choice = () => {
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const navigate = useNavigate();
+  const scenarioId = 5;
+
+  const [shouldIncrement, setShouldIncrement] = useState(false);
+
+  useEffect(() => {
+    const checkProgress = async () => {
+      try {
+        const token = getUserFromStorage();
+        const response = await axios.get(
+          "http://localhost:8001/api/v1/progress",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const progress = response.data;
+        const scenarioProgress = progress.find(
+          (item) => item.scenarioId === scenarioId
+        );
+        if (scenarioProgress && scenarioProgress.counter === 1) {
+          setShouldIncrement(true);
+        }
+        console.log("sp");
+        console.log(scenarioProgress.counter);
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    };
+
+    checkProgress();
+  }, [scenarioId]);
+
   const handleClick = async () => {
+    try {
+      const token = getUserFromStorage();
+
+      // Only call increment API if shouldIncrement is true
+      if (shouldIncrement) {
+        const response = await axios.post(
+          "http://localhost:8001/api/v1/progress/increment-counter",
+          { scenarioId },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("incd");
+        console.log(response.data.message); // Display response message
+      }
+      console.log("incd_alreadey done");
+    } catch (error) {
+      console.error("Error incrementing counter:", error);
+    }
+
     navigate("/tochoose");
   };
   const handleclick2 = async () => {

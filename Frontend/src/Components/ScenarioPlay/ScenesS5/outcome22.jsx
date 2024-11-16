@@ -3,13 +3,36 @@ import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { getUserFromStorage } from "../../../utils/getUser";
 const Choice22 = () => {
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const navigate = useNavigate();
+  const scenarioId = 5;
   const handleClick = async () => {
+    try {
+      const token = getUserFromStorage();
+      console.log("Resetting progress");
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Progress has been reset.");
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
+    }
     navigate("/tochoose");
   };
   const handleclick2 = async () => {
@@ -364,7 +387,24 @@ const Choice22 = () => {
           zIndex: 1,
         }}
       >
-        Start
+        ReStart
+      </button>
+      <button
+        onClick={() => navigate("/summarys5")}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "245px",
+          padding: "10px 15px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        View Summary
       </button>
       <button
         onClick={handleclick2}
