@@ -55,6 +55,8 @@ import PoacherScene from "./Components/ScenarioPlay/ScenesS3/Poacher.jsx";
 import JailScene from "./Components/ScenarioPlay/ScenesS3/jail.jsx";
 import CityScene from "./Components/ScenarioPlay/ScenesS3/greed.jsx";
 import RoleSelection from "./Components/ScenarioPlay/ScenesS3/Role.jsx";
+import MapComponent from "./Components/Map/MapComponent.jsx";
+import Quiz from "./Components/Map/Quiz.jsx";
 
 const App = () => {
   return (
@@ -85,7 +87,22 @@ const App = () => {
         <Route path="/role" element={<RoleSelection />} />
         <Route path="/choice31" element={<Choice31 />} />
         <Route path="/choice32" element={<Choice32 />} />
-
+        <Route
+          path="/map"
+          element={
+            <AuthRoute>
+              <MapComponent />
+            </AuthRoute>
+          }
+        />
+        <Route
+          path="/quiz"
+          element={
+            <AuthRoute>
+              <Quiz />
+            </AuthRoute>
+          }
+        />
         <Route
           path="/dashboard"
           element={

@@ -12,7 +12,6 @@ const SpeciesDetails = () => {
     nearThreatened: "../../../Near Threatened.csv",
   };
 
-
   const fetchSpeciesData = async () => {
     for (const [category, path] of Object.entries(csvPaths)) {
       try {

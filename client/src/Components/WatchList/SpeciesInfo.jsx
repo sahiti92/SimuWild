@@ -9,9 +9,9 @@ const SpeciesInfo = () => {
     vulnerable: [],
     nearThreatened: [],
   });
-  const [showAll, setShowAll] = useState(false); 
-  const navigate = useNavigate(); 
-  
+  const [showAll, setShowAll] = useState(false);
+  const navigate = useNavigate();
+
   const csvPaths = {
     endangered: "../../../Endangered.csv",
     criticallyEndangered: "../../../CriticallyEndangered.csv",
@@ -47,11 +47,9 @@ const SpeciesInfo = () => {
     });
   }, []);
 
-
   const handleSpeciesClick = (species) => {
     navigate(`/species/${encodeURIComponent(species.scientificName)}`);
   };
-
 
   const handleExploreClick = () => {
     setShowAll((prev) => !prev);
@@ -70,7 +68,7 @@ const SpeciesInfo = () => {
                 {speciesList.map((species, index) => (
                   <li
                     key={index}
-                    onClick={() => handleSpeciesClick(species)} 
+                    onClick={() => handleSpeciesClick(species)}
                     style={{ cursor: "pointer", color: "blue" }}
                   >
                     {species.scientificName}
