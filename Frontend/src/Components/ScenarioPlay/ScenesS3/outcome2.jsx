@@ -289,7 +289,7 @@ export default function WetlandScene1() {
 export const textStyle = {
    
     position: 'absolute',
-    top: '100px',
+    top: '200px',
     left: '350px',
     color: 'white',
     fontFamily: 'Georgia, serif',

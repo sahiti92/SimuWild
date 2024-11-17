@@ -197,6 +197,7 @@ export default function PoacherScene() {
           <OrbitControls />
           <CameraLogger /> {/* Track and log camera position */}
         </Canvas>
+        <footer>
         <div style={textStyle}>
         <p>
           There exists a disease that can only be cured using rhino horns.
@@ -205,6 +206,7 @@ export default function PoacherScene() {
         </p>
 
    </div>
+   </footer>
       </div>
     </div>
   );

@@ -504,11 +504,7 @@ const Leapord_o1 = () => {
   return (
     <div
       ref={mountRef}
-      style1={{
-        position: "relative",
-        height: "100vh",
-      }}
-    >
+          style1={{ position: "relative", height: "100vh",}}>
       <div
         style={{
           position: "absolute",
@@ -524,7 +520,6 @@ const Leapord_o1 = () => {
           maxWidth: "60%", // Keep the notice compact
           boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)", // Add shadow for a raised effect
           border: "2px solid #f1c40f", // Border to give a framed appearance
-          position: "relative", // For pseudo-elements
         }}
       >
         <div

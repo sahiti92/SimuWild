@@ -162,12 +162,13 @@ export default function CityScene() {
         <OrbitControls />
         <CameraLogger />
       </Canvas>
+      <footer>
       <div style={textStyle}>
         <p>
         You have successfully tranquilized the rhino and carefully removed its ivory, driven by greed. However, in doing so, you neglected to consider the animal's suffering and the potential risks involved, ultimately contributing to the extinction of rhinos.
         </p>
-
    </div>
+   </footer>
     </div>
   );
 }
