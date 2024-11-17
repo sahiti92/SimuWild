@@ -1,67 +1,67 @@
 .news-section {
-    font-family: Arial, sans-serif;
-    color: #333;
-    background-color: #f9fafc;
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .news-section h1 {
-    font-size: 2.5rem;
-    color: #2c3e50;
-    margin-bottom: 2rem;
-  }
-  
-  .news-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-  }
-  
-  .news-item {
-    background-color: #fff;
+  font-family: Arial, sans-serif;
+  color: #333;
+  background-color: #f9fafc;
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.news-section h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.news-item {
+  background-color: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.news-item h2 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin-bottom: 0.5rem;
+}
+
+.news-date {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.news-item p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+}
+
+@media (max-width: 600px) {
+  .news-section {
     padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
-    text-align: left;
   }
-  
+
+  .news-section h1 {
+    font-size: 2rem;
+  }
+
   .news-item h2 {
-    font-size: 1.5rem;
-    color: #2c3e50;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
   }
-  
-  .news-date {
-    font-size: 0.9rem;
-    color: #777;
-    margin-bottom: 1rem;
-  }
-  
+
   .news-item p {
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #555;
+    font-size: 0.9rem;
   }
-  
-  @media (max-width: 600px) {
-    .news-section {
-      padding: 1.5rem;
-    }
-  
-    .news-section h1 {
-      font-size: 2rem;
-    }
-  
-    .news-item h2 {
-      font-size: 1.3rem;
-    }
-  
-    .news-item p {
-      font-size: 0.9rem;
-    }
-  }
+}

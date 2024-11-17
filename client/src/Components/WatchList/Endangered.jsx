@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Papa from "papaparse";
-import { useNavigate } from "react-router-dom"; 
+import { useNavigate } from "react-router-dom";
 import "./watchpage.css";
 
 const Endangered = () => {
@@ -8,13 +8,12 @@ const Endangered = () => {
     endangered: [],
   });
   const [showAll, setShowAll] = useState(false);
-  const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null); 
-  const navigate = useNavigate(); 
+  const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null);
+  const navigate = useNavigate();
 
   const csvPaths = {
     endangered: "../../../Endangered.csv",
   };
-
 
   const fetchSpeciesData = async (category) => {
     try {
@@ -43,35 +42,47 @@ const Endangered = () => {
     });
   }, []);
 
-
   const handleSpeciesClick = (species, index) => {
     setActiveSpeciesIndex(index);
     navigate(`/species/${encodeURIComponent(species.scientificName)}`);
   };
 
-  
   const handleExploreClick = () => {
     setShowAll((prev) => !prev);
   };
 
   return (
     <div className="species-info">
-      <h1 style={{ color: '#FFDF6C', fontSize: '3em', fontFamily: 'Montserrat, sans-serif' }}>
+      <h1
+        style={{
+          color: "#FFDF6C",
+          fontSize: "3em",
+          fontFamily: "Montserrat, sans-serif",
+        }}
+      >
         Species Information
       </h1>
 
       <div>
         {Object.entries(speciesData).map(([category, speciesList]) => (
           <div key={category}>
-            <h2 style={{ color: '#FFCF58', fontSize: '2em' }}>
+            <h2 style={{ color: "#FFCF58", fontSize: "2em" }}>
               {category.replace(/([A-Z])/g, " $1").toUpperCase()}
             </h2>
             {speciesList.length > 0 ? (
-              <ul style={{ display: "flex", flexWrap: "wrap", listStyleType: "none", padding: "0", margin: "0" }}>
+              <ul
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  listStyleType: "none",
+                  padding: "0",
+                  margin: "0",
+                }}
+              >
                 {speciesList.map((species, index) => (
                   <li
                     key={index}
-                    onClick={() => handleSpeciesClick(species, index)} 
+                    onClick={() => handleSpeciesClick(species, index)}
                     style={{
                       cursor: "pointer",
                       fontSize: "16px",
@@ -79,11 +90,12 @@ const Endangered = () => {
                       fontFamily: "Lato",
                       margin: "5px",
                       padding: "10px",
-                      backgroundColor: activeSpeciesIndex === index ? "lightblue" : "#f0f0f0",
+                      backgroundColor:
+                        activeSpeciesIndex === index ? "lightblue" : "#f0f0f0",
                       borderRadius: "5px",
-                      flexBasis: "calc(20% - 10px)", 
+                      flexBasis: "calc(20% - 10px)",
                       textAlign: "center",
-                      transition: "background-color 0.3s ease", 
+                      transition: "background-color 0.3s ease",
                     }}
                   >
                     {species.scientificName}
@@ -92,7 +104,8 @@ const Endangered = () => {
               </ul>
             ) : (
               <p>
-                Loading {category.replace(/([A-Z])/g, " $1").toLowerCase()} data...
+                Loading {category.replace(/([A-Z])/g, " $1").toLowerCase()}{" "}
+                data...
               </p>
             )}
           </div>

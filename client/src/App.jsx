@@ -46,8 +46,8 @@ import SummarySceneS1 from "./Components/ScenarioPlay/ScenesS1/summarys1.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
-import  Choice32 from "./Components/ScenarioPlay/ScenesS3/Choice2.jsx"
-import  Choice31 from "./Components/ScenarioPlay/ScenesS3/Choice1.jsx";
+import Choice32 from "./Components/ScenarioPlay/ScenesS3/Choice2.jsx";
+import Choice31 from "./Components/ScenarioPlay/ScenesS3/Choice1.jsx";
 import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
 import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
 import WetlandScene1 from "./Components/ScenarioPlay/ScenesS3/outcome2.jsx";
@@ -74,15 +74,18 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
-        <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
+        <Route
+          path="/startS3"
+          element={<Slider backgroundImage={"./rhinobg.png"} />}
+        />
         <Route path="/outcome1S3" element={<WetlandScene1 />} />
-        <Route path="/poacher" element={<PoacherScene/>} />
-        <Route path="/jail" element={<JailScene/>} />
-        <Route path="/city" element={<CityScene/>} />
-        <Route path="/role" element={<RoleSelection/>} />
-        <Route path="/choice31" element = {<Choice31/>}/>
-        <Route path="/choice32" element = {<Choice32/>}/>
-         
+        <Route path="/poacher" element={<PoacherScene />} />
+        <Route path="/jail" element={<JailScene />} />
+        <Route path="/city" element={<CityScene />} />
+        <Route path="/role" element={<RoleSelection />} />
+        <Route path="/choice31" element={<Choice31 />} />
+        <Route path="/choice32" element={<Choice32 />} />
+
         <Route
           path="/dashboard"
           element={

@@ -35,11 +35,11 @@
 
 //   const formik = useFormik({
 //     initialValues: {
-//       username: "", 
+//       username: "",
 //       email: "",
 //       password: "",
 //       confirmPassword: "",
-//       agreeToTerms: false, 
+//       agreeToTerms: false,
 //     },
 //     validationSchema,
 //     onSubmit: (values) => {
@@ -58,7 +58,7 @@
 //   useEffect(() => {
 //     if (isSuccess) {
 //       setTimeout(() => {
-//         navigate("/dashboard"); 
+//         navigate("/dashboard");
 //       }, 3000);
 //     }
 //   }, [isSuccess, navigate]);
@@ -75,7 +75,6 @@
 //         {isSuccess && (
 //           <AlertMessage type="success" message="Registration successful" />
 //         )}
-
 
 //         {/* Input Field - Username */}
 //         <div className="input-group">
@@ -318,17 +317,20 @@ import { registerAPI } from "../services/users/userService";
 import { useNavigate } from "react-router-dom";
 import AlertMessage from "../Alert/AlertMessage";
 import "./auth.css"; // Import the CSS file
- import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 // Validation schema
 const validationSchema = Yup.object({
   username: Yup.string().required("Username is required"),
-  email: Yup.string().email("Invalid email address").required("Email is required"),
-  password: Yup.string().min(8, "Password must be at least 8 characters long").required("Password is required"),
+  email: Yup.string()
+    .email("Invalid email address")
+    .required("Email is required"),
+  password: Yup.string()
+    .min(8, "Password must be at least 8 characters long")
+    .required("Password is required"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], "Passwords must match")
     .required("Confirming your password is required"),
-  
 });
 
 const SignupForm = () => {
@@ -366,13 +368,17 @@ const SignupForm = () => {
   }, [isSuccess, navigate]);
 
   return (
-    <div className="auth-page" style={{ width: '100vw', height: '100vh' }}>
+    <div className="auth-page" style={{ width: "100vw", height: "100vh" }}>
       <form onSubmit={formik.handleSubmit} className="form-container">
         <h2>Sign Up</h2>
 
         {isPending && <div className="alert alert-loading">Loading...</div>}
-        {isError && <div className="alert alert-error">{error.response.data.message}</div>}
-        {isSuccess && <div className="alert alert-success">Registration successful</div>}
+        {isError && (
+          <div className="alert alert-error">{error.response.data.message}</div>
+        )}
+        {isSuccess && (
+          <div className="alert alert-success">Registration successful</div>
+        )}
 
         <p>Join our community now!</p>
 
@@ -432,7 +438,9 @@ const SignupForm = () => {
             style={{ width: "170%" }}
           />
           {formik.touched.confirmPassword && formik.errors.confirmPassword && (
-            <span className="error-message">{formik.errors.confirmPassword}</span>
+            <span className="error-message">
+              {formik.errors.confirmPassword}
+            </span>
           )}
         </div>
 
@@ -455,13 +463,13 @@ const SignupForm = () => {
         </button>
         <p style={{ marginTop: "10px", textAlign: "center" }}>
           Already have an account?{" "}
-           <Link
-             to="/login"
-             style={{ color: "#007BFF", textDecoration: "underline" }}
-           >
-             Login
-           </Link>
-         </p>
+          <Link
+            to="/login"
+            style={{ color: "#007BFF", textDecoration: "underline" }}
+          >
+            Login
+          </Link>
+        </p>
       </form>
     </div>
   );

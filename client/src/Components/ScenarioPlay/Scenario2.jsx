@@ -1,8 +1,8 @@
-import React from 'react';
-import './Scenario.css'; 
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import "./Scenario.css";
+import { useNavigate } from "react-router-dom";
 const Scenario2 = () => {
-  const navigate =  useNavigate();
+  const navigate = useNavigate();
   return (
     <div className="scenario-container">
       <div className="image-container">
@@ -27,7 +27,12 @@ const Scenario2 = () => {
             challenging terrain and the park’s proximity to international
             borders.
           </p>
-          <button className="small-play-button" onClick={() => navigate("../../startS3")}>Play</button>
+          <button
+            className="small-play-button"
+            onClick={() => navigate("../../startS3")}
+          >
+            Play
+          </button>
         </div>
       </div>
     </div>
