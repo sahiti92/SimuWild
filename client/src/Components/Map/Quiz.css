@@ -40,7 +40,7 @@
   color: #000000;
   text-align: center;
   margin-bottom: 0.01rem;
-  margin-top: -4rem;
+  margin-top: -2rem;
 }
 
 .quiz-question-text {
@@ -123,7 +123,7 @@
 }
 
 .quiz-results {
-  margin-top: 30rem;
+  margin-top: 25rem;
   text-align: center;
 }
 
