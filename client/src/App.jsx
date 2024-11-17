@@ -43,7 +43,7 @@ import Leapord_o1 from "./Components/ScenarioPlay/ScenesS2/outcome1.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 import SundarbansInfo from "./Components/ScenarioPlay/ScenesS5/summarys5.jsx";
 import SummarySceneS1 from "./Components/ScenarioPlay/ScenesS1/summarys1.jsx";
-//import UpdatePassword from "./Users/UpdatePassword.jsx";
+import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
 import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
 import Choice32 from "./Components/ScenarioPlay/ScenesS3/Choice2.jsx";
@@ -76,6 +76,7 @@ const App = () => {
         <Route path="/scenarios/scenario4" element={<Scenario4 />} />
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
+        <Route path="/updatePass" element={<UpdatePassword />} />
         <Route
           path="/startS3"
           element={<Slider backgroundImage={"./rhinobg.png"} />}
