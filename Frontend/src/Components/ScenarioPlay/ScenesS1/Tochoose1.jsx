@@ -19,7 +19,8 @@ const ToChoose1 = () => {
       try {
         const token = getUserFromStorage();
         const response = await axios.get(
-          "http://localhost:10000/api/v1/progress",
+          // "http://localhost:10000/api/v1/progress",
+          "https://simuwild.onrender.com/api/v1/progress",
           {
             headers: {
               "Content-Type": "application/json",
@@ -50,7 +51,8 @@ const ToChoose1 = () => {
   const handleChoiceClick = async (choice) => {
     if (shouldIncrement) {
       const incrementResponse = await axios.post(
-        "http://localhost:10000/api/v1/progress/increment-counter",
+        //  "http://localhost:10000/api/v1/progress/increment-counter",
+        "https://simuwild.onrender.com/api/v1/progress/increment-counter",
         { scenarioId },
         {
           headers: {
@@ -67,7 +69,8 @@ const ToChoose1 = () => {
     if (choice === "Choice 1") {
       const choices = 1;
       const response = await axios.post(
-        "http://localhost:10000/api/v1/progress/update",
+        // "http://localhost:10000/api/v1/progress/update",
+        "https://simuwild.onrender.com/api/v1/progress/update",
         { scenarioId, choices },
         {
           headers: {
@@ -80,7 +83,8 @@ const ToChoose1 = () => {
     } else if (choice === "Choice 2") {
       const choices = 2;
       const response = await axios.post(
-        "http://localhost:10000/api/v1/progress/update",
+        //"http://localhost:10000/api/v1/progress/update",
+        "https://simuwild.onrender.com/api/v1/progress/update",
         { scenarioId, choices },
         {
           headers: {
@@ -103,7 +107,8 @@ const ToChoose1 = () => {
       console.log("Resetting progress");
       const scenarioId = 1;
       await axios.post(
-        "http://localhost:10000/api/v1/progress/reset",
+        //  "http://localhost:10000/api/v1/progress/reset",
+        "https://simuwild.onrender.com/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {

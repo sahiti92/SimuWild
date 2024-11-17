@@ -17,7 +17,8 @@ const Choice22 = () => {
       const token = getUserFromStorage();
       console.log("Resetting progress");
       await axios.post(
-        "http://localhost:10000/api/v1/progress/reset",
+        // "http://localhost:10000/api/v1/progress/reset",
+        "https://simuwild.onrender.com/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {

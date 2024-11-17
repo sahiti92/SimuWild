@@ -14,7 +14,8 @@ const Scenario5 = () => {
       try {
         const token = getUserFromStorage();
         const response = await axios.get(
-          "http://localhost:10000/api/v1/progress",
+          //  "http://localhost:10000/api/v1/progress",
+          "https://simuwild.onrender.com//api/v1/progress",
           {
             headers: {
               "Content-Type": "application/json",
@@ -47,7 +48,8 @@ const Scenario5 = () => {
       const token = getUserFromStorage();
       if (shouldIncrement) {
         const incrementResponse = await axios.post(
-          "http://localhost:10000/api/v1/progress/increment-counter",
+          // "http://localhost:10000/api/v1/progress/increment-counter",
+          "https://simuwild.onrender.com/api/v1/progress/increment-counter",
           { scenarioId },
           {
             headers: {
@@ -60,7 +62,8 @@ const Scenario5 = () => {
       }
       // Fetch progress to check the current counter and choices
       const response = await axios.get(
-        "http://localhost:10000/api/v1/progress",
+        //"http://localhost:10000/api/v1/progress",
+        "https://simuwild.onrender.com/api/v1/progress",
         {
           headers: {
             "Content-Type": "application/json",
