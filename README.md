@@ -24,6 +24,9 @@ The biodiversity crisis is urgent, with over 1 million species at risk of extinc
 
 Our platform stands out by offering an immersive, scenario-based learning experience that allows users to explore real-world conservation challenges. The interactive map of India lets users learn about local endangered species, making the experience personal and actionable. This approach deepens understanding and empowers users to actively participate in biodiversity conservation efforts.
 
+### Note:
+We have deployed the simu_d3 branch as final deployment(not main).
+
 ## Use Case Diagram
 ![image](https://github.com/user-attachments/assets/bc437177-006e-40e8-b847-9a9fc81be14f)
 
@@ -44,7 +47,7 @@ Our platform stands out by offering an immersive, scenario-based learning experi
   - **Terminal 1**: For the Backend
     - Navigate to the backend folder:
       ```
-      cd Backend
+      cd server
       ```
     - Install dependencies:
       ```
@@ -57,7 +60,7 @@ Our platform stands out by offering an immersive, scenario-based learning experi
   - **Terminal 2**: For the Frontend
     - Navigate to the frontend folder:
       ```
-      cd Frontend
+      cd client
       ```
     - Install dependencies:
       ```
