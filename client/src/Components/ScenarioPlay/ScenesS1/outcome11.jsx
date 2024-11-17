@@ -390,33 +390,33 @@ const ElephantAnim11 = () => {
       window.removeEventListener("click", onPointerClick);
     };
   }, []);
-  const handleRestartClick = async () => {
-    try {
-      console.log("token__");
-      console.log(token);
-      console.log("Resetting progress");
-      const scenarioId = 1;
-      await axios.post(
-        //"http://localhost:10000/api/v1/progress/reset",
-        "https://simuwild.onrender.com/api/v1/progress/reset",
-        { scenarioId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+  // const handleRestartClick = async () => {
+  //   try {
+  //     console.log("token__");
+  //     console.log(token);
+  //     console.log("Resetting progress");
+  //     const scenarioId = 1;
+  //     await axios.post(
+  //       //"http://localhost:10000/api/v1/progress/reset",
+  //       "https://simuwild.onrender.com/api/v1/progress/reset",
+  //       { scenarioId },
+  //       {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       }
+  //     );
 
-      alert("Progress has been reset.");
-      navigate("/scenarios/scenario1");
-    } catch (error) {
-      console.error("Error resetting progress:", error);
-      alert(
-        "Failed to reset progress: " +
-          (error.response?.data?.error || "Unknown error")
-      );
-    }
-  };
+  //     alert("Progress has been reset.");
+  //     navigate("/scenarios/scenario1");
+  //   } catch (error) {
+  //     console.error("Error resetting progress:", error);
+  //     alert(
+  //       "Failed to reset progress: " +
+  //         (error.response?.data?.error || "Unknown error")
+  //     );
+  //   }
+  // };
 
   const handleSaveAndExit = () => {
     navigate("/scenarios/scenario1");

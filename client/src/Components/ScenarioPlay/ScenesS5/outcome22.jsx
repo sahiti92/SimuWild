@@ -13,27 +13,27 @@ const Choice22 = () => {
   const navigate = useNavigate();
   const scenarioId = 5;
   const handleClick = async () => {
-    try {
-      const token = getUserFromStorage();
-      console.log("Resetting progress");
-      await axios.post(
-        // "http://localhost:10000/api/v1/progress/reset",
-        "https://simuwild.onrender.com/api/v1/progress/reset",
-        { scenarioId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      alert("Progress has been reset.");
-    } catch (error) {
-      console.error("Error resetting progress:", error);
-      alert(
-        "Failed to reset progress: " +
-          (error.response?.data?.error || "Unknown error")
-      );
-    }
+    // try {
+    //   const token = getUserFromStorage();
+    //   console.log("Resetting progress");
+    //   await axios.post(
+    //     // "http://localhost:10000/api/v1/progress/reset",
+    //     "https://simuwild.onrender.com/api/v1/progress/reset",
+    //     { scenarioId },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+    //   alert("Progress has been reset.");
+    // } catch (error) {
+    //   console.error("Error resetting progress:", error);
+    //   alert(
+    //     "Failed to reset progress: " +
+    //       (error.response?.data?.error || "Unknown error")
+    //   );
+    // }
     navigate("/scenarios/scenario5");
   };
   const handleclick2 = async () => {

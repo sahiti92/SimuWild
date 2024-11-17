@@ -9,17 +9,17 @@ const SummarySceneS1 = () => {
     try {
       console.log("Resetting progress");
       const scenarioId = 1;
-      await axios.post(
-        // "http://localhost:10000/api/v1/progress/reset",
-        "https://simuwild.onrender.com/api/v1/progress/reset",
-        { scenarioId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      alert("Progress has been reset.");
+      // await axios.post(
+      //   // "http://localhost:10000/api/v1/progress/reset",
+      //   "https://simuwild.onrender.com/api/v1/progress/reset",
+      //   { scenarioId },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
+      // alert("Progress has been reset.");
       navigate("/scenarios/scenario1");
     } catch (error) {
       console.error("Error resetting progress:", error);

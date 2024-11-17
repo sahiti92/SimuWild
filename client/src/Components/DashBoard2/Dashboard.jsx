@@ -38,48 +38,49 @@ const Dashboard = () => {
       setClickedIndex(index);
       console.log("index");
       console.log(index);
-      if (index == 0) {
-        //const API_BASE_URL = "http://localhost:10000/api/progress";
-        const token = getUserFromStorage();
-        try {
-          // Step 1: Get the current progress of the user
-          const progressResponse = await axios.get(
-            "http://localhost:10000/api/v1/progress",
-            {
-              headers: {
-                Authorization: `Bearer ${token}`, // Include the token
-              },
-            }
-          );
+      // if (index == 0) {
+      //   //const API_BASE_URL = "http://localhost:10000/api/progress";
+      //   const token = getUserFromStorage();
+      //   try {
+      //     // Step 1: Get the current progress of the user
+      //     const progressResponse = await axios.get(
+      //     //  "http://localhost:10000/api/v1/progress",
 
-          const progressData = progressResponse.data;
-          console.log("progressData");
-          console.log(progressData);
-          // Step 2: Check if the progress array is empty
-          if (!progressData.length) {
-            // Array is empty, so update progress for scenarioIds 1, 3, and 5
-            const scenarioIds = [1, 3, 5];
-            await Promise.all(
-              scenarioIds.map(async (scenarioId) => {
-                await axios.post(
-                  "http://localhost:10000/api/v1/progress/update",
-                  { scenarioId, choices: 0 },
-                  {
-                    headers: {
-                      Authorization: `Bearer ${token}`,
-                    },
-                  }
-                );
-              })
-            );
-            console.log("Progress initialized for scenario IDs 1, 3, and 5.");
-          } else {
-            console.log("User already has progress data, no update needed.");
-          }
-        } catch (error) {
-          console.error("Error updating progress:", error);
-        }
-      }
+      //       {
+      //         headers: {
+      //           Authorization: `Bearer ${token}`, // Include the token
+      //         },
+      //       }
+      //     );
+
+      //     const progressData = progressResponse.data;
+      //     console.log("progressData");
+      //     console.log(progressData);
+      //     // Step 2: Check if the progress array is empty
+      //     if (!progressData.length) {
+      //       // Array is empty, so update progress for scenarioIds 1, 3, and 5
+      //       const scenarioIds = [1, 3, 5];
+      //       await Promise.all(
+      //         scenarioIds.map(async (scenarioId) => {
+      //           await axios.post(
+      //             "http://localhost:10000/api/v1/progress/update",
+      //             { scenarioId, choices: 0 },
+      //             {
+      //               headers: {
+      //                 Authorization: `Bearer ${token}`,
+      //               },
+      //             }
+      //           );
+      //         })
+      //       );
+      //       console.log("Progress initialized for scenario IDs 1, 3, and 5.");
+      //     } else {
+      //       console.log("User already has progress data, no update needed.");
+      //     }
+      //   } catch (error) {
+      //     console.error("Error updating progress:", error);
+      //   }
+      // }
       navigate(features[index].path);
     }
   };

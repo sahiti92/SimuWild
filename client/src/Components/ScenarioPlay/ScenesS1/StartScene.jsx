@@ -11,60 +11,60 @@ const ElephantAnim = () => {
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const [shouldIncrement, setShouldIncrement] = useState(false);
-  useEffect(() => {
-    const checkProgress = async () => {
-      try {
-        const token = getUserFromStorage();
-        const response = await axios.get(
-          //  "http://localhost:10000/api/v1/progress",
-          "https://simuwild.onrender.com/api/v1/progress",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  // useEffect(() => {
+  //   const checkProgress = async () => {
+  //     try {
+  //       const token = getUserFromStorage();
+  //       const response = await axios.get(
+  //         //  "http://localhost:10000/api/v1/progress",
+  //         "https://simuwild.onrender.com/api/v1/progress",
+  //         {
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
 
-        const progress = response.data;
-        const scenarioProgress = progress.find(
-          (item) => item.scenarioId === scenarioId
-        );
-        if (
-          scenarioProgress &&
-          (scenarioProgress.counter === 1 || scenarioProgress.counter === 0)
-        ) {
-          setShouldIncrement(true);
-        }
-        console.log("sp");
-        console.log(scenarioProgress.counter);
-      } catch (error) {
-        console.error("Error fetching progress:", error);
-      }
-    };
+  //       const progress = response.data;
+  //       const scenarioProgress = progress.find(
+  //         (item) => item.scenarioId === scenarioId
+  //       );
+  //       if (
+  //         scenarioProgress &&
+  //         (scenarioProgress.counter === 1 || scenarioProgress.counter === 0)
+  //       ) {
+  //         setShouldIncrement(true);
+  //       }
+  //       console.log("sp");
+  //       console.log(scenarioProgress.counter);
+  //     } catch (error) {
+  //       console.error("Error fetching progress:", error);
+  //     }
+  //   };
 
-    checkProgress();
-  }, [scenarioId]);
+  //   checkProgress();
+  // }, [scenarioId]);
   const handleClick = async () => {
     try {
       const token = getUserFromStorage();
 
       // Only call increment API if shouldIncrement is true
-      if (shouldIncrement) {
-        const response = await axios.post(
-          // "http://localhost:10000/api/v1/progress/increment-counter",
-          "https://simuwild.onrender.com/api/v1/progress/increment-counter",
-          { scenarioId },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        console.log("counter incremented from 1 ");
-        console.log(response.data.message); // Display response message
-      }
+      // if (shouldIncrement) {
+      //   const response = await axios.post(
+      //     // "http://localhost:10000/api/v1/progress/increment-counter",
+      //     "https://simuwild.onrender.com/api/v1/progress/increment-counter",
+      //     { scenarioId },
+      //     {
+      //       headers: {
+      //         "Content-Type": "application/json",
+      //         Authorization: `Bearer ${token}`,
+      //       },
+      //     }
+      //   );
+      //   console.log("counter incremented from 1 ");
+      //   console.log(response.data.message); // Display response message
+      // }
     } catch (error) {
       console.error("Error incrementing counter:", error);
     }

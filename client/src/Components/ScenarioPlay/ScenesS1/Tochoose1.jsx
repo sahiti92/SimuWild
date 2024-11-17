@@ -14,85 +14,85 @@ const ToChoose1 = () => {
   const token = getUserFromStorage();
   const [shouldIncrement, setShouldIncrement] = useState(false);
 
-  useEffect(() => {
-    const checkProgress = async () => {
-      try {
-        const token = getUserFromStorage();
-        const response = await axios.get(
-          // "http://localhost:10000/api/v1/progress",
-          "https://simuwild.onrender.com/api/v1/progress",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  // useEffect(() => {
+  //   const checkProgress = async () => {
+  //     try {
+  //       const token = getUserFromStorage();
+  //       const response = await axios.get(
+  //         // "http://localhost:10000/api/v1/progress",
+  //         "https://simuwild.onrender.com/api/v1/progress",
+  //         {
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
 
-        const progress = response.data;
-        const scenarioProgress = progress.find(
-          (item) => item.scenarioId === scenarioId
-        );
+  //       const progress = response.data;
+  //       const scenarioProgress = progress.find(
+  //         (item) => item.scenarioId === scenarioId
+  //       );
 
-        if (scenarioProgress) {
-          // Check if counter is 0 to decide on increment
-          if (scenarioProgress.counter === 2) {
-            setShouldIncrement(true);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching progress:", error);
-      }
-    };
+  //       if (scenarioProgress) {
+  //         // Check if counter is 0 to decide on increment
+  //         if (scenarioProgress.counter === 2) {
+  //           setShouldIncrement(true);
+  //         }
+  //       }
+  //     } catch (error) {
+  //       console.error("Error fetching progress:", error);
+  //     }
+  //   };
 
-    checkProgress();
-  }, [scenarioId]);
+  //   checkProgress();
+  // }, [scenarioId]);
 
   const handleChoiceClick = async (choice) => {
-    if (shouldIncrement) {
-      const incrementResponse = await axios.post(
-        //  "http://localhost:10000/api/v1/progress/increment-counter",
-        "https://simuwild.onrender.com/api/v1/progress/increment-counter",
-        { scenarioId },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("Counter incremented:", incrementResponse.data.message);
-    }
-    setSelectedChoice(choice);
-    setShowOutcomeScene(false);
+    // if (shouldIncrement) {
+    //   const incrementResponse = await axios.post(
+    //     //  "http://localhost:10000/api/v1/progress/increment-counter",
+    //     "https://simuwild.onrender.com/api/v1/progress/increment-counter",
+    //     { scenarioId },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+    //   console.log("Counter incremented:", incrementResponse.data.message);
+    // }
+    // setSelectedChoice(choice);
+    // setShowOutcomeScene(false);
     // Navigate to the respective page based on choice
     if (choice === "Choice 1") {
       const choices = 1;
-      const response = await axios.post(
-        // "http://localhost:10000/api/v1/progress/update",
-        "https://simuwild.onrender.com/api/v1/progress/update",
-        { scenarioId, choices },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // const response = await axios.post(
+      //   // "http://localhost:10000/api/v1/progress/update",
+      //   "https://simuwild.onrender.com/api/v1/progress/update",
+      //   { scenarioId, choices },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
       navigate("/eleph11");
     } else if (choice === "Choice 2") {
       const choices = 2;
-      const response = await axios.post(
-        //"http://localhost:10000/api/v1/progress/update",
-        "https://simuwild.onrender.com/api/v1/progress/update",
-        { scenarioId, choices },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // const response = await axios.post(
+      //   //"http://localhost:10000/api/v1/progress/update",
+      //   "https://simuwild.onrender.com/api/v1/progress/update",
+      //   { scenarioId, choices },
+      //   {
+      //     headers: {
+      //       "Content-Type": "application/json",
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
 
       navigate("/eleph12");
     }
@@ -104,22 +104,22 @@ const ToChoose1 = () => {
 
   const handleRestartClick = async () => {
     try {
-      console.log("Resetting progress");
-      const scenarioId = 1;
-      await axios.post(
-        //  "http://localhost:10000/api/v1/progress/reset",
-        "https://simuwild.onrender.com/api/v1/progress/reset",
-        { scenarioId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      // console.log("Resetting progress");
+      // const scenarioId = 1;
+      // await axios.post(
+      //   //  "http://localhost:10000/api/v1/progress/reset",
+      //   "https://simuwild.onrender.com/api/v1/progress/reset",
+      //   { scenarioId },
+      //   {
+      //     headers: {
+      //       Authorization: `Bearer ${token}`,
+      //     },
+      //   }
+      // );
 
-      setSelectedChoice("");
-      setShowOutcomeScene(false);
-      alert("Progress has been reset.");
+      // setSelectedChoice("");
+      // setShowOutcomeScene(false);
+      // alert("Progress has been reset.");
       navigate("/scenarios/scenario1");
     } catch (error) {
       console.error("Error resetting progress:", error);
@@ -244,7 +244,7 @@ const ToChoose1 = () => {
           </div>
         )}
 
-        <button style={styles.restartButton} onClick={handleRestartClick}>
+        <button onClick={handleRestartClick} style={styles.restartButton}>
           Restart
         </button>
         <button style={styles.exitButton} onClick={handleExitClick}>

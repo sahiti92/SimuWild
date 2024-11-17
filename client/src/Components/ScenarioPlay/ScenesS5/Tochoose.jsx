@@ -8,37 +8,37 @@ const ToChoose = () => {
   const navigate = useNavigate();
   const [shouldIncrement, setShouldIncrement] = useState(false);
   const scenarioId = 5;
-  useEffect(() => {
-    const checkProgress = async () => {
-      try {
-        const token = getUserFromStorage();
-        const response = await axios.get(
-          //  "http://localhost:10000/api/v1/progress",
-          "https://simuwild.onrender.com/api/v1/progress",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
+  // useEffect(() => {
+  //   const checkProgress = async () => {
+  //     try {
+  //       const token = getUserFromStorage();
+  //       const response = await axios.get(
+  //         //  "http://localhost:10000/api/v1/progress",
+  //         "https://simuwild.onrender.com/api/v1/progress",
+  //         {
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //         }
+  //       );
 
-        const progress = response.data;
-        const scenarioProgress = progress.find(
-          (item) => item.scenarioId === scenarioId
-        );
-        if (scenarioProgress && scenarioProgress.counter === 2) {
-          setShouldIncrement(true);
-        }
-        console.log("sp");
-        console.log(scenarioProgress.counter);
-      } catch (error) {
-        console.error("Error fetching progress:", error);
-      }
-    };
+  //       const progress = response.data;
+  //       const scenarioProgress = progress.find(
+  //         (item) => item.scenarioId === scenarioId
+  //       );
+  //       if (scenarioProgress && scenarioProgress.counter === 2) {
+  //         setShouldIncrement(true);
+  //       }
+  //       console.log("sp");
+  //       console.log(scenarioProgress.counter);
+  //     } catch (error) {
+  //       console.error("Error fetching progress:", error);
+  //     }
+  //   };
 
-    checkProgress();
-  }, [scenarioId]);
+  //   checkProgress();
+  // }, [scenarioId]);
 
   // Get the token from storage
   const token = getUserFromStorage();
@@ -50,64 +50,64 @@ const ToChoose = () => {
 
   const handleSubChoiceClick = async (subChoice) => {
     // Navigate to the respective page based on sub-choice
-    try {
-      const token = getUserFromStorage();
-      let choices;
+    // try {
+    //   const token = getUserFromStorage();
+    //   let choices;
 
-      // Map the sub-choice to its respective value
-      switch (subChoice) {
-        case "SubChoice 1.1":
-          choices = 1;
-          //navigate("/outcome1s5");
-          break;
-        case "SubChoice 1.2":
-          choices = 2;
-          // navigate("/outcome1s5");
-          break;
-        case "SubChoice 2.1":
-          choices = 3;
-          // navigate("/outcome2s5");
-          break;
-        case "SubChoice 2.2":
-          choices = 4;
-          // navigate("/outcome22s5");
-          break;
-        default:
-          console.error("Unknown sub-choice selected.");
-          return;
-      }
-      const response = await axios.post(
-        // "http://localhost:10000/api/v1/progress/update",
-        "https://simuwild.onrender.com/api/v1/progress/update",
-        { scenarioId, choices },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("choice saved");
-      // Only call increment API if shouldIncrement is true
-      if (shouldIncrement) {
-        const response = await axios.post(
-          // "http://localhost:10000/api/v1/progress/increment-counter",
-          "https://simuwild.onrender.com/api/v1/progress/increment-counter",
-          { scenarioId },
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-        console.log("incd");
-        console.log(response.data.message); // Display response message
-      }
-      console.log("incd_alreadey done");
-    } catch (error) {
-      console.error("Error incrementing counter:", error);
-    }
+    //   // Map the sub-choice to its respective value
+    //   switch (subChoice) {
+    //     case "SubChoice 1.1":
+    //       choices = 1;
+    //       //navigate("/outcome1s5");
+    //       break;
+    //     case "SubChoice 1.2":
+    //       choices = 2;
+    //       // navigate("/outcome1s5");
+    //       break;
+    //     case "SubChoice 2.1":
+    //       choices = 3;
+    //       // navigate("/outcome2s5");
+    //       break;
+    //     case "SubChoice 2.2":
+    //       choices = 4;
+    //       // navigate("/outcome22s5");
+    //       break;
+    //     default:
+    //       console.error("Unknown sub-choice selected.");
+    //       return;
+    //   }
+    //   const response = await axios.post(
+    //     // "http://localhost:10000/api/v1/progress/update",
+    //     "https://simuwild.onrender.com/api/v1/progress/update",
+    //     { scenarioId, choices },
+    //     {
+    //       headers: {
+    //         "Content-Type": "application/json",
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
+    //   console.log("choice saved");
+    //   // Only call increment API if shouldIncrement is true
+    //   if (shouldIncrement) {
+    //     const response = await axios.post(
+    //       // "http://localhost:10000/api/v1/progress/increment-counter",
+    //       "https://simuwild.onrender.com/api/v1/progress/increment-counter",
+    //       { scenarioId },
+    //       {
+    //         headers: {
+    //           "Content-Type": "application/json",
+    //           Authorization: `Bearer ${token}`,
+    //         },
+    //       }
+    //     );
+    //     console.log("incd");
+    //     console.log(response.data.message); // Display response message
+    //   }
+    //   console.log("incd_alreadey done");
+    // } catch (error) {
+    //   console.error("Error incrementing counter:", error);
+    // }
 
     if (subChoice === "SubChoice 1.1") {
       navigate("/outcome1s5");
@@ -121,29 +121,29 @@ const ToChoose = () => {
   };
 
   const handleRestartClick = async () => {
-    try {
-      console.log("Resetting progress");
-      //const scenarioId = 5;
-      await axios.post(
-        //"http://localhost:10000/api/v1/progress/reset",
-        "https://simuwild.onrender.com/api/v1/progress/reset",
-        { scenarioId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
+    // try {
+    //   console.log("Resetting progress");
+    //   //const scenarioId = 5;
+    //   await axios.post(
+    //     //"http://localhost:10000/api/v1/progress/reset",
+    //     "https://simuwild.onrender.com/api/v1/progress/reset",
+    //     { scenarioId },
+    //     {
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //     }
+    //   );
 
-      setSelectedChoice("");
-      alert("Progress has been reset.");
-    } catch (error) {
-      console.error("Error resetting progress:", error);
-      alert(
-        "Failed to reset progress: " +
-          (error.response?.data?.error || "Unknown error")
-      );
-    }
+    //   setSelectedChoice("");
+    //   alert("Progress has been reset.");
+    // } catch (error) {
+    //   console.error("Error resetting progress:", error);
+    //   alert(
+    //     "Failed to reset progress: " +
+    //       (error.response?.data?.error || "Unknown error")
+    //   );
+    // }
     navigate("/scenarios/scenario5");
   };
 
