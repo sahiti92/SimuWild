@@ -36,13 +36,15 @@ import WetlandScene from "./Components/ScenarioPlay/ScenesS3/StartScene.jsx";
 import Slider from "./Components/ScenarioPlay/start.jsx";
 
 import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
-
 import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
 import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
-
+import Leapord_o1 from "./Components/ScenarioPlay/ScenesS2/outcome1.jsx";
 //import UpdatePassword from "./Users/UpdatePassword.jsx";
 //import UserProfile from "./Users/UserProfile.jsx";
-
+import SundarbansInfo from "./Components/ScenarioPlay/ScenesS5/summarys5.jsx";
+import SummarySceneS1 from "./Components/ScenarioPlay/ScenesS1/summarys1.jsx";
+//import UpdatePassword from "./Users/UpdatePassword.jsx";
+//import UserProfile from "./Users/UserProfile.jsx";
 import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
 import  Choice32 from "./Components/ScenarioPlay/ScenesS3/Choice2.jsx"
 import  Choice31 from "./Components/ScenarioPlay/ScenesS3/Choice1.jsx";
