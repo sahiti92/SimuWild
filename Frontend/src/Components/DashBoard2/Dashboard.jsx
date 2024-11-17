@@ -39,12 +39,12 @@ const Dashboard = () => {
       console.log("index");
       console.log(index);
       if (index == 0) {
-        //const API_BASE_URL = "http://localhost:8001/api/progress";
+        //const API_BASE_URL = "http://localhost:10000/api/progress";
         const token = getUserFromStorage();
         try {
           // Step 1: Get the current progress of the user
           const progressResponse = await axios.get(
-            "http://localhost:8001/api/v1/progress",
+            "http://localhost:10000/api/v1/progress",
             {
               headers: {
                 Authorization: `Bearer ${token}`, // Include the token
@@ -62,7 +62,7 @@ const Dashboard = () => {
             await Promise.all(
               scenarioIds.map(async (scenarioId) => {
                 await axios.post(
-                  "http://localhost:8001/api/v1/progress/update",
+                  "http://localhost:10000/api/v1/progress/update",
                   { scenarioId, choices: 0 },
                   {
                     headers: {

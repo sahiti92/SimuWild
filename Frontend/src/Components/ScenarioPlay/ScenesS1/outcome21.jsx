@@ -4,8 +4,9 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Canvas, useFrame } from '@react-three/fiber';
+import { Canvas, useFrame } from "@react-three/fiber";
 const ElephantAnim21 = () => {
+  const scenarioId = 1;
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const mixers = useRef([]);
@@ -13,8 +14,7 @@ const ElephantAnim21 = () => {
   const pointer = new THREE.Vector2();
   const [footerText, setFooterText] = useState(
     "You have installed electrical fences to prevent elephants from damaging the houses and farm land,but this may harm the elephants."
-);
-  
+  );
 
   useEffect(() => {
     const scene = new THREE.Scene();
@@ -83,43 +83,43 @@ const ElephantAnim21 = () => {
       (gltf) => {
         const model1 = gltf.scene;
         model1.scale.set(20, 20, 20);
-        model1.position.set(-240, -10, 100);  // Keeping the elephant at the same position
-        model1.rotation.set(0, Math.PI / 2, 0);  // Initial rotation
-    
+        model1.position.set(-240, -10, 100); // Keeping the elephant at the same position
+        model1.rotation.set(0, Math.PI / 2, 0); // Initial rotation
+
         scene.add(model1);
-    
+
         const mixer = new THREE.AnimationMixer(model1);
         mixers.current.push(mixer); // Add this mixer to mixers array
         const animations = gltf.animations;
-    
+
         console.log(animations);
-    
+
         if (animations.length > 0) {
           // Start with the first animation (e.g., animation at index 0)
-          const action = mixer.clipAction(animations[27]); 
+          const action = mixer.clipAction(animations[27]);
           action.play(); // Initial animation
         }
-    
+
         // After 2 seconds, switch to the second animation (e.g., animation at index 1)
         setTimeout(() => {
           const currentAction = mixer.clipAction(animations[27]); // Stop the first animation
           currentAction.stop();
-    
+
           const newAction = mixer.clipAction(animations[0]); // Animation 2 (index 1)
           newAction.play(); // Start the second animation
         }, 4000);
-    
+
         // After 4 seconds, switch to the third animation (e.g., animation at index 2)
         setTimeout(() => {
           const currentAction = mixer.clipAction(animations[0]); // Stop the second animation
           currentAction.stop();
-    
+
           const finalAction = mixer.clipAction(animations[25]); // Animation 3 (index 2)
           finalAction.play(); // Start the third animation
-          setFooterText("In the attempt to protect your crops and homes, the installation of electrical fences has inadvertently harmed the elephants. By prioritizing your own interests, the lives of these creatures have been overlooked, leading to unintended consequences.");
-        }, 7000);
-        
-    
+          setFooterText(
+            "In the attempt to protect your crops and homes, the installation of electrical fences has inadvertently harmed the elephants. By prioritizing your own interests, the lives of these creatures have been overlooked, leading to unintended consequences."
+          );
+        }, 9000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
@@ -128,50 +128,49 @@ const ElephantAnim21 = () => {
           error
         )
     );
-    
-    
+
     loader.load(
       "/elephant1.glb",
       (gltf) => {
         const model2 = gltf.scene;
         model2.scale.set(20, 20, 20);
-        model2.position.set(-240, -10, 10);  // Keeping the elephant at the same position
-        model2.rotation.set(0, Math.PI / 2, 0);  // Initial rotation
-    
+        model2.position.set(-240, -10, 10); // Keeping the elephant at the same position
+        model2.rotation.set(0, Math.PI / 2, 0); // Initial rotation
+
         scene.add(model2);
-    
+
         const mixer = new THREE.AnimationMixer(model2);
         mixers.current.push(mixer); // Add this mixer to mixers array
         const animations = gltf.animations;
-    
+
         console.log(animations);
-    
+
         if (animations.length > 0) {
           // Start with the first animation (e.g., animation at index 0)
-          const action = mixer.clipAction(animations[27]); 
+          const action = mixer.clipAction(animations[27]);
           action.play(); // Initial animation
         }
-    
+
         // After 2 seconds, switch to the second animation (e.g., animation at index 1)
         setTimeout(() => {
           const currentAction = mixer.clipAction(animations[27]); // Stop the first animation
           currentAction.stop();
-    
+
           const newAction = mixer.clipAction(animations[0]); // Animation 2 (index 1)
           newAction.play(); // Start the second animation
         }, 4000);
-    
+
         // After 4 seconds, switch to the third animation (e.g., animation at index 2)
         setTimeout(() => {
           const currentAction = mixer.clipAction(animations[0]); // Stop the second animation
           currentAction.stop();
-    
+
           const finalAction = mixer.clipAction(animations[25]); // Animation 3 (index 2)
           finalAction.play(); // Start the third animation
-          setFooterText("In the attempt to protect your crops and homes, the installation of electrical fences has inadvertently harmed the elephants. By prioritizing your own interests, the lives of these creatures have been overlooked, leading to unintended consequences.");
-        }, 7000);
-        
-    
+          setFooterText(
+            "In the attempt to protect your crops and homes, the installation of electrical fences has inadvertently harmed the elephants. By prioritizing your own interests, the lives of these creatures have been overlooked, leading to unintended consequences."
+          );
+        }, 9000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
@@ -185,11 +184,11 @@ const ElephantAnim21 = () => {
       // { x: -390, z: -20 },
       // { x: -200, z: 180 },
       // { x: -350, z: 180 },
-       { x: -475, z: 100 },
+      { x: -475, z: 100 },
       // { x: -450, z: -100 },
-       { x: -500, z: 200 },
+      { x: -500, z: 200 },
       // { x: -450, z: 50 },
-       { x: -500, z: -250 },
+      { x: -500, z: -250 },
     ];
     loader.load("/elephant.glb", (gltf) => {
       elephantPositions.forEach((pos) => {
@@ -200,14 +199,12 @@ const ElephantAnim21 = () => {
         scene.add(clonedElephant);
       });
 
-      
       if (gltf.animations && gltf.animations.length) {
-        const mixers = elephants.map(elephant => {
+        const mixers = elephants.map((elephant) => {
           const mixer = new THREE.AnimationMixer(elephant);
           const action = mixer.clipAction(gltf.animations[0]);
           action.play();
           return mixer;
-
         });
         animate(mixers);
       } else {
@@ -215,49 +212,45 @@ const ElephantAnim21 = () => {
       }
     });
     loader.load(
-      './barbed_wire.glb', // Ensure this path is correct
-       (gltf) => {
-         const fence = gltf.scene;
-      const fencePositions = [
-        {x: -200, z: -70},
-        {x: -200, z: -270},
-        {x: -200, z: -570},
-        {x: -200, z: -170},
-        {x: -200, z: -370},
-        {x: -200, z: -470},
-        {x: -200, z: 30},
-        {x: -200, z: 130},
-        {x: -200, z: 230},
-        {x: -200, z: 330},
-        {x: -200, z: 430},
-        {x: -200, z: 530},
-      ]
-      fencePositions.forEach(pos => {
-        const clonedFence= fence.clone();
-        clonedFence.scale.set(20, 20, 20);
-        clonedFence.rotation.y = 3* Math.PI /2; // 45 degrees rotation on the Y-axis
-        clonedFence.position.set(pos.x, -10, pos.z);//y=-20?
-        scene.add(clonedFence);
-      });
+      "./barbed_wire.glb", // Ensure this path is correct
+      (gltf) => {
+        const fence = gltf.scene;
+        const fencePositions = [
+          { x: -200, z: -70 },
+          { x: -200, z: -270 },
+          { x: -200, z: -570 },
+          { x: -200, z: -170 },
+          { x: -200, z: -370 },
+          { x: -200, z: -470 },
+          { x: -200, z: 30 },
+          { x: -200, z: 130 },
+          { x: -200, z: 230 },
+          { x: -200, z: 330 },
+          { x: -200, z: 430 },
+          { x: -200, z: 530 },
+        ];
+        fencePositions.forEach((pos) => {
+          const clonedFence = fence.clone();
+          clonedFence.scale.set(20, 20, 20);
+          clonedFence.rotation.y = (3 * Math.PI) / 2; // 45 degrees rotation on the Y-axis
+          clonedFence.position.set(pos.x, -10, pos.z); //y=-20?
+          scene.add(clonedFence);
+        });
+      }
+    );
 
-       });
-
-
-  
-
-
-    loader.load('./forest.glb', (gltf) => {
+    loader.load("./forest.glb", (gltf) => {
       const forest = gltf.scene;
-    
+
       // First 5 forest models at different positions
       const forestPositions = [
         { x: -580, z: 280 },
         { x: -580, z: 580 },
         { x: -580, z: -10 },
         { x: -580, z: -280 },
-        { x: -580, z: -580 }
+        { x: -580, z: -580 },
       ];
-    
+
       // Clone and add the first 5 models
       forestPositions.forEach((pos) => {
         const clonedForest = gltf.scene.clone();
@@ -265,18 +258,12 @@ const ElephantAnim21 = () => {
         clonedForest.position.set(pos.x, -10, pos.z);
         scene.add(clonedForest);
       });
-    
-    
     });
-   
 
-    
-    
-    // const timer = setTimeout(() => {
-    //   navigate('/tochoose2');  // Replace '/next-page' with the path you want to navigate to
-    // }, 20000); 
-//summary scene
-    
+    const timer = setTimeout(() => {
+      navigate("/summarys1"); // Replace '/next-page' with the path you want to navigate to
+    }, 12000);
+
     const animate = () => {
       requestAnimationFrame(animate);
 
@@ -313,10 +300,10 @@ const ElephantAnim21 = () => {
 
     window.addEventListener("click", onPointerClick);
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
 
     // Show footer text after 3 seconds
-   
+
     return () => {
       // mountRef.current.removeChild(renderer.domElement);
       window.removeEventListener("resize", handleResize);
@@ -328,7 +315,7 @@ const ElephantAnim21 = () => {
       console.log("Resetting progress");
       const scenarioId = 1;
       await axios.post(
-        "http://localhost:8001/api/v1/progress/reset",
+        "http://localhost:10000/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {
@@ -337,8 +324,8 @@ const ElephantAnim21 = () => {
         }
       );
 
-      setSelectedChoice("");
-      setShowOutcomeScene(false);
+      //setSelectedChoice("");
+      // setShowOutcomeScene(false);
       alert("Progress has been reset.");
       navigate("/eleph");
     } catch (error) {
@@ -359,23 +346,6 @@ const ElephantAnim21 = () => {
       ref={mountRef}
       style={{ width: "100vw", height: "100vh", position: "relative" }}
     >
-      <button
-        onClick={handleRestartClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        Restart
-      </button>
       <button
         onClick={handleSaveAndExit}
         style={{
@@ -407,7 +377,6 @@ const ElephantAnim21 = () => {
           }}
         >
           {footerText}
-      
         </footer>
       }
     </div>

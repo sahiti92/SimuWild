@@ -4,13 +4,16 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { getUserFromStorage } from "../../../utils/getUser";
 import { Canvas, useFrame } from "@react-three/fiber";
+
 const ElephantAnim11 = () => {
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
+  const token = getUserFromStorage();
   const [footerText, setFooterText] = useState(
     "Due to greed for economic benefits,you cut down trees which led to decrease in forest cover,making it a barren landscape."
   );
@@ -57,7 +60,7 @@ const ElephantAnim11 = () => {
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 50;
     controls.maxDistance = 300;
-    camera.position.set(0, 50, 250);
+    camera.position.set(0, 70, 250);
 
     controls.addEventListener("change", () => {
       console.log(
@@ -95,12 +98,15 @@ const ElephantAnim11 = () => {
 
         if (animations.length > 0) {
           // Start with animation 13
-          const action = mixer.clipAction(animations[22]);
+          const action = mixer.clipAction(animations[1]);
           action.play();
         }
 
         // Array of positions for the first 4 seconds
         const positions11 = [
+          { x: -300, y: -10, z: 100 },
+          { x: -300, y: -10, z: 100 },
+          { x: -300, y: -10, z: 100 },
           { x: -300, y: -10, z: 100 },
           { x: -300, y: -10, z: 100 },
           { x: -250, y: -10, z: 100 },
@@ -116,6 +122,13 @@ const ElephantAnim11 = () => {
             model1.position.set(pos.x, pos.y, pos.z);
           }, index * 1000);
         });
+        setTimeout(() => {
+          const currentAction = mixer.clipAction(animations[1]); // Stop the first animation
+          currentAction.stop();
+
+          const newAction = mixer.clipAction(animations[22]); // Animation 2 (index 1)
+          newAction.play(); // Start the second animation
+        }, 5000);
 
         // Switch animation to clip 28 after 4 seconds
         setTimeout(() => {
@@ -126,7 +139,7 @@ const ElephantAnim11 = () => {
           // Start the new action
           const newAction = mixer.clipAction(animations[23]);
           newAction.play();
-        }, 4000);
+        }, 7000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
@@ -153,12 +166,17 @@ const ElephantAnim11 = () => {
         console.log(animations);
 
         if (animations.length > 0) {
-          const action = mixer.clipAction(animations[22]);
+          const action = mixer.clipAction(animations[1]);
           action.play();
         }
 
         // Array of positions for the first 4 seconds
         const positions1 = [
+          { x: -300, y: -10, z: 10 },
+          { x: -300, y: -10, z: 10 },
+          { x: -300, y: -10, z: 10 },
+          { x: -300, y: -10, z: 10 },
+          { x: -300, y: -10, z: 10 },
           { x: -300, y: -10, z: 10 },
           { x: -250, y: -10, z: 10 },
           { x: -200, y: -10, z: 10 },
@@ -174,6 +192,14 @@ const ElephantAnim11 = () => {
           }, index * 1000);
         });
 
+        setTimeout(() => {
+          const currentAction = mixer.clipAction(animations[1]); // Stop the first animation
+          currentAction.stop();
+
+          const newAction = mixer.clipAction(animations[22]); // Animation 2 (index 1)
+          newAction.play(); // Start the second animation
+        }, 5000);
+
         // Switch animation to clip 28 after 4 seconds
         setTimeout(() => {
           // Stop the current action
@@ -183,7 +209,7 @@ const ElephantAnim11 = () => {
           // Start the new action
           const newAction = mixer.clipAction(animations[23]);
           newAction.play();
-        }, 4000);
+        }, 7000);
       },
       (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
       (error) =>
@@ -261,8 +287,7 @@ const ElephantAnim11 = () => {
         setFooterText(
           "Due to deforestation, the elephants lose their home and start wandering into nearby villages, destroying crops and homes in search of food.What was once a peaceful place now faces the chaos of nature’s giants. It's time to take action to stop this devastation."
         );
-        setTimeout(startElephantMotion, 2000);
-      }, 2000);
+      }, 4000); //forest disappear after 4s
     });
 
     loader.load("./forest.glb", (gltf) => {
@@ -287,21 +312,25 @@ const ElephantAnim11 = () => {
     });
 
     // Remaining models (houses, fields, etc.)
-    loader.load("/broken_house.glb", (gltf) => {
-      const house = gltf.scene;
-      const housePositions = [{ x: -280, z: 280 }];
+    // loader.load("/broken_house.glb", (gltf) => {
+    //   const house = gltf.scene;
+    //   const housePositions = [{ x: -280, z: 280 }];
 
-      housePositions.forEach((pos) => {
-        const clonedHouse = house.clone();
-        clonedHouse.scale.set(10, 1, 1);
-        clonedHouse.position.set(pos.x, -10, pos.z);
-        scene.add(clonedHouse);
-      });
-    });
+    //   housePositions.forEach((pos) => {
+    //     const clonedHouse = house.clone();
+    //     clonedHouse.scale.set(10, 1, 1);
+    //     clonedHouse.position.set(pos.x, -10, pos.z);
+    //     scene.add(clonedHouse);
+    //   });
+    // });
 
     loader.load("./green_field.glb", (gltf) => {
       const field = gltf.scene;
-      const fieldPositions = [];
+      const fieldPositions = [
+        { x: -30, z: 50 },
+        { x: 0, z: 100 },
+        { x: 10, z: 50 },
+      ];
 
       fieldPositions.forEach((pos) => {
         const clonedField = field.clone();
@@ -313,7 +342,7 @@ const ElephantAnim11 = () => {
 
     const timer = setTimeout(() => {
       navigate("/tochoose2"); // Replace '/next-page' with the path you want to navigate to
-    }, 20000);
+    }, 18000);
 
     const animate = () => {
       requestAnimationFrame(animate);
@@ -363,10 +392,12 @@ const ElephantAnim11 = () => {
   }, []);
   const handleRestartClick = async () => {
     try {
+      console.log("token__");
+      console.log(token);
       console.log("Resetting progress");
       const scenarioId = 1;
       await axios.post(
-        "http://localhost:8001/api/v1/progress/reset",
+        "http://localhost:10000/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {
@@ -375,10 +406,8 @@ const ElephantAnim11 = () => {
         }
       );
 
-      setSelectedChoice("");
-      setShowOutcomeScene(false);
       alert("Progress has been reset.");
-      navigate("/eleph");
+      navigate("/scenarios/scenario1");
     } catch (error) {
       console.error("Error resetting progress:", error);
       alert(
@@ -397,23 +426,6 @@ const ElephantAnim11 = () => {
       ref={mountRef}
       style={{ width: "100vw", height: "100vh", position: "relative" }}
     >
-      <button
-        onClick={handleRestartClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        Restart
-      </button>
       <button
         onClick={handleSaveAndExit}
         style={{

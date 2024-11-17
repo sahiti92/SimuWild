@@ -4,6 +4,8 @@ import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { useNavigate } from "react-router-dom";
 import { getUserFromStorage } from "../../../utils/getUser";
+import axios from "axios";
+
 const ElephantAnim = () => {
   const scenarioId = 1;
   const navigate = useNavigate();
@@ -14,7 +16,7 @@ const ElephantAnim = () => {
       try {
         const token = getUserFromStorage();
         const response = await axios.get(
-          "http://localhost:8001/api/v1/progress",
+          "http://localhost:10000/api/v1/progress",
           {
             headers: {
               "Content-Type": "application/json",
@@ -27,7 +29,10 @@ const ElephantAnim = () => {
         const scenarioProgress = progress.find(
           (item) => item.scenarioId === scenarioId
         );
-        if (scenarioProgress && scenarioProgress.counter === 1) {
+        if (
+          scenarioProgress &&
+          (scenarioProgress.counter === 1 || scenarioProgress.counter === 0)
+        ) {
           setShouldIncrement(true);
         }
         console.log("sp");
@@ -46,7 +51,7 @@ const ElephantAnim = () => {
       // Only call increment API if shouldIncrement is true
       if (shouldIncrement) {
         const response = await axios.post(
-          "http://localhost:8001/api/v1/progress/increment-counter",
+          "http://localhost:10000/api/v1/progress/increment-counter",
           { scenarioId },
           {
             headers: {
@@ -114,7 +119,7 @@ const ElephantAnim = () => {
     controls.maxPolarAngle = Math.PI / 2;
     controls.minDistance = 50;
     controls.maxDistance = 300;
-    camera.position.set(0, 50, 250);
+    camera.position.set(10, 50, -50);
 
     renderer.shadowMap.enabled = false;
 

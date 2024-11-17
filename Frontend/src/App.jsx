@@ -144,6 +144,11 @@ const App = () => {
         <Route path="/sum3" element={<SummaryPage />} />
         <Route path="/leopard" element={<LeopardScene />} />
         <Route path="/outcome22s5" element={<Choice22 />} />
+        <Route path="/summarys5" element={<SundarbansInfo />} />
+        <Route path="/summarys1" element={<SummarySceneS1 />} />
+        <Route path="/leapordo2" element={<Leapord_o2 />} />
+        <Route path="/leapordo1" element={<Leapord_o1 />} />
+        <Route path="/leapordtochoose" element={<ToCh3 />} />
       </Routes>
     </Router>
   );

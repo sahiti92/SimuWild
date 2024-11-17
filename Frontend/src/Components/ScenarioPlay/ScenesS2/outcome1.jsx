@@ -4,15 +4,16 @@ import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { TbBoxModel2 } from "react-icons/tb";
 
-const LeopardScene = () => {
+const Leapord_o1 = () => {
   const navigate = useNavigate();
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
   const handleClick = async () => {
-    navigate("/leapordtochoose");
+    navigate("/leapordtochoose"); //change to greeshma scenario
   };
   const handleclick2 = async () => {
     navigate("/scenarios/scenario3");
@@ -80,104 +81,122 @@ const LeopardScene = () => {
     //   fence.rotation.y = (3 * Math.PI) / 2;
     //   scene.add(fence);
     // });
+    // loader.load(
+    //   "/manleo.glb",
+    //   (gltf) => {
+    //     const model1 = gltf.scene;
+    //     model1.scale.set(30, 20, 100);
+    //     model1.position.set(-400, -10, -100);
+    //     //tiger.rotation.set(0, Math.PI, 0);
+
+    //     scene.add(model1);
+
+    //     const mixer = new THREE.AnimationMixer(model1);
+    //     mixers.current.push(mixer); // Add this mixer to mixers array
+    //     const animations = gltf.animations;
+    //     console.log(animations);
+    //     if (animations.length > 0) {
+    //       const action = mixer.clipAction(animations[0]);
+    //       action.play();
+    //     }
+    //   },
+    //   (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
+    //   (error) =>
+    //     console.error("An error occurred while loading the tiger model:", error)
+    // );
+    // loader.load(
+    //   "/manleo.glb",
+    //   (gltf) => {
+    //     const model1 = gltf.scene;
+    //     model1.scale.set(1, 1, 1);
+    //     model1.position.set(-400, -10, -100);
+    //     //tiger.rotation.set(0, Math.PI, 0);
+
+    //     scene.add(model1);
+
+    //     const mixer = new THREE.AnimationMixer(model1);
+    //     mixers.current.push(mixer); // Add this mixer to mixers array
+    //     const animations = gltf.animations;
+    //     console.log(animations);
+    //     if (animations.length > 0) {
+    //       const action = mixer.clipAction(animations[0]);
+    //       action.play();
+    //     }
+    //   },
+    //   (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
+    //   (error) =>
+    //     console.error("An error occurred while loading the tiger model:", error)
+    // );
+    // loader.load(
+    //   "/manleo.glb",
+    //   (gltf) => {
+    //     const model11 = gltf.scene;
+    //     model11.scale.set(1, 1, 1);
+    //     model11.position.set(-400, -10, 500);
+    //     //tiger.rotation.set(0, Math.PI, 0);
+
+    //     scene.add(model11);
+
+    //     const mixer = new THREE.AnimationMixer(model11);
+    //     mixers.current.push(mixer); // Add this mixer to mixers array
+    //     const animations = gltf.animations;
+    //     console.log(animations);
+    //     if (animations.length > 0) {
+    //       const action = mixer.clipAction(animations[0]);
+    //       action.play();
+    //     }
+    //   },
+    //   (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
+    //   (error) =>
+    //     console.error("An error occurred while loading the tiger model:", error)
+    // );
+    // loader.load(
+    //   "/manleo.glb",
+    //   (gltf) => {
+    //     const model1 = gltf.scene;
+    //     model1.scale.set(1, 1, 1);
+    //     model1.position.set(-500, -10, 300);
+    //     //tiger.rotation.set(0, Math.PI, 0);
+
+    //     scene.add(model1);
+
+    //     const mixer = new THREE.AnimationMixer(model1);
+    //     mixers.current.push(mixer); // Add this mixer to mixers array
+    //     const animations = gltf.animations;
+    //     console.log(animations);
+    //     if (animations.length > 0) {
+    //       const action = mixer.clipAction(animations[0]);
+    //       action.play();
+    //     }
+    //   },
+    //   (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
+    //   (error) =>
+    //     console.error("An error occurred while loading the tiger model:", error)
+    // );
+    // const cagePositions = [
+    //     { x: -150, y: -10, z: -100 },
+    //     { x: -200, y: -10, z: 50 },
+    //     { x: -250, y: -10, z: 100 },
+    //     { x: -50, y: -10, z: -150 },
+    //     { x: -300, y: -10, z: -200 },
+    //     { x: -65, y: -10, z: 50 },
+    //   ];
+
+    //   loader.load("/message_notice.glb", (gltf) => {
+    //     cagePositions.forEach((pos) => {
+    //       const cageModel = gltf.scene.clone();
+    //       cageModel.scale.set(0.1, 0.5, 0.5); // Adjust size as needed
+    //       cageModel.position.set(pos.x, pos.y, pos.z);
+    //       cageModel.rotation.y = Math.random() * Math.PI * 2; // Randomize rotation
+    //       scene.add(cageModel);
+    //     });
+    //   });
     loader.load(
-      "/leapord_2.glb",
+      "/manleo.glb",
       (gltf) => {
         const model1 = gltf.scene;
-        model1.scale.set(1, 1, 1);
-        model1.position.set(-400, -10, -100);
-        //tiger.rotation.set(0, Math.PI, 0);
-
-        scene.add(model1);
-
-        const mixer = new THREE.AnimationMixer(model1);
-        mixers.current.push(mixer); // Add this mixer to mixers array
-        const animations = gltf.animations;
-        console.log(animations);
-        if (animations.length > 0) {
-          const action = mixer.clipAction(animations[0]);
-          action.play();
-        }
-      },
-      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
-      (error) =>
-        console.error("An error occurred while loading the tiger model:", error)
-    );
-    loader.load(
-      "/leapord_2.glb",
-      (gltf) => {
-        const model1 = gltf.scene;
-        model1.scale.set(1, 1, 1);
-        model1.position.set(-400, -10, -100);
-        //tiger.rotation.set(0, Math.PI, 0);
-
-        scene.add(model1);
-
-        const mixer = new THREE.AnimationMixer(model1);
-        mixers.current.push(mixer); // Add this mixer to mixers array
-        const animations = gltf.animations;
-        console.log(animations);
-        if (animations.length > 0) {
-          const action = mixer.clipAction(animations[0]);
-          action.play();
-        }
-      },
-      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
-      (error) =>
-        console.error("An error occurred while loading the tiger model:", error)
-    );
-    loader.load(
-      "/leapord_2.glb",
-      (gltf) => {
-        const model11 = gltf.scene;
-        model11.scale.set(1, 1, 1);
-        model11.position.set(-400, -10, 500);
-        //tiger.rotation.set(0, Math.PI, 0);
-
-        scene.add(model11);
-
-        const mixer = new THREE.AnimationMixer(model11);
-        mixers.current.push(mixer); // Add this mixer to mixers array
-        const animations = gltf.animations;
-        console.log(animations);
-        if (animations.length > 0) {
-          const action = mixer.clipAction(animations[0]);
-          action.play();
-        }
-      },
-      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
-      (error) =>
-        console.error("An error occurred while loading the tiger model:", error)
-    );
-    loader.load(
-      "/leapord_2.glb",
-      (gltf) => {
-        const model1 = gltf.scene;
-        model1.scale.set(1, 1, 1);
-        model1.position.set(-500, -10, 300);
-        //tiger.rotation.set(0, Math.PI, 0);
-
-        scene.add(model1);
-
-        const mixer = new THREE.AnimationMixer(model1);
-        mixers.current.push(mixer); // Add this mixer to mixers array
-        const animations = gltf.animations;
-        console.log(animations);
-        if (animations.length > 0) {
-          const action = mixer.clipAction(animations[0]);
-          action.play();
-        }
-      },
-      (xhr) => console.log((xhr.loaded / xhr.total) * 100 + "% loaded"),
-      (error) =>
-        console.error("An error occurred while loading the tiger model:", error)
-    );
-    loader.load(
-      "/leapord_2.glb",
-      (gltf) => {
-        const model1 = gltf.scene;
-        model1.scale.set(1, 1, 1);
-        model1.position.set(-450, -10, -300);
+        model1.scale.set(0.5, 0.5, 0.5);
+        model1.position.set(-100, -12, 50);
         scene.add(model1);
 
         const mixer = new THREE.AnimationMixer(model1);
@@ -188,23 +207,6 @@ const LeopardScene = () => {
           const action = mixer.clipAction(animations[0]);
           action.play();
         }
-
-        // Array of positions for the first 6 seconds
-        const positions11 = [
-          { x: -450, y: -10, z: -400 },
-          { x: -400, y: -10, z: -400 },
-          { x: -350, y: -10, z: -400 },
-          { x: -300, y: -10, z: -400 },
-          { x: -250, y: -10, z: -400 },
-          { x: -200, y: -10, z: -400 },
-        ];
-
-        // Move the model to the positions in sequence
-        positions11.forEach((pos, index) => {
-          setTimeout(() => {
-            model1.position.set(pos.x, pos.y, pos.z);
-          }, index * 1000);
-        });
 
         // Remove the model from the scene after 6 seconds
         // setTimeout(() => {
@@ -220,14 +222,14 @@ const LeopardScene = () => {
         )
     );
     loader.load(
-      "/leapord_2.glb",
+      "/manleo.glb",
       (gltf) => {
-        const model1 = gltf.scene;
-        model1.scale.set(1, 1, 1);
-        model1.position.set(-450, -10, -300);
-        scene.add(model1);
+        const model2 = gltf.scene;
+        model2.scale.set(0.5, 0.5, 0.5);
+        model2.position.set(-100, -12, 100);
+        scene.add(model2);
 
-        const mixer = new THREE.AnimationMixer(model1);
+        const mixer = new THREE.AnimationMixer(model2);
         mixers.current.push(mixer);
         const animations = gltf.animations;
         console.log(animations);
@@ -235,23 +237,6 @@ const LeopardScene = () => {
           const action = mixer.clipAction(animations[0]);
           action.play();
         }
-
-        // Array of positions for the first 6 seconds
-        const positions11 = [
-          { x: -350, y: -10, z: 50 },
-          { x: -300, y: -10, z: 50 },
-          { x: -250, y: -10, z: 50 },
-          { x: -200, y: -10, z: 50 },
-          { x: -150, y: -10, z: 50 },
-          { x: -100, y: -10, z: 50 },
-        ];
-
-        // Move the model to the positions in sequence
-        positions11.forEach((pos, index) => {
-          setTimeout(() => {
-            model1.position.set(pos.x, pos.y, pos.z);
-          }, index * 1000);
-        });
 
         // Remove the model from the scene after 6 seconds
         // setTimeout(() => {
@@ -266,32 +251,13 @@ const LeopardScene = () => {
           error
         )
     );
-    const elephantPositions = [
-      // { x: -390, z: -20 },
-      // { x: -200, z: 180 },
-      // { x: -350, z: 180 },
-      // { x: -300, z: 180 },
-      // { x: -475, z: 100 },
-      // { x: -450, z: -100 },
-      // { x: -500, z: 200 },
-      // { x: -450, z: 50 },
-      // { x: -500, z: -250 },
-    ];
-    loader.load("/elephant.glb", (gltf) => {
-      elephantPositions.forEach((pos) => {
-        const clonedElephant = gltf.scene.clone();
-        clonedElephant.position.set(pos.x, -5, pos.z);
-        clonedElephant.rotation.y = Math.random() * Math.PI * 2;
 
-        scene.add(clonedElephant);
-      });
-    });
     loader.load(
       "/cry.glb",
       (gltf) => {
         const model1 = gltf.scene;
         model1.scale.set(30, 20, 100);
-        model1.position.set(-65, 2, 55);
+        model1.position.set(-15, 2, 55);
         //tiger.rotation.set(0, Math.PI, 0);
 
         scene.add(model1);
@@ -473,6 +439,24 @@ const LeopardScene = () => {
         scene.add(clonedForest);
       });
     });
+    // const noticeboardPositions = [
+    //   { x: -150, y: -10, z: -100 },
+    //   { x: -200, y: -10, z: 50 },
+    //   { x: -250, y: -10, z: 100 },
+    //   { x: -50, y: -10, z: -150 },
+    //   { x: -300, y: -10, z: -200 },
+    //   { x: -65, y: -10, z: 50 },
+    // ];
+
+    // loader.load("/noticeboard.glb", (gltf) => {
+    //   noticeboardPositions.forEach((pos) => {
+    //     const noticeboardModel = gltf.scene.clone();
+    //     noticeboardModel.scale.set(0.1, 0.5, 0.5); // Adjust size as needed
+    //     noticeboardModel.position.set(pos.x, pos.y, pos.z);
+    //     noticeboardModel.rotation.y = Math.random() * Math.PI * 2; // Randomize rotation
+    //     scene.add(noticeboardModel);
+    //   });
+    // });
 
     const animate = () => {
       requestAnimationFrame(animate);
@@ -518,24 +502,53 @@ const LeopardScene = () => {
   }, []);
 
   return (
-    <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
-      <button
-        onClick={handleClick}
+    <div
+      ref={mountRef}
+      style1={{
+        position: "relative",
+        height: "100vh",
+      }}
+    >
+      <div
         style={{
           position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
+          top: "150px", // Adjust vertical positioning
+          left: "60%",
+          transform: "translateX(-50%)", // Center horizontally
+          color: "#333",
+          backgroundColor: "#ffeb3b", // Notice board yellow background
+          padding: "20px", // Increased padding for better appearance
+          borderRadius: "8px",
+          textAlign: "center",
+          fontSize: "18px", // Adjust font size
+          maxWidth: "60%", // Keep the notice compact
+          boxShadow: "0 4px 8px rgba(0, 0, 0, 0.3)", // Add shadow for a raised effect
+          border: "2px solid #f1c40f", // Border to give a framed appearance
+          position: "relative", // For pseudo-elements
         }}
       >
-        Start
-      </button>
+        <div
+          style={{
+            position: "absolute",
+            width: "20px",
+            height: "20px",
+            backgroundColor: "#e74c3c", // Red for the pin
+            borderRadius: "50%", // Make it circular
+            top: "-10px",
+            left: "50%",
+            transform: "translateX(-50%)",
+            boxShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", // Shadow for depth
+            zIndex: 1,
+          }}
+        ></div>
+        <p>
+          We are trying to set up notice boards and also awareness campaigns to
+          the people and also provide security during the nights to prevent
+          further killings. We are also installing CC cameras around the town to
+          track the movements of the tigers into the town so as to take
+          measures.
+        </p>
+      </div>
       <button
         onClick={handleclick2}
         style={{
@@ -565,13 +578,14 @@ const LeopardScene = () => {
           fontSize: "18px",
         }}
       >
-        In Aarey Milk Colony, a leopard quietly comes out of the Sanjay Gandhi
-        National Park, moving in the peaceful morning. Children play in a park
-        nearby, unaware of the danger. Suddenly, the leopard attacks and kills a
-        toddler. The community is left in shock.
+        To prevent any further risks,the officials have come to the town to
+        educate people. They want to create awareness among people to discuss
+        about the safety of them and also the tigers without causing damge for
+        the tigers habitat. Also to take preventive measures to avoid any other
+        killings.
       </footer>
     </div>
   );
 };
 
-export default LeopardScene;
+export default Leapord_o1;

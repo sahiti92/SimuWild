@@ -46,7 +46,7 @@ const Leapord_o2 = () => {
 
     const planeGeometry = new THREE.PlaneGeometry(1500, 1500);
     const grassPlaneMaterial = new THREE.MeshStandardMaterial({
-      color: 0x302d26,
+      color: 0x006400,
     });
     const plane = new THREE.Mesh(planeGeometry, grassPlaneMaterial);
     plane.rotation.x = -Math.PI / 2;
@@ -64,7 +64,7 @@ const Leapord_o2 = () => {
 
     controls.addEventListener("change", () => {
       console.log(
-        `Camera position: x: ${camera.position.x}, y: ${camera.position.y}, z: ${camera.position.z}`
+        ` Camera position: x: ${camera.position.x}, y: ${camera.position.y}, z: ${camera.position.z}`
       );
     });
     const textureLoader = new THREE.TextureLoader();
@@ -485,9 +485,9 @@ const Leapord_o2 = () => {
     loader.load("/cage.glb", (gltf) => {
       cagePositions.forEach((pos) => {
         const cageModel = gltf.scene.clone();
-        cageModel.scale.set(0.1, 0.5, 0.5); // Adjust size as needed
+        cageModel.scale.set(0.5, 0.5, 0.5); // Adjust size as needed
         cageModel.position.set(pos.x, pos.y, pos.z);
-        cageModel.rotation.y = Math.random() * Math.PI * 2; // Randomize rotation
+        //  cageModel.rotation.y = Math.random() * Math.PI * 2; // Randomize rotation
         scene.add(cageModel);
       });
     });
@@ -521,7 +521,7 @@ const Leapord_o2 = () => {
         const intersect = intersects[0];
         const position = intersect.point;
         console.log(
-          `Clicked position: x: ${position.x}, y: ${position.y}, z: ${position.z}`
+          ` Clicked position: x: ${position.x}, y: ${position.y}, z: ${position.z}`
         );
       }
     };
@@ -538,23 +538,6 @@ const Leapord_o2 = () => {
   return (
     <div ref={mountRef} style={{ position: "relative", height: "100vh" }}>
       <button
-        onClick={handleClick}
-        style={{
-          position: "absolute",
-          top: "10px",
-          left: "10px",
-          padding: "10px 15px",
-          backgroundColor: "#007bff",
-          color: "#fff",
-          border: "none",
-          borderRadius: "5px",
-          cursor: "pointer",
-          zIndex: 1,
-        }}
-      >
-        ReStart
-      </button>
-      <button
         onClick={handleclick2}
         style={{
           position: "absolute",
@@ -569,7 +552,7 @@ const Leapord_o2 = () => {
           zIndex: 1,
         }}
       >
-        Save and Exit
+        Exit
       </button>
       <footer
         style={{

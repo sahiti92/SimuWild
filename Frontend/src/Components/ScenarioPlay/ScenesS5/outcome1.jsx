@@ -2,13 +2,15 @@ import React, { useEffect, useRef } from "react";
 import * as THREE from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
+import axios from "axios";
+import { getUserFromStorage } from "../../../utils/getUser";
+import { useNavigate } from "react-router-dom";
 const Choice2 = () => {
   const mountRef = useRef(null);
   const mixers = useRef([]);
   const raycaster = new THREE.Raycaster();
   const pointer = new THREE.Vector2();
-
+  const navigate = useNavigate();
   useEffect(() => {
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(
@@ -332,9 +334,34 @@ const Choice2 = () => {
     };
   }, []);
 
+  const handleRestartClick = async () => {
+    try {
+      const token = getUserFromStorage();
+      console.log("Resetting progress");
+      const scenarioId = 5;
+      await axios.post(
+        "http://localhost:10000/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      alert("Progress has been reset.");
+    } catch (error) {
+      console.error("Error resetting progress:", error);
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
+    }
+    navigate("/scenarios/scenario5");
+  };
   return (
     <div ref={mountRef}>
       <button
+        onClick={handleRestartClick}
         style={{
           position: "absolute",
           top: "10px",
@@ -351,6 +378,24 @@ const Choice2 = () => {
         ReStart
       </button>
       <button
+        onClick={() => navigate("/summarys5")}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "245px",
+          padding: "10px 15px",
+          backgroundColor: "#007bff",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        View Summary
+      </button>
+      <button
+        onClick={() => navigate("/scenarios/scenario5")}
         style={{
           position: "absolute",
           top: "10px",
@@ -379,10 +424,13 @@ const Choice2 = () => {
         }}
       >
         Supporting tiger conservation brings hope for both tigers and their
-        habitats. Through habitat restoration and growth of green cover, we can
-        protect these majestic animals and enrich biodiversity. A thriving
-        environment for tigers also means healthier ecosystems and sustainable
-        natural resources for all.
+        habitats. Through habitat restoration and the growth of green cover, we
+        can protect these majestic animals and enrich biodiversity.
+        Additionally, safeguarding tiger habitats plays a crucial role in
+        protecting nearby villages, as it reduces the likelihood of tigers
+        straying into human settlements. This not only ensures the safety of
+        local communities but also fosters coexistence between humans and
+        wildlife.
       </footer>
     </div>
   );

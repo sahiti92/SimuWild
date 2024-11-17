@@ -1,23 +1,97 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose2 = () => {
+  const scenarioId = 1;
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
   const navigate = useNavigate(); // Initialize navigate for routing
 
   // Assuming a valid token is available in localStorage
   const token = getUserFromStorage();
+  const [shouldIncrement, setShouldIncrement] = useState(false);
 
-  const handleChoiceClick = (choice) => {
+  useEffect(() => {
+    const checkProgress = async () => {
+      try {
+        const token = getUserFromStorage();
+        const response = await axios.get(
+          "http://localhost:10000/api/v1/progress",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const progress = response.data;
+        const scenarioProgress = progress.find(
+          (item) => item.scenarioId === scenarioId
+        );
+
+        if (scenarioProgress) {
+          // Check if counter is 0 to decide on increment
+          if (scenarioProgress.counter === 3) {
+            setShouldIncrement(true);
+          }
+        }
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    };
+
+    checkProgress();
+  }, [scenarioId]);
+  const handleChoiceClick = async (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
-     // Navigate to the respective page based on choice
-     if (choice === "Choice 1") {
+    if (shouldIncrement) {
+      const incrementResponse = await axios.post(
+        "http://localhost:10000/api/v1/progress/increment-counter",
+        { scenarioId },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("Counter incremented:", incrementResponse.data.message);
+    }
+
+    // Navigate to the respective page based on choice
+    if (choice === "Choice 1") {
+      const choices = 1;
+      const response = await axios.post(
+        "http://localhost:10000/api/v1/progress/update",
+        { scenarioId, choices },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       navigate("/eleph21");
     } else if (choice === "Choice 2") {
+      const choices = 2;
+      console.log("token");
+      console.log(token);
+      const response = await axios.post(
+        "http://localhost:10000/api/v1/progress/update",
+        { scenarioId, choices },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       navigate("/eleph12");
     }
   };
@@ -28,18 +102,28 @@ const ToChoose2 = () => {
 
   const handleRestartClick = async () => {
     try {
-      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      setSelectedChoice("");
-      setShowOutcomeScene(false);
+      console.log("Resetting progress");
+      console.log(token);
+      await axios.post(
+        "http://localhost:10000/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      // setSelectedChoice("");
+      // setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert("Failed to reset progress: " + (error.response?.data?.error || "Unknown error"));
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
     }
+    navigate("/scenarios/scenario1");
   };
 
   const handleExitClick = () => {
@@ -59,7 +143,7 @@ const ToChoose2 = () => {
       backgroundImage: "url('/bg1.png')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      opacity: 0.5,
+      opacity: 0.8,
       width: "100vw",
       height: "100vh",
       display: "flex",
@@ -148,19 +232,6 @@ const ToChoose2 = () => {
             2.Relocate Elephants to a Sanctuary
           </div>
         </div>
-
-        {selectedChoice && (
-          <div style={styles.outcome}>
-            <p>{outcomeText}</p>
-            <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
-          </div>
-        )}
-
-        {showOutcomeScene && (
-          <div style={styles.outcomeScene}>
-            <p>{outcomeText}</p>
-          </div>
-        )}
 
         <button style={styles.restartButton} onClick={handleRestartClick}>
           Restart

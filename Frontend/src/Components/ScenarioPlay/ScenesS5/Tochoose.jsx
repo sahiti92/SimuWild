@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
@@ -6,6 +6,38 @@ import { getUserFromStorage } from "../../../utils/getUser";
 const ToChoose = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const navigate = useNavigate();
+  const [shouldIncrement, setShouldIncrement] = useState(false);
+  const scenarioId = 5;
+  useEffect(() => {
+    const checkProgress = async () => {
+      try {
+        const token = getUserFromStorage();
+        const response = await axios.get(
+          "http://localhost:10000/api/v1/progress",
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+
+        const progress = response.data;
+        const scenarioProgress = progress.find(
+          (item) => item.scenarioId === scenarioId
+        );
+        if (scenarioProgress && scenarioProgress.counter === 2) {
+          setShouldIncrement(true);
+        }
+        console.log("sp");
+        console.log(scenarioProgress.counter);
+      } catch (error) {
+        console.error("Error fetching progress:", error);
+      }
+    };
+
+    checkProgress();
+  }, [scenarioId]);
 
   // Get the token from storage
   const token = getUserFromStorage();
@@ -15,8 +47,65 @@ const ToChoose = () => {
     setSelectedChoice((prevChoice) => (prevChoice === choice ? "" : choice)); // Toggle choice
   };
 
-  const handleSubChoiceClick = (subChoice) => {
+  const handleSubChoiceClick = async (subChoice) => {
     // Navigate to the respective page based on sub-choice
+    try {
+      const token = getUserFromStorage();
+      let choices;
+
+      // Map the sub-choice to its respective value
+      switch (subChoice) {
+        case "SubChoice 1.1":
+          choices = 1;
+          //navigate("/outcome1s5");
+          break;
+        case "SubChoice 1.2":
+          choices = 2;
+          // navigate("/outcome1s5");
+          break;
+        case "SubChoice 2.1":
+          choices = 3;
+          // navigate("/outcome2s5");
+          break;
+        case "SubChoice 2.2":
+          choices = 4;
+          // navigate("/outcome22s5");
+          break;
+        default:
+          console.error("Unknown sub-choice selected.");
+          return;
+      }
+      const response = await axios.post(
+        "http://localhost:10000/api/v1/progress/update",
+        { scenarioId, choices },
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("choice saved");
+      // Only call increment API if shouldIncrement is true
+      if (shouldIncrement) {
+        const response = await axios.post(
+          "http://localhost:10000/api/v1/progress/increment-counter",
+          { scenarioId },
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        );
+        console.log("incd");
+        console.log(response.data.message); // Display response message
+      }
+      console.log("incd_alreadey done");
+    } catch (error) {
+      console.error("Error incrementing counter:", error);
+    }
+
     if (subChoice === "SubChoice 1.1") {
       navigate("/outcome1s5");
     } else if (subChoice === "SubChoice 1.2") {
@@ -31,9 +120,9 @@ const ToChoose = () => {
   const handleRestartClick = async () => {
     try {
       console.log("Resetting progress");
-      const scenarioId = 5;
+      //const scenarioId = 5;
       await axios.post(
-        "http://localhost:8001/api/v1/progress/reset",
+        "http://localhost:10000/api/v1/progress/reset",
         { scenarioId },
         {
           headers: {
@@ -51,6 +140,7 @@ const ToChoose = () => {
           (error.response?.data?.error || "Unknown error")
       );
     }
+    navigate("/scenarios/scenario5");
   };
 
   const styles = {
@@ -187,7 +277,7 @@ const ToChoose = () => {
           Restart
         </button>
         <button
-          onClick={() => navigate("/save-exit")}
+          onClick={() => navigate("/scenarios/scenario5")}
           style={{
             position: "absolute",
             top: "10px",
