@@ -26,7 +26,8 @@ const ScenarioHomePage = () => {
     try {
       const token = getUserFromStorage();
       const response = await axios.get(
-        "http://localhost:10000/api/v1/progress",
+        // "http://localhost:10000/api/v1/progress",
+        "https://simuwild.onrender.com/api/v1/progress",
         {
           headers: {
             "Content-Type": "application/json",
@@ -111,48 +112,7 @@ const ScenarioHomePage = () => {
             )
           }
         />
-        <img
-          src="https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ="
-          alt="Image 2"
-          className="thumbnail"
-          onMouseEnter={() =>
-            changeBackground(
-              "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
-              "Asiatic lions in Gir National Park",
-              "With one sanctuary left, is a new home the lions' last hope?",
-              "./scenario6"
-            )
-          }
-          onClick={() =>
-            changeBackground(
-              "https://media.istockphoto.com/id/2162689873/photo/indian-lion-in-close-up-view-at-bannerghatta-forest-at-bangalore-india.jpg?s=612x612&w=0&k=20&c=mp0EgtZALcfsQP6Ltvl029Ui873ppBtalmzsBHHLARQ=",
-              "Asiatic lions in Gir National Park",
-              "With one sanctuary left, is a new home the lions' last hope?",
-              "./scenario6"
-            )
-          }
-        />
-        <img
-          src="https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg"
-          alt="Image 3"
-          className="thumbnail"
-          onMouseEnter={() =>
-            changeBackground(
-              "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
-              "The Great Indian Bustard in its habitat",
-              "Caught between power lines and extinction—can this bird survive progress?",
-              "./scenario4"
-            )
-          }
-          onClick={() =>
-            changeBackground(
-              "https://cdn.pixabay.com/photo/2023/09/03/11/48/ai-generated-8230554_1280.jpg",
-              "The Great Indian Bustard in its habitat",
-              "Caught between power lines and extinction—can this bird survive progress?",
-              "./scenario4"
-            )
-          }
-        />
+
         <img
           src="https://t3.ftcdn.net/jpg/06/61/07/06/360_F_661070665_QykUihBeWNCNuCmT0N0NI4wYvl68NzgC.jpg"
           alt="Image 4"

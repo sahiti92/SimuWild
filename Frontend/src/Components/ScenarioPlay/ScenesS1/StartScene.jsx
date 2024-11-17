@@ -16,7 +16,8 @@ const ElephantAnim = () => {
       try {
         const token = getUserFromStorage();
         const response = await axios.get(
-          "http://localhost:10000/api/v1/progress",
+          //  "http://localhost:10000/api/v1/progress",
+          "https://simuwild.onrender.com/api/v1/progress",
           {
             headers: {
               "Content-Type": "application/json",
@@ -51,7 +52,8 @@ const ElephantAnim = () => {
       // Only call increment API if shouldIncrement is true
       if (shouldIncrement) {
         const response = await axios.post(
-          "http://localhost:10000/api/v1/progress/increment-counter",
+          // "http://localhost:10000/api/v1/progress/increment-counter",
+          "https://simuwild.onrender.com/api/v1/progress/increment-counter",
           { scenarioId },
           {
             headers: {

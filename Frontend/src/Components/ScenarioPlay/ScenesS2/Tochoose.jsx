@@ -1,101 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
 
 const ToChoose1 = () => {
-  const scenarioId = 1;
-
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
   const navigate = useNavigate(); // Initialize navigate for routing
 
   // Assuming a valid token is available in localStorage
   const token = getUserFromStorage();
-  const [shouldIncrement, setShouldIncrement] = useState(false);
 
-  useEffect(() => {
-    const checkProgress = async () => {
-      try {
-        const token = getUserFromStorage();
-        const response = await axios.get(
-          // "http://localhost:10000/api/v1/progress",
-          "https://simuwild.onrender.com/api/v1/progress",
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        );
-
-        const progress = response.data;
-        const scenarioProgress = progress.find(
-          (item) => item.scenarioId === scenarioId
-        );
-
-        if (scenarioProgress) {
-          // Check if counter is 0 to decide on increment
-          if (scenarioProgress.counter === 2) {
-            setShouldIncrement(true);
-          }
-        }
-      } catch (error) {
-        console.error("Error fetching progress:", error);
-      }
-    };
-
-    checkProgress();
-  }, [scenarioId]);
-
-  const handleChoiceClick = async (choice) => {
-    if (shouldIncrement) {
-      const incrementResponse = await axios.post(
-        //  "http://localhost:10000/api/v1/progress/increment-counter",
-        "https://simuwild.onrender.com/api/v1/progress/increment-counter",
-        { scenarioId },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      console.log("Counter incremented:", incrementResponse.data.message);
-    }
+  const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
-    // Navigate to the respective page based on choice
-    if (choice === "Choice 1") {
-      const choices = 1;
-      const response = await axios.post(
-        // "http://localhost:10000/api/v1/progress/update",
-        "https://simuwild.onrender.com/api/v1/progress/update",
-        { scenarioId, choices },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      navigate("/eleph11");
-    } else if (choice === "Choice 2") {
-      const choices = 2;
-      const response = await axios.post(
-        //"http://localhost:10000/api/v1/progress/update",
-        "https://simuwild.onrender.com/api/v1/progress/update",
-        { scenarioId, choices },
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
-      navigate("/eleph12");
-    }
   };
 
   const handleShowOutcomeClick = () => {
@@ -104,29 +22,17 @@ const ToChoose1 = () => {
 
   const handleRestartClick = async () => {
     try {
-      console.log("Resetting progress");
-      const scenarioId = 1;
-      await axios.post(
-        //  "http://localhost:10000/api/v1/progress/reset",
-        "https://simuwild.onrender.com/api/v1/progress/reset",
-        { scenarioId },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
-
+      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
-      navigate("/scenarios/scenario1");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert(
-        "Failed to reset progress: " +
-          (error.response?.data?.error || "Unknown error")
-      );
+      alert("Failed to reset progress: " + (error.response?.data?.error || "Unknown error"));
     }
   };
 
@@ -147,7 +53,7 @@ const ToChoose1 = () => {
       backgroundImage: "url('/bg1.png')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      opacity: 0.8,
+      opacity: 0.5,
       width: "100vw",
       height: "100vh",
       display: "flex",
@@ -217,7 +123,7 @@ const ToChoose1 = () => {
   const outcomeText =
     selectedChoice === "Choice 1"
       ? " The elephants lose their natural habitat and start wandering into nearby villages in search of food, damaging crops, homes."
-      : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy may experience a slowdown due to limited expansion of agriculture and industry";
+      : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy experiences a slowdown due to limited expansion of agriculture and industry";
 
   return (
     <div style={styles.container}>
@@ -227,16 +133,23 @@ const ToChoose1 = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1.Support deforestation for economic development so that you can
-            have better opportunities.
+            1.Capture or relocate the leopards far away, focusing only on human safety
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2.Stop deforestation
+            2.Work with forest officials and NGOs to protect both people and leopards through non-violent methods
+
           </div>
         </div>
+
+        {selectedChoice && (
+          <div style={styles.outcome}>
+            <p>{outcomeText}</p>
+            <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
+          </div>
+        )}
 
         {showOutcomeScene && (
           <div style={styles.outcomeScene}>
@@ -248,7 +161,7 @@ const ToChoose1 = () => {
           Restart
         </button>
         <button style={styles.exitButton} onClick={handleExitClick}>
-          Save and Exit
+          Exit
         </button>
       </div>
     </div>
