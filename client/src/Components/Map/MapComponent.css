@@ -1,0 +1,93 @@
+/* MapComponent.css */
+/* index.css or App.css */
+@import "mapbox-gl/dist/mapbox-gl.css";
+
+.map-animal-image {
+  animation: map-riseAndZoom 3s ease-out forwards;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transform-origin: bottom center;
+  text-align: center;
+  max-width: 200px; /* Limit width to avoid overflow */
+}
+
+.map-animal-image img {
+  width: 100px;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.map-animal-image h3 {
+  margin: 5px 0;
+}
+
+.map-animal-image p {
+  font-size: 0.9rem;
+  margin: 5px 0 0;
+}
+
+
+/* Start Quiz button styling */
+.start-quiz-button {
+  position: absolute;
+  top: 0px; /* Adjust this to control how far up the button moves */
+  right: 20px;
+  padding: 35px 50px;
+  background-color: #28a745;
+  color: #fff;
+  border: 2px solid #155724;
+  border-radius: 8px;
+  font-size: 50px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.start-quiz-button:hover {
+  background-color: #218838;
+}
+
+@keyframes map-riseAndZoom {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+.quiz-button-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.start-quiz-button {
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.start-quiz-button:hover {
+  background-color: #2980b9;
+}

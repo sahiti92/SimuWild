@@ -1,0 +1,437 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  background-image: none;
+}
+.dashboard {
+  width: 100vw;
+  height: 10%; /* Set to your desired height */
+}
+
+header {
+  /* visibility: hidden; */
+  background-color: black;
+<<<<<<< HEAD:Frontend/src/Components/DashBoard2/Dashboard.css
+  padding: 50px 50px;
+  height: 60px;
+=======
+  padding: 5px;
+>>>>>>> d68fc403321c4b448b6fbe5911efdcb963786e8a:client/src/Components/DashBoard2/Dashboard.css
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+.user-profile {
+  position: relative;
+  cursor: pointer;
+}
+
+.profile-options {
+  position: absolute;
+  top: 50px; /* Adjust to position box below the icon */
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 150px;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.profile-options button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+  color: #333;
+}
+
+.profile-options button:hover {
+  background-color: #f0f0f0;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 50px;
+}
+
+header nav ul li {
+  margin: 0 15px;
+  position: relative;
+}
+
+header nav ul li a {
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  position: relative;
+  font-weight: 600;
+  font-size: 20px;
+  padding: 10px 0;
+}
+
+header nav ul li a::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+  background-color: #e8f0fe;
+  z-index: -1;
+  transition: height 0.4s ease;
+  transform-origin: bottom;
+}
+
+header nav ul li a:hover::before {
+  height: 100%;
+}
+
+header nav ul li a:hover {
+  color: black;
+}
+.profile-options {
+  position: absolute;
+  top: 70px; /* Adjust to position box below the icon */
+  right: 0;
+  background-color: gray;
+
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  width: 150px;
+  z-index: 10;
+  border-radius: 5px;
+}
+
+.profile-options button {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 8px;
+  text-align: left;
+  cursor: pointer;
+  color: black;
+}
+.profile-options button:hover {
+  background-color: #f0f0f0;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.animated-image {
+  width: 100%; /* Adjust based on your desired image size */
+  height: auto;
+}
+
+.image-text {
+  position: absolute;
+  top: 30%; /* Adjust to position text vertically */
+  left: 25%; /* Adjust to position text horizontally */
+  transform: translate(-50%, -50%); /* Centers the text */
+  color: white; /* Text color */
+  font-size: 90px; /* Adjust font size */
+  font-weight: bold; /* Optional: makes the text bold */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Optional: adds shadow to text */
+  display: flex;
+}
+
+.image-text span {
+  opacity: 0;
+  animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.image-text span:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.image-text span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.image-text span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.image-text span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+.image-text span:nth-child(5) {
+  animation-delay: 0.8s;
+}
+
+.image-text span:nth-child(6) {
+  animation-delay: 1s;
+}
+
+.image-text span:nth-child(7) {
+  animation-delay: 1.2s;
+}
+
+.image-text span:nth-child(8) {
+  animation-delay: 1.4s;
+}
+
+.image-text span:nth-child(9) {
+  animation-delay: 1.6s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.description {
+  background-color: #ffffff;
+  padding: 100px 20px;
+  color: #000000;
+  width: 100%;
+  font-size: 20px;
+}
+
+.start {
+  font-family: "Great Vibes", cursive;
+  text-align: center;
+  padding: 20px;
+  margin: 20px auto;
+  font-size: 35px;
+  width: 70%;
+<<<<<<< HEAD:Frontend/src/Components/DashBoard2/Dashboard.css
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+}
+.image-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Ensure the container takes up full width */
+  height: 80vh; /* Makes the container take full screen height (or adjust as needed) */
+}
+
+.animated-image {
+  width: 100%; /* Makes the image stretch to the full width of the container */
+  height: 100%; /* Makes the image stretch to the full height of the container */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+  object-position: center; /* Centers the image inside the container */
+=======
+>>>>>>> d68fc403321c4b448b6fbe5911efdcb963786e8a:client/src/Components/DashBoard2/Dashboard.css
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.profile-icon {
+  fill: white;
+}
+
+.animated-image {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+}
+
+.features-section {
+  padding: 50px 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Adjust for 3 images in a row */
+  gap: 20px;
+  width: 100%;
+  background-color: #000000;
+}
+
+.feature-block {
+  margin: 0 auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+  width: 80%; /* Adjust width for responsiveness */
+  height: auto; /* Allow height to adjust based on content */
+  overflow: hidden;
+  background-color: #e8f0fe;
+}
+
+.feature-block:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.feature-image {
+  width: 100%;
+  height: 200px; /* Set a fixed height for the image */
+  object-fit: cover; /* Ensures the image fills the container */
+  border-radius: 8px 8px 0 0;
+}
+<<<<<<< HEAD:Frontend/src/Components/DashBoard2/Dashboard.css
+
+.feature-content {
+  padding: 20px;
+=======
+.feature-image :hover {
+  cursor: pointer;
+>>>>>>> d68fc403321c4b448b6fbe5911efdcb963786e8a:client/src/Components/DashBoard2/Dashboard.css
+}
+
+.feature-block h3 {
+  font-family: "Playfair Display", serif;
+  color: rgb(164, 24, 214);
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.feature-block p {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: rgb(152, 22, 115);
+}
+
+.footer {
+<<<<<<< HEAD:Frontend/src/Components/DashBoard2/Dashboard.css
+  background-color: white; /* Soft gray for a better contrast */
+  padding: 40px 20px;
+=======
+  background-color: #1a1a1a;
+  padding: 20px;
+>>>>>>> d68fc403321c4b448b6fbe5911efdcb963786e8a:client/src/Components/DashBoard2/Dashboard.css
+  width: 100%;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; /* Ensures responsiveness */
+
+  color: #4a4a4a;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 250px; /* Ensures sections don't get too narrow */
+  margin-right: 20px;
+}
+.Footer-Simu {
+  color: #0f0e0a;
+  font-family: "Merriweather", serif;
+  font-size: 7rem;
+  margin-bottom: 20px;
+  margin-top: -500px;
+}
+.footer-section h1 {
+  color: #0f0e0a;
+  font-family: "Merriweather", serif;
+  font-size: 7rem;
+  margin-bottom: 20px;
+}
+
+.footer-section h2 {
+  color: black;
+  font-family: "Cursive", sans-serif;
+  font-size: 2rem;
+  margin: 10px 200px;
+}
+
+.footer-section h3 {
+  color: black;
+  font-family: "Cursive", sans-serif;
+  font-size: 2rem;
+  margin: 20px 10px;
+  margin-top: 20px;
+}
+
+/* .footer-section h4 {
+  color: #c230ae;
+  margin-bottom: 1px;
+  font-weight: bold;
+} */
+.footer-section ul li {
+  display: flex;
+  align-items: center;
+  gap: 1px; /* Adjust the gap between icon and text */
+  margin-bottom: 5px; /* Adjust the gap between each list item */
+}
+
+.footer-section svg {
+  flex-shrink: 0; /* Prevent the SVG from shrinking */
+}
+.footer-section ul {
+  list-style-type: circle;
+  padding-left: 0;
+  font-size: 20px;
+  color: #8c1313;
+  margin: 0; /* Remove any extra margin */
+}
+
+.footer-logo {
+  width: 150px;
+  height: auto;
+  margin-bottom: 20px;
+  margin-right: 60px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 0px;
+  margin-top: 20px;
+}
+
+.social-icons svg {
+  fill: black;
+  margin-top: 20px;
+  margin-left: 100px;
+  margin-right: 15px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transition: transform 0.3s ease, fill 0.3s ease;
+}
+
+.social-icons svg:hover {
+  transform: scale(1.1);
+  fill: #007bff; /* Changes color on hover */
+}
+<<<<<<< HEAD:Frontend/src/Components/DashBoard2/Dashboard.css
+=======
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .features-section {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .overlay-text {
+    font-size: 3rem;
+  }
+
+  .animated-image {
+    height: 400px;
+  }
+}
+>>>>>>> d68fc403321c4b448b6fbe5911efdcb963786e8a:client/src/Components/DashBoard2/Dashboard.css
