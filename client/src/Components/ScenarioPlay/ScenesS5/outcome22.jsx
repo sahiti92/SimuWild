@@ -56,7 +56,7 @@ const Choice22 = () => {
     controls.dampingFactor = 0.25;
     controls.enableZoom = false;
     controls.autoRotate = false;
-    controls.enableRotate = false;
+    controls.enableRotate = true;
 
     const textureLoader = new THREE.TextureLoader();
     textureLoader.load("/sky.jpg", (texture) => {

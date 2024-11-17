@@ -27,7 +27,7 @@ const Outcome2 = () => {
     controls.enableDamping = true;
     controls.dampingFactor = 0.25;
     controls.enableZoom = true;
-    controls.autoRotate = false;
+    controls.autoRotate = true;
     controls.enableRotate = false;
     controls.addEventListener("change", () => {
       console.log(
