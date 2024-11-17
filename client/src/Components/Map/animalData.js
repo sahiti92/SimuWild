@@ -19,7 +19,7 @@ import intanki from "../../assets/intanki.jpg";
 import kanha from "../../assets/kanha.jpg";
 import kawal from "../../assets/kawal.jpg";
 import keibul from "../../assets/keibul.jpg";
-import khangchendzonga from "../../assets/Khangchendzonga.jpg";
+import khangchendzonga from "../../assets/khangchendzonga.jpg";
 import mudumalai from "../../assets/mudumalai.jpeg";
 import nokrek from "../../assets/nokrek.jpg";
 import periyar from "../../assets/periyar.jpg";
