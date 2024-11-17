@@ -1,19 +1,27 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate for routing
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
 
-const ToChoose1 = () => {
+const Choice31 = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
-  const navigate = useNavigate(); // Initialize navigate for routing
+  const navigate = useNavigate();
 
-  // Assuming a valid token is available in localStorage
+  // Get the token from storage
   const token = getUserFromStorage();
+  console.log(token);
 
   const handleChoiceClick = (choice) => {
     setSelectedChoice(choice);
     setShowOutcomeScene(false);
+
+    // Navigate to the respective page based on choice
+    if (choice === "Choice 1") {
+      navigate("/outcome1S3");
+    } else if (choice === "Choice 2") {
+      navigate("/outcome2S3");
+    }
   };
 
   const handleShowOutcomeClick = () => {
@@ -22,25 +30,33 @@ const ToChoose1 = () => {
 
   const handleRestartClick = async () => {
     try {
-      await axios.delete("http://localhost:8001/api/v1/progress/reset", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      console.log("Resetting progress");
+      const scenarioId = 5;
+      await axios.post(
+        "http://localhost:8001/api/v1/progress/reset",
+        { scenarioId },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+
       setSelectedChoice("");
       setShowOutcomeScene(false);
       alert("Progress has been reset.");
     } catch (error) {
       console.error("Error resetting progress:", error);
-      alert("Failed to reset progress: " + (error.response?.data?.error || "Unknown error"));
+      alert(
+        "Failed to reset progress: " +
+          (error.response?.data?.error || "Unknown error")
+      );
     }
-  };
-
-  const handleExitClick = () => {
-    navigate("/scenarios/scenario1"); // Navigate to Scenario1 when Exit is clicked
+    navigate("/scenarios");
   };
 
   const styles = {
+    // Styles as defined previously
     container: {
       position: "relative",
       width: "100%",
@@ -50,10 +66,10 @@ const ToChoose1 = () => {
       justifyContent: "center",
     },
     backgroundImage: {
-      backgroundImage: "url('/bg1.png')",
+      backgroundImage: "url('/rhinobg.png')",
       backgroundSize: "cover",
       backgroundPosition: "center",
-      opacity: 0.5,
+      opacity: 0.8,
       width: "100vw",
       height: "100vh",
       display: "flex",
@@ -72,8 +88,12 @@ const ToChoose1 = () => {
       backgroundColor: "rgba(255, 255, 255, 0.8)",
       borderRadius: "7px",
       cursor: "pointer",
-      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.9)",
+      transition: "transform 0.2s",
       color: "black",
+      fontWeight:"600",
+      fontFamily: "Arial, sans-serif",
+      height: "50px",
       textAlign: "center",
     },
     outcome: {
@@ -84,6 +104,7 @@ const ToChoose1 = () => {
       textAlign: "center",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       color: "black",
+      position: "relative",
     },
     outcomeScene: {
       marginTop: "20px",
@@ -93,6 +114,7 @@ const ToChoose1 = () => {
       textAlign: "center",
       boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       color: "black",
+      position: "relative",
     },
     restartButton: {
       position: "absolute",
@@ -104,26 +126,15 @@ const ToChoose1 = () => {
       border: "none",
       borderRadius: "5px",
       cursor: "pointer",
-      fontSize: "16px",
-    },
-    exitButton: {
-      position: "absolute",
-      top: "20px",
-      right: "20px", // Positioning to the top-right corner
-      padding: "10px 15px",
-      backgroundColor: "red", // Red color for the Exit button
-      color: "white",
-      border: "none",
-      borderRadius: "5px",
-      cursor: "pointer",
+      boxShadow: "0px 4px 8px rgba(0, 0, 0, 0.2)",
       fontSize: "16px",
     },
   };
+  const handleExitClick = () => {
+    navigate("/scenarios");
+};
 
-  const outcomeText =
-    selectedChoice === "Choice 1"
-      ? " The elephants lose their natural habitat and start wandering into nearby villages in search of food, damaging crops, homes."
-      : " Wildlife stays within their designated areas, preventing conflict with human settlements. However, the local economy experiences a slowdown due to limited expansion of agriculture and industry";
+
 
   return (
     <div style={styles.container}>
@@ -133,39 +144,54 @@ const ToChoose1 = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-            1.Capture or relocate the leopards far away, focusing only on human safety
+           Take help of armed rangers to stop poaching.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            2.Work with forest officials and NGOs to protect both people and leopards through non-violent methods
-
+            Ignore the problems and continue with community development in the
+             area.
           </div>
         </div>
 
-        {selectedChoice && (
-          <div style={styles.outcome}>
-            <p>{outcomeText}</p>
-            <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
-          </div>
-        )}
+       
 
-        {showOutcomeScene && (
-          <div style={styles.outcomeScene}>
-            <p>{outcomeText}</p>
-          </div>
-        )}
-
-        <button style={styles.restartButton} onClick={handleRestartClick}>
-          Restart
-        </button>
-        <button style={styles.exitButton} onClick={handleExitClick}>
-          Exit
-        </button>
+<button onClick={handleRestartClick}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          padding: "10px 15px",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        ReStart 
+      </button>
+      <button onClick={handleExitClick}
+        style={{
+          position: "absolute",
+          top: "10px",
+          right: "10px",
+          padding: "10px 15px",
+          backgroundColor: "rgba(0, 0, 0, 0.8)",
+          color: "#fff",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+          zIndex: 1,
+        }}
+      >
+        Save & exit 
+      </button>
       </div>
     </div>
   );
 };
 
-export default ToChoose1;
+export default Choice31;

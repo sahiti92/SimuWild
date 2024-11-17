@@ -209,12 +209,12 @@ export default function Community() {
       </Canvas>
       <div style={textStyle}>
       <p>
-       By choosing to protect without armed rangers,
+        By choosing to protect without armed rangers,
         you’re witnessing communities thriving in peace, 
         free from the fear of harm.
-        
-         Yet, the fight is far from over — poaching continues, and precious rhinos fall victim, chipping away at our rich tapestry of biodiversity. Every loss reminds us of the urgent need to find harmony between protection and preservation.
-   </p>
+        Yet, the fight is far from over — poaching continues, and precious rhinos fall victim, chipping away at our rich tapestry of biodiversity.
+        Every loss reminds us of the urgent need to find harmony between protection and preservation.
+      </p>
 
       </div>
     </div>

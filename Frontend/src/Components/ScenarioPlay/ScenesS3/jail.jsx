@@ -199,7 +199,9 @@ export default function PoacherScene() {
         </Canvas>
         <div style={textStyle}>
         <p>
-        As you observe, the presence of strict army ranger patrols has heightened security; however, challenges remain. During nighttime operations, distinguishing between civilians and poachers can become difficult, occasionally leading to unintended consequences for local residents due to stringent enforcement protocols.
+          There exists a disease that can only be cured using rhino horns.
+          However, due to the extinction of rhinos, no cure is available, resulting in the loss of human lives. 
+          Meanwhile, you face imprisonment for your role in the killing of rhinos, which contributed to their extinction.
         </p>
 
    </div>

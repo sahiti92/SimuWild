@@ -164,7 +164,7 @@ export default function CityScene() {
       </Canvas>
       <div style={textStyle}>
         <p>
-        As you observe, the presence of strict army ranger patrols has heightened security; however, challenges remain. During nighttime operations, distinguishing between civilians and poachers can become difficult, occasionally leading to unintended consequences for local residents due to stringent enforcement protocols.
+        You have successfully tranquilized the rhino and carefully removed its ivory, driven by greed. However, in doing so, you neglected to consider the animal's suffering and the potential risks involved, ultimately contributing to the extinction of rhinos.
         </p>
 
    </div>

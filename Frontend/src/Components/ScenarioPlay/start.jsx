@@ -13,7 +13,7 @@ const SliderComponent = ({ backgroundImage }) => {
     
     // Redirect to a new page when the slider reaches the end
     if (value >= 100) {
-      navigate('/choose');
+      navigate('/role');
     }
   };
 
@@ -25,9 +25,6 @@ const SliderComponent = ({ backgroundImage }) => {
       <div className="card">
         <p className="slider-description">
         Kaziranga National Park, home to the endangered one-horned rhino, faces a serious threat from poaching. Despite efforts to protect the animals, poachers often manage to evade detection, putting both wildlife and local communities at risk.
-
-        In this experience, you'll explore different choices that could impact the park. Will strict patrols by armed rangers stop poaching, or will a community-centered approach work better?
-
         Click 'Start' to begin and see how each choice shapes the future of Kaziranga's rhinos and their habitat.
         </p>
         

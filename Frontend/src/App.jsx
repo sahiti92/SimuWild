@@ -34,19 +34,26 @@ import Choice2 from "./Components/ScenarioPlay/ScenesS5/outcome1.jsx";
 import Outcome2 from "./Components/ScenarioPlay/ScenesS5/outcome2.jsx";
 import WetlandScene from "./Components/ScenarioPlay/ScenesS3/StartScene.jsx";
 import Slider from "./Components/ScenarioPlay/start.jsx";
+
+import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
+
+import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
+import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
+
+//import UpdatePassword from "./Users/UpdatePassword.jsx";
+//import UserProfile from "./Users/UserProfile.jsx";
+
+import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
+import  Choice32 from "./Components/ScenarioPlay/ScenesS3/Choice2.jsx"
+import  Choice31 from "./Components/ScenarioPlay/ScenesS3/Choice1.jsx";
 import Community from "./Components/ScenarioPlay/ScenesS3/outcome1.jsx";
 import SummaryPage from "./Components/ScenarioPlay/ScenesS3/Summary.jsx";
-import Choose from "./Components/ScenarioPlay/ScenesS3/Choice.jsx";
-import LeopardScene from "./Components/ScenarioPlay/ScenesS2/StartScene.jsx";
 import WetlandScene1 from "./Components/ScenarioPlay/ScenesS3/outcome2.jsx";
 import PoacherScene from "./Components/ScenarioPlay/ScenesS3/Poacher.jsx";
 import JailScene from "./Components/ScenarioPlay/ScenesS3/jail.jsx";
 import CityScene from "./Components/ScenarioPlay/ScenesS3/greed.jsx";
-import ToCh3 from "./Components/ScenarioPlay/ScenesS2/Toch3.jsx";
-import Leapord_o2 from "./Components/ScenarioPlay/ScenesS2/outcome2.jsx";
-//import UpdatePassword from "./Users/UpdatePassword.jsx";
-//import UserProfile from "./Users/UserProfile.jsx";
-import Choice22 from "./Components/ScenarioPlay/ScenesS5/outcome22.jsx";
+import RoleSelection from "./Components/ScenarioPlay/ScenesS3/Role.jsx";
+
 const App = () => {
   return (
     <Router>
@@ -66,10 +73,13 @@ const App = () => {
         <Route path="/scenarios/scenario5" element={<Scenario5 />} />
         <Route path="/scenarios/scenario6" element={<Scenario6 />} />
         <Route path="/startS3" element={<Slider backgroundImage={'./rhinobg.png'} />}/>
-        <Route path="/test" element={<WetlandScene1 />} />
+        <Route path="/outcome1S3" element={<WetlandScene1 />} />
         <Route path="/poacher" element={<PoacherScene/>} />
         <Route path="/jail" element={<JailScene/>} />
         <Route path="/city" element={<CityScene/>} />
+        <Route path="/role" element={<RoleSelection/>} />
+        <Route path="/choice31" element = {<Choice31/>}/>
+        <Route path="/choice32" element = {<Choice32/>}/>
          
         <Route
           path="/dashboard"
@@ -130,10 +140,8 @@ const App = () => {
         <Route path="/toChoose2" element={<ToChoose2 />} />
         <Route path="/outcome2s5" element={<Outcome2 />} />
         <Route path="/model" element={<GLBModel url="./elephant1.glb" />} />
-        <Route path="/outcome1S3" element={<WetlandScene />} />
         <Route path="/outcome2S3" element={<Community />} />
         <Route path="/sum3" element={<SummaryPage />} />
-        <Route path="/choose" element={<Choose />} />
         <Route path="/leopard" element={<LeopardScene />} />
         <Route path="/outcome22s5" element={<Choice22 />} />
       </Routes>
