@@ -57,12 +57,12 @@ function Ranger({ position }) {
 
 // Man Model
 function Man({ initialPosition = [6, 0, 14], stopAtX = 10 }) {
+
     const { scene, animations } = useGLTF('./falls.glb'); // Ensure the path is correct
     const mixer = useRef(null);
     const [position, setPosition] = useState(initialPosition);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [animationEnded, setAnimationEnded] = useState(false);
-  
+    const [animationEnded, setAnimationEnded] = useState(false); 
     useEffect(() => {
       if (scene && animations && animations.length > 0) {
         mixer.current = new AnimationMixer(scene);
@@ -218,6 +218,11 @@ export default function WetlandScene1() {
 
   return (
     <div style={{ width: '100vw', height: '100vh', position: 'relative' }}>
+      <div style={textStyle}>
+        <p>
+        There will be individuals living peacefully in the park, but armed rangers may mistakenly perceive them as poachers and take lethal action, while the actual poachers continue to kill rhinos.
+        </p>
+      </div>
       <button onClick={handleRestartClick}
         style={{
           position: "absolute",
@@ -250,16 +255,11 @@ export default function WetlandScene1() {
       >
         Save & exit
       </button>
-      {showIntroText &&(
-        <div
-        style={{
-          ...textStyle,
-          transform: 'translateX(0)', // Move text into view
-        }}
-      >
-         We can see rhinos coming forward...
-         </div>
-      )}
+     
+
+
+
+
       <Canvas camera={{ position: [0.99, 3.73, 21.52], fov: 60 }} style={{ width: '100%', height: '100%' }} onCreated={({ camera }) => (cameraRef.current = camera)}>
         
         <SkyBackground />
@@ -279,25 +279,28 @@ export default function WetlandScene1() {
         <RhinoModel initialPosition={[0, -1, 2]} stopAtX={10} model={'./rhino_walking.glb'}/>
         <RhinoModel initialPosition={[0, -1, 4]} stopAtX={8} model={'./rhino_walking1.glb'}/>
         <OrbitControls />
+        
       </Canvas>
+     
     </div>
   );
 }
 // Define the style object
 export const textStyle = {
+   
     position: 'absolute',
     top: '100px',
-    left: '20px',
+    left: '350px',
     color: 'white',
     fontFamily: 'Georgia, serif',
     fontSize: '16px',
-    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+    backgroundColor: 'rgba(0, 0, 0, 0)',
     padding: '20px',
     borderRadius: '10px',
     maxWidth: '300px',
     lineHeight: '1.6',
     boxShadow: '0px 4px 15px rgba(0, 0, 0, 0.5)',
     letterSpacing: '0.5px',
-    transform: 'translateX(-100%)', // Start off-screen (for sliding effect)
-    transition: 'transform 1s ease-out', // Smooth transition for sliding
+    transform: 'translateX(-100%)', 
+    transition: 'transform 1s ease-out', 
   };  

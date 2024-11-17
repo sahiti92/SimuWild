@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { getUserFromStorage } from "../../../utils/getUser";
 
-const ToChoose = () => {
+const Choice32 = () => {
   const [selectedChoice, setSelectedChoice] = useState("");
   const [showOutcomeScene, setShowOutcomeScene] = useState(false);
   const navigate = useNavigate();
@@ -18,9 +18,9 @@ const ToChoose = () => {
 
     // Navigate to the respective page based on choice
     if (choice === "Choice 1") {
-      navigate("/outcome1S3");
+      navigate("/city");
     } else if (choice === "Choice 2") {
-      navigate("/outcome2S3");
+      navigate("/jail");
     }
   };
 
@@ -134,11 +134,6 @@ const ToChoose = () => {
     navigate("/scenarios");
 };
 
-  const outcomeText =
-    selectedChoice === "Choice 1"
-      ? "By working together, there is hope for both the tigers and their home."
-      : "If we do nothing, both people and tigers will face serious consequences as their lives clash.";
-
   return (
     <div style={styles.container}>
       <div style={styles.backgroundImage}>
@@ -147,23 +142,15 @@ const ToChoose = () => {
             onClick={() => handleChoiceClick("Choice 1")}
             style={styles.choice}
           >
-           Take help pf armed rangers to stop poaching.
+          Diligent and skillful execution.
           </div>
           <div
             onClick={() => handleChoiceClick("Choice 2")}
             style={styles.choice}
           >
-            Ignore the problems and continue with community development in the
-            area.
+           When luck turns against you.
           </div>
         </div>
-
-        {selectedChoice && (
-          <div style={styles.outcome}>
-            <p>{outcomeText}</p>
-            <button onClick={handleShowOutcomeClick}>Show Outcome Scene</button>
-          </div>
-        )}
 
 <button onClick={handleRestartClick}
         style={{
@@ -202,4 +189,4 @@ const ToChoose = () => {
   );
 };
 
-export default ToChoose;
+export default Choice32;

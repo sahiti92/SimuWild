@@ -5,13 +5,12 @@ import './summary.css'
 const SummaryPage = () => {
   const navigate = useNavigate();
 
-  // Dummy handler to navigate to a starting page or restart the flow
+  
   const handleRestart = () => {
     console.log("Restart clicked");
-    navigate('/startS3'); // Assuming '/start' is the route to restart the game
+    navigate('/startS3');
   };
 
-  // Dummy handler to navigate to an exit or home page
   const handleExit = () => {
     console.log("Exit clicked");
     navigate('/scenarios'); // Assuming '/home' is the exit or home route
