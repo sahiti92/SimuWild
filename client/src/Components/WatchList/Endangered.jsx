@@ -134,7 +134,7 @@ const Endangered = () => {
                 src={species.image || "https://via.placeholder.com/100"}
                 alt={species.scientificName}
                 style={{
-                  width: "500px", // Set a fixed width for all images
+                  width: "600px", // Set a fixed width for all images
                   height: "300px", // Set a fixed height for all images
                   objectFit: "cover", // Ensures the image covers the box without distortion
                   borderRadius: "8px",

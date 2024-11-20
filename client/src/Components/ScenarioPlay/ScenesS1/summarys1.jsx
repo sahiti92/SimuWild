@@ -20,7 +20,7 @@ const SummarySceneS1 = () => {
       //   }
       // );
       // alert("Progress has been reset.");
-      navigate("/scenarios/scenario1");
+      navigate("/scenarios");
     } catch (error) {
       console.error("Error resetting progress:", error);
       alert(
@@ -94,7 +94,7 @@ const SummarySceneS1 = () => {
         style={{
           position: "absolute",
           top: "10px",
-          left: "10px",
+          right: "10px",
           padding: "10px 15px",
           backgroundColor: "#007bff",
           color: "#fff",
@@ -104,8 +104,9 @@ const SummarySceneS1 = () => {
           zIndex: 1,
         }}
       >
-        ReStart
+        Exit
       </button>
+
       <div style={styles.contentBox}>
         <h1 style={styles.heading}>Elephant Conservation Scenario Summary</h1>
         <p style={styles.paragraph}>
