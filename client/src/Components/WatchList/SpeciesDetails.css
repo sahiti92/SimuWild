@@ -1,6 +1,6 @@
 .species-details {
   background-color: black;
-  color: #FED47E;
+  color: #fed47e;
   padding: 20px;
   border-radius: 8px;
   left: 0%;
@@ -15,7 +15,7 @@
 .species-details h1 {
   text-align: center;
   margin-bottom: 20px;
-  color: #FA7C20; 
+  color: #fa7c20;
   font-family: "Playfair Display", serif;
   font-size: 40px;
 }
@@ -28,10 +28,10 @@
 }
 
 .species-grid div {
-  background-color: #8AC187;
+  background-color: #bf5700;
   padding: 15px;
   border-radius: 8px;
-  color: white; 
+  color: white;
   font-family: "Lato", sans-serif;
   font-weight: bold;
 
@@ -43,14 +43,12 @@
 
 /* Hide scrollbar for Webkit browsers (Chrome, Safari) */
 .species-grid div::-webkit-scrollbar {
-  display: none; 
+  display: none;
 }
-
 
 .species-grid div {
-  scrollbar-width: none; 
+  scrollbar-width: none;
 }
-
 
 .species-grid div span {
   font-size: 18px;

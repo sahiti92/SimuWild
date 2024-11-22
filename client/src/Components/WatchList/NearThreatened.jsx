@@ -16,21 +16,61 @@ import EryxConicus from "../../assets/nt10.png";
 
 const SpeciesInfo = () => {
   const [activeSpeciesIndex, setActiveSpeciesIndex] = useState(null);
-  const [pressedIndex, setPressedIndex] = useState(null);  // Track which item is being pressed
+  const [pressedIndex, setPressedIndex] = useState(null); // Track which item is being pressed
   const navigate = useNavigate();
 
   // Hardcoded species data with local image paths and updated species names
   const speciesData = [
-    { scientificName: "Naja oxiana", commonName: "Oxian Cobra", image: NajaOxiana },
-    { scientificName: "Eryx johnii", commonName: "John's Sand Boa", image: EryxJohnii },
-    { scientificName: "Hemidactylus anamallensis", commonName: "Anamalai Lizard", image: HemidactylusAnamallensis },
-    { scientificName: "Cnemaspis sisparensis", commonName: "Sispara Lizard", image: CnemaspisSisparensis },
-    { scientificName: "Cnemaspis heteropholis", commonName: "Mixed Scale Gecko", image: CnemaspisHeteropholis },
-    { scientificName: "Cnemaspis nairi", commonName: "Nair's Gecko", image: CnemaspisNairi },
-    { scientificName: "Trimeresurus macrolepis", commonName: "Big Scale Viper", image: TrimeresurusMacrolepis },
-    { scientificName: "Eryx whitakeri", commonName: "Whitaker Boa", image: EryxWhitakeri },
-    { scientificName: "Cnemaspis ornata", commonName: "Ornate Gecko", image: CnemaspisOrnata },
-    { scientificName: "Eryx conicus", commonName: "Cone Boa", image: EryxConicus },
+    {
+      scientificName: "Naja oxiana",
+      commonName: "Oxian Cobra",
+      image: NajaOxiana,
+    },
+    {
+      scientificName: "Eryx johnii",
+      commonName: "John's Sand Boa",
+      image: EryxJohnii,
+    },
+    {
+      scientificName: "Hemidactylus anamallensis",
+      commonName: "Anamalai Lizard",
+      image: HemidactylusAnamallensis,
+    },
+    {
+      scientificName: "Cnemaspis sisparensis",
+      commonName: "Sispara Lizard",
+      image: CnemaspisSisparensis,
+    },
+    {
+      scientificName: "Cnemaspis heteropholis",
+      commonName: "Mixed Scale Gecko",
+      image: CnemaspisHeteropholis,
+    },
+    {
+      scientificName: "Cnemaspis nairi",
+      commonName: "Nair's Gecko",
+      image: CnemaspisNairi,
+    },
+    {
+      scientificName: "Trimeresurus macrolepis",
+      commonName: "Big Scale Viper",
+      image: TrimeresurusMacrolepis,
+    },
+    {
+      scientificName: "Eryx whitakeri",
+      commonName: "Whitaker Boa",
+      image: EryxWhitakeri,
+    },
+    {
+      scientificName: "Cnemaspis ornata",
+      commonName: "Ornate Gecko",
+      image: CnemaspisOrnata,
+    },
+    {
+      scientificName: "Eryx conicus",
+      commonName: "Cone Boa",
+      image: EryxConicus,
+    },
   ];
 
   const handleSpeciesClick = (species, index) => {
@@ -64,9 +104,9 @@ const SpeciesInfo = () => {
             <li
               key={index}
               onClick={() => handleSpeciesClick(species, index)}
-              onMouseDown={() => setPressedIndex(index)}  // Set pressed state when clicked
-              onMouseUp={() => setPressedIndex(null)}  // Reset pressed state after release
-              onMouseLeave={() => setPressedIndex(null)}  // Reset pressed state when mouse leaves
+              onMouseDown={() => setPressedIndex(index)} // Set pressed state when clicked
+              onMouseUp={() => setPressedIndex(null)} // Reset pressed state after release
+              onMouseLeave={() => setPressedIndex(null)} // Reset pressed state when mouse leaves
               style={{
                 cursor: "pointer",
                 fontSize: "20px",
@@ -74,17 +114,18 @@ const SpeciesInfo = () => {
                 fontFamily: "Lato",
                 margin: "10px",
                 padding: "15px",
-                backgroundColor: activeSpeciesIndex === index ? "lightblue" : "#f0f0f0",
+                backgroundColor:
+                  activeSpeciesIndex === index ? "lightblue" : "#f0f0f0",
                 borderRadius: "10px",
                 flexBasis: "calc(50% - 20px)",
                 textAlign: "center",
                 transition: "background-color 0.3s ease, transform 0.2s ease",
                 transform:
                   activeSpeciesIndex === index
-                    ? "scale(1.05)"  // Slightly enlarge the active species
+                    ? "scale(1.05)" // Slightly enlarge the active species
                     : pressedIndex === index
-                    ? "scale(0.9)"   // Scale down when clicked
-                    : "scale(1)",    // Default size
+                    ? "scale(0.9)" // Scale down when clicked
+                    : "scale(1)", // Default size
               }}
             >
               <img

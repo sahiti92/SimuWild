@@ -4,11 +4,7 @@ const usersController = require("../controllers/userController");
 const isAuthenticated = require("../middlewares/isAuth");
 userRouter.post("/signup", usersController.Signup);
 userRouter.post("/login", usersController.login);
-userRouter.get(
-  "/api/v1/dashboard",
-  isAuthenticated,
-  usersController.dashboard
-);
+userRouter.get("/api/v1/dashboard", isAuthenticated, usersController.dashboard);
 userRouter.put(
   "/changePass",
   isAuthenticated,

@@ -3,7 +3,8 @@ import { useDispatch } from "react-redux";
 import { logoutAction } from "../../redux/slice/authSlice";
 import "./Dashboard.css";
 import { Link, useNavigate } from "react-router-dom";
-
+import { getUserFromStorage } from "../../utils/getUser";
+import axios from "axios";
 const Dashboard = () => {
   const features = [
     {
@@ -24,25 +25,62 @@ const Dashboard = () => {
       image: "/map.jpg",
       path: "/map",
     },
-    {
-      title: "Indigenous Knowledge",
-      description: "Share and document indigenous practices and knowledge",
-      image: "/photogallery.jpg",
-      path: "#",
-    },
   ];
-
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
   const [clickedIndex, setClickedIndex] = useState(null);
   const [showProfileOptions, setShowProfileOptions] = useState(false);
 
-  const handleTitleClick = (index) => {
+  const handleTitleClick = async (index) => {
     if (clickedIndex === index) {
       setClickedIndex(null);
     } else {
       setClickedIndex(index);
+      console.log("index");
+      console.log(index);
+      // if (index == 0) {
+      //   //const API_BASE_URL = "http://localhost:10000/api/progress";
+      //   const token = getUserFromStorage();
+      //   try {
+      //     // Step 1: Get the current progress of the user
+      //     const progressResponse = await axios.get(
+      //     //  "http://localhost:10000/api/v1/progress",
+
+      //       {
+      //         headers: {
+      //           Authorization: `Bearer ${token}`, // Include the token
+      //         },
+      //       }
+      //     );
+
+      //     const progressData = progressResponse.data;
+      //     console.log("progressData");
+      //     console.log(progressData);
+      //     // Step 2: Check if the progress array is empty
+      //     if (!progressData.length) {
+      //       // Array is empty, so update progress for scenarioIds 1, 3, and 5
+      //       const scenarioIds = [1, 3, 5];
+      //       await Promise.all(
+      //         scenarioIds.map(async (scenarioId) => {
+      //           await axios.post(
+      //             "http://localhost:10000/api/v1/progress/update",
+      //             { scenarioId, choices: 0 },
+      //             {
+      //               headers: {
+      //                 Authorization: `Bearer ${token}`,
+      //               },
+      //             }
+      //           );
+      //         })
+      //       );
+      //       console.log("Progress initialized for scenario IDs 1, 3, and 5.");
+      //     } else {
+      //       console.log("User already has progress data, no update needed.");
+      //     }
+      //   } catch (error) {
+      //     console.error("Error updating progress:", error);
+      //   }
+      // }
       navigate(features[index].path);
     }
   };
@@ -59,7 +97,7 @@ const Dashboard = () => {
     setShowProfileOptions((prev) => !prev);
   };
   return (
-    <div className="dashboard" style={{ width: "100vw", height: "100vh" }}>
+    <div className="dashboard" style={{ width: "100vw" }}>
       <div>
         <header>
           <nav>
@@ -72,17 +110,6 @@ const Dashboard = () => {
               </li>
               <li>
                 <Link to="/news">News</Link>
-              </li>
-              <li>
-                <button onClick={handleLogout} className="logout-button">
-                  Logout
-                </button>
-                <button
-                  onClick={handleUpdatePassword}
-                  className="update-password-button"
-                >
-                  Update Password
-                </button>
               </li>
             </ul>
           </nav>
@@ -110,10 +137,15 @@ const Dashboard = () => {
         </header>
         <div className="image-container">
           <img
-            src="/wildlife2.jpg"
+            src="/Db.jpg"
             alt="Wildlife Dashboard"
             className="animated-image"
           />
+          <div className="image-text">
+            {"WILDLIFE".split("").map((letter, index) => (
+              <span key={index}>{letter}</span>
+            ))}
+          </div>
         </div>
         <p className="description">
           Immerse yourself in the world of wildlife conservation through
@@ -205,6 +237,26 @@ const Dashboard = () => {
                   <path d="M8660.4 5347.79c188.48,0 340.19,-151.7 340.19,-337.89 0,-188.48 -151.7,-340.19 -340.19,-340.19 -186.18,0 -337.89,151.7 -337.89,340.19 0,186.18 151.7,337.89 337.89,337.89z"></path>
                   <rect width="13333.33" height="13333.33" fill="none"></rect>
                 </svg>
+                <img
+                  src="/panda.png"
+                  alt="Panda"
+                  style={{
+                    width: "1500px",
+                    marginTop: "10px",
+                    marginLeft: "-500px",
+                  }}
+                />
+                <p
+                  style={{
+                    marginTop: "450px",
+                    marginLeft: "-400px",
+                    fontSize: "20px",
+                  }}
+                >
+                  All Rights Reserved. SimuWild Community ©2024 2130 IIT
+                  Tirupati, Tirupati, AndhraPradesh Phone: (578) 641-4770 | Fax:
+                  (264) 864-8562
+                </p>
               </div>
             </div>
 
@@ -214,7 +266,7 @@ const Dashboard = () => {
                 <li>
                   <svg
                     width="20"
-                    height="20"
+                    height="-10"
                     fill="#f4e8c1"
                     viewBox="0 0 24 24"
                   >
@@ -245,7 +297,7 @@ const Dashboard = () => {
               flex: 1,
             }}
           >
-            <h1>SimuWild</h1>
+            <h1 className="Footer-Simu">SimuWild</h1>
           </div>
         </footer>
       </div>

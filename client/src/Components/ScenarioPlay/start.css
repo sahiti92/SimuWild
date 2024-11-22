@@ -1,0 +1,81 @@
+/* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Full-page background */
+  .background {
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    background-size: cover;
+    background-position: center; /* Ensure the background is centered */
+    filter: opacity(0.9); /* Makes the image translucent */
+    position: relative; /* For the overlay */
+  }
+  
+  /* Slider description */
+  .slider-description {
+    font-size: 18px;
+    color: rgb(35, 33, 33);
+    margin-bottom: 20px; /* Space between description and slider container */
+    max-width: 300px; /* Optional: limit the width of the description */
+    line-height: 1.5;
+    text-align: center;
+    margin-left: 700px;
+    margin-top: 150px;
+    z-index: 2; /* Ensure it is above the background overlay */
+  }
+  
+  /* Slider container */
+  .slider-container {
+    background: rgba(34, 32, 32, 0.8); /* Semi-transparent background */
+    border-radius: 30px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column; /* Arrange the description and slider vertically */
+    align-items: center; /* Center content horizontally */
+    justify-content: center; /* Center content vertically */
+    width: 300px;
+    position: relative;
+    z-index: 2; /* Ensure it is above the background overlay */
+    text-align: center; /* Center all text inside the card */
+  }
+  
+  /* Slider button */
+  .slider {
+    width: 100%;
+    appearance: none;
+    height: 20px;
+    background: #36343435;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+  }
+  
+  /* Slider thumb */
+  .slider::-webkit-slider-thumb {
+    appearance: none;
+    width: 40px;
+    height: 40px;
+    background-color: #ddc80b;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none; /* Remove border to make the thumb look cleaner */
+  }
+  
+  /* "Start" text inside the slider */
+  .start-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
+    color: #ddc80b;
+    pointer-events: none;
+  }
+  

@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import { getUserFromStorage } from "./../utils/getUser";
+import { getUserFromStorage } from "../utils/getUser";
 
 const AuthRoute = ({ children }) => {
   //get the token
